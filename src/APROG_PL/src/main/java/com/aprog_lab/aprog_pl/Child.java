@@ -13,4 +13,10 @@ public class Child extends Thread {
     {
         id = pid;
     }
+    
+    @Override
+    public void run()
+    {
+        System.out.println(id);
+    }
 }

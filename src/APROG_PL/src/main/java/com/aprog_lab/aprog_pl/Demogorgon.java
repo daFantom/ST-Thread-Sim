@@ -16,4 +16,10 @@ public class Demogorgon extends Thread
         id = pid;
         child_counter = pcounter;
     }
+    
+    @Override
+    public void run()
+    {
+        System.out.println(id);
+    }
 }

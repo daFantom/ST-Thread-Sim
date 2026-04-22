@@ -8,9 +8,24 @@ import java.util.concurrent.CyclicBarrier;
 public class Main {
 
     public static void main(String[] args) {
-        int code= 1;
-        System.out.println("1");
-        System.out.println(String.format("%04d", code));
+        
+        try
+        {
+            int idn = 0;
+            new Demogorgon("D"+String.format("%04d",idn), 0).start();
+            for(int i=0; i<1500; i++)
+            {
+                Thread.sleep((int)((Math.random()*1.5)+0.5));                       // SHOULD wait between 0.5 and 2 seconds.
+                String child_id = "C"+String.format("%04d", idn);
+                new Child(child_id).start();
+                idn++;
+            }
+            
+        }
+        catch(InterruptedException ie)
+        {
+            System.out.println("Interrupted Exception -> main()");
+        }
     }
     
 }
