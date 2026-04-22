@@ -5,10 +5,12 @@ import java.util.concurrent.CyclicBarrier;
  *
  * @author Emanuel Baciu
  */
-public class Child {
+public class Child extends Thread {
     
-    public Child()
+    private String id;                                                                  // Used for identifying each child.  
+    
+    public Child(String pid)
     {
-        
+        id = pid;
     }
 }
