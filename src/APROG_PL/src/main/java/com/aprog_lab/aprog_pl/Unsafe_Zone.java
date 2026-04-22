@@ -8,13 +8,18 @@ import java.util.ArrayList;
  */
 public class Unsafe_Zone
 {
-    String zone_name;
-    ArrayList<String> avail_children, avail_demos;
+    private final String zone_name;
+    private ArrayList<String> avail_children, avail_demos;
     
     public Unsafe_Zone(String name)
     {
         zone_name = name;
         avail_children = new ArrayList<>();
         avail_demos = new ArrayList<>();
+    }
+    
+    public String getName()
+    {
+        return zone_name;                                                               // Testing method.
     }
 }

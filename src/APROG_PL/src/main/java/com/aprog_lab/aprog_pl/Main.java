@@ -24,15 +24,17 @@ public class Main {
         
         uz.add(Forest); uz.add(Lab); uz.add(Mall); uz.add(Sewer); uz.add(Hive);
         sz.add(ms); sz.add(bb); sz.add(radio);
-        try                                                                            // Initial threads (Alpha Demog and Children) creation.
+        
+        // Initial threads (Alpha Demog and Children) creation.
+        try
         {
-            int idn = 0;
-            new Demogorgon("D"+String.format("%04d",idn), 0).start();
-            for(int i=0; i<1500; i++)
+            int idn = 0;                                                               // Used for Children ID (Mostly)
+            new Demogorgon("D"+String.format("%04d",idn), 0, uz).start();          // Formatted ID for the Alpha Demogorgon (D0000)
+            for(int i=0; i<1; i++)
             {
-                Thread.sleep((int)((Math.random()*1.5)+0.5));                       // SHOULD wait between 0.5 and 2 seconds.
-                String child_id = "C"+String.format("%04d", idn);
-                new Child(child_id).start();
+                Thread.sleep((int)(Math.random()*1.5+0.5));                         // SHOULD wait between 0.5 and 2 seconds.
+                String child_id = "C"+String.format("%04d", idn);                   // Formatted ID for children
+                new Child(child_id, sz, uz).start();
                 idn++;
             }
             
