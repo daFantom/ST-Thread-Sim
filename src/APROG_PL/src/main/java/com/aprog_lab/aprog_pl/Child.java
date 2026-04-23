@@ -44,4 +44,9 @@ public class Child extends Thread {
             }   
         }
     }
+    
+    public String getStatus()
+    {
+        return status;
+    }
 }
