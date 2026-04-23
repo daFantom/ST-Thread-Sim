@@ -11,27 +11,37 @@ public class Child extends Thread {
     private String id;                                                                  // Used for identifying each child.  
     private ArrayList<Unsafe_Zone> uz;                                                 // uz[0]=Forest, uz[1]=Lab, uz[2]=Mall, uz[3]=Sewer. We don't use uz[4].
     private ArrayList<Safe_Zone> sz;                                                   // sz[0]=Main Street, sz[1]=Basement, sz[2]=WSQK Radio.
+    private String status;
     
     public Child(String pid, ArrayList<Safe_Zone> psz, ArrayList<Unsafe_Zone> puz)
     {
         id = pid;
         sz = psz;
         uz = puz;
+        status = "Entering";
     }
     
     @Override
     public void run()
     {
-        sz.get(0).enterSafeZone(id);                                                      // sz[0] = Hawkin's Main street, they will all enter here.
-        try
+        while(true)
         {
-            Thread.sleep((int)( (Math.random()*2)+3) );                                 // Waits for 3 to 5 seconds before trying to enter another zone.
-            sz.get(1).enterSafeZone(id);
-                                            
-        }
-        catch(InterruptedException ie)
-        {
-            System.out.println("IE at Child->run()");
+            sz.get(0).enterSafeZone(id);                                              // sz[0] = Hawkin's Main street, they will all enter here upon creation.
+            try
+            {
+                Thread.sleep((int)( (Math.random()*2)+3) );                            // Waits for 3 to 5 seconds before entering Bayer's Basement.
+                sz.get(1).enterSafeZone(id);                                            // sz[1]=Bayer's Basement. They enter.
+                Thread.sleep((int)( (Math.random()*1)+1) );                            // Choosing portal...
+                // Portal selection mechanism
+                // Upside down stuff...
+                sz.get(2).enterSafeZone(id);
+                
+
+            }
+            catch(InterruptedException ie)
+            {
+                System.out.println("IE at Child->run()");
+            }   
         }
     }
 }
