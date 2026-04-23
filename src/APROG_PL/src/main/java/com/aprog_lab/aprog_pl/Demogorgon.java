@@ -23,10 +23,7 @@ public class Demogorgon extends Thread
     @Override
     public void run()
     {
-        System.out.println(id);
-        for(int i=0;i<uz.size();i++)
-        {
-            System.out.println(uz.get(i).getName());
-        }
+        int zone = (int)(Math.random()*3);
+        uz.get(zone).enterUnsafeSafeZone(id);
     }
 }

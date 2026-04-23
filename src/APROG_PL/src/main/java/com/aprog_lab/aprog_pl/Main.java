@@ -8,7 +8,8 @@ import java.util.concurrent.CyclicBarrier;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         ArrayList<Unsafe_Zone> uz = new ArrayList<>();                              // Children and Demogorgons share this ArrayList.
         ArrayList<Safe_Zone> sz = new ArrayList<>();                                // ONLY children are allowed to use this ArrayList.
         
@@ -18,7 +19,7 @@ public class Main {
         Unsafe_Zone Sewer = new Unsafe_Zone("Sewer");
         Unsafe_Zone Hive = new Unsafe_Zone("HIVE");
         
-        Safe_Zone ms = new Safe_Zone("Hawkin's Main Street");
+        Safe_Zone ms = new Safe_Zone("Hawkin's Main Street");                       
         Safe_Zone bb = new Safe_Zone("Bayer's Basement");
         Safe_Zone radio = new Safe_Zone("WSQK Radio");
         
