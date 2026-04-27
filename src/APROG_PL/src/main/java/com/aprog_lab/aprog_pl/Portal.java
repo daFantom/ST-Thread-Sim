@@ -8,6 +8,7 @@ import java.util.Queue;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -31,6 +32,7 @@ public class Portal
 //    );
     private Queue<Child> exitQueue = new LinkedBlockingQueue();
     private Queue<Child> enterQueue = new LinkedBlockingQueue();
+    Semaphore exitSem, enterSem;
     
     public Portal(String pname, Safe_Zone psz, Unsafe_Zone puz, CyclicBarrier pcb)
     {
@@ -38,28 +40,36 @@ public class Portal
         sz_connect = psz;
         uz_connect = puz;
         cb = pcb;
+        exitSem = new Semaphore(0);
+        enterSem = new Semaphore(0);
     }
     
     
-    public void enterPortalQueue(Child c)
+    public void enterPortalQueue(String status)
     {
-        portalQueue.offer(c);
+        try
+        {
+            if(status.equals("Exiting"))
+            {
+                exitSem.acquire(); cb.await();
+            }
+            else
+            {
+                enterSem.acquire(); cb.await();
+            }
+        }
+        catch(InterruptedException ie)
+        {
+            System.out.println("IE at Portal-> enterPortalQueue(String)");
+        }
+        catch(BrokenBarrierException bbe)
+        {
+            System.out.println("BBE at Portal-> enterPortalQueue(String)");
+        }
     }
     
     public void enablePortal()
     {
-        try
-        {
-            cb.await();
-        }
-        catch(InterruptedException ie)
-        {
-            System.out.println("IE at Portal->enablePortal");
-        }
-        catch(BrokenBarrierException bbe)
-        {
-            System.out.println("BBE at Portal->enablePortal");
-        }
     }
     
     
