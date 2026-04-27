@@ -21,18 +21,10 @@ public class Portal
     private Safe_Zone sz_connect;
     private Unsafe_Zone uz_connect;
     private CyclicBarrier cb;
-//    private Queue<Child> portalQueue = new PriorityQueue(new Comparator<Child>()
-//        {
-//            @Override
-//            public int compare(Child c1, Child c2)
-//            {
-//                return c1.getStatus().compareTo(c2.getStatus());
-//            }
-//        }
-//    );
-    private Queue<Child> exitQueue = new LinkedBlockingQueue();
-    private Queue<Child> enterQueue = new LinkedBlockingQueue();
-    Semaphore exitSem, enterSem;
+
+    private Queue<String> exitQueue;
+    private Queue<String> enterQueue;
+    private Semaphore exitSem, enterSem;
     
     public Portal(String pname, Safe_Zone psz, Unsafe_Zone puz, CyclicBarrier pcb)
     {
@@ -40,22 +32,32 @@ public class Portal
         sz_connect = psz;
         uz_connect = puz;
         cb = pcb;
+        exitQueue = new LinkedBlockingQueue();
+        enterQueue = new LinkedBlockingQueue();
         exitSem = new Semaphore(0);
         enterSem = new Semaphore(0);
     }
     
     
-    public void enterPortalQueue(String status)
+    public void enterPortalQueue(String id, String status)
     {
         try
         {
             if(status.equals("Exiting"))
             {
-                exitSem.acquire(); cb.await();
+                System.out.println("Child: "+id+" has entered ExitQueue");
+                exitQueue.offer(id);
+                exitSem.acquire();
+                //System.out.println("Child: "+id+" is entering portal...");            //DEBUG
+                cb.await();
             }
             else
             {
-                enterSem.acquire(); cb.await();
+                System.out.println("Child: "+id+" has entered EnterQueue");
+                enterQueue.offer(id);
+                enterSem.acquire();
+                //System.out.println("Child: "+id+" is entering portal...");            //DEBUG
+                cb.await();
             }
         }
         catch(InterruptedException ie)
@@ -68,9 +70,27 @@ public class Portal
         }
     }
     
+    /* ====== SPECIAL THREAD ACCESS METHOD ======
+    
+    This method is only used by the PortalManager Class. Essentially, checks
+    whether there are children waiting on the exitQueue queue first
+    (to simulate priority) and, if true, releases the first child on
+    the exitSem semaphore's queue and removes its ID from the ArrayList.
+    Otherwise, does the same thing but for any child waiting on the enterSem
+    semaphore and deletes its ID from the enterQueue ArrayList.
+    */
     public void enablePortal()
     {
+        if(!exitQueue.isEmpty() && cb.getParties()>0)
+        {
+            exitQueue.poll();
+            exitSem.release();
+            
+        }
+        else if(!enterQueue.isEmpty() && cb.getParties()>0)
+        {
+            enterQueue.poll();
+            enterSem.release();
+        }
     }
-    
-    
 }

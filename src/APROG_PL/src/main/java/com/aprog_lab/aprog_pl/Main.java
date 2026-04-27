@@ -12,6 +12,7 @@ public class Main {
     {
         ArrayList<Unsafe_Zone> uz = new ArrayList<>();                              // Children and Demogorgons share this ArrayList.
         ArrayList<Safe_Zone> sz = new ArrayList<>();                                // ONLY children are allowed to use this ArrayList.
+        ArrayList<Portal> portals = new ArrayList<>();                              // Children and PortalManager use this ArrayList.
         
         Unsafe_Zone Forest = new Unsafe_Zone("Forest");
         Unsafe_Zone Lab = new Unsafe_Zone("Laboratory");
@@ -26,16 +27,25 @@ public class Main {
         uz.add(Forest); uz.add(Lab); uz.add(Mall); uz.add(Sewer); uz.add(Hive);
         sz.add(ms); sz.add(bb); sz.add(radio);
         
+        Portal p1 = new Portal("ForestPortal", bb, Forest, new CyclicBarrier(2));
+        Portal p2 = new Portal("LabPortal", bb, Lab, new CyclicBarrier(3));
+        Portal p3 = new Portal("MallPortal", bb, Mall, new CyclicBarrier(4));
+        Portal p4 = new Portal("SewerPortal", bb, Sewer, new CyclicBarrier(2));
+        
+        portals.add(p1); portals.add(p2); portals.add(p3); portals.add(p4);
+        
+        new PortalManager(portals).start();
+        
         // Initial threads (Alpha Demog and Children) creation.
         try
         {
-            int idn = 0;                                                               // Used for Children ID (Mostly)
+            int idn = 0;                                                               // Used for Children ID and Alpha Demogorgon.
             new Demogorgon("D"+String.format("%04d",idn), 0, uz).start();          // Formatted ID for the Alpha Demogorgon (D0000)
-            for(int i=0; i<1; i++)
+            for(int i=0; i<4; i++)
             {
                 Thread.sleep((int)(Math.random()*1.5+0.5));                         // SHOULD wait between 0.5 and 2 seconds.
                 String child_id = "C"+String.format("%04d", idn);                   // Formatted ID for children
-                new Child(child_id, sz, uz).start();
+                new Child(child_id, sz, uz, portals).start();
                 idn++;
             }
             
