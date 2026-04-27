@@ -36,11 +36,13 @@ public class Main {
         
         new PortalManager(portals).start();
         
+        VecnaChecker vc = new VecnaChecker(1, uz);
+        
         // Initial threads (Alpha Demog and Children) creation.
         try
         {
             int idn = 0;                                                               // Used for Children ID and Alpha Demogorgon.
-            new Demogorgon("D"+String.format("%04d",idn), 0, uz).start();          // Formatted ID for the Alpha Demogorgon (D0000)
+            new Demogorgon("D"+String.format("%04d",idn), 0, uz, vc).start();      // Formatted ID for the Alpha Demogorgon (D0000)
             for(int i=0; i<4; i++)
             {
                 Thread.sleep((int)(Math.random()*1.5+0.5));                         // SHOULD wait between 0.5 and 2 seconds.

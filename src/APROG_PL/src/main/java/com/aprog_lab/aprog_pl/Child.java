@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Child extends Thread {
     
     private String id;                                                                  // Used for identifying each child.  
-    private ArrayList<Unsafe_Zone> uz;                                                 // uz[0]=Forest, uz[1]=Lab, uz[2]=Mall, uz[3]=Sewer. We don't use uz[4].
+    private ArrayList<Unsafe_Zone> uz;                                                 // uz[0]=Forest, uz[1]=Lab, uz[2]=Mall, uz[3]=Sewer, uz[4]=HIVE;
     private ArrayList<Safe_Zone> sz;                                                   // sz[0]=Main Street, sz[1]=Basement, sz[2]=WSQK Radio.
     private ArrayList<Portal> portals;
     private String status;
@@ -47,11 +47,19 @@ public class Child extends Thread {
 //                System.out.println("Child: "+id+". Doing stuff...");
 //                Thread.sleep(5000);
                 // Upside down stuff...
-                portals.get(selected_portal).enterPortalQueue(id, status);
-                status = "Entering";
-                sz.get(0).enterSafeZone(id);
-                sz.get(2).enterSafeZone(id);                                          // If they can leave (check var attacked), they'll go right to WSQK Radio. Otherwise, waiting forever until saved.
-                Thread.sleep((int) ((Math.random()*2000)+2000));
+                if(attacked.get())
+                {
+                    uz.get(4).enterUnsafeSafeZoneChild(this);
+                    // would use a semaphore or sumn.
+                }
+                else
+                {
+                    portals.get(selected_portal).enterPortalQueue(id, status);
+                    status = "Entering";
+                    sz.get(0).enterSafeZone(id);
+                    sz.get(2).enterSafeZone(id);                                          // If they can leave (check var attacked), they'll go right to WSQK Radio. Otherwise, waiting forever until saved.
+                    Thread.sleep((int) ((Math.random()*2000)+2000));   
+                }
 
             }
             catch(InterruptedException ie)
@@ -64,5 +72,15 @@ public class Child extends Thread {
     public String getStatus()
     {
         return status;
+    }
+    
+    public String getID()
+    {
+        return id;
+    }
+    
+    public void gotAttacked()
+    {
+        attacked.compareAndExchange(false, true);
     }
 }
