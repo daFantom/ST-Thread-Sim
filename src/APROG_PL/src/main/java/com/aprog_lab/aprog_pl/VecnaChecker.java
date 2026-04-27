@@ -20,7 +20,7 @@ public class VecnaChecker {
     */
     public void spawnDemo(int amount_children)
     {
-        if(amount_children>=8)
+        if((amount_children%8)==0)
         {
             System.out.println("A new demogorgon has been Spawned!");
             new Demogorgon("D"+String.format("%04d",total_demos), 0, uzs, this).start();
