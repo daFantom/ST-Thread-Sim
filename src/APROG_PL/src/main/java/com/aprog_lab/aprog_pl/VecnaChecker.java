@@ -18,12 +18,20 @@ public class VecnaChecker {
     /*
     
     */
-    public void spawnDemo(int amount_children)
+    public synchronized void spawnDemo(Demogorgon demo, int capped_children)
     {
-        if((amount_children%8)==0)
+        int can_spawn = capped_children%8;
+        if(can_spawn==0)
         {
             System.out.println("A new demogorgon has been Spawned!");
-            new Demogorgon("D"+String.format("%04d",total_demos), 0, uzs, this).start();
+            new Demogorgon("D"+String.format("%04d",total_demos), uzs, this).start();
+            total_demos++;
+            demo.emptyChildren();
+
+        }
+        else
+        {
+            System.out.println("VECNA: Demogorgon: "+demo.getID()+", not enough children, only provided "+capped_children);
         }
     }
 }

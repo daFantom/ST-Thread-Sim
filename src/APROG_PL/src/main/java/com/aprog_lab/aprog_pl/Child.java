@@ -23,6 +23,7 @@ public class Child extends Thread {
         uz = puz;
         portals = pportals;
         status = "Entering";
+        attacked = new AtomicBoolean(false);
     }
     
     @Override
@@ -37,27 +38,43 @@ public class Child extends Thread {
                 sz.get(1).enterSafeZone(id);                                         // sz[1]=Bayer's Basement. They enter.
                 Thread.sleep((int)( (Math.random()*1000)+1000) );                   // Choosing portal...
                 // Portal selection mechanism
-                int selected_portal = 0;
+                int selected_portal = 0;                                              // SET TO 0 FOR DEBUG, MUST CHANGE AFTERWADS
                 portals.get(selected_portal).enterPortalQueue(id, status);
                 status = "Exiting";                                                     // Change status so they can get inserted into exitQueue->Portal class.
                 Thread.sleep(1000);                                                    // Going through portal...
+                uz.get(selected_portal).enterUnsafeSafeZoneChild(this);             // Goes to the unsafe zone DEBUG
                 
-                // ====== DEBUG ======
-//                System.out.println("Child: "+id+" has passed portal "+selected_portal);
-//                System.out.println("Child: "+id+". Doing stuff...");
-//                Thread.sleep(5000);
-                // Upside down stuff...
-                if(attacked.get())
+                if(attacked.get())                                                      // If not attacked (check attacked), they can use portal. Otherwise, waiting forever until saved.
                 {
+                    
+                    uz.get(selected_portal).exitUnsafeSafeZoneChild(this);
+                    status = "Entering";
                     uz.get(4).enterUnsafeSafeZoneChild(this);
+                    uz.get(4).capture();
                     // would use a semaphore or sumn.
                 }
                 else
                 {
+                    // ====== DEBUG ======
+                    System.out.println("Child: "+id+" has passed portal "+selected_portal);
+                    System.out.println("Child: "+id+". Doing stuff...");
+                    Thread.sleep(5000);
+
+                    if(attacked.get())                                                      // If not attacked (check attacked), they can use portal. Otherwise, waiting forever until saved.
+                    {
+                        uz.get(selected_portal).exitUnsafeSafeZoneChild(this);
+                        status = "Entering";
+                        uz.get(4).enterUnsafeSafeZoneChild(this);
+                        Thread.sleep((int)((Math.random()*500)+500));
+                        uz.get(4).capture();
+                        // would use a semaphore or sumn.
+                    }
+                    // Upside down stuff...
+                    uz.get(selected_portal).exitUnsafeSafeZoneChild(this);
                     portals.get(selected_portal).enterPortalQueue(id, status);
                     status = "Entering";
-                    sz.get(0).enterSafeZone(id);
-                    sz.get(2).enterSafeZone(id);                                          // If they can leave (check var attacked), they'll go right to WSQK Radio. Otherwise, waiting forever until saved.
+                    sz.get(0).enterSafeZone(id);                                            // Hawking Street
+                    sz.get(2).enterSafeZone(id);                                            // WSKQ Radio
                     Thread.sleep((int) ((Math.random()*2000)+2000));   
                 }
 
@@ -74,6 +91,11 @@ public class Child extends Thread {
         return status;
     }
     
+    public boolean isAttacked()
+    {
+        return attacked.get();
+    }
+    
     public String getID()
     {
         return id;
@@ -81,6 +103,6 @@ public class Child extends Thread {
     
     public void gotAttacked()
     {
-        attacked.compareAndExchange(false, true);
+        attacked.compareAndSet(false, true);
     }
 }
