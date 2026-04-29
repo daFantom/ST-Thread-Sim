@@ -1,4 +1,7 @@
-package com.aprog_lab.aprog_pl;
+package com.aprog_lab.aprog_pl.threads;
+
+import com.aprog_lab.aprog_pl.events.StormEvent;
+import com.aprog_lab.aprog_pl.events.BlackoutEvent;
 
 /**
  *

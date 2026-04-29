@@ -1,5 +1,6 @@
-package com.aprog_lab.aprog_pl;
+package com.aprog_lab.aprog_pl.events;
 
+import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import java.util.ArrayList;
 
 /**

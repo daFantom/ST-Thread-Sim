@@ -1,5 +1,8 @@
-package com.aprog_lab.aprog_pl;
+package com.aprog_lab.aprog_pl.shared_resources;
 
+import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
+import com.aprog_lab.aprog_pl.threads.Demogorgon;
+import com.aprog_lab.aprog_pl.events.StormEvent;
 import java.util.ArrayList;
 
 /**

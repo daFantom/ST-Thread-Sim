@@ -1,4 +1,4 @@
-package com.aprog_lab.aprog_pl;
+package com.aprog_lab.aprog_pl.events;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 

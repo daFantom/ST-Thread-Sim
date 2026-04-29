@@ -1,5 +1,15 @@
 package com.aprog_lab.aprog_pl;
 
+import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
+import com.aprog_lab.aprog_pl.shared_resources.VecnaChecker;
+import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
+import com.aprog_lab.aprog_pl.threads.PortalManager;
+import com.aprog_lab.aprog_pl.shared_resources.Portal;
+import com.aprog_lab.aprog_pl.threads.EventManager;
+import com.aprog_lab.aprog_pl.threads.Demogorgon;
+import com.aprog_lab.aprog_pl.threads.Child;
+import com.aprog_lab.aprog_pl.events.StormEvent;
+import com.aprog_lab.aprog_pl.events.BlackoutEvent;
 import java.util.ArrayList;
 import java.util.concurrent.CyclicBarrier;
 /**

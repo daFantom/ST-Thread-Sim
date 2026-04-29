@@ -1,5 +1,9 @@
-package com.aprog_lab.aprog_pl;
+package com.aprog_lab.aprog_pl.threads;
 
+import com.aprog_lab.aprog_pl.shared_resources.Portal;
+import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
+import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
+import com.aprog_lab.aprog_pl.events.StormEvent;
 import java.util.ArrayList;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.atomic.AtomicBoolean;

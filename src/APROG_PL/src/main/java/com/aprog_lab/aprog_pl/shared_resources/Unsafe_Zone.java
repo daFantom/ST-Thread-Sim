@@ -1,5 +1,7 @@
-package com.aprog_lab.aprog_pl;
+package com.aprog_lab.aprog_pl.shared_resources;
 
+import com.aprog_lab.aprog_pl.threads.Demogorgon;
+import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;

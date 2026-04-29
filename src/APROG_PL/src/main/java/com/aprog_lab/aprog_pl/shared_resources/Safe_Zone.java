@@ -1,4 +1,4 @@
-package com.aprog_lab.aprog_pl;
+package com.aprog_lab.aprog_pl.shared_resources;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
