@@ -44,18 +44,18 @@ public class Child extends Thread {
                 sz.get(1).enterSafeZone(id);                                         // sz[1]=Bayer's Basement. They enter.
                 Thread.sleep((int)( (Math.random()*1000)+1000) );                   // Choosing portal...
                 // Portal selection mechanism
-                int selected_portal = 0; //(int) (Math.random()*4);                      
+                int selected_portal = (int) (Math.random()*4);                      
                 portals.get(selected_portal).enterPortalQueue(id, status);
                 status = "Exiting";                                                     // Change status so they can get inserted into exitQueue->Portal class.
                 Thread.sleep(1000);                                                    // Going through portal...
-                uz.get(selected_portal).enterUnsafeSafeZoneChild(this);             // Goes to the unsafe zone DEBUG
+                uz.get(selected_portal).enterUZChild(this);                           // Goes to the unsafe zone DEBUG
                 
                 if(attacked.get())                                                      // If not attacked (check attacked), they can use portal. Otherwise, waiting forever until saved.
                 {
                     
-                    uz.get(selected_portal).exitUnsafeSafeZoneChild(this);
+                    uz.get(selected_portal).exitUZChild(this);
                     status = "Entering";
-                    uz.get(4).enterUnsafeSafeZoneChild(this);
+                    uz.get(4).enterUZChild(this);
                     uz.get(4).capture(id);
                     // would use a semaphore or sumn.
                 }
@@ -66,14 +66,14 @@ public class Child extends Thread {
                     Thread.sleep((int)((Math.random()*2000)+3000));                       // Collecting vecna blood...
                     if(attacked.get())                                                      // If not attacked (check attacked), they can use portal. Otherwise, waiting forever until saved.
                     {
-                        uz.get(selected_portal).exitUnsafeSafeZoneChild(this);
+                        uz.get(selected_portal).exitUZChild(this);
                         status = "Entering";
-                        uz.get(4).enterUnsafeSafeZoneChild(this);
+                        uz.get(4).enterUZChild(this);
                         Thread.sleep((int)((Math.random()*500)+500));
                         uz.get(4).capture(id);
                         // would use a semaphore or sumn.
                     }
-                    uz.get(selected_portal).exitUnsafeSafeZoneChild(this);
+                    uz.get(selected_portal).exitUZChild(this);
                     portals.get(selected_portal).enterPortalQueue(id, status);
                     status = "Entering";
                     sz.get(0).enterSafeZone(id);                                            // Return to Hawking Street.

@@ -47,7 +47,7 @@ public class Portal
         {
             if(status.equals("Exiting"))
             {
-                System.out.println("Child: "+id+" has entered ExitQueue");
+                System.out.println("Child: "+id+" has entered ExitQueue -> Portal: "+portal_name);
                 exitQueue.offer(id);
                 exitSem.acquire();
                 synchronized(this)
@@ -62,7 +62,7 @@ public class Portal
             }
             else
             {
-                System.out.println("Child: "+id+" has entered EnterQueue");
+                System.out.println("Child: "+id+" has entered EnterQueue -> Portal: "+portal_name);
                 enterQueue.offer(id);
                 enterSem.acquire();
                 synchronized(this)

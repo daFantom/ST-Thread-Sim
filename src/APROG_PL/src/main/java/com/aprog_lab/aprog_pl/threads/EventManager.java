@@ -1,6 +1,8 @@
 package com.aprog_lab.aprog_pl.threads;
 
 import com.aprog_lab.aprog_pl.events.*;
+import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
+import java.time.Duration;
 
 /**
  *
@@ -11,12 +13,14 @@ public class EventManager extends Thread
     private BlackoutEvent be;
     private StormEvent se;
     private ElevenSavesEvent ese;
+    private HiveMindEvent hme;
     
-    public EventManager(BlackoutEvent pbe, StormEvent pse, ElevenSavesEvent pese)
+    public EventManager(BlackoutEvent pbe, StormEvent pse, ElevenSavesEvent pese, HiveMindEvent phme)
     {
-        be=pbe;
+        be = pbe;
         se = pse;
-        ese=pese;
+        ese = pese;
+        hme = phme;
     }
     
     @Override
@@ -27,7 +31,7 @@ public class EventManager extends Thread
             try
             {
                 Thread.sleep((int)((Math.random()*30000)+30000));
-                int pickedEvent = 2; // (int)(Math.random()*4);
+                int pickedEvent = 3; // (int)(Math.random()*4);
                 switch(pickedEvent)
                 {
                     case 0 ->
@@ -62,12 +66,16 @@ public class EventManager extends Thread
                         ese.setStatus();
                         ese.enableDemos();
                         System.out.println("========= ELEVEN'S INTERVENTION EVENT HAS FINISHED =========");
-                        //  ELEVENS INTERVENTION
                     }
 
                     case 3 ->
                     {
-                        // THE HIVE MIND
+                        System.out.println("========= HIVE MIND EVENT HAS STARTED =========");
+                        hme.setStatus();
+                        Thread.sleep((int)((Math.random()*5000)+5000));
+                        //hme.showDemos();
+                        hme.setStatus();
+                        System.out.println("========= HIVE MIND EVENT HAS FINISHED =========");
                     }
                 }
 

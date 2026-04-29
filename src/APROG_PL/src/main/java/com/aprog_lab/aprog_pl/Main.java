@@ -50,11 +50,12 @@ public class Main {
         BlackoutEvent be = new BlackoutEvent(portals);
         StormEvent se = new StormEvent();
         ElevenSavesEvent ese = new ElevenSavesEvent(uz.get(4));
+        HiveMindEvent hme = new HiveMindEvent(uz);
         
-        new EventManager(be, se, ese).start();
+        new EventManager(be, se, ese, hme).start();
 
 // ===================== VECNA CHECKER INITIALIZATION =====================
-        VecnaChecker vc = new VecnaChecker(1, uz, se, ese);
+        VecnaChecker vc = new VecnaChecker(1, uz, se, ese, hme);
         
 // ===================== CHILDREN & DEMOGORGON INITIALIZATION =====================
 
@@ -62,7 +63,7 @@ public class Main {
         try
         {
             int idn = 0;                                                               // Used for Children ID and Alpha Demogorgon.
-            new Demogorgon("D"+String.format("%04d",idn), uz, vc, se, ese).start();          // Formatted ID for the Alpha Demogorgon (D0000)
+            new Demogorgon("D"+String.format("%04d",idn), uz, vc, se, ese, hme).start();          // Formatted ID for the Alpha Demogorgon (D0000)
             for(int i=0; i<10; i++)
             {
                 Thread.sleep((int)(Math.random()*1.5+0.5));                         // SHOULD wait between 0.5 and 2 seconds.

@@ -28,11 +28,12 @@ public class Unsafe_Zone
             captured = new AtomicInteger(0);
         }
     }
-  
+
+// ================================ ENTERING METHODS ================================
     /* Unfinished method to add a child to a specific zone.
     
     */
-    public void enterUnsafeSafeZoneChild(Child c)
+    public void enterUZChild(Child c)
     {
         synchronized(this)
         {
@@ -47,7 +48,7 @@ public class Unsafe_Zone
     /* Unfinished method to add a child to a specific zone.
     
     */
-    public void enterUnsafeSafeZoneDemo(Demogorgon d)
+    public void enterUZDemo(Demogorgon d)
     {
         synchronized(this)
         {
@@ -59,10 +60,12 @@ public class Unsafe_Zone
         }
     }
     
+// ================================ EXITING METHODS ================================
+    
     /* Unfinished method to remove a child from a specific zone.
     
     */
-    public void exitUnsafeSafeZoneChild(Child c)
+    public void exitUZChild(Child c)
     {
         synchronized(this)
         {
@@ -77,14 +80,14 @@ public class Unsafe_Zone
     /* Unfinished method to remove a child from a specific zone.
     
     */
-    public void exitUnsafeSafeZoneDemo(Demogorgon d)
+    public void exitUZDemo(Demogorgon d)
     {
         synchronized(this)
         {
             if(avail_demos.contains(d))
             {
-                avail_demos.add(d);
-                System.out.println("Demogorgon: "+d.getID()+" has entered unsafe zone: "+zone_name); 
+                avail_demos.remove(d);
+                System.out.println("Demogorgon: "+d.getID()+" has exited unsafe zone: "+zone_name); 
             }  
         }
     }
@@ -149,7 +152,7 @@ public class Unsafe_Zone
                 {
                     //System.out.println("A CHILD HAS BEEN CAPTURED!!!!!");                 // DEBUG
                     wait();
-                    System.out.println("A CHILD HAS BEEN RELEASED!!!!!");
+                    //System.out.println("A CHILD HAS BEEN RELEASED!!!!!");                 // DEBUG
                 }
             }
             catch(InterruptedException ie)
@@ -170,5 +173,18 @@ public class Unsafe_Zone
     public String getName()
     {
         return zone_name;
+    }
+    
+    public int getAmountChildren()
+    {
+        return avail_children.size();
+    }
+    
+    public void showDemos()
+    {
+        for(int i=0;i<avail_demos.size();i++)
+        {
+            System.out.println(avail_demos.get(i).getID());
+        }
     }
 }
