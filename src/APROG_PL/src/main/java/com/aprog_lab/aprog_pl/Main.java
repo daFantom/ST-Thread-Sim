@@ -1,15 +1,8 @@
 package com.aprog_lab.aprog_pl;
 
-import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
-import com.aprog_lab.aprog_pl.shared_resources.VecnaChecker;
-import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
-import com.aprog_lab.aprog_pl.threads.PortalManager;
-import com.aprog_lab.aprog_pl.shared_resources.Portal;
-import com.aprog_lab.aprog_pl.threads.EventManager;
-import com.aprog_lab.aprog_pl.threads.Demogorgon;
-import com.aprog_lab.aprog_pl.threads.Child;
-import com.aprog_lab.aprog_pl.events.StormEvent;
-import com.aprog_lab.aprog_pl.events.BlackoutEvent;
+import com.aprog_lab.aprog_pl.shared_resources.*;
+import com.aprog_lab.aprog_pl.threads.*;
+import com.aprog_lab.aprog_pl.events.*;
 import java.util.ArrayList;
 import java.util.concurrent.CyclicBarrier;
 /**
@@ -24,7 +17,7 @@ public class Main {
         ArrayList<Safe_Zone> sz = new ArrayList<>();                                // ONLY children are allowed to use this ArrayList.
         ArrayList<Portal> portals = new ArrayList<>();                              // Children and PortalManager use this ArrayList.
         
-// =====================SAFE AND UNSAFE ZONE INITIALIZATION =====================
+// ===================== SAFE AND UNSAFE ZONE INITIALIZATION =====================
         Unsafe_Zone Forest = new Unsafe_Zone("Forest");
         Unsafe_Zone Lab = new Unsafe_Zone("Laboratory");
         Unsafe_Zone Mall = new Unsafe_Zone("Shopping Mall");
@@ -35,7 +28,7 @@ public class Main {
         Safe_Zone bb = new Safe_Zone("Bayer's Basement");
         Safe_Zone radio = new Safe_Zone("WSQK Radio");
         
-        // =====================SAFE AND UNSAFE ZONE ADDITION =====================
+        // ===================== SAFE AND UNSAFE ZONE ADDITION =====================
         uz.add(Forest); uz.add(Lab); uz.add(Mall); uz.add(Sewer); uz.add(Hive);
         sz.add(ms); sz.add(bb); sz.add(radio);
 
@@ -56,11 +49,12 @@ public class Main {
 // ===================== EVENT-RELATED OBJECT INITIALIZATION =====================
         BlackoutEvent be = new BlackoutEvent(portals);
         StormEvent se = new StormEvent();
+        ElevenSavesEvent ese = new ElevenSavesEvent(uz.get(4));
         
-        new EventManager(be, se).start();
+        new EventManager(be, se, ese).start();
 
 // ===================== VECNA CHECKER INITIALIZATION =====================
-        VecnaChecker vc = new VecnaChecker(1, uz, se);
+        VecnaChecker vc = new VecnaChecker(1, uz, se, ese);
         
 // ===================== CHILDREN & DEMOGORGON INITIALIZATION =====================
 
@@ -68,7 +62,7 @@ public class Main {
         try
         {
             int idn = 0;                                                               // Used for Children ID and Alpha Demogorgon.
-            new Demogorgon("D"+String.format("%04d",idn), uz, vc, se).start();          // Formatted ID for the Alpha Demogorgon (D0000)
+            new Demogorgon("D"+String.format("%04d",idn), uz, vc, se, ese).start();          // Formatted ID for the Alpha Demogorgon (D0000)
             for(int i=0; i<10; i++)
             {
                 Thread.sleep((int)(Math.random()*1.5+0.5));                         // SHOULD wait between 0.5 and 2 seconds.

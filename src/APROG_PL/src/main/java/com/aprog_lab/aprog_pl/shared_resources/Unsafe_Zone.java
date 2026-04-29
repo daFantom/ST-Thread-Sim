@@ -138,24 +138,33 @@ public class Unsafe_Zone
     /* Method used by children
     
     */
-    public void capture()
+    public void capture(String id)
     {
-        try
+        if(!id.equals("Eleven"))
         {
-            captured.incrementAndGet();
-            synchronized(this)
+            try
             {
-                //System.out.println("A CHILD HAS BEEN CAPTURED!!!!!");                 // DEBUG
-                wait();
+                captured.incrementAndGet();
+                synchronized(this)
+                {
+                    //System.out.println("A CHILD HAS BEEN CAPTURED!!!!!");                 // DEBUG
+                    wait();
+                    System.out.println("A CHILD HAS BEEN RELEASED!!!!!");
+                }
+            }
+            catch(InterruptedException ie)
+            {
+                System.out.println("IE at Unsafe_zone->capture()");
             }
         }
-        catch(InterruptedException ie)
+        else
         {
-            System.out.println("IE at Unsafe_zone->capture()");
+            synchronized(this)
+            {
+                notify();
+            }
         }
     }
-    
-    
     
     // DEBUG METHOD
     public String getName()

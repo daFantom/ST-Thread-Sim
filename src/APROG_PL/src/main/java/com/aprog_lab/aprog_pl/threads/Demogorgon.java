@@ -1,8 +1,9 @@
 package com.aprog_lab.aprog_pl.threads;
 
+import com.aprog_lab.aprog_pl.events.ElevenSavesEvent;
+import com.aprog_lab.aprog_pl.events.StormEvent;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.VecnaChecker;
-import com.aprog_lab.aprog_pl.events.StormEvent;
 import java.util.ArrayList;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -19,14 +20,16 @@ public class Demogorgon extends Thread
     private ArrayList<Unsafe_Zone> uz;                                                // uz[0]=Forest, uz[1]=Lab, uz[2]=Mall, uz[3]=Sewer, uz[4]=HIVE
     private VecnaChecker vc;
     private StormEvent storm;
+    private ElevenSavesEvent elevenEvent;
     
-    public Demogorgon(String pid, ArrayList<Unsafe_Zone> puz, VecnaChecker pvc, StormEvent pstorm)
+    public Demogorgon(String pid, ArrayList<Unsafe_Zone> puz, VecnaChecker pvc, StormEvent pstorm, ElevenSavesEvent pese)
     {
         id = pid;
         child_counter = 0;
         uz = puz;
         vc = pvc;
         storm = pstorm;
+        elevenEvent = pese;
     }
     
     @Override
@@ -34,47 +37,54 @@ public class Demogorgon extends Thread
     {
         while(true)
         {
-            try
+            if(!elevenEvent.getStatus())
             {
-                int zone = (int)(Math.random()*3);
-                Unsafe_Zone actual_uz = uz.get(zone);
-                actual_uz.enterUnsafeSafeZoneDemo(this);
-                // Attacking start
-                if(actual_uz.hasChildren())
+                try
                 {
-                    //System.out.println("Children detected");                      // DEBUG
-                    double prob = Math.random();
-                    if(storm.isStorm())
+                    int zone = 0; //(int)(Math.random()*3);
+                    Unsafe_Zone actual_uz = uz.get(zone);
+                    actual_uz.enterUnsafeSafeZoneDemo(this);
+                    // Attacking start
+                    if(actual_uz.hasChildren()&&!elevenEvent.getStatus())
                     {
-                        System.out.println("Storm active: halving attack time ratio");
-                        attack_time = (int)(((Math.random()*1000)+500)/2);
+                        //System.out.println("Children detected");                      // DEBUG
+                        double prob = Math.random();
+                        if(storm.isStorm()&&!elevenEvent.getStatus())
+                        {
+                            System.out.println("Storm active: halving attack time ratio");
+                            attack_time = (int)(((Math.random()*1000)+500)/2);
+                        }
+                        else
+                        {
+                            attack_time = (int)((Math.random()*1000)+500);
+                        }
+                        Thread.sleep(attack_time);                  // Attacking
+                        if(actual_uz.attackChild(prob)&&!elevenEvent.getStatus())
+                        {
+                            //System.out.println("Child attacked");                     // DEBUG
+                            Thread.sleep((int)((Math.random()*500)+500));
+                            child_counter++;
+                            total_counter++;
+                            vc.spawnDemo(this, child_counter);
+                        }
+                        // Failed otherwise
+                        actual_uz.exitUnsafeSafeZoneDemo(this);
                     }
                     else
                     {
-                        attack_time = (int)((Math.random()*1000)+500);
+                        Thread.sleep((int)( (Math.random()*1000) + 4000 ));             // If there are no children, wanders around and eventually to another UZ.
+                        actual_uz.exitUnsafeSafeZoneDemo(this);
                     }
-                    Thread.sleep(attack_time);                  // Attacking
-                    if(actual_uz.attackChild(prob))
-                    {
-                        //System.out.println("Child attacked");                     // DEBUG
-                        Thread.sleep((int)((Math.random()*500)+500));
-                        child_counter++;
-                        total_counter++;
-                        vc.spawnDemo(this, child_counter);
-                    }
-                    // Failed otherwise
-                    actual_uz.exitUnsafeSafeZoneDemo(this);
-                }
-                else
-                {
-                    Thread.sleep((int)( (Math.random()*1000) + 4000 ));             // If there are no children, wanders around and eventually to another UZ.
-                    actual_uz.exitUnsafeSafeZoneDemo(this);
-                }
 
+                }
+                catch(InterruptedException ie)
+                {
+                    System.out.println("IE at Demogorgon->run()");
+                }   
             }
-            catch(InterruptedException ie)
+            else
             {
-                
+                elevenEvent.disableDemo();
             }
         }
         

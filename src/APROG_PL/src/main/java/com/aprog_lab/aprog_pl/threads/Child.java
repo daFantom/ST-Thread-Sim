@@ -44,7 +44,7 @@ public class Child extends Thread {
                 sz.get(1).enterSafeZone(id);                                         // sz[1]=Bayer's Basement. They enter.
                 Thread.sleep((int)( (Math.random()*1000)+1000) );                   // Choosing portal...
                 // Portal selection mechanism
-                int selected_portal = (int) (Math.random()*4);                      
+                int selected_portal = 0; //(int) (Math.random()*4);                      
                 portals.get(selected_portal).enterPortalQueue(id, status);
                 status = "Exiting";                                                     // Change status so they can get inserted into exitQueue->Portal class.
                 Thread.sleep(1000);                                                    // Going through portal...
@@ -56,7 +56,7 @@ public class Child extends Thread {
                     uz.get(selected_portal).exitUnsafeSafeZoneChild(this);
                     status = "Entering";
                     uz.get(4).enterUnsafeSafeZoneChild(this);
-                    uz.get(4).capture();
+                    uz.get(4).capture(id);
                     // would use a semaphore or sumn.
                 }
                 else
@@ -70,7 +70,7 @@ public class Child extends Thread {
                         status = "Entering";
                         uz.get(4).enterUnsafeSafeZoneChild(this);
                         Thread.sleep((int)((Math.random()*500)+500));
-                        uz.get(4).capture();
+                        uz.get(4).capture(id);
                         // would use a semaphore or sumn.
                     }
                     uz.get(selected_portal).exitUnsafeSafeZoneChild(this);

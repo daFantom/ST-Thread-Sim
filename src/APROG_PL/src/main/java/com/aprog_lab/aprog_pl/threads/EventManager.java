@@ -1,7 +1,6 @@
 package com.aprog_lab.aprog_pl.threads;
 
-import com.aprog_lab.aprog_pl.events.StormEvent;
-import com.aprog_lab.aprog_pl.events.BlackoutEvent;
+import com.aprog_lab.aprog_pl.events.*;
 
 /**
  *
@@ -11,11 +10,13 @@ public class EventManager extends Thread
 {
     private BlackoutEvent be;
     private StormEvent se;
+    private ElevenSavesEvent ese;
     
-    public EventManager(BlackoutEvent pbe, StormEvent pse)
+    public EventManager(BlackoutEvent pbe, StormEvent pse, ElevenSavesEvent pese)
     {
         be=pbe;
         se = pse;
+        ese=pese;
     }
     
     @Override
@@ -26,7 +27,7 @@ public class EventManager extends Thread
             try
             {
                 Thread.sleep((int)((Math.random()*30000)+30000));
-                int pickedEvent = 1; // (int)(Math.random()*4);
+                int pickedEvent = 2; // (int)(Math.random()*4);
                 switch(pickedEvent)
                 {
                     case 0 ->
@@ -49,6 +50,18 @@ public class EventManager extends Thread
 
                     case 2 ->
                     {
+                        System.out.println("========= ELEVEN'S INTERVENTION EVENT HAS STARTED =========");
+                        ese.setStatus();
+                        int duration = (int)((Math.random()*5)+5);
+                        for(int i=0;i<duration;i++)
+                        {
+                            Thread.sleep(1000);                                 
+                            ese.saveChild();
+                            
+                        }
+                        ese.setStatus();
+                        ese.enableDemos();
+                        System.out.println("========= ELEVEN'S INTERVENTION EVENT HAS FINISHED =========");
                         //  ELEVENS INTERVENTION
                     }
 
