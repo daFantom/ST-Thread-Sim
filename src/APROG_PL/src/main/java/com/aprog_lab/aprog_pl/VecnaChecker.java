@@ -9,11 +9,13 @@ import java.util.ArrayList;
 public class VecnaChecker {
     private int total_demos;
     private ArrayList<Unsafe_Zone> uzs;
+    StormEvent se;
     
-    public VecnaChecker(int p_total_demos, ArrayList<Unsafe_Zone> puzs)
+    public VecnaChecker(int p_total_demos, ArrayList<Unsafe_Zone> puzs, StormEvent pse)
     {
         total_demos = p_total_demos;
         uzs = puzs;
+        se=pse;
     }
     /*
     
@@ -24,7 +26,7 @@ public class VecnaChecker {
         if(can_spawn==0)
         {
             System.out.println("A new demogorgon has been Spawned!");
-            new Demogorgon("D"+String.format("%04d",total_demos), uzs, this).start();
+            new Demogorgon("D"+String.format("%04d",total_demos), uzs, this, se).start();
             total_demos++;
             demo.emptyChildren();
 

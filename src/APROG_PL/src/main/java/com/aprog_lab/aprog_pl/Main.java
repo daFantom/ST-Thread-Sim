@@ -38,28 +38,32 @@ public class Main {
         // ===================== PORTAL ADDITION =====================
         portals.add(p1); portals.add(p2); portals.add(p3); portals.add(p4);
         
-        // ===================== PORTAL MANAGER & VECNA CHECKER INITIALIZATION =====================
+        // ===================== PORTAL MANAGER =====================
         new PortalManager(portals).start();
         
-        VecnaChecker vc = new VecnaChecker(1, uz);
+
         
 // ===================== EVENT-RELATED OBJECT INITIALIZATION =====================
         BlackoutEvent be = new BlackoutEvent(portals);
-        new EventManager(be).start();
+        StormEvent se = new StormEvent();
+        
+        new EventManager(be, se).start();
 
-
+// ===================== VECNA CHECKER INITIALIZATION =====================
+        VecnaChecker vc = new VecnaChecker(1, uz, se);
+        
 // ===================== CHILDREN & DEMOGORGON INITIALIZATION =====================
 
         // Initial threads (Alpha Demog and Children) creation.
         try
         {
             int idn = 0;                                                               // Used for Children ID and Alpha Demogorgon.
-            new Demogorgon("D"+String.format("%04d",idn), uz, vc).start();          // Formatted ID for the Alpha Demogorgon (D0000)
+            new Demogorgon("D"+String.format("%04d",idn), uz, vc, se).start();          // Formatted ID for the Alpha Demogorgon (D0000)
             for(int i=0; i<10; i++)
             {
                 Thread.sleep((int)(Math.random()*1.5+0.5));                         // SHOULD wait between 0.5 and 2 seconds.
                 String child_id = "C"+String.format("%04d", idn);                   // Formatted ID for children
-                new Child(child_id, sz, uz, portals).start();
+                new Child(child_id, sz, uz, portals,se).start();
                 idn++;
             }
             

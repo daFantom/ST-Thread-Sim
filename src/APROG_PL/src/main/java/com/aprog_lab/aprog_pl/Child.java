@@ -15,8 +15,9 @@ public class Child extends Thread {
     private ArrayList<Portal> portals;
     private String status;
     private AtomicBoolean attacked;
+    private StormEvent storm;
     
-    public Child(String pid, ArrayList<Safe_Zone> psz, ArrayList<Unsafe_Zone> puz,ArrayList<Portal> pportals)
+    public Child(String pid, ArrayList<Safe_Zone> psz, ArrayList<Unsafe_Zone> puz,ArrayList<Portal> pportals, StormEvent pstorm)
     {
         id = pid;
         sz = psz;
@@ -24,6 +25,7 @@ public class Child extends Thread {
         portals = pportals;
         status = "Entering";
         attacked = new AtomicBoolean(false);
+        storm = pstorm;
     }
     
     @Override
@@ -73,6 +75,11 @@ public class Child extends Thread {
                     sz.get(0).enterSafeZone(id);                                            // Return to Hawking Street.
                     sz.get(2).enterSafeZone(id);                                            // Go to WSKQ Radio.
                     sz.get(2).incrementBloodCount();                                        // Deposit blood.
+                    if(storm.isStorm())
+                    {
+                        System.out.println("Storm active: doubled blood gathering.");
+                        sz.get(2).incrementBloodCount();                                    // If there is an ongoing storm, increments once more as to "double" the amount of collected blood.
+                    }
                     Thread.sleep((int) ((Math.random()*2000)+2000));   
                 }
 

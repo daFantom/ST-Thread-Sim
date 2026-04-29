@@ -2,6 +2,7 @@ package com.aprog_lab.aprog_pl;
 
 import java.util.ArrayList;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.atomic.AtomicBoolean;
 /**
  *
  * @author Emanuel Baciu
@@ -10,16 +11,19 @@ import java.util.concurrent.CyclicBarrier;
 public class Demogorgon extends Thread
 {
     private String id;                                                                  // If "D0000", Alpha Demogorgon (First thread), otherwise, just a Demogorgon.
-    private int child_counter, total_counter;                                                         // Used for keeping track of each captured child from a single Demogorgon.
+    private int child_counter, total_counter;                                         // Used for keeping track of each captured child from a single Demogorgon.
+    private int attack_time;                                                            // Attack interval, changed if UPSIDE DOWN STORM event is active.
     private ArrayList<Unsafe_Zone> uz;                                                // uz[0]=Forest, uz[1]=Lab, uz[2]=Mall, uz[3]=Sewer, uz[4]=HIVE
     private VecnaChecker vc;
+    private StormEvent storm;
     
-    public Demogorgon(String pid, ArrayList<Unsafe_Zone> puz, VecnaChecker pvc)
+    public Demogorgon(String pid, ArrayList<Unsafe_Zone> puz, VecnaChecker pvc, StormEvent pstorm)
     {
         id = pid;
         child_counter = 0;
         uz = puz;
         vc = pvc;
+        storm = pstorm;
     }
     
     @Override
@@ -37,7 +41,16 @@ public class Demogorgon extends Thread
                 {
                     //System.out.println("Children detected");                      // DEBUG
                     double prob = Math.random();
-                    Thread.sleep((int)((Math.random()*1000)+500));                  // Attacking
+                    if(storm.isStorm())
+                    {
+                        System.out.println("Storm active: halving attack time ratio");
+                        attack_time = (int)(((Math.random()*1000)+500)/2);
+                    }
+                    else
+                    {
+                        attack_time = (int)((Math.random()*1000)+500);
+                    }
+                    Thread.sleep(attack_time);                  // Attacking
                     if(actual_uz.attackChild(prob))
                     {
                         //System.out.println("Child attacked");                     // DEBUG
