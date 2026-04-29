@@ -35,12 +35,12 @@ public class Demogorgon extends Thread
                 // Attacking start
                 if(actual_uz.hasChildren())
                 {
-                    System.out.println("Children detected");
+                    //System.out.println("Children detected");                      // DEBUG
                     double prob = Math.random();
                     Thread.sleep((int)((Math.random()*1000)+500));                  // Attacking
                     if(actual_uz.attackChild(prob))
                     {
-                        System.out.println("Child attacked");
+                        //System.out.println("Child attacked");                     // DEBUG
                         Thread.sleep((int)((Math.random()*500)+500));
                         child_counter++;
                         total_counter++;

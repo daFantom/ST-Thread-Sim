@@ -111,18 +111,18 @@ public class Unsafe_Zone
             {
                 hasAttacked = true;
                 target.gotAttacked();
-                System.out.println("SUCCESSFULLY ATTACKED CHILD: "+target.getID());
+                //System.out.println("SUCCESSFULLY ATTACKED CHILD: "+target.getID());   // DEBUG
                 return hasAttacked;
             }
             else if(target.isAttacked())
             {
-                System.out.println("CHILD: "+target.getID()+" ALREADY ATTACKED");
+                //System.out.println("CHILD: "+target.getID()+" ALREADY ATTACKED");     // DEBUG
                 hasAttacked = false;
                 return hasAttacked;
             }
             else
             {
-                System.out.println("MISSED ATTACK ON CHILD: "+target.getID());
+                //System.out.println("MISSED ATTACK ON CHILD: "+target.getID());        // DEBUG
                 hasAttacked = false;
                 return hasAttacked;
             }   
@@ -143,7 +143,7 @@ public class Unsafe_Zone
             captured.incrementAndGet();
             synchronized(this)
             {
-                System.out.println("A CHILD HAS BEEN CAPTURED!!!!!");
+                //System.out.println("A CHILD HAS BEEN CAPTURED!!!!!");                 // DEBUG
                 wait();
             }
         }

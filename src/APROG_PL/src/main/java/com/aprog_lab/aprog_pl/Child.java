@@ -38,7 +38,7 @@ public class Child extends Thread {
                 sz.get(1).enterSafeZone(id);                                         // sz[1]=Bayer's Basement. They enter.
                 Thread.sleep((int)( (Math.random()*1000)+1000) );                   // Choosing portal...
                 // Portal selection mechanism
-                int selected_portal = 0;                                              // SET TO 0 FOR DEBUG, MUST CHANGE AFTERWADS
+                int selected_portal = (int) (Math.random()*4);                      
                 portals.get(selected_portal).enterPortalQueue(id, status);
                 status = "Exiting";                                                     // Change status so they can get inserted into exitQueue->Portal class.
                 Thread.sleep(1000);                                                    // Going through portal...
@@ -55,11 +55,9 @@ public class Child extends Thread {
                 }
                 else
                 {
-                    // ====== DEBUG ======
-                    System.out.println("Child: "+id+" has passed portal "+selected_portal);
-                    System.out.println("Child: "+id+". Doing stuff...");
-                    Thread.sleep(5000);
-
+                    //System.out.println("Child: "+id+" has passed portal "+selected_portal);       // DEBUG
+                    //System.out.println("Child: "+id+". Doing stuff...");                           // DEBUG
+                    Thread.sleep((int)((Math.random()*2000)+3000));                       // Collecting vecna blood...
                     if(attacked.get())                                                      // If not attacked (check attacked), they can use portal. Otherwise, waiting forever until saved.
                     {
                         uz.get(selected_portal).exitUnsafeSafeZoneChild(this);
@@ -69,12 +67,12 @@ public class Child extends Thread {
                         uz.get(4).capture();
                         // would use a semaphore or sumn.
                     }
-                    // Upside down stuff...
                     uz.get(selected_portal).exitUnsafeSafeZoneChild(this);
                     portals.get(selected_portal).enterPortalQueue(id, status);
                     status = "Entering";
-                    sz.get(0).enterSafeZone(id);                                            // Hawking Street
-                    sz.get(2).enterSafeZone(id);                                            // WSKQ Radio
+                    sz.get(0).enterSafeZone(id);                                            // Return to Hawking Street.
+                    sz.get(2).enterSafeZone(id);                                            // Go to WSKQ Radio.
+                    sz.get(2).incrementBloodCount();                                        // Deposit blood.
                     Thread.sleep((int) ((Math.random()*2000)+2000));   
                 }
 
