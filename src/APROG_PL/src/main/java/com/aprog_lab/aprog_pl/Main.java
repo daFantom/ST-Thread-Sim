@@ -42,6 +42,11 @@ public class Main {
         new PortalManager(portals).start();
         
         VecnaChecker vc = new VecnaChecker(1, uz);
+        
+// ===================== EVENT-RELATED OBJECT INITIALIZATION =====================
+        BlackoutEvent be = new BlackoutEvent(portals);
+        new EventManager(be).start();
+
 
 // ===================== CHILDREN & DEMOGORGON INITIALIZATION =====================
 

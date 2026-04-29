@@ -25,6 +25,7 @@ public class Portal
     private Queue<String> exitQueue;
     private Queue<String> enterQueue;
     private Semaphore exitSem, enterSem;
+    private boolean blocked;
     
     public Portal(String pname, Safe_Zone psz, Unsafe_Zone puz, CyclicBarrier pcb)
     {
@@ -36,6 +37,7 @@ public class Portal
         enterQueue = new LinkedBlockingQueue();
         exitSem = new Semaphore(0);
         enterSem = new Semaphore(0);
+        blocked = false;
     }
     
     
@@ -48,6 +50,13 @@ public class Portal
                 System.out.println("Child: "+id+" has entered ExitQueue");
                 exitQueue.offer(id);
                 exitSem.acquire();
+                synchronized(this)
+                {
+                    while(blocked)
+                    {
+                        wait();
+                    }
+                }
                 //System.out.println("Child: "+id+" is entering portal...");            //DEBUG
                 cb.await();
             }
@@ -56,6 +65,13 @@ public class Portal
                 System.out.println("Child: "+id+" has entered EnterQueue");
                 enterQueue.offer(id);
                 enterSem.acquire();
+                synchronized(this)
+                {
+                    while(blocked)
+                    {
+                        wait();
+                    }
+                }
                 //System.out.println("Child: "+id+" is entering portal...");            //DEBUG
                 cb.await();
             }
@@ -79,18 +95,32 @@ public class Portal
     Otherwise, does the same thing but for any child waiting on the enterSem
     semaphore and deletes its ID from the enterQueue ArrayList.
     */
-    public void enablePortal()
+    public synchronized void openPortal()
     {
-        if(!exitQueue.isEmpty() && cb.getParties()>0)
+        if(!exitQueue.isEmpty() && cb.getParties()>0 && !blocked)
         {
             exitQueue.poll();
             exitSem.release();
+            notifyAll();
             
         }
-        else if(!enterQueue.isEmpty() && cb.getParties()>0)
+        else if(!enterQueue.isEmpty() && cb.getParties()>0 && !blocked)
         {
             enterQueue.poll();
             enterSem.release();
+            notifyAll();
         }
+    }
+    
+    
+    public synchronized void enablePortal()
+    {
+        blocked = false;
+        notifyAll();
+    }
+    
+    public void disablePortal()
+    {
+        blocked = true;
     }
 }

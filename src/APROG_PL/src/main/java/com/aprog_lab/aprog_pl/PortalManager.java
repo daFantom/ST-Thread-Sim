@@ -24,7 +24,7 @@ public class PortalManager extends Thread{
                 
                 for(int i=0;i<portals.size();i++)
                 {
-                    portals.get(i).enablePortal();
+                    portals.get(i).openPortal();
                 }
             }
             catch(InterruptedException ie)
