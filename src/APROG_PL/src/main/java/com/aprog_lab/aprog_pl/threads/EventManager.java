@@ -97,7 +97,10 @@ public class EventManager extends Thread
                 System.out.println("IE at EventManager->run(): "+ie.getMessage());
             }
         }
-        
-
+    }
+    
+    public String getStatus()
+    {
+        return status.get();
     }
 }
