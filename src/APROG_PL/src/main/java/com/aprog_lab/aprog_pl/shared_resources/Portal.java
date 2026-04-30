@@ -1,6 +1,7 @@
 
 package com.aprog_lab.aprog_pl.shared_resources;
 
+import Interfaces.Interface1;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -26,8 +27,10 @@ public class Portal
     private Queue<String> enterQueue;
     private Semaphore exitSem, enterSem;
     private boolean blocked;
+    private ArrayList<String> entering, leaving;
+    private Interface1 ifc;
     
-    public Portal(String pname, Safe_Zone psz, Unsafe_Zone puz, CyclicBarrier pcb)
+    public Portal(String pname, Safe_Zone psz, Unsafe_Zone puz, CyclicBarrier pcb, Interface1 p_ifc)
     {
         portal_name = pname;
         sz_connect = psz;
@@ -38,6 +41,9 @@ public class Portal
         exitSem = new Semaphore(0);
         enterSem = new Semaphore(0);
         blocked = false;
+        entering = new ArrayList<>();
+        leaving = new ArrayList<>();
+        ifc = p_ifc;
     }
     
     
@@ -58,7 +64,10 @@ public class Portal
                     }
                 }
                 //System.out.println("Child: "+id+" is entering portal...");            //DEBUG
+                leaving.add(id);
+                ifc.refreshStats();
                 cb.await();
+                leaving.remove(id);
             }
             else
             {
@@ -73,7 +82,10 @@ public class Portal
                     }
                 }
                 //System.out.println("Child: "+id+" is entering portal...");            //DEBUG
+                entering.add(id);
+                ifc.refreshStats();
                 cb.await();
+                entering.remove(id);
             }
         }
         catch(InterruptedException ie)
@@ -102,6 +114,7 @@ public class Portal
             exitQueue.poll();
             exitSem.release();
             // Mostrar interfaz
+            ifc.refreshStats();
             notifyAll();
             
         }
@@ -110,6 +123,7 @@ public class Portal
             enterQueue.poll();
             enterSem.release();
             // Mostrar en interfaz
+            ifc.refreshStats();
             notifyAll();
         }
     }
@@ -125,4 +139,15 @@ public class Portal
     {
         blocked = true;
     }
+    
+    public ArrayList<String> getEntering()
+    {
+        return entering;
+    }
+    
+    public ArrayList<String> getLeaving()
+    {
+        return leaving;
+    }
 }
+

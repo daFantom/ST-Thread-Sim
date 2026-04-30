@@ -1,8 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Interfaces;
+
+import com.aprog_lab.aprog_pl.events.BlackoutEvent;
+import com.aprog_lab.aprog_pl.events.ElevenSavesEvent;
+import com.aprog_lab.aprog_pl.events.HiveMindEvent;
+import com.aprog_lab.aprog_pl.events.StormEvent;
+import com.aprog_lab.aprog_pl.shared_resources.Portal;
+import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
+import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
+import com.aprog_lab.aprog_pl.shared_resources.VecnaChecker;
+import com.aprog_lab.aprog_pl.threads.Child;
+import com.aprog_lab.aprog_pl.threads.Demogorgon;
+import com.aprog_lab.aprog_pl.threads.EventManager;
+import com.aprog_lab.aprog_pl.threads.PortalManager;
+import java.util.ArrayList;
+import java.util.concurrent.CyclicBarrier;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -11,12 +23,152 @@ package Interfaces;
 public class Interface1 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interface1.class.getName());
+    private Unsafe_Zone Forest, Lab, Mall, Sewer, Hive;
+    private Safe_Zone ms, bb, radio;
+    private Portal p1, p2, p3, p4;
+    private ArrayList<Unsafe_Zone> uz;
+    private ArrayList<Safe_Zone> sz;
+    private ArrayList<Portal> portals;
+    private EventManager em;
+    
+    private ArrayList<DefaultListModel<String>> uz_models_D;
+    private ArrayList<DefaultListModel<String>> uz_models_C;
+    private ArrayList<DefaultListModel<String>> sz_models_C;
+    private ArrayList<DefaultListModel<String>> enter_portal_models;
+    private ArrayList<DefaultListModel<String>> exit_portal_models;
+    
 
     /**
      * Creates new form Interface1
      */
-    public Interface1() {
+    public Interface1()
+    {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(this);
+        jTextField_BLOODCOUNT.setText("");
+        jTextField_HIVE_CAPTURED.setText("");
+        jTextField_CURRENT_EVENT.setText("");
+        
+        // ===================== SETTING DEFAULTLISTMODEL MODEL FOR JLISTS =====================
+        DefaultListModel<String> m1 = new DefaultListModel<>();
+        jList_MAIN_STREET.setModel(m1);
+        DefaultListModel<String> m2 = new DefaultListModel<>();
+        jList_BYERS.setModel(m2);
+        DefaultListModel<String> m3 = new DefaultListModel<>();
+        jList_WSQK.setModel(m3);
+        DefaultListModel<String> m4 = new DefaultListModel<>();
+        jList_ENTER_PORTAL_FOREST.setModel(m4);
+        DefaultListModel<String> m5 = new DefaultListModel<>();
+        jList_ENTER_PORTAL_LAB.setModel(m5);
+        DefaultListModel<String> m6 = new DefaultListModel<>();
+        jList_ENTER_PORTAL_MALL.setModel(m6);
+        DefaultListModel<String> m7 = new DefaultListModel<>();
+        jList_ENTER_PORTAL_SEWER.setModel(m7);
+        DefaultListModel<String> m8 = new DefaultListModel<>();
+        jList_EXIT_PORTAL_FOREST.setModel(m8);
+        DefaultListModel<String> m9 = new DefaultListModel<>();
+        jList_EXIT_PORTAL_LAB.setModel(m9);
+        DefaultListModel<String> m10 = new DefaultListModel<>();
+        jList_EXIT_PORTAL_MALL.setModel(m10);
+        DefaultListModel<String> m11 = new DefaultListModel<>();
+        jList_EXIT_PORTAL_SEWER.setModel(m11);
+        DefaultListModel<String> m12 = new DefaultListModel<>();
+        jList_CHILDREN_FOREST.setModel(m12);
+        DefaultListModel<String> m13 = new DefaultListModel<>();
+        jList_CHILDREN_LAB.setModel(m13);
+        DefaultListModel<String> m14 = new DefaultListModel<>();
+        jList_CHILDREN_MALL.setModel(m14);
+        DefaultListModel<String> m15 = new DefaultListModel<>();
+        jList_CHILDREN_SEWERS.setModel(m15);
+        DefaultListModel<String> m16 = new DefaultListModel<>();
+        jList_DEMOS_FOREST.setModel(m16);
+        DefaultListModel<String> m17 = new DefaultListModel<>();
+        jList_DEMOS_LAB.setModel(m17);
+        DefaultListModel<String> m18 = new DefaultListModel<>();
+        jList_DEMOS_MALL.setModel(m18);
+        DefaultListModel<String> m19 = new DefaultListModel<>();
+        jList_DEMOS_SEWERS.setModel(m19);
+        
+        sz_models_C = new  ArrayList<>();
+        uz_models_C = new  ArrayList<>();
+        uz_models_D = new  ArrayList<>();
+        enter_portal_models = new  ArrayList<>();
+        exit_portal_models = new  ArrayList<>();
+        
+        sz_models_C.add(m1); sz_models_C.add(m2); sz_models_C.add(m3);
+        
+        enter_portal_models.add(m4); enter_portal_models.add(m5); enter_portal_models.add(m6); enter_portal_models.add(m7);
+        
+        exit_portal_models.add(m8); exit_portal_models.add(m9); exit_portal_models.add(m10); exit_portal_models.add(m11);
+        
+        uz_models_C.add(m12); uz_models_C.add(m13); uz_models_C.add(m14); uz_models_C.add(m15);
+        
+        uz_models_D.add(m16); uz_models_D.add(m17); uz_models_D.add(m18); uz_models_D.add(m19);
+        
+    // ===================== SAFE AND UNSAFE ZONE INITIALIZATION =====================
+        Forest = new Unsafe_Zone("Forest", this);
+        Lab = new Unsafe_Zone("Laboratory", this);
+        Mall = new Unsafe_Zone("Shopping Mall", this);
+        Sewer = new Unsafe_Zone("Sewer", this);
+        Hive = new Unsafe_Zone("HIVE", this);
+
+        ms = new Safe_Zone("Hawkin's Main Street", this);                       
+        bb = new Safe_Zone("Bayer's Basement", this);
+        radio = new Safe_Zone("WSQK Radio", this);
+        
+        uz = new ArrayList<>();                              // Children and Demogorgons share this ArrayList.
+        sz = new ArrayList<>();                                // ONLY children are allowed to use this ArrayList.
+        portals = new ArrayList<>();                              // Children and PortalManager use this ArrayList.
+        
+        // ===================== SAFE AND UNSAFE ZONE ADDITION =====================
+        uz.add(Forest); uz.add(Lab); uz.add(Mall); uz.add(Sewer); uz.add(Hive);
+        sz.add(ms); sz.add(bb); sz.add(radio);
+        
+// ===================== PORTAL INITIALIZATION =====================
+        p1 = new Portal("ForestPortal", bb, Forest, new CyclicBarrier(2), this);
+        p2 = new Portal("LabPortal", bb, Lab, new CyclicBarrier(3), this);
+        p3 = new Portal("MallPortal", bb, Mall, new CyclicBarrier(4), this);
+        p4 = new Portal("SewerPortal", bb, Sewer, new CyclicBarrier(2), this);
+        
+        // ===================== PORTAL ADDITION =====================
+        portals.add(p1); portals.add(p2); portals.add(p3); portals.add(p4);
+        
+        // ===================== PORTAL MANAGER =====================
+        new PortalManager(portals).start();
+        
+// ===================== EVENT-RELATED OBJECT INITIALIZATION =====================
+        BlackoutEvent be = new BlackoutEvent(portals);
+        StormEvent se = new StormEvent();
+        ElevenSavesEvent ese = new ElevenSavesEvent(uz.get(4));
+        HiveMindEvent hme = new HiveMindEvent(uz);
+        
+        em = new EventManager(be, se, ese, hme);
+        em.start();
+
+// ===================== VECNA CHECKER INITIALIZATION =====================
+        VecnaChecker vc = new VecnaChecker(1, uz, se, ese, hme);
+        
+// ===================== CHILDREN & DEMOGORGON INITIALIZATION =====================
+
+        // Initial threads (Alpha Demog and Children) creation.
+        try
+        {
+            int idn = 0;                                                                               // Used for Children ID and Alpha Demogorgon.
+            new Demogorgon("D"+String.format("%04d",idn), uz, vc, se, ese, hme).start();          // Formatted ID for the Alpha Demogorgon (D0000)
+            for(int i=0; i<1500; i++)
+            {
+                Thread.sleep((int)(Math.random()*1.5+0.5));                                         // SHOULD wait between 0.5 and 2 seconds.
+                String child_id = "C"+String.format("%04d", idn);                                   // Formatted ID for children
+                new Child(child_id, sz, uz, portals,se).start();
+                idn++;
+            }
+            
+        }
+        catch(InterruptedException ie)
+        {
+            System.out.println("Interrupted Exception -> main()");
+        }
     }
 
     /**
@@ -28,53 +180,67 @@ public class Interface1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField_MAIN_STREET = new javax.swing.JTextField();
-        jTextField_BYERS = new javax.swing.JTextField();
-        jTextField_WSQK = new javax.swing.JTextField();
         jTextField_BLOODCOUNT = new javax.swing.JTextField();
         jLabel_MAIN_STREET = new javax.swing.JLabel();
         jLabel_BAYERS = new javax.swing.JLabel();
         jLabel_WSQK = new javax.swing.JLabel();
         jLabel_BLOOD = new javax.swing.JLabel();
-        jTextField_PORTAL1_ENTER = new javax.swing.JTextField();
-        jTextField_PORTAL2_ENTER = new javax.swing.JTextField();
-        jTextField_PORTAL3_ENTER = new javax.swing.JTextField();
-        jTextField_PORTAL4_ENTER = new javax.swing.JTextField();
-        jTextField_PORTAL1_EXIT = new javax.swing.JTextField();
-        jTextField_PORTAL2_EXIT = new javax.swing.JTextField();
-        jTextField_PORTAL3_EXIT = new javax.swing.JTextField();
-        jTextField_PORTAL4_EXIT = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        jTextField_FOREST_CHILDREN = new javax.swing.JTextField();
-        jTextField_FOREST_DEMOS = new javax.swing.JTextField();
-        jTextField_LAB_CHILDREN = new javax.swing.JTextField();
-        jTextField_LAB_DEMOS = new javax.swing.JTextField();
-        jTextField_MALL_CHILDREN = new javax.swing.JTextField();
-        jTextField_MALL_DEMOS = new javax.swing.JTextField();
-        jTextField_SEWER_CHILDREN = new javax.swing.JTextField();
-        jTextField_SEWER_DEMOS = new javax.swing.JTextField();
         jTextField_HIVE_CAPTURED = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel_FOREST = new javax.swing.JLabel();
         jLabel_LABORATORY = new javax.swing.JLabel();
         jLabel_MALL = new javax.swing.JLabel();
         jLabel_SEWERS = new javax.swing.JLabel();
-        jLabel_UNSAFE_ZONES = new javax.swing.JLabel();
         jLabel_PORTALS = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList_MAIN_STREET = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList_BYERS = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList_WSQK = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jList_EXIT_PORTAL_FOREST = new javax.swing.JList<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jList_EXIT_PORTAL_LAB = new javax.swing.JList<>();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jList_ENTER_PORTAL_LAB = new javax.swing.JList<>();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jList_ENTER_PORTAL_MALL = new javax.swing.JList<>();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jList_EXIT_PORTAL_MALL = new javax.swing.JList<>();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jList_ENTER_PORTAL_SEWER = new javax.swing.JList<>();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jList_ENTER_PORTAL_FOREST = new javax.swing.JList<>();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jList_EXIT_PORTAL_SEWER = new javax.swing.JList<>();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jList_DEMOS_FOREST = new javax.swing.JList<>();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jList_DEMOS_LAB = new javax.swing.JList<>();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        jList_CHILDREN_MALL = new javax.swing.JList<>();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        jList_DEMOS_MALL = new javax.swing.JList<>();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        jList_CHILDREN_SEWERS = new javax.swing.JList<>();
+        jScrollPane18 = new javax.swing.JScrollPane();
+        jList_DEMOS_SEWERS = new javax.swing.JList<>();
+        jScrollPane19 = new javax.swing.JScrollPane();
+        jList_CHILDREN_FOREST = new javax.swing.JList<>();
+        jScrollPane20 = new javax.swing.JScrollPane();
+        jList_CHILDREN_LAB = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField_CURRENT_EVENT = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Epsteins vs Children");
 
-        jTextField_MAIN_STREET.setText("jTextField1");
-        jTextField_MAIN_STREET.addActionListener(this::jTextField_MAIN_STREETActionPerformed);
-
-        jTextField_BYERS.setText("jTextField1");
-
-        jTextField_WSQK.setText("jTextField1");
-
+        jTextField_BLOODCOUNT.setEditable(false);
         jTextField_BLOODCOUNT.setText("jTextField2");
 
         jLabel_MAIN_STREET.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -89,39 +255,8 @@ public class Interface1 extends javax.swing.JFrame {
         jLabel_BLOOD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_BLOOD.setText("BLOOD");
 
-        jTextField_PORTAL1_ENTER.setText("jTextField1");
-
-        jTextField_PORTAL2_ENTER.setText("jTextField1");
-
-        jTextField_PORTAL3_ENTER.setText("jTextField1");
-        jTextField_PORTAL3_ENTER.addActionListener(this::jTextField_PORTAL3_ENTERActionPerformed);
-
-        jTextField_PORTAL4_ENTER.setText("jTextField1");
-
-        jTextField_PORTAL1_EXIT.setText("jTextField1");
-
-        jTextField_PORTAL2_EXIT.setText("jTextField1");
-
-        jTextField_PORTAL3_EXIT.setText("jTextField1");
-
-        jTextField_PORTAL4_EXIT.setText("jTextField1");
-
-        jTextField_FOREST_CHILDREN.setText("jTextField2");
-
-        jTextField_FOREST_DEMOS.setText("jTextField3");
-
-        jTextField_LAB_CHILDREN.setText("jTextField4");
-
-        jTextField_LAB_DEMOS.setText("jTextField5");
-
-        jTextField_MALL_CHILDREN.setText("jTextField6");
-
-        jTextField_MALL_DEMOS.setText("jTextField7");
-
-        jTextField_SEWER_CHILDREN.setText("jTextField8");
-
-        jTextField_SEWER_DEMOS.setText("jTextField9");
-
+        jTextField_HIVE_CAPTURED.setEditable(false);
+        jTextField_HIVE_CAPTURED.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField_HIVE_CAPTURED.setText("jTextField2");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -139,208 +274,355 @@ public class Interface1 extends javax.swing.JFrame {
         jLabel_SEWERS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_SEWERS.setText("SEWERS");
 
-        jLabel_UNSAFE_ZONES.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_UNSAFE_ZONES.setText("UPSIDEDOWN");
-        jLabel_UNSAFE_ZONES.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel_PORTALS.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel_PORTALS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_PORTALS.setText("PORTALS");
+
+        jList_MAIN_STREET.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList_MAIN_STREET);
+
+        jList_BYERS.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList_BYERS);
+
+        jList_WSQK.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(jList_WSQK);
+
+        jList_EXIT_PORTAL_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(jList_EXIT_PORTAL_FOREST);
+
+        jList_EXIT_PORTAL_LAB.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane5.setViewportView(jList_EXIT_PORTAL_LAB);
+
+        jList_ENTER_PORTAL_LAB.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane6.setViewportView(jList_ENTER_PORTAL_LAB);
+
+        jList_ENTER_PORTAL_MALL.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane7.setViewportView(jList_ENTER_PORTAL_MALL);
+
+        jList_EXIT_PORTAL_MALL.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane8.setViewportView(jList_EXIT_PORTAL_MALL);
+
+        jList_ENTER_PORTAL_SEWER.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane9.setViewportView(jList_ENTER_PORTAL_SEWER);
+
+        jList_ENTER_PORTAL_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane10.setViewportView(jList_ENTER_PORTAL_FOREST);
+
+        jList_EXIT_PORTAL_SEWER.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane11.setViewportView(jList_EXIT_PORTAL_SEWER);
+
+        jList_DEMOS_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_DEMOS_FOREST.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane12.setViewportView(jList_DEMOS_FOREST);
+
+        jList_DEMOS_LAB.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_DEMOS_LAB.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane13.setViewportView(jList_DEMOS_LAB);
+
+        jList_CHILDREN_MALL.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_CHILDREN_MALL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane15.setViewportView(jList_CHILDREN_MALL);
+
+        jList_DEMOS_MALL.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_DEMOS_MALL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane16.setViewportView(jList_DEMOS_MALL);
+
+        jList_CHILDREN_SEWERS.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_CHILDREN_SEWERS.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane17.setViewportView(jList_CHILDREN_SEWERS);
+
+        jList_DEMOS_SEWERS.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_DEMOS_SEWERS.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane18.setViewportView(jList_DEMOS_SEWERS);
+
+        jList_CHILDREN_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_CHILDREN_FOREST.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane19.setViewportView(jList_CHILDREN_FOREST);
+
+        jList_CHILDREN_LAB.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_CHILDREN_LAB.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane20.setViewportView(jList_CHILDREN_LAB);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Current Event");
+
+        jTextField_CURRENT_EVENT.setEditable(false);
+        jTextField_CURRENT_EVENT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_CURRENT_EVENT.setText("jTextField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel_WSQK, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(17, 17, 17)))
+                            .addGap(28, 28, 28)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jTextField_BLOODCOUNT, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel_BLOOD, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel_BAYERS, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(79, 79, 79)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jLabel_MAIN_STREET, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jLabel_MAIN_STREET, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane6)
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane9)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(116, 116, 116)
-                                .addComponent(jLabel_BAYERS, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField_BYERS)
-                                    .addComponent(jTextField_MAIN_STREET)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField_WSQK, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(31, 31, 31)
-                                                .addComponent(jLabel_WSQK, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField_BLOODCOUNT, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                                            .addComponent(jLabel_BLOOD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addComponent(jLabel_PORTALS, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField_PORTAL1_ENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                            .addComponent(jTextField_PORTAL2_ENTER)
-                            .addComponent(jTextField_PORTAL3_ENTER)
-                            .addComponent(jTextField_PORTAL4_ENTER))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                            .addComponent(jSeparator3)
-                            .addComponent(jSeparator4)
-                            .addComponent(jSeparator1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField_PORTAL1_EXIT)
-                                .addComponent(jTextField_PORTAL2_EXIT)
-                                .addComponent(jTextField_PORTAL3_EXIT, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField_PORTAL4_EXIT, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                        .addComponent(jLabel_UNSAFE_ZONES, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField_FOREST_CHILDREN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField_LAB_CHILDREN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField_MALL_CHILDREN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField_SEWER_CHILDREN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(36, 36, 36)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField_SEWER_DEMOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField_MALL_DEMOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField_LAB_DEMOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jTextField_FOREST_DEMOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextField_HIVE_CAPTURED, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
-                                    .addComponent(jLabel_FOREST, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(232, 232, 232))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel_LABORATORY, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel_MALL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel_SEWERS, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(0, 0, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(317, 317, 317)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(32, 32, 32))
+                                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(6, 6, 6))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel_PORTALS, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel_MALL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel_FOREST, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel_SEWERS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel_LABORATORY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextField_HIVE_CAPTURED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField_CURRENT_EVENT, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel_MAIN_STREET)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTextField_PORTAL1_EXIT, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(jTextField_PORTAL2_EXIT, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(jTextField_PORTAL3_EXIT, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(jTextField_PORTAL4_EXIT, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTextField_MAIN_STREET, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField_PORTAL1_ENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(33, 33, 33)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel_BAYERS)
-                                            .addComponent(jTextField_PORTAL2_ENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTextField_BYERS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(33, 33, 33)
-                                                .addComponent(jTextField_PORTAL3_ENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel_WSQK)
-                                            .addComponent(jLabel_BLOOD))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField_WSQK)
-                                            .addComponent(jTextField_PORTAL4_ENTER)
-                                            .addComponent(jTextField_BLOODCOUNT)))
-                                    .addComponent(jLabel_PORTALS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(162, 162, 162))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel_UNSAFE_ZONES, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(68, 68, 68)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(132, 132, 132)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(134, 134, 134)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(136, 136, 136)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel_FOREST)
-                                        .addGap(18, 18, 18))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                            .addComponent(jScrollPane19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(38, 38, 38)
+                                        .addComponent(jLabel_LABORATORY)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(24, 24, 24)
+                                        .addComponent(jLabel_MALL)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                            .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField_FOREST_DEMOS)
-                                        .addComponent(jTextField_FOREST_CHILDREN, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextField_HIVE_CAPTURED, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(38, 38, 38)
-                                .addComponent(jLabel_LABORATORY)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField_LAB_DEMOS)
-                                    .addComponent(jTextField_LAB_CHILDREN, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(38, 38, 38)
-                                .addComponent(jLabel_MALL)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField_MALL_CHILDREN)
-                                    .addComponent(jTextField_MALL_DEMOS, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(38, 38, 38)
+                                        .addComponent(jLabel_PORTALS, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(29, 29, 29)
+                                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(48, 48, 48)
+                                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(27, 27, 27)
+                                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(46, 46, 46)
+                                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(52, 52, 52)
+                                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabel_SEWERS)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(4, 4, 4)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField_SEWER_CHILDREN)
-                                    .addComponent(jTextField_SEWER_DEMOS, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap())))
+                                    .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_HIVE_CAPTURED, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_CURRENT_EVENT, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel_MAIN_STREET)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel_BAYERS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_WSQK)
+                            .addComponent(jLabel_BLOOD))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jTextField_BLOODCOUNT, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(57, 57, 57))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField_MAIN_STREETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_MAIN_STREETActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_MAIN_STREETActionPerformed
-
-    private void jTextField_PORTAL3_ENTERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PORTAL3_ENTERActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_PORTAL3_ENTERActionPerformed
-
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -361,9 +643,68 @@ public class Interface1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Interface1().setVisible(true));
     }
+    
+    public void refreshStats()
+    {
+        java.awt.EventQueue.invokeLater(() ->
+            {
+                for(int i=0;i<uz_models_C.size();i++)
+                {
+                    uz_models_C.get(i).clear();
+                    ArrayList<Child> avail_children = uz.get(i).getAvailChildren();
+                    for(int j=0;j<avail_children.size();j++)
+                    {
+                        uz_models_C.get(i).add(j, avail_children.get(j).getID());
+                    }
+
+                }
+                
+                for(int i=0;i<uz_models_D.size();i++)
+                {
+                    uz_models_D.get(i).clear();
+                    ArrayList<Demogorgon> avail_demos = uz.get(i).getAvailDemos();
+                    for(int j=0; j<avail_demos.size();j++)
+                    {
+                        uz_models_D.get(i).add(j, avail_demos.get(j).getID());
+                    }
+                }
+                
+                for(int i=0;i<sz_models_C.size();i++)
+                {
+                    sz_models_C.get(i).clear();
+                    ArrayList<String> avail_children = sz.get(i).getAvailChildren();
+                    for(int j=0; j<avail_children.size();j++)
+                    {
+                        sz_models_C.get(i).add(j, avail_children.get(j));
+                    }
+                }
+                
+                jTextField_BLOODCOUNT.setText(String.valueOf(sz.get(2).getBlood()));
+                jTextField_CURRENT_EVENT.setText(em.getStatus());
+                jTextField_HIVE_CAPTURED.setText(String.valueOf(uz.get(4).getCapturedChildren()));
+                
+                for(int  i=0;i<portals.size();i++)
+                {
+                    enter_portal_models.get(i).clear();
+                    exit_portal_models.get(i).clear();
+                    ArrayList<String> enteringChildren = portals.get(i).getEntering();
+                    ArrayList<String> leavingChildren = portals.get(i).getLeaving();
+                    for(int j=0;j<enteringChildren.size();j++)
+                    {
+                        enter_portal_models.get(i).add(j, enteringChildren.get(j));
+                    }
+                    for(int k=0;k<leavingChildren.size();k++)
+                    {
+                        exit_portal_models.get(i).add(k, leavingChildren.get(k));
+                    }
+                }
+            }
+        );
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel_BAYERS;
     private javax.swing.JLabel jLabel_BLOOD;
     private javax.swing.JLabel jLabel_FOREST;
@@ -372,32 +713,51 @@ public class Interface1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_MALL;
     private javax.swing.JLabel jLabel_PORTALS;
     private javax.swing.JLabel jLabel_SEWERS;
-    private javax.swing.JLabel jLabel_UNSAFE_ZONES;
     private javax.swing.JLabel jLabel_WSQK;
+    private javax.swing.JList<String> jList_BYERS;
+    private javax.swing.JList<String> jList_CHILDREN_FOREST;
+    private javax.swing.JList<String> jList_CHILDREN_LAB;
+    private javax.swing.JList<String> jList_CHILDREN_MALL;
+    private javax.swing.JList<String> jList_CHILDREN_SEWERS;
+    private javax.swing.JList<String> jList_DEMOS_FOREST;
+    private javax.swing.JList<String> jList_DEMOS_LAB;
+    private javax.swing.JList<String> jList_DEMOS_MALL;
+    private javax.swing.JList<String> jList_DEMOS_SEWERS;
+    private javax.swing.JList<String> jList_ENTER_PORTAL_FOREST;
+    private javax.swing.JList<String> jList_ENTER_PORTAL_LAB;
+    private javax.swing.JList<String> jList_ENTER_PORTAL_MALL;
+    private javax.swing.JList<String> jList_ENTER_PORTAL_SEWER;
+    private javax.swing.JList<String> jList_EXIT_PORTAL_FOREST;
+    private javax.swing.JList<String> jList_EXIT_PORTAL_LAB;
+    private javax.swing.JList<String> jList_EXIT_PORTAL_MALL;
+    private javax.swing.JList<String> jList_EXIT_PORTAL_SEWER;
+    private javax.swing.JList<String> jList_MAIN_STREET;
+    private javax.swing.JList<String> jList_WSQK;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane18;
+    private javax.swing.JScrollPane jScrollPane19;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane20;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField jTextField_BLOODCOUNT;
-    private javax.swing.JTextField jTextField_BYERS;
-    private javax.swing.JTextField jTextField_FOREST_CHILDREN;
-    private javax.swing.JTextField jTextField_FOREST_DEMOS;
+    private javax.swing.JTextField jTextField_CURRENT_EVENT;
     private javax.swing.JTextField jTextField_HIVE_CAPTURED;
-    private javax.swing.JTextField jTextField_LAB_CHILDREN;
-    private javax.swing.JTextField jTextField_LAB_DEMOS;
-    private javax.swing.JTextField jTextField_MAIN_STREET;
-    private javax.swing.JTextField jTextField_MALL_CHILDREN;
-    private javax.swing.JTextField jTextField_MALL_DEMOS;
-    private javax.swing.JTextField jTextField_PORTAL1_ENTER;
-    private javax.swing.JTextField jTextField_PORTAL1_EXIT;
-    private javax.swing.JTextField jTextField_PORTAL2_ENTER;
-    private javax.swing.JTextField jTextField_PORTAL2_EXIT;
-    private javax.swing.JTextField jTextField_PORTAL3_ENTER;
-    private javax.swing.JTextField jTextField_PORTAL3_EXIT;
-    private javax.swing.JTextField jTextField_PORTAL4_ENTER;
-    private javax.swing.JTextField jTextField_PORTAL4_EXIT;
-    private javax.swing.JTextField jTextField_SEWER_CHILDREN;
-    private javax.swing.JTextField jTextField_SEWER_DEMOS;
-    private javax.swing.JTextField jTextField_WSQK;
     // End of variables declaration//GEN-END:variables
 }

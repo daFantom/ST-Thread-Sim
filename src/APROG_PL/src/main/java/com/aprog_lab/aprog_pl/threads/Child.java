@@ -41,10 +41,12 @@ public class Child extends Thread {
             try
             {
                 Thread.sleep((int)( (Math.random()*2000)+3000) );                   // Waits for 3 to 5 seconds before entering Bayer's Basement.
+                sz.get(0).exitSafeZone(id);
                 sz.get(1).enterSafeZone(id);                                         // sz[1]=Bayer's Basement. They enter.
                 Thread.sleep((int)( (Math.random()*1000)+1000) );                   // Choosing portal...
                 // Portal selection mechanism
-                int selected_portal = (int) (Math.random()*4);                      
+                int selected_portal = (int) (Math.random()*4);
+                sz.get(1).exitSafeZone(id);
                 portals.get(selected_portal).enterPortalQueue(id, status);
                 status = "Exiting";                                                     // Change status so they can get inserted into exitQueue->Portal class.
                 Thread.sleep(1000);                                                    // Going through portal...
@@ -77,6 +79,7 @@ public class Child extends Thread {
                     portals.get(selected_portal).enterPortalQueue(id, status);
                     status = "Entering";
                     sz.get(0).enterSafeZone(id);                                            // Return to Hawking Street.
+                    sz.get(0).exitSafeZone(id);
                     sz.get(2).enterSafeZone(id);                                            // Go to WSKQ Radio.
                     sz.get(2).incrementBloodCount();                                        // Deposit blood.
                     if(storm.isStorm())
@@ -84,7 +87,8 @@ public class Child extends Thread {
                         System.out.println("Storm active: doubled blood gathering.");
                         sz.get(2).incrementBloodCount();                                    // If there is an ongoing storm, increments once more as to "double" the amount of collected blood.
                     }
-                    Thread.sleep((int) ((Math.random()*2000)+2000));   
+                    Thread.sleep((int) ((Math.random()*2000)+2000));
+                    sz.get(2).exitSafeZone(id);
                 }
 
             }

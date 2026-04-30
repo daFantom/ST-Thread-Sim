@@ -1,5 +1,6 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
+import Interfaces.Interface1;
 import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.ArrayList;
@@ -17,9 +18,11 @@ public class Unsafe_Zone
     private ArrayList<Child> avail_children;
     private ArrayList<Demogorgon> avail_demos;
     private AtomicInteger captured;
+    private Interface1 ifc;
     
-    public Unsafe_Zone(String name)
+    public Unsafe_Zone(String name, Interface1 p_ifc)
     {
+        ifc = p_ifc;
         zone_name = name;
         avail_children = new ArrayList<>();
         avail_demos = new ArrayList<>();
@@ -40,6 +43,7 @@ public class Unsafe_Zone
             if(!avail_children.contains(c))
             {
                 avail_children.add(c);
+                ifc.refreshStats();
                 System.out.println("Child: "+c.getID()+" has entered unsafe zone: "+zone_name); 
             }     
         }
@@ -55,6 +59,7 @@ public class Unsafe_Zone
             if(!avail_demos.contains(d))
             {
                 avail_demos.add(d);
+                ifc.refreshStats();
                 System.out.println("Demogorgon: "+d.getID()+" has entered unsafe zone: "+zone_name); 
             }
         }
@@ -72,6 +77,7 @@ public class Unsafe_Zone
             if(avail_children.contains(c))
             {
                 avail_children.remove(c);
+                ifc.refreshStats();
                 System.out.println("Child: "+c.getID()+" has exited unsafe zone: "+zone_name); 
             }   
         }  
@@ -87,6 +93,7 @@ public class Unsafe_Zone
             if(avail_demos.contains(d))
             {
                 avail_demos.remove(d);
+                ifc.refreshStats();
                 System.out.println("Demogorgon: "+d.getID()+" has exited unsafe zone: "+zone_name); 
             }  
         }
@@ -148,6 +155,7 @@ public class Unsafe_Zone
             try
             {
                 captured.incrementAndGet();
+                ifc.refreshStats();
                 synchronized(this)
                 {
                     //System.out.println("A CHILD HAS BEEN CAPTURED!!!!!");                 // DEBUG
@@ -165,6 +173,8 @@ public class Unsafe_Zone
             synchronized(this)
             {
                 notify();
+                captured.decrementAndGet();
+                ifc.refreshStats();
             }
         }
     }
@@ -182,9 +192,25 @@ public class Unsafe_Zone
     
     public void showDemos()
     {
+        System.out.println("============== "+zone_name+" ==============");
         for(int i=0;i<avail_demos.size();i++)
         {
             System.out.println(avail_demos.get(i).getID());
         }
+    }
+    
+    public ArrayList<Child> getAvailChildren()
+    {
+        return avail_children;
+    }
+    
+    public ArrayList<Demogorgon> getAvailDemos()
+    {
+        return avail_demos;
+    }
+    
+    public int getCapturedChildren()
+    {
+        return captured.get();
     }
 }
