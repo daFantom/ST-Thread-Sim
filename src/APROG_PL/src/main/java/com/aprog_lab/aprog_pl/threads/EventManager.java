@@ -4,6 +4,7 @@ import com.aprog_lab.aprog_pl.events.*;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import java.time.Duration;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  *
@@ -15,7 +16,7 @@ public class EventManager extends Thread
     private StormEvent se;
     private ElevenSavesEvent ese;
     private HiveMindEvent hme;
-    private String status;
+    private AtomicReference<String> status;
     
     public EventManager(BlackoutEvent pbe, StormEvent pse, ElevenSavesEvent pese, HiveMindEvent phme)
     {
@@ -23,7 +24,7 @@ public class EventManager extends Thread
         se = pse;
         ese = pese;
         hme = phme;
-        status = "None";
+        status = new AtomicReference("None");
     }
     
     @Override
@@ -40,29 +41,29 @@ public class EventManager extends Thread
                     case 0 ->
                     {
                         System.out.println("========= LABORATORY BLACKOUT EVENT HAS STARTED =========");
-                        status = "BLACKOUT";
+                        status.compareAndSet("None", "BLACKOUT");
                         be.disablePortalsEvent();
                         Thread.sleep((int)((Math.random()*5000)+5000));
                         be.enablePortalsEvent();
-                        status = "None";
+                        status.compareAndSet("BLACKOUT", "None");
                         System.out.println("========= LABORATORY BLACKOUT EVENT HAS FINISHED =========");
                     }
 
                     case 1 ->
                     {
                         System.out.println("========= STORM EVENT HAS STARTED =========");
-                        status = "STORM";
+                        status.compareAndSet("None", "STORM");
                         se.setStorm();
                         Thread.sleep((int)((Math.random()*5000)+5000));
                         se.setStorm();
-                        status = "None";
+                        status.compareAndSet("STORM", "None");
                         System.out.println("========= STORM EVENT HAS FINISHED =========");
                     }
 
                     case 2 ->
                     {
                         System.out.println("========= ELEVEN'S INTERVENTION EVENT HAS STARTED =========");
-                        status = "ELEVEN'S INTERVENTION";
+                        status.compareAndSet("None", "ELEVEN");
                         ese.setStatus();
                         int duration = (int)((Math.random()*5)+5);
                         for(int i=0;i<duration;i++)
@@ -72,7 +73,7 @@ public class EventManager extends Thread
                             
                         }
                         ese.setStatus();
-                        status = "None";
+                        status.compareAndSet("ELEVEN", "None");
                         ese.enableDemos();
                         System.out.println("========= ELEVEN'S INTERVENTION EVENT HAS FINISHED =========");
                     }
@@ -81,11 +82,11 @@ public class EventManager extends Thread
                     {
                         System.out.println("========= HIVE MIND EVENT HAS STARTED =========");
                         hme.setStatus();
-                        status = "HIVE MIND MANIPULATION";
+                        status.compareAndSet("None", "HIVEMIND");
                         Thread.sleep((int)((Math.random()*5000)+5000));
                         //hme.showDemos();                                                          // DEBUG
                         hme.setStatus();
-                        status = "None";
+                        status.compareAndSet("HIVEMIND", "None");
                         System.out.println("========= HIVE MIND EVENT HAS FINISHED =========");
                     }
                 }
