@@ -101,6 +101,7 @@ public class Portal
         {
             exitQueue.poll();
             exitSem.release();
+            // Mostrar interfaz
             notifyAll();
             
         }
@@ -108,6 +109,7 @@ public class Portal
         {
             enterQueue.poll();
             enterSem.release();
+            // Mostrar en interfaz
             notifyAll();
         }
     }
