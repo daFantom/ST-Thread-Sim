@@ -35,7 +35,7 @@ public class VecnaChecker {
         int can_spawn = capped_children%8;
         if(can_spawn==0)
         {
-            System.out.println("A new demogorgon has been Spawned!");
+            log.logWrite("A new demogorgon has been Spawned!");
             new Demogorgon("D"+String.format("%04d",total_demos), uzs, this, se, ese, hme, log).start();
             total_demos++;
             demo.emptyChildren();

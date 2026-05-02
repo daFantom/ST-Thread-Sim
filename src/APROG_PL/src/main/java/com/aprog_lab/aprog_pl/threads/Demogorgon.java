@@ -68,7 +68,7 @@ public class Demogorgon extends Thread
                             double prob = Math.random();
                             if(storm.isStorm()&&!elevenEvent.getStatus())
                             {
-                                System.out.println("Storm active: halving attack time ratio");
+                                //System.out.println("Storm active: halving attack time ratio");    // DEBUG
                                 attack_time = (int)(((Math.random()*1000)+500)/2);
                             }
                             else
@@ -112,13 +112,27 @@ public class Demogorgon extends Thread
         
     }
     
+    /*
+    
+    */
     public String getID()
     {
         return id;
     }
     
+    /*
+    
+    */
     public void emptyChildren()
     {
         child_counter = 0;
+    }
+    
+    /*
+    
+    */
+    public int getLocalCaptured()
+    {
+        return child_counter;
     }
 }

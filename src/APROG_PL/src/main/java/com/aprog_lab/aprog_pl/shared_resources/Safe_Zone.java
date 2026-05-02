@@ -1,6 +1,6 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
-import Interfaces.Interface1;
+import com.aprog_lab.aprog_pl.Interfaces.Interface1;
 import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;

@@ -1,6 +1,6 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
-import Interfaces.Interface1;
+import com.aprog_lab.aprog_pl.Interfaces.Interface1;
 import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.ArrayList;
@@ -158,7 +158,7 @@ public class Unsafe_Zone
                 {
                     hasAttacked = true;
                     target.gotAttacked();
-                    System.out.println("SUCCESSFULLY ATTACKED CHILD: "+target.getID());   // DEBUG
+                    log.logWrite("Demogorgon "+d.getID()+" attacked child "+target.getID()+". (captures: "+d.getLocalCaptured()+")");
                     return hasAttacked;
                 }
                 else if(target.isAttacked())
@@ -200,9 +200,9 @@ public class Unsafe_Zone
                 synchronized(this)
                 {
                     ifc.refreshCounters();
-                    System.out.println("Child: "+id+" has been captured");                 // DEBUG
+                    log.logWrite("Child: "+id+" has been captured");
                     wait();
-                    System.out.println("Child: "+id+" has been released");                 // DEBUG
+                    log.logWrite("Child: "+id+" has been released");
                 }
             }
             catch(InterruptedException ie)

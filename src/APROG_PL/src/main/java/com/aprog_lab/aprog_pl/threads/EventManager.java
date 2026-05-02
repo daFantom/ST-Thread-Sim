@@ -45,7 +45,7 @@ public class EventManager extends Thread
                     {
                         case 0 ->
                         {
-                            System.out.println("========= LABORATORY BLACKOUT EVENT HAS STARTED =========");
+                            log.logWrite("GLOBAL EVENT: LABORATORY BLACKOUT EVENT HAS STARTED");
                             status.compareAndSet("None", "BLACKOUT");
                             
                             if(!log.getPlaying()) log.waitLog();
@@ -57,12 +57,12 @@ public class EventManager extends Thread
                             
                             be.enablePortalsEvent();
                             status.compareAndSet("BLACKOUT", "None");
-                            System.out.println("========= LABORATORY BLACKOUT EVENT HAS FINISHED =========");
+                            log.logWrite("GLOBAL EVENT: LABORATORY BLACKOUT EVENT HAS FINISHED");
                         }
 
                         case 1 ->
                         {
-                            System.out.println("========= STORM EVENT HAS STARTED =========");
+                            log.logWrite("GLOBAL EVENT: STORM EVENT HAS STARTED");
                             status.compareAndSet("None", "STORM");
                             
                             if(!log.getPlaying()) log.waitLog();
@@ -74,12 +74,12 @@ public class EventManager extends Thread
                             
                             se.setStorm();
                             status.compareAndSet("STORM", "None");
-                            System.out.println("========= STORM EVENT HAS FINISHED =========");
+                            log.logWrite("GLOBAL EVENT: STORM EVENT HAS FINISHED");
                         }
 
                         case 2 ->
                         {
-                            System.out.println("========= ELEVEN'S INTERVENTION EVENT HAS STARTED =========");
+                            log.logWrite("GLOBAL EVENT: ELEVEN'S INTERVENTION EVENT HAS STARTED");
                             status.compareAndSet("None", "ELEVEN");
                             
                             if(!log.getPlaying()) log.waitLog();
@@ -101,15 +101,13 @@ public class EventManager extends Thread
                             ese.setStatus();
                             status.compareAndSet("ELEVEN", "None");
                             ese.enableDemos();
-                            System.out.println("========= ELEVEN'S INTERVENTION EVENT HAS FINISHED =========");
+                            log.logWrite("GLOBAL EVENT: ELEVEN'S INTERVENTION EVENT HAS FINISHED");
                         }
 
                         case 3 ->
                         {
-                            System.out.println("========= HIVE MIND EVENT HAS STARTED =========");
-                            
+                            log.logWrite("GLOBAL EVENT: HIVE MIND EVENT HAS STARTED");
                             if(!log.getPlaying()) log.waitLog();
-                            
                             hme.setStatus();
                             status.compareAndSet("None", "HIVEMIND");
                             Thread.sleep((int)((Math.random()*5000)+5000));
@@ -119,7 +117,7 @@ public class EventManager extends Thread
                             
                             hme.setStatus();
                             status.compareAndSet("HIVEMIND", "None");
-                            System.out.println("========= HIVE MIND EVENT HAS FINISHED =========");
+                            log.logWrite("GLOBAL EVENT: HIVE MIND EVENT HAS FINISHED");
                         }
                     }   
                 }
