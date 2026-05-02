@@ -1,9 +1,8 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
-import com.aprog_lab.aprog_pl.Interfaces.Interface1;
+import com.aprog_lab.aprog_pl.Interfaces.Interface1_Server;
 import com.aprog_lab.aprog_pl.threads.Child;
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -13,15 +12,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Safe_Zone
 {
     private final String zone_name;
-    private ArrayList<Child> avail_children;
+    private CopyOnWriteArrayList<Child> avail_children;
     private AtomicInteger bloodCount;
-    private Interface1 ifc;
+    private Interface1_Server ifc;
     private Logger log;
     
-    public Safe_Zone(String name, Interface1 p_ifc, Logger p_log)
+    public Safe_Zone(String name, Interface1_Server p_ifc, Logger p_log)
     {
         zone_name = name;
-        avail_children = new ArrayList<>();                                         // Children actively wandering the zone.
+        avail_children = new CopyOnWriteArrayList<>();                                         // Children actively wandering the zone.
         ifc = p_ifc;
         if(zone_name.equals("WSQK Radio"))                                          // Blood count is initialized only for the WSQK Radio safezone. Otherwise, unused.
         {
@@ -50,7 +49,7 @@ public class Safe_Zone
                 synchronized(this)
                 {
                     avail_children.add(c);
-                    ifc.refreshStats();
+                    ifc.refreshZoneStats();
                     //System.out.println("Child: "+c.getID()+" has entered safezone: "+zone_name);
                 }
             }
@@ -74,7 +73,7 @@ public class Safe_Zone
                 synchronized(this)
                 {
                     avail_children.remove(c);
-                    ifc.refreshStats();
+                    ifc.refreshZoneStats();
                     //System.out.println("Child: "+c.getID()+" has exited safezone: "+zone_name);
                 }
             }
@@ -106,7 +105,7 @@ public class Safe_Zone
     /*
     
     */
-    public ArrayList<Child> getAvailChildren()
+    public CopyOnWriteArrayList<Child> getAvailChildren()
     {
         return avail_children;
     }

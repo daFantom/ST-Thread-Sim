@@ -22,9 +22,9 @@ import javax.swing.DefaultListModel;
  *
  * @author Emanuel Baciu
  */
-public class Interface1 extends javax.swing.JFrame {
+public class Interface1_Server extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interface1.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interface1_Server.class.getName());
     private Unsafe_Zone Forest, Lab, Mall, Sewer, Hive;
     private Safe_Zone ms, bb, radio;
     private Portal p1, p2, p3, p4;
@@ -44,7 +44,7 @@ public class Interface1 extends javax.swing.JFrame {
     /**
      * Creates new form Interface1
      */
-    public Interface1()
+    public Interface1_Server()
     {
         initComponents();
         this.setResizable(false);
@@ -109,8 +109,8 @@ public class Interface1 extends javax.swing.JFrame {
         uz_models_C.add(m12); uz_models_C.add(m13); uz_models_C.add(m14); uz_models_C.add(m15);
         
         uz_models_D.add(m16); uz_models_D.add(m17); uz_models_D.add(m18); uz_models_D.add(m19);
-        
-    // ===================== SAFE AND UNSAFE ZONE INITIALIZATION =====================
+
+// ===================== SAFE AND UNSAFE ZONE INITIALIZATION =====================
         Forest = new Unsafe_Zone("Forest", this, log);
         Lab = new Unsafe_Zone("Laboratory", this, log);
         Mall = new Unsafe_Zone("Shopping Mall", this, log);
@@ -129,6 +129,7 @@ public class Interface1 extends javax.swing.JFrame {
         uz.add(Forest); uz.add(Lab); uz.add(Mall); uz.add(Sewer); uz.add(Hive);
         sz.add(ms); sz.add(bb); sz.add(radio);
         
+        
 // ===================== PORTAL INITIALIZATION =====================
         p1 = new Portal("ForestPortal", bb, Forest, new CyclicBarrier(2), this, log);
         p2 = new Portal("LabPortal", bb, Lab, new CyclicBarrier(3), this, log);
@@ -138,17 +139,17 @@ public class Interface1 extends javax.swing.JFrame {
         // ===================== PORTAL ADDITION =====================
         portals.add(p1); portals.add(p2); portals.add(p3); portals.add(p4);
         
-        // ===================== PORTAL MANAGER =====================
-        new PortalManager(portals, log).start();
-        
 // ===================== EVENT-RELATED OBJECT INITIALIZATION =====================
-        BlackoutEvent be = new BlackoutEvent(portals);
+        BlackoutEvent be = new BlackoutEvent(portals, uz);
         StormEvent se = new StormEvent();
         ElevenSavesEvent ese = new ElevenSavesEvent(uz.get(4));
         HiveMindEvent hme = new HiveMindEvent(uz);
         
         em = new EventManager(be, se, ese, hme, log);
         em.start();
+        
+        // ===================== PORTAL MANAGER =====================
+        new PortalManager(portals, log).start();
 
 // ===================== VECNA CHECKER INITIALIZATION =====================
         VecnaChecker vc = new VecnaChecker(1, uz, se, ese, hme, log);
@@ -194,7 +195,6 @@ public class Interface1 extends javax.swing.JFrame {
         jLabel_LABORATORY = new javax.swing.JLabel();
         jLabel_MALL = new javax.swing.JLabel();
         jLabel_SEWERS = new javax.swing.JLabel();
-        jLabel_PORTALS = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList_MAIN_STREET = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -235,63 +235,98 @@ public class Interface1 extends javax.swing.JFrame {
         jList_CHILDREN_LAB = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
         jTextField_CURRENT_EVENT = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
         jButton_PLAY = new javax.swing.JButton();
         jButton_STOP = new javax.swing.JButton();
+        jLabel_PORTALS = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Epsteins vs Children");
+        setTitle("Epsteins vs Children SERVER");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField_BLOODCOUNT.setEditable(false);
+        jTextField_BLOODCOUNT.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_BLOODCOUNT.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 48)); // NOI18N
+        jTextField_BLOODCOUNT.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_BLOODCOUNT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_BLOODCOUNT.setText("jTextField2");
+        getContentPane().add(jTextField_BLOODCOUNT, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 391, 117, 113));
 
+        jLabel_MAIN_STREET.setBackground(new java.awt.Color(255, 255, 255));
         jLabel_MAIN_STREET.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_MAIN_STREET.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_MAIN_STREET.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_MAIN_STREET.setText("MAIN STREET");
+        getContentPane().add(jLabel_MAIN_STREET, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 50, 135, -1));
 
         jLabel_BAYERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_BAYERS.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_BAYERS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_BAYERS.setText("BYERS BASEMENT");
+        getContentPane().add(jLabel_BAYERS, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 50, 131, -1));
 
+        jLabel_WSQK.setBackground(new java.awt.Color(255, 255, 255));
         jLabel_WSQK.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_WSQK.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_WSQK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_WSQK.setText("RADIO WSQK");
+        getContentPane().add(jLabel_WSQK, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 347, 86, -1));
 
+        jLabel_BLOOD.setBackground(new java.awt.Color(255, 255, 255));
         jLabel_BLOOD.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_BLOOD.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_BLOOD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_BLOOD.setText("BLOOD COUNT");
+        getContentPane().add(jLabel_BLOOD, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 369, 117, -1));
 
         jTextField_HIVE_CAPTURED.setEditable(false);
+        jTextField_HIVE_CAPTURED.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_HIVE_CAPTURED.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jTextField_HIVE_CAPTURED.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_HIVE_CAPTURED.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_HIVE_CAPTURED.setText("jTextField2");
+        jTextField_HIVE_CAPTURED.addActionListener(this::jTextField_HIVE_CAPTUREDActionPerformed);
+        getContentPane().add(jTextField_HIVE_CAPTURED, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 110, 120, 81));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("HIVE CHILDREN");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(851, 90, 120, 20));
 
+        jLabel_FOREST.setBackground(new java.awt.Color(255, 255, 255));
         jLabel_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_FOREST.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_FOREST.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_FOREST.setText("FOREST");
+        getContentPane().add(jLabel_FOREST, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, -1, -1));
 
+        jLabel_LABORATORY.setBackground(new java.awt.Color(255, 255, 255));
         jLabel_LABORATORY.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_LABORATORY.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_LABORATORY.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_LABORATORY.setText("LABORATORY");
+        jLabel_LABORATORY.setText("LAB");
+        getContentPane().add(jLabel_LABORATORY, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 320, -1, -1));
 
+        jLabel_MALL.setBackground(new java.awt.Color(255, 255, 255));
         jLabel_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_MALL.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_MALL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_MALL.setText("MALL");
+        getContentPane().add(jLabel_MALL, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 200, 39, -1));
 
+        jLabel_SEWERS.setBackground(new java.awt.Color(255, 255, 255));
         jLabel_SEWERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_SEWERS.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_SEWERS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_SEWERS.setText("SEWERS");
+        getContentPane().add(jLabel_SEWERS, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 430, 53, -1));
 
-        jLabel_PORTALS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
-        jLabel_PORTALS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_PORTALS.setText("PORTALS");
-
+        jList_MAIN_STREET.setBackground(new java.awt.Color(31, 31, 31));
         jList_MAIN_STREET.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_MAIN_STREET.setForeground(new java.awt.Color(255, 255, 255));
         jList_MAIN_STREET.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -299,7 +334,11 @@ public class Interface1 extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList_MAIN_STREET);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 72, 80, 251));
+
+        jList_BYERS.setBackground(new java.awt.Color(31, 31, 31));
         jList_BYERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_BYERS.setForeground(new java.awt.Color(255, 255, 255));
         jList_BYERS.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -307,7 +346,11 @@ public class Interface1 extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jList_BYERS);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 72, 80, 251));
+
+        jList_WSQK.setBackground(new java.awt.Color(31, 31, 31));
         jList_WSQK.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_WSQK.setForeground(new java.awt.Color(255, 255, 255));
         jList_WSQK.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -315,7 +358,11 @@ public class Interface1 extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jList_WSQK);
 
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 369, 81, 155));
+
+        jList_EXIT_PORTAL_FOREST.setBackground(new java.awt.Color(31, 31, 31));
         jList_EXIT_PORTAL_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_EXIT_PORTAL_FOREST.setForeground(new java.awt.Color(255, 255, 255));
         jList_EXIT_PORTAL_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -323,7 +370,11 @@ public class Interface1 extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(jList_EXIT_PORTAL_FOREST);
 
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 80, 100));
+
+        jList_EXIT_PORTAL_LAB.setBackground(new java.awt.Color(31, 31, 31));
         jList_EXIT_PORTAL_LAB.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_EXIT_PORTAL_LAB.setForeground(new java.awt.Color(255, 255, 255));
         jList_EXIT_PORTAL_LAB.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -331,7 +382,11 @@ public class Interface1 extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(jList_EXIT_PORTAL_LAB);
 
+        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 76, 100));
+
+        jList_ENTER_PORTAL_LAB.setBackground(new java.awt.Color(31, 31, 31));
         jList_ENTER_PORTAL_LAB.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_ENTER_PORTAL_LAB.setForeground(new java.awt.Color(255, 255, 255));
         jList_ENTER_PORTAL_LAB.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -340,7 +395,11 @@ public class Interface1 extends javax.swing.JFrame {
         jList_ENTER_PORTAL_LAB.setAutoscrolls(false);
         jScrollPane6.setViewportView(jList_ENTER_PORTAL_LAB);
 
+        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 76, 100));
+
+        jList_ENTER_PORTAL_MALL.setBackground(new java.awt.Color(31, 31, 31));
         jList_ENTER_PORTAL_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_ENTER_PORTAL_MALL.setForeground(new java.awt.Color(255, 255, 255));
         jList_ENTER_PORTAL_MALL.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -349,7 +408,11 @@ public class Interface1 extends javax.swing.JFrame {
         jList_ENTER_PORTAL_MALL.setAutoscrolls(false);
         jScrollPane7.setViewportView(jList_ENTER_PORTAL_MALL);
 
+        getContentPane().add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 76, 100));
+
+        jList_EXIT_PORTAL_MALL.setBackground(new java.awt.Color(31, 31, 31));
         jList_EXIT_PORTAL_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_EXIT_PORTAL_MALL.setForeground(new java.awt.Color(255, 255, 255));
         jList_EXIT_PORTAL_MALL.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -357,7 +420,11 @@ public class Interface1 extends javax.swing.JFrame {
         });
         jScrollPane8.setViewportView(jList_EXIT_PORTAL_MALL);
 
+        getContentPane().add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 76, 100));
+
+        jList_ENTER_PORTAL_SEWER.setBackground(new java.awt.Color(31, 31, 31));
         jList_ENTER_PORTAL_SEWER.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_ENTER_PORTAL_SEWER.setForeground(new java.awt.Color(255, 255, 255));
         jList_ENTER_PORTAL_SEWER.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -366,7 +433,11 @@ public class Interface1 extends javax.swing.JFrame {
         jList_ENTER_PORTAL_SEWER.setAutoscrolls(false);
         jScrollPane9.setViewportView(jList_ENTER_PORTAL_SEWER);
 
+        getContentPane().add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 76, 100));
+
+        jList_ENTER_PORTAL_FOREST.setBackground(new java.awt.Color(31, 31, 31));
         jList_ENTER_PORTAL_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_ENTER_PORTAL_FOREST.setForeground(new java.awt.Color(255, 255, 255));
         jList_ENTER_PORTAL_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -375,7 +446,11 @@ public class Interface1 extends javax.swing.JFrame {
         jList_ENTER_PORTAL_FOREST.setAutoscrolls(false);
         jScrollPane10.setViewportView(jList_ENTER_PORTAL_FOREST);
 
+        getContentPane().add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 80, 100));
+
+        jList_EXIT_PORTAL_SEWER.setBackground(new java.awt.Color(31, 31, 31));
         jList_EXIT_PORTAL_SEWER.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_EXIT_PORTAL_SEWER.setForeground(new java.awt.Color(255, 255, 255));
         jList_EXIT_PORTAL_SEWER.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -383,7 +458,11 @@ public class Interface1 extends javax.swing.JFrame {
         });
         jScrollPane11.setViewportView(jList_EXIT_PORTAL_SEWER);
 
+        getContentPane().add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 76, 100));
+
+        jList_DEMOS_FOREST.setBackground(new java.awt.Color(31, 31, 31));
         jList_DEMOS_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_DEMOS_FOREST.setForeground(new java.awt.Color(255, 255, 255));
         jList_DEMOS_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -392,7 +471,11 @@ public class Interface1 extends javax.swing.JFrame {
         jList_DEMOS_FOREST.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane12.setViewportView(jList_DEMOS_FOREST);
 
+        getContentPane().add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, 78, 98));
+
+        jList_DEMOS_LAB.setBackground(new java.awt.Color(31, 31, 31));
         jList_DEMOS_LAB.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_DEMOS_LAB.setForeground(new java.awt.Color(255, 255, 255));
         jList_DEMOS_LAB.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -401,7 +484,11 @@ public class Interface1 extends javax.swing.JFrame {
         jList_DEMOS_LAB.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane13.setViewportView(jList_DEMOS_LAB);
 
+        getContentPane().add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 78, 101));
+
+        jList_CHILDREN_MALL.setBackground(new java.awt.Color(31, 31, 31));
         jList_CHILDREN_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_CHILDREN_MALL.setForeground(new java.awt.Color(255, 255, 255));
         jList_CHILDREN_MALL.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -410,7 +497,11 @@ public class Interface1 extends javax.swing.JFrame {
         jList_CHILDREN_MALL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane15.setViewportView(jList_CHILDREN_MALL);
 
+        getContentPane().add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 76, 99));
+
+        jList_DEMOS_MALL.setBackground(new java.awt.Color(31, 31, 31));
         jList_DEMOS_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_DEMOS_MALL.setForeground(new java.awt.Color(255, 255, 255));
         jList_DEMOS_MALL.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -419,7 +510,11 @@ public class Interface1 extends javax.swing.JFrame {
         jList_DEMOS_MALL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane16.setViewportView(jList_DEMOS_MALL);
 
+        getContentPane().add(jScrollPane16, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 78, 100));
+
+        jList_CHILDREN_SEWERS.setBackground(new java.awt.Color(31, 31, 31));
         jList_CHILDREN_SEWERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_CHILDREN_SEWERS.setForeground(new java.awt.Color(255, 255, 255));
         jList_CHILDREN_SEWERS.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -428,7 +523,11 @@ public class Interface1 extends javax.swing.JFrame {
         jList_CHILDREN_SEWERS.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane17.setViewportView(jList_CHILDREN_SEWERS);
 
+        getContentPane().add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 77, 100));
+
+        jList_DEMOS_SEWERS.setBackground(new java.awt.Color(31, 31, 31));
         jList_DEMOS_SEWERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_DEMOS_SEWERS.setForeground(new java.awt.Color(255, 255, 255));
         jList_DEMOS_SEWERS.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -437,7 +536,11 @@ public class Interface1 extends javax.swing.JFrame {
         jList_DEMOS_SEWERS.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane18.setViewportView(jList_DEMOS_SEWERS);
 
+        getContentPane().add(jScrollPane18, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, 77, 100));
+
+        jList_CHILDREN_FOREST.setBackground(new java.awt.Color(31, 31, 31));
         jList_CHILDREN_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_CHILDREN_FOREST.setForeground(new java.awt.Color(255, 255, 255));
         jList_CHILDREN_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -446,7 +549,11 @@ public class Interface1 extends javax.swing.JFrame {
         jList_CHILDREN_FOREST.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane19.setViewportView(jList_CHILDREN_FOREST);
 
+        getContentPane().add(jScrollPane19, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 76, 98));
+
+        jList_CHILDREN_LAB.setBackground(new java.awt.Color(31, 31, 31));
         jList_CHILDREN_LAB.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_CHILDREN_LAB.setForeground(new java.awt.Color(255, 255, 255));
         jList_CHILDREN_LAB.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -455,198 +562,68 @@ public class Interface1 extends javax.swing.JFrame {
         jList_CHILDREN_LAB.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane20.setViewportView(jList_CHILDREN_LAB);
 
+        getContentPane().add(jScrollPane20, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 76, 101));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CURRENT EVENT");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(851, 270, 120, -1));
 
         jTextField_CURRENT_EVENT.setEditable(false);
+        jTextField_CURRENT_EVENT.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_CURRENT_EVENT.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jTextField_CURRENT_EVENT.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_CURRENT_EVENT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_CURRENT_EVENT.setText("jTextField1");
         jTextField_CURRENT_EVENT.addActionListener(this::jTextField_CURRENT_EVENTActionPerformed);
+        getContentPane().add(jTextField_CURRENT_EVENT, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 290, 120, 80));
+
+        jPanel1.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton_PLAY.setText("PLAY");
+        jButton_PLAY.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton_PLAYMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton_PLAYMouseExited(evt);
+            }
+        });
         jButton_PLAY.addActionListener(this::jButton_PLAYActionPerformed);
+        jPanel1.add(jButton_PLAY, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, -1, -1));
 
         jButton_STOP.setText("STOP");
         jButton_STOP.addActionListener(this::jButton_STOPActionPerformed);
+        jPanel1.add(jButton_STOP, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 520, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel_MAIN_STREET, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel_BAYERS, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(138, 138, 138)
-                        .addComponent(jLabel_PORTALS, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_WSQK, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel_BLOOD, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_BLOODCOUNT, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jButton_PLAY)))
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(jButton_STOP)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(1, 1, 1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(90, 90, 90)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel_FOREST)
-                                .addGap(39, 39, 39)
-                                .addComponent(jTextField_HIVE_CAPTURED, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel_MALL, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(90, 90, 90)
-                                .addComponent(jTextField_CURRENT_EVENT, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel_LABORATORY))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel_SEWERS, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_MAIN_STREET)
-                    .addComponent(jLabel_BAYERS)
-                    .addComponent(jLabel_PORTALS))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel_WSQK)
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel_BLOOD)
-                        .addGap(6, 6, 6)
-                        .addComponent(jTextField_BLOODCOUNT, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_FOREST)
-                            .addComponent(jTextField_HIVE_CAPTURED, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_MALL)
-                            .addComponent(jLabel2))
-                        .addGap(4, 4, 4)
-                        .addComponent(jTextField_CURRENT_EVENT, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel_LABORATORY)
-                        .addGap(109, 109, 109)
-                        .addComponent(jLabel_SEWERS))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(8, 8, 8)
-                                        .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton_PLAY)
-                            .addComponent(jButton_STOP))))
-                .addContainerGap(48, Short.MAX_VALUE))
-        );
+        jLabel_PORTALS.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_PORTALS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_PORTALS.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_PORTALS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_PORTALS.setText("PORTALS");
+        jPanel1.add(jLabel_PORTALS, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 71, -1));
+
+        jLabel3.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("UNSAFE ZONES");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 150, -1));
+
+        jLabel4.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("CHILDREN");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 40, 70, 20));
+
+        jLabel5.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("DEMOGORGONS");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(641, 40, 80, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -664,6 +641,18 @@ public class Interface1 extends javax.swing.JFrame {
     private void jTextField_CURRENT_EVENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_CURRENT_EVENTActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_CURRENT_EVENTActionPerformed
+
+    private void jTextField_HIVE_CAPTUREDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_HIVE_CAPTUREDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_HIVE_CAPTUREDActionPerformed
+
+    private void jButton_PLAYMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_PLAYMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_PLAYMouseEntered
+
+    private void jButton_PLAYMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_PLAYMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_PLAYMouseExited
 
     /**
      * @param args the command line arguments
@@ -688,7 +677,7 @@ public class Interface1 extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Interface1().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Interface1_Server().setVisible(true));
     }
     
     /*
@@ -705,13 +694,21 @@ public class Interface1 extends javax.swing.JFrame {
                     exit_portal_models.get(i).clear();
                     CopyOnWriteArrayList<Child> enteringChildren = portals.get(i).getEntering();
                     CopyOnWriteArrayList<Child> leavingChildren = portals.get(i).getLeaving();
-                    for(int j=0;j<enteringChildren.size();j++)
+                    
+                    if(!enteringChildren.isEmpty())
                     {
-                        enter_portal_models.get(i).add(j, enteringChildren.get(j).getID());
+                        for(int j=0;j<enteringChildren.size();j++)
+                        {
+                            enter_portal_models.get(i).add(j, enteringChildren.get(j).getID());
+                        }
                     }
-                    for(int k=0;k<leavingChildren.size();k++)
+                    
+                    if(!leavingChildren.isEmpty())
                     {
-                        exit_portal_models.get(i).add(k, leavingChildren.get(k).getID());
+                        for(int k=0;k<leavingChildren.size();k++)
+                        {
+                            exit_portal_models.get(i).add(k, leavingChildren.get(k).getID());
+                        }
                     }
                 }
             }
@@ -727,7 +724,8 @@ public class Interface1 extends javax.swing.JFrame {
             }
         );
     }
-    public void refreshStats()
+   
+    public void refreshZoneStats()
     {
         java.awt.EventQueue.invokeLater(() ->
             {
@@ -735,33 +733,37 @@ public class Interface1 extends javax.swing.JFrame {
                 {
                     uz_models_C.get(i).clear();
                     CopyOnWriteArrayList<Child> avail_children = uz.get(i).getAvailChildren();
-                    for(int j=0;j<avail_children.size();j++)
+                    if(!avail_children.isEmpty())
                     {
-                        uz_models_C.get(i).add(j, avail_children.get(j).getID());
+                        for(int j=0;j<avail_children.size();j++)
+                        {
+                            uz_models_C.get(i).add(j, avail_children.get(j).getID());
+                        }   
                     }
-
                 }
                 
                 for(int i=0;i<uz_models_D.size();i++)
                 {
                     uz_models_D.get(i).clear();
                     CopyOnWriteArrayList<Demogorgon> avail_demos = uz.get(i).getAvailDemos();
-                    for(int j=0; j<avail_demos.size();j++)
+                    if(!avail_demos.isEmpty())
                     {
-                        uz_models_D.get(i).add(j, avail_demos.get(j).getID());
+                        for(int j=0; j<avail_demos.size();j++)
+                        {
+                            uz_models_D.get(i).add(j, avail_demos.get(j).getID());
+                        }   
                     }
                 }
                 
                 for(int i=0;i<sz_models_C.size();i++)
                 {
                     sz_models_C.get(i).clear();
-                    ArrayList<Child> avail_children = sz.get(i).getAvailChildren();
+                    CopyOnWriteArrayList<Child> avail_children = sz.get(i).getAvailChildren();
                     for(int j=0; j<avail_children.size();j++)
                     {
                         sz_models_C.get(i).add(j, avail_children.get(j).getID());
                     }
                 }
-                
                 jTextField_CURRENT_EVENT.setText(em.getStatus());
             }
         );
@@ -772,6 +774,9 @@ public class Interface1 extends javax.swing.JFrame {
     private javax.swing.JButton jButton_STOP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_BAYERS;
     private javax.swing.JLabel jLabel_BLOOD;
     private javax.swing.JLabel jLabel_FOREST;
@@ -800,6 +805,7 @@ public class Interface1 extends javax.swing.JFrame {
     private javax.swing.JList<String> jList_EXIT_PORTAL_SEWER;
     private javax.swing.JList<String> jList_MAIN_STREET;
     private javax.swing.JList<String> jList_WSQK;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;

@@ -62,36 +62,41 @@ public class Demogorgon extends Thread
                         }
                         actual_uz.enterUZDemo(this);
                         // Attacking start
-                        if(actual_uz.hasChildren() && !elevenEvent.getStatus())
+                        if(actual_uz.getBlocked())
                         {
-                            //System.out.println("Children detected");                      // DEBUG
-                            double prob = Math.random();
-                            if(storm.isStorm()&&!elevenEvent.getStatus())
+                            while(actual_uz.getBlocked())
                             {
-                                //System.out.println("Storm active: halving attack time ratio");    // DEBUG
-                                attack_time = (int)(((Math.random()*1000)+500)/2);
+                                if(actual_uz.hasChildren() && !elevenEvent.getStatus())
+                                {
+                                    if(performAttackChild(actual_uz))
+                                    {
+                                        Thread.sleep((int)((Math.random()*500)+500));
+                                        child_counter++;
+                                        total_counter++;
+                                        vc.spawnDemo(this, child_counter);
+                                    }
+                                }
                             }
-                            else
-                            {
-                                attack_time = (int)((Math.random()*1000)+500);
-                            }
-                            Thread.sleep(attack_time);                  // Attacking
-                            if(actual_uz.attackChild(prob, this) && !elevenEvent.getStatus())
-                            {
-                                //System.out.println("Child attacked");                     // DEBUG
-                                Thread.sleep((int)((Math.random()*500)+500));
-                                child_counter++;
-                                total_counter++;
-                                vc.spawnDemo(this, child_counter);
-                            }
-
-                            // Failed otherwise
                             actual_uz.exitUZDemo(this);
                         }
                         else
                         {
-                            Thread.sleep((int)( (Math.random()*1000) + 4000 ));             // If there are no children, wanders around and eventually to another UZ.
-                            actual_uz.exitUZDemo(this);
+                            if(actual_uz.hasChildren() && !elevenEvent.getStatus())
+                            {
+                                if(performAttackChild(actual_uz))
+                                {
+                                    Thread.sleep((int)((Math.random()*500)+500));
+                                    child_counter++;
+                                    total_counter++;
+                                    vc.spawnDemo(this, child_counter);
+                                }
+                                actual_uz.exitUZDemo(this);
+                            }
+                            else
+                            {
+                                Thread.sleep((int)( (Math.random()*1000) + 4000 ));             // If there are no children, wanders around and eventually to another UZ.
+                                actual_uz.exitUZDemo(this);
+                            }
                         }
                     }
                     else
@@ -134,5 +139,39 @@ public class Demogorgon extends Thread
     public int getLocalCaptured()
     {
         return child_counter;
+    }
+    
+    public boolean performAttackChild(Unsafe_Zone actual_uz)
+    {
+        boolean done = false;
+        try
+        {
+                //System.out.println("Children detected");                      // DEBUG
+                double prob = Math.random();
+                if(storm.isStorm() && !elevenEvent.getStatus())
+                {
+                    //System.out.println("Storm active: halving attack time ratio");    // DEBUG
+                    attack_time = (int)(((Math.random()*1000)+500)/2);
+                }
+                else
+                {
+                    attack_time = (int)((Math.random()*1000)+500);
+                }
+                Thread.sleep(attack_time);                  // Attacking                
+                if(actual_uz.attackChild(prob, this) && !elevenEvent.getStatus())
+                {
+                    //System.out.println("Child attacked");                     // DEBUG
+                    done=true;
+                }
+                else
+                {
+                    done = false;
+                }
+        }
+        catch(InterruptedException ie)
+        {
+            System.out.println("IE at Demogorgon->performAttackChild()");
+        }
+        return done;
     }
 }

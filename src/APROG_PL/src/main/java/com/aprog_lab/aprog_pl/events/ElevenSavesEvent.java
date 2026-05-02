@@ -19,7 +19,7 @@ public class ElevenSavesEvent {
     */
     public void saveChild()
     {
-        hive.capture("Eleven");
+        hive.save();
     }
     /*
     

@@ -73,11 +73,12 @@ public class Child extends Thread {
                             goToHive(this, selected_portal);
                             removeAttacked();
                         }
+                        else
+                        {
+                            uz.get(selected_portal).exitUZChild(this);
+                            portals.get(selected_portal).enterPortalQueue(this, status);
+                        }
 // ===================================== Exiting and deploying blood mechanism ===================
-                        uz.get(selected_portal).exitUZChild(this);
-                        portals.get(selected_portal).enterPortalQueue(this, status);
-//                      sz.get(0).enterSafeZone(this);                                            // Return to Hawking Street.
-//                      sz.get(0).exitSafeZone(this);
                         sz.get(2).enterSafeZone(this);                                          // { Returns to WSQK Radio
                         sz.get(2).incrementBloodCount();                                        // { to deposit the collected blood
                         if(storm.isStorm())
@@ -129,13 +130,14 @@ public class Child extends Thread {
     
     public void goToHive(Child c, int portal)
     {
+        Unsafe_Zone hive = uz.get(4);
         try
         {
-            uz.get(portal).exitUZChild(this);                        
-            uz.get(4).enterUZChild(this);
+            uz.get(portal).exitUZChild(c);                        
+            hive.enterUZChild(c);
             Thread.sleep((int)((Math.random()*500)+500));                     // Getting carried to the HIVE (simulation)
             status = "Entering";
-            uz.get(4).capture(id);
+            hive.capture(id);
         }
         catch(InterruptedException ie)
         {

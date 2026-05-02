@@ -1,10 +1,10 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
-import com.aprog_lab.aprog_pl.Interfaces.Interface1;
+import com.aprog_lab.aprog_pl.Interfaces.Interface1_Server;
 import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.Child;
-import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -17,13 +17,15 @@ public class Unsafe_Zone
     private CopyOnWriteArrayList<Child> avail_children;
     private CopyOnWriteArrayList<Demogorgon> avail_demos;
     private AtomicInteger captured;
-    private Interface1 ifc;
+    private Interface1_Server ifc;
     private Logger log;
+    private AtomicBoolean labBlackout;
     
-    public Unsafe_Zone(String name, Interface1 p_ifc, Logger p_log)
+    public Unsafe_Zone(String name, Interface1_Server p_ifc, Logger p_log)
     {
         ifc = p_ifc;
         zone_name = name;
+        labBlackout = new AtomicBoolean(false);
         avail_children = new CopyOnWriteArrayList<>();
         avail_demos = new CopyOnWriteArrayList<>();
         if(zone_name.equals("HIVE"))
@@ -46,7 +48,7 @@ public class Unsafe_Zone
                 if(!avail_children.contains(c))
                 {
                     avail_children.add(c);
-                    ifc.refreshStats();
+                    ifc.refreshZoneStats();
                     //System.out.println("Child: "+c.getID()+" has entered unsafe zone: "+zone_name);  
                 } 
             }
@@ -70,7 +72,7 @@ public class Unsafe_Zone
                 if(!avail_demos.contains(d))
                 {
                     avail_demos.add(d);
-                    ifc.refreshStats();
+                    ifc.refreshZoneStats();
                     //System.out.println("Demogorgon: "+d.getID()+" has entered unsafe zone: "+zone_name);  
                 }
             }
@@ -96,7 +98,7 @@ public class Unsafe_Zone
                 if(avail_children.contains(c))
                 {
                     avail_children.remove(c);
-                    ifc.refreshStats();
+                    ifc.refreshZoneStats();
                     //System.out.println("Child: "+c.getID()+" has exited unsafe zone: "+zone_name);
                 }  
             }
@@ -120,8 +122,8 @@ public class Unsafe_Zone
                 if(avail_demos.contains(d))
                 {
                     avail_demos.remove(d);
-                    ifc.refreshStats();
-                    //System.out.println("Demogorgon: "+d.getID()+" has exited unsafe zone: "+zone_name);   
+                    ifc.refreshZoneStats();
+                    //System.out.println("Demogorgon: "+d.getID()+" has exited unsafe zone: "+zone_name);    
                 }    
             } 
         }
@@ -154,37 +156,34 @@ public class Unsafe_Zone
             {
                 int selected_child = (int) (Math.random() * avail_children.size());
                 Child target = avail_children.get(selected_child);
-                if(p<=0.3333333 && !target.isAttacked())
+                if(p<=0.33333333333 && !target.isAttacked())
                 {
                     hasAttacked = true;
                     target.gotAttacked();
                     log.logWrite("Demogorgon "+d.getID()+" attacked child "+target.getID()+". (captures: "+d.getLocalCaptured()+")");
-                    return hasAttacked;
                 }
                 else if(target.isAttacked())
                 {
                     //System.out.println("CHILD: "+target.getID()+" ALREADY ATTACKED");     // DEBUG
                     hasAttacked = false;
-                    return hasAttacked;
                 }
                 else
                 {
                     //System.out.println("MISSED ATTACK ON CHILD: "+target.getID());        // DEBUG
                     hasAttacked = false;
-                    return hasAttacked;
                 }   
             }
             else
             {
-                return hasAttacked;
+                hasAttacked= false;
             }
         }
         else
         {
             log.waitLog();
-            return hasAttacked;
+            hasAttacked = false;
         }  
-
+        return hasAttacked;
     }
     
     /* Method used by children and EventManager
@@ -192,34 +191,33 @@ public class Unsafe_Zone
     */
     public void capture(String id)
     {
-        if(!id.equals("Eleven"))
-        {
-            try
-            {
-                captured.incrementAndGet();
-                synchronized(this)
-                {
-                    ifc.refreshCounters();
-                    log.logWrite("Child: "+id+" has been captured");
-                    wait();
-                    log.logWrite("Child: "+id+" has been released");
-                }
-            }
-            catch(InterruptedException ie)
-            {
-                System.out.println("IE at Unsafe_zone->capture()");
-            }
-        }
-        else
+        try
         {
             synchronized(this)
             {
-                if(captured.get()>0)
-                {
-                    captured.decrementAndGet();
-                    notify();
-                    ifc.refreshCounters();
-                }
+                captured.incrementAndGet();
+                ifc.refreshCounters();
+                System.out.println("Child: "+id+" has been captured");
+                log.logWrite("Child: "+id+" has been captured");
+                wait();
+                log.logWrite("Child: "+id+" has been released");
+            }
+        }
+        catch(InterruptedException ie)
+        {
+            System.out.println("IE at Unsafe_zone->capture()");
+        }
+    }
+    
+    public void save()
+    {
+        synchronized(this)
+        {
+            if(captured.get()>0)
+            {
+                captured.decrementAndGet();
+                notify();
+                ifc.refreshCounters();
             }
         }
     }
@@ -273,6 +271,21 @@ public class Unsafe_Zone
     public int getCapturedChildren()
     {
         return captured.get();
+    }
+    
+    public void disableUnsafeZonesDemos()
+    {
+        labBlackout.compareAndSet(false, true);
+    }
+    
+    public void enableUnsafeZonesDemos()
+    {
+        labBlackout.compareAndSet(true, false);
+    }
+    
+    public boolean getBlocked()
+    {
+        return labBlackout.get();
     }
     
 }

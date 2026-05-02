@@ -8,14 +8,14 @@ package com.aprog_lab.aprog_pl.Interfaces;
  *
  * @author Emanuel Baciu
  */
-public class Interface2 extends javax.swing.JFrame {
+public class Interface2_Client extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interface2.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interface2_Client.class.getName());
 
     /**
      * Creates new form Interface2
      */
-    public Interface2() {
+    public Interface2_Client() {
         initComponents();
     }
 
@@ -28,21 +28,447 @@ public class Interface2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel_HAWKINGS_SUMMARY = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel_HAWKINGS_TOTAL_CHILDREN = new javax.swing.JLabel();
+        jTextField_TOTAL_CHILDREN_AMOUNT = new javax.swing.JTextField();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel3_PORTAL_STATUS_AREA = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel_PORTAL1_STATUS = new javax.swing.JLabel();
+        jLabel_PORTAL2_STATUS = new javax.swing.JLabel();
+        jLabel_PORTAL3_STATUS = new javax.swing.JLabel();
+        jLabel_PORTAL4_STATUS = new javax.swing.JLabel();
+        jTextField_PORTAL1_STATUS = new javax.swing.JTextField();
+        jTextField_PORTAL2_STATUS = new javax.swing.JTextField();
+        jTextField_PORTAL3_STATUS = new javax.swing.JTextField();
+        jTextField_PORTAL4_STATUS = new javax.swing.JTextField();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel_UPSIDE_DOWN_STATUS = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel_CHILDREN_LOCATIONS = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel_FOREST_LOCATIONS_C = new javax.swing.JLabel();
+        jLabel_LAB_LOCATIONS_C = new javax.swing.JLabel();
+        jLabel_MALL_LOCATIONS_C = new javax.swing.JLabel();
+        jLabel_SEWERS_LOCATIONS_C = new javax.swing.JLabel();
+        jTextField_LOCATIONS_SEWERS_C = new javax.swing.JTextField();
+        jTextField_LOCATIONS_FOREST_C = new javax.swing.JTextField();
+        jTextField_LOCATIONS_LAB_C = new javax.swing.JTextField();
+        jTextField_LOCATIONS_MALL_C = new javax.swing.JTextField();
+        jPanel14 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel_DEMOS_LOCATIONS = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel_SEWERS_LOCATIONS_D = new javax.swing.JLabel();
+        jLabel_MALL_LOCATIONS_D = new javax.swing.JLabel();
+        jLabel_LAB_LOCATIONS_D = new javax.swing.JLabel();
+        jLabel_FOREST_LOCATIONS_D = new javax.swing.JLabel();
+        jTextField_LOCATIONS_SEWERS_D = new javax.swing.JTextField();
+        jTextField_LOCATIONS_MALL_D = new javax.swing.JTextField();
+        jTextField_LOCATIONS_LAB_D = new javax.swing.JTextField();
+        jTextField_LOCATIONS_FOREST_D = new javax.swing.JTextField();
+        jPanel15 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel_DEMO_RANKINGS = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField_DEMO_RANK1 = new javax.swing.JTextField();
+        jTextField_DEMO_RANK2 = new javax.swing.JTextField();
+        jTextField_DEMO_RANK3 = new javax.swing.JTextField();
+        jPanel17 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField_CURRENT_EVENT = new javax.swing.JTextField();
+        jButton_STOP_RESUME = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Epsteins vs Childrens CLIENT");
+
+        jPanel1.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_HAWKINGS_SUMMARY.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel_HAWKINGS_SUMMARY.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_HAWKINGS_SUMMARY.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_HAWKINGS_SUMMARY.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_HAWKINGS_SUMMARY.setText("HAWKINGS SUMMARY");
+        jPanel3.add(jLabel_HAWKINGS_SUMMARY, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 20));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 140, 20));
+
+        jPanel2.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 51)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBackground(new java.awt.Color(0, 102, 51));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_HAWKINGS_TOTAL_CHILDREN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_HAWKINGS_TOTAL_CHILDREN.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_HAWKINGS_TOTAL_CHILDREN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_HAWKINGS_TOTAL_CHILDREN.setText("TOTAL CHILDREN IN HAWKINGS");
+        jPanel4.add(jLabel_HAWKINGS_TOTAL_CHILDREN, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 6, 190, -1));
+
+        jTextField_TOTAL_CHILDREN_AMOUNT.setEditable(false);
+        jTextField_TOTAL_CHILDREN_AMOUNT.setBackground(new java.awt.Color(0, 102, 51));
+        jTextField_TOTAL_CHILDREN_AMOUNT.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTextField_TOTAL_CHILDREN_AMOUNT.setForeground(new java.awt.Color(204, 0, 0));
+        jTextField_TOTAL_CHILDREN_AMOUNT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_TOTAL_CHILDREN_AMOUNT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0)));
+        jTextField_TOTAL_CHILDREN_AMOUNT.setCaretColor(new java.awt.Color(204, 0, 0));
+        jPanel4.add(jTextField_TOTAL_CHILDREN_AMOUNT, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 90, 60));
+
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 100));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 240, 120));
+
+        jPanel6.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3_PORTAL_STATUS_AREA.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3_PORTAL_STATUS_AREA.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3_PORTAL_STATUS_AREA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3_PORTAL_STATUS_AREA.setText("PORTAL STATUS (CHILDREN)");
+        jPanel6.add(jLabel3_PORTAL_STATUS_AREA, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 4, 190, -1));
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 200, 20));
+
+        jPanel5.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 51)));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_PORTAL1_STATUS.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel_PORTAL1_STATUS.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_PORTAL1_STATUS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_PORTAL1_STATUS.setText("FOREST PORTAL");
+        jPanel5.add(jLabel_PORTAL1_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 110, 20));
+
+        jLabel_PORTAL2_STATUS.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel_PORTAL2_STATUS.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_PORTAL2_STATUS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_PORTAL2_STATUS.setText("LAB PORTAL");
+        jPanel5.add(jLabel_PORTAL2_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 90, 30));
+
+        jLabel_PORTAL3_STATUS.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel_PORTAL3_STATUS.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_PORTAL3_STATUS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_PORTAL3_STATUS.setText("MALL PORTAL");
+        jPanel5.add(jLabel_PORTAL3_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 100, 30));
+
+        jLabel_PORTAL4_STATUS.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel_PORTAL4_STATUS.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_PORTAL4_STATUS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_PORTAL4_STATUS.setText("SEWER PORTAL");
+        jPanel5.add(jLabel_PORTAL4_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 110, 20));
+
+        jTextField_PORTAL1_STATUS.setEditable(false);
+        jTextField_PORTAL1_STATUS.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_PORTAL1_STATUS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL1_STATUS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
+        jPanel5.add(jTextField_PORTAL1_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 40, 80, 30));
+
+        jTextField_PORTAL2_STATUS.setEditable(false);
+        jTextField_PORTAL2_STATUS.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_PORTAL2_STATUS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL2_STATUS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
+        jPanel5.add(jTextField_PORTAL2_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 90, 80, 30));
+
+        jTextField_PORTAL3_STATUS.setEditable(false);
+        jTextField_PORTAL3_STATUS.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_PORTAL3_STATUS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL3_STATUS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
+        jTextField_PORTAL3_STATUS.addActionListener(this::jTextField_PORTAL3_STATUSActionPerformed);
+        jPanel5.add(jTextField_PORTAL3_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 140, 80, 30));
+
+        jTextField_PORTAL4_STATUS.setEditable(false);
+        jTextField_PORTAL4_STATUS.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_PORTAL4_STATUS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL4_STATUS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
+        jPanel5.add(jTextField_PORTAL4_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 190, 80, 30));
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 240, 240));
+
+        jPanel8.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_UPSIDE_DOWN_STATUS.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel_UPSIDE_DOWN_STATUS.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_UPSIDE_DOWN_STATUS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_UPSIDE_DOWN_STATUS.setText("UPSIDE  DOWN  STATUS");
+        jPanel8.add(jLabel_UPSIDE_DOWN_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 40));
+
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 240, 40));
+
+        jPanel7.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 51)));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel11.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_CHILDREN_LOCATIONS.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel_CHILDREN_LOCATIONS.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_CHILDREN_LOCATIONS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_CHILDREN_LOCATIONS.setText("LOCATIONS (C)");
+        jPanel11.add(jLabel_CHILDREN_LOCATIONS, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 100, 20));
+
+        jPanel7.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 110, -1));
+
+        jPanel9.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 51)));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel12.setBackground(new java.awt.Color(31, 31, 31));
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 110, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        jPanel9.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -10, 110, 20));
+
+        jLabel_FOREST_LOCATIONS_C.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_FOREST_LOCATIONS_C.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_FOREST_LOCATIONS_C.setText("FOREST");
+        jPanel9.add(jLabel_FOREST_LOCATIONS_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        jLabel_LAB_LOCATIONS_C.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_LAB_LOCATIONS_C.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_LAB_LOCATIONS_C.setText("LAB");
+        jPanel9.add(jLabel_LAB_LOCATIONS_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+
+        jLabel_MALL_LOCATIONS_C.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_MALL_LOCATIONS_C.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_MALL_LOCATIONS_C.setText("MALL");
+        jPanel9.add(jLabel_MALL_LOCATIONS_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        jLabel_SEWERS_LOCATIONS_C.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_SEWERS_LOCATIONS_C.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_SEWERS_LOCATIONS_C.setText("SEWERS");
+        jPanel9.add(jLabel_SEWERS_LOCATIONS_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+
+        jTextField_LOCATIONS_SEWERS_C.setEditable(false);
+        jTextField_LOCATIONS_SEWERS_C.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_LOCATIONS_SEWERS_C.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_LOCATIONS_SEWERS_C.setText("jTextField1");
+        jTextField_LOCATIONS_SEWERS_C.setBorder(null);
+        jPanel9.add(jTextField_LOCATIONS_SEWERS_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 50, 40));
+
+        jTextField_LOCATIONS_FOREST_C.setEditable(false);
+        jTextField_LOCATIONS_FOREST_C.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_LOCATIONS_FOREST_C.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_LOCATIONS_FOREST_C.setText("jTextField1");
+        jTextField_LOCATIONS_FOREST_C.setBorder(null);
+        jPanel9.add(jTextField_LOCATIONS_FOREST_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 46, 50, 40));
+
+        jTextField_LOCATIONS_LAB_C.setEditable(false);
+        jTextField_LOCATIONS_LAB_C.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_LOCATIONS_LAB_C.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_LOCATIONS_LAB_C.setText("jTextField1");
+        jTextField_LOCATIONS_LAB_C.setBorder(null);
+        jPanel9.add(jTextField_LOCATIONS_LAB_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 50, 40));
+
+        jTextField_LOCATIONS_MALL_C.setEditable(false);
+        jTextField_LOCATIONS_MALL_C.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_LOCATIONS_MALL_C.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_LOCATIONS_MALL_C.setText("jTextField1");
+        jTextField_LOCATIONS_MALL_C.setBorder(null);
+        jPanel9.add(jTextField_LOCATIONS_MALL_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 50, 40));
+
+        jPanel14.setBackground(new java.awt.Color(0, 102, 51));
+        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel9.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 280));
+
+        jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 49, 150, 300));
+
+        jPanel13.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_DEMOS_LOCATIONS.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel_DEMOS_LOCATIONS.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_DEMOS_LOCATIONS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_DEMOS_LOCATIONS.setText("LOCATIONS (D)");
+        jPanel13.add(jLabel_DEMOS_LOCATIONS, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 0, 100, 20));
+
+        jPanel7.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 110, -1));
+
+        jPanel10.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 51)));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_SEWERS_LOCATIONS_D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_SEWERS_LOCATIONS_D.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_SEWERS_LOCATIONS_D.setText("SEWERS");
+        jPanel10.add(jLabel_SEWERS_LOCATIONS_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+
+        jLabel_MALL_LOCATIONS_D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_MALL_LOCATIONS_D.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_MALL_LOCATIONS_D.setText("MALL");
+        jPanel10.add(jLabel_MALL_LOCATIONS_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        jLabel_LAB_LOCATIONS_D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_LAB_LOCATIONS_D.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_LAB_LOCATIONS_D.setText("LAB");
+        jPanel10.add(jLabel_LAB_LOCATIONS_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+
+        jLabel_FOREST_LOCATIONS_D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_FOREST_LOCATIONS_D.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_FOREST_LOCATIONS_D.setText("FOREST");
+        jPanel10.add(jLabel_FOREST_LOCATIONS_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        jTextField_LOCATIONS_SEWERS_D.setEditable(false);
+        jTextField_LOCATIONS_SEWERS_D.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_LOCATIONS_SEWERS_D.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_LOCATIONS_SEWERS_D.setText("jTextField1");
+        jTextField_LOCATIONS_SEWERS_D.setBorder(null);
+        jPanel10.add(jTextField_LOCATIONS_SEWERS_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 50, 40));
+
+        jTextField_LOCATIONS_MALL_D.setEditable(false);
+        jTextField_LOCATIONS_MALL_D.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_LOCATIONS_MALL_D.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_LOCATIONS_MALL_D.setText("jTextField1");
+        jTextField_LOCATIONS_MALL_D.setBorder(null);
+        jPanel10.add(jTextField_LOCATIONS_MALL_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 50, 40));
+
+        jTextField_LOCATIONS_LAB_D.setEditable(false);
+        jTextField_LOCATIONS_LAB_D.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_LOCATIONS_LAB_D.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_LOCATIONS_LAB_D.setText("jTextField1");
+        jTextField_LOCATIONS_LAB_D.setBorder(null);
+        jPanel10.add(jTextField_LOCATIONS_LAB_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 50, 40));
+
+        jTextField_LOCATIONS_FOREST_D.setEditable(false);
+        jTextField_LOCATIONS_FOREST_D.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_LOCATIONS_FOREST_D.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_LOCATIONS_FOREST_D.setText("jTextField1");
+        jTextField_LOCATIONS_FOREST_D.setBorder(null);
+        jPanel10.add(jTextField_LOCATIONS_FOREST_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 46, 50, 40));
+
+        jPanel15.setBackground(new java.awt.Color(0, 102, 51));
+        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel10.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 280));
+
+        jPanel7.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 150, 300));
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 400, 370));
+
+        jPanel16.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 51)));
+        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_DEMO_RANKINGS.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel_DEMO_RANKINGS.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_DEMO_RANKINGS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_DEMO_RANKINGS.setText("DEMOGORGON RANKING");
+        jPanel16.add(jLabel_DEMO_RANKINGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 15, 160, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("1.");
+        jPanel16.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("2.");
+        jPanel16.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("3.");
+        jPanel16.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
+        jTextField_DEMO_RANK1.setEditable(false);
+        jTextField_DEMO_RANK1.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_DEMO_RANK1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_DEMO_RANK1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_DEMO_RANK1.setText("jTextField1");
+        jTextField_DEMO_RANK1.setBorder(null);
+        jPanel16.add(jTextField_DEMO_RANK1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 70, 30));
+
+        jTextField_DEMO_RANK2.setEditable(false);
+        jTextField_DEMO_RANK2.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_DEMO_RANK2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_DEMO_RANK2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_DEMO_RANK2.setText("jTextField1");
+        jTextField_DEMO_RANK2.setBorder(null);
+        jPanel16.add(jTextField_DEMO_RANK2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 70, 30));
+
+        jTextField_DEMO_RANK3.setEditable(false);
+        jTextField_DEMO_RANK3.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_DEMO_RANK3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_DEMO_RANK3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_DEMO_RANK3.setText("jTextField1");
+        jTextField_DEMO_RANK3.setBorder(null);
+        jPanel16.add(jTextField_DEMO_RANK3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 70, 30));
+
+        jPanel1.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 170, 260));
+
+        jPanel17.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 51)));
+        jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("CURRENT EVENT");
+        jPanel17.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 10, 140, -1));
+
+        jTextField_CURRENT_EVENT.setEditable(false);
+        jTextField_CURRENT_EVENT.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_CURRENT_EVENT.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_CURRENT_EVENT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_CURRENT_EVENT.setText("jTextField1");
+        jTextField_CURRENT_EVENT.setBorder(null);
+        jPanel17.add(jTextField_CURRENT_EVENT, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 110, 40));
+
+        jPanel1.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 350, 170, 90));
+
+        jButton_STOP_RESUME.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton_STOP_RESUME.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_STOP_RESUME.setText("STOP / RESUME");
+        jButton_STOP_RESUME.setBorder(null);
+        jButton_STOP_RESUME.addActionListener(this::jButton_STOP_RESUMEActionPerformed);
+        jPanel1.add(jButton_STOP_RESUME, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 457, 390, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 977, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 996, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 573, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField_PORTAL3_STATUSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PORTAL3_STATUSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_PORTAL3_STATUSActionPerformed
+
+    private void jButton_STOP_RESUMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_STOP_RESUMEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_STOP_RESUMEActionPerformed
 
     /**
      * @param args the command line arguments
@@ -66,9 +492,67 @@ public class Interface2 extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Interface2().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Interface2_Client().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_STOP_RESUME;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel3_PORTAL_STATUS_AREA;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel_CHILDREN_LOCATIONS;
+    private javax.swing.JLabel jLabel_DEMOS_LOCATIONS;
+    private javax.swing.JLabel jLabel_DEMO_RANKINGS;
+    private javax.swing.JLabel jLabel_FOREST_LOCATIONS_C;
+    private javax.swing.JLabel jLabel_FOREST_LOCATIONS_D;
+    private javax.swing.JLabel jLabel_HAWKINGS_SUMMARY;
+    private javax.swing.JLabel jLabel_HAWKINGS_TOTAL_CHILDREN;
+    private javax.swing.JLabel jLabel_LAB_LOCATIONS_C;
+    private javax.swing.JLabel jLabel_LAB_LOCATIONS_D;
+    private javax.swing.JLabel jLabel_MALL_LOCATIONS_C;
+    private javax.swing.JLabel jLabel_MALL_LOCATIONS_D;
+    private javax.swing.JLabel jLabel_PORTAL1_STATUS;
+    private javax.swing.JLabel jLabel_PORTAL2_STATUS;
+    private javax.swing.JLabel jLabel_PORTAL3_STATUS;
+    private javax.swing.JLabel jLabel_PORTAL4_STATUS;
+    private javax.swing.JLabel jLabel_SEWERS_LOCATIONS_C;
+    private javax.swing.JLabel jLabel_SEWERS_LOCATIONS_D;
+    private javax.swing.JLabel jLabel_UPSIDE_DOWN_STATUS;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JTextField jTextField_CURRENT_EVENT;
+    private javax.swing.JTextField jTextField_DEMO_RANK1;
+    private javax.swing.JTextField jTextField_DEMO_RANK2;
+    private javax.swing.JTextField jTextField_DEMO_RANK3;
+    private javax.swing.JTextField jTextField_LOCATIONS_FOREST_C;
+    private javax.swing.JTextField jTextField_LOCATIONS_FOREST_D;
+    private javax.swing.JTextField jTextField_LOCATIONS_LAB_C;
+    private javax.swing.JTextField jTextField_LOCATIONS_LAB_D;
+    private javax.swing.JTextField jTextField_LOCATIONS_MALL_C;
+    private javax.swing.JTextField jTextField_LOCATIONS_MALL_D;
+    private javax.swing.JTextField jTextField_LOCATIONS_SEWERS_C;
+    private javax.swing.JTextField jTextField_LOCATIONS_SEWERS_D;
+    private javax.swing.JTextField jTextField_PORTAL1_STATUS;
+    private javax.swing.JTextField jTextField_PORTAL2_STATUS;
+    private javax.swing.JTextField jTextField_PORTAL3_STATUS;
+    private javax.swing.JTextField jTextField_PORTAL4_STATUS;
+    private javax.swing.JTextField jTextField_TOTAL_CHILDREN_AMOUNT;
     // End of variables declaration//GEN-END:variables
 }

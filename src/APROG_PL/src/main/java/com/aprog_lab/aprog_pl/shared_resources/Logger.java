@@ -96,5 +96,6 @@ public class Logger
         dateTime = LocalDateTime.now();
         String logContent = (dateTime.format(formatter)+" "+textContent);
         writer.println(logContent);
+        writer.close();
     }
 }

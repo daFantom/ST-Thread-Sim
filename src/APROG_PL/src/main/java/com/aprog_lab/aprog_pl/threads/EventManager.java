@@ -39,7 +39,7 @@ public class EventManager extends Thread
             {
                 if(log.getPlaying())
                 {
-                    Thread.sleep((int)((Math.random()*30000)+30000));
+                    Thread.sleep((int)((Math.random()*30000))+30000);
                     int pickedEvent = (int)(Math.random()*4);
                     switch(pickedEvent)
                     {
@@ -51,11 +51,13 @@ public class EventManager extends Thread
                             if(!log.getPlaying()) log.waitLog();
                             
                             be.disablePortalsEvent();
+                            be.disableUnsafe_ZonesDemos();
                             Thread.sleep((int)((Math.random()*5000)+5000));
                             
                             if(!log.getPlaying()) log.waitLog();
                             
                             be.enablePortalsEvent();
+                            be.enableUnsafe_ZonesDemos();
                             status.compareAndSet("BLACKOUT", "None");
                             log.logWrite("GLOBAL EVENT: LABORATORY BLACKOUT EVENT HAS FINISHED");
                         }

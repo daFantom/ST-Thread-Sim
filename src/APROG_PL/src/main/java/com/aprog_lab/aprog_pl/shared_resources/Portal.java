@@ -1,7 +1,7 @@
 
 package com.aprog_lab.aprog_pl.shared_resources;
 
-import com.aprog_lab.aprog_pl.Interfaces.Interface1;
+import com.aprog_lab.aprog_pl.Interfaces.Interface1_Server;
 import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -31,10 +31,10 @@ public class Portal
     private Semaphore exitSem, enterSem;
     private AtomicBoolean blocked;
     private CopyOnWriteArrayList<Child> entering, leaving;
-    private Interface1 ifc;
+    private Interface1_Server ifc;
     private Logger log;
     
-    public Portal(String pname, Safe_Zone psz, Unsafe_Zone puz, CyclicBarrier pcb, Interface1 p_ifc, Logger p_log)
+    public Portal(String pname, Safe_Zone psz, Unsafe_Zone puz, CyclicBarrier pcb, Interface1_Server p_ifc, Logger p_log)
     {
         portal_name = pname;
         sz_connect = psz;
@@ -75,7 +75,7 @@ public class Portal
                     ifc.refreshPortalStats();
                     cb.await();
                     leaving.remove(c);
-                    ifc.refreshPortalStats();
+
                 }
                 else
                 {
@@ -94,7 +94,6 @@ public class Portal
                     ifc.refreshPortalStats();
                     cb.await();
                     entering.remove(c);
-                    ifc.refreshPortalStats();
                 }                
             }
             else
