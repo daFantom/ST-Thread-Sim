@@ -4,8 +4,9 @@ import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import com.aprog_lab.aprog_pl.events.StormEvent;
+import com.aprog_lab.aprog_pl.shared_resources.Logger;
 import java.util.ArrayList;
-import java.util.concurrent.CyclicBarrier;
+
 import java.util.concurrent.atomic.AtomicBoolean;
 /**
  *
@@ -20,8 +21,9 @@ public class Child extends Thread {
     private String status;
     private AtomicBoolean attacked;
     private StormEvent storm;
+    private Logger log;
     
-    public Child(String pid, ArrayList<Safe_Zone> psz, ArrayList<Unsafe_Zone> puz,ArrayList<Portal> pportals, StormEvent pstorm)
+    public Child(String pid, ArrayList<Safe_Zone> psz, ArrayList<Unsafe_Zone> puz,ArrayList<Portal> pportals, StormEvent pstorm, Logger p_log)
     {
         id = pid;
         sz = psz;
@@ -30,6 +32,7 @@ public class Child extends Thread {
         status = "Entering";
         attacked = new AtomicBoolean(false);
         storm = pstorm;
+        log = p_log;
     }
     
     @Override
@@ -37,60 +40,60 @@ public class Child extends Thread {
     {
         while(true)
         {
-            sz.get(0).enterSafeZone(id);                                              // sz[0] = Hawkin's Main street, they will all enter here upon creation.
             try
             {
-                Thread.sleep((int)( (Math.random()*2000)+3000) );                   // Waits for 3 to 5 seconds before entering Bayer's Basement.
-                sz.get(0).exitSafeZone(id);
-                sz.get(1).enterSafeZone(id);                                         // sz[1]=Bayer's Basement. They enter.
-                Thread.sleep((int)( (Math.random()*1000)+1000) );                   // Choosing portal...
-                // Portal selection mechanism
-                int selected_portal = (int) (Math.random()*4);
-                sz.get(1).exitSafeZone(id);
-                portals.get(selected_portal).enterPortalQueue(id, status);
-                status = "Exiting";                                                     // Change status so they can get inserted into exitQueue->Portal class.
-                Thread.sleep(1000);                                                    // Going through portal...
-                uz.get(selected_portal).enterUZChild(this);                           // Goes to the unsafe zone DEBUG
-                
-                if(attacked.get())                                                      // If not attacked (check attacked), they can use portal. Otherwise, waiting forever until saved.
+                if(log.getPlaying())
                 {
+                    sz.get(0).enterSafeZone(this);                                      // sz[0] = Hawkin's Main street, they will all enter here upon creation.
+                    Thread.sleep((int)( (Math.random()*2000)+3000) );                   // Waits for 3 to 5 seconds before entering Bayer's Basement.
+                    sz.get(0).exitSafeZone(this);
+                    sz.get(1).enterSafeZone(this);                                      // sz[1]=Bayer's Basement. They enter.
                     
-                    uz.get(selected_portal).exitUZChild(this);
-                    status = "Entering";
-                    uz.get(4).enterUZChild(this);
-                    uz.get(4).capture(id);
-                    // would use a semaphore or sumn.
+// ===================================== Portal selection mechanism =============================
+                    Thread.sleep((int)( (Math.random()*1000)+1000) );                   // { Choosing portal...
+                    int selected_portal = (int) (Math.random()*4);                      // { Selected portal random 0-3
+                    sz.get(1).exitSafeZone(this);                                       // Leaves Byer's Basement
+                    portals.get(selected_portal).enterPortalQueue(this, status);        // Enters the selected portal. Also corresponds to unsafe zone.
+                    status = "Exiting";                                                 // Change status so they can get inserted into exitQueue->Portal class.
+                    Thread.sleep(1000);                                                 // Going through portal...
+                    uz.get(selected_portal).enterUZChild(this);                         // Arrives at unsafe zone after getting through the portal.
+// ===================================== Attacked mechanism =====================================
+                    if(attacked.get())                                                  // If not attacked, they move normally. Otherwise, move to HIVE and wait until saved.
+                    {
+                        goToHive(this, selected_portal);
+                        removeAttacked();
+                    }
+                    else
+                    {
+                        //System.out.println("Child: "+id+" has passed portal "+selected_portal);       // DEBUG
+                        //System.out.println("Child: "+id+". Doing stuff...");                           // DEBUG
+                        Thread.sleep((int)((Math.random()*2000)+3000));                 // Collecting vecna blood...
+                        if(attacked.get())                                              // Check if they were attacked while collecting blood. If so, same thing as before.
+                        {
+                            goToHive(this, selected_portal);
+                            removeAttacked();
+                        }
+// ===================================== Exiting and deploying blood mechanism ===================
+                        uz.get(selected_portal).exitUZChild(this);
+                        portals.get(selected_portal).enterPortalQueue(this, status);
+//                      sz.get(0).enterSafeZone(this);                                            // Return to Hawking Street.
+//                      sz.get(0).exitSafeZone(this);
+                        sz.get(2).enterSafeZone(this);                                          // { Returns to WSQK Radio
+                        sz.get(2).incrementBloodCount();                                        // { to deposit the collected blood
+                        if(storm.isStorm())
+                        {
+                            //System.out.println("Storm active: doubled blood gathering.");
+                            sz.get(2).incrementBloodCount();                                    // If there is an ongoing storm, increments once more as to "double" the amount of collected blood.
+                        }
+                        status = "Entering";
+                        Thread.sleep((int) ((Math.random()*2000)+2000));                        // Waiting to rest.
+                        sz.get(2).exitSafeZone(this);
+                    }
                 }
                 else
                 {
-                    //System.out.println("Child: "+id+" has passed portal "+selected_portal);       // DEBUG
-                    //System.out.println("Child: "+id+". Doing stuff...");                           // DEBUG
-                    Thread.sleep((int)((Math.random()*2000)+3000));                       // Collecting vecna blood...
-                    if(attacked.get())                                                      // If not attacked (check attacked), they can use portal. Otherwise, waiting forever until saved.
-                    {
-                        uz.get(selected_portal).exitUZChild(this);
-                        status = "Entering";
-                        uz.get(4).enterUZChild(this);
-                        Thread.sleep((int)((Math.random()*500)+500));
-                        uz.get(4).capture(id);
-                        // would use a semaphore or sumn.
-                    }
-                    uz.get(selected_portal).exitUZChild(this);
-                    portals.get(selected_portal).enterPortalQueue(id, status);
-                    status = "Entering";
-                    sz.get(0).enterSafeZone(id);                                            // Return to Hawking Street.
-                    sz.get(0).exitSafeZone(id);
-                    sz.get(2).enterSafeZone(id);                                            // Go to WSKQ Radio.
-                    sz.get(2).incrementBloodCount();                                        // Deposit blood.
-                    if(storm.isStorm())
-                    {
-                        System.out.println("Storm active: doubled blood gathering.");
-                        sz.get(2).incrementBloodCount();                                    // If there is an ongoing storm, increments once more as to "double" the amount of collected blood.
-                    }
-                    Thread.sleep((int) ((Math.random()*2000)+2000));
-                    sz.get(2).exitSafeZone(id);
+                    log.waitLog();
                 }
-
             }
             catch(InterruptedException ie)
             {
@@ -117,5 +120,26 @@ public class Child extends Thread {
     public void gotAttacked()
     {
         attacked.compareAndSet(false, true);
+    }
+    
+    public void removeAttacked()
+    {
+        attacked.compareAndSet(true, false);
+    }
+    
+    public void goToHive(Child c, int portal)
+    {
+        try
+        {
+            uz.get(portal).exitUZChild(this);                        
+            uz.get(4).enterUZChild(this);
+            Thread.sleep((int)((Math.random()*500)+500));                     // Getting carried to the HIVE (simulation)
+            status = "Entering";
+            uz.get(4).capture(id);
+        }
+        catch(InterruptedException ie)
+        {
+            System.out.println("IE at Child -> goToHive()");
+        }
     }
 }

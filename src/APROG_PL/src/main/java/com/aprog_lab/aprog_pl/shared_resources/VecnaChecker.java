@@ -16,14 +16,16 @@ public class VecnaChecker {
     private StormEvent se;
     private ElevenSavesEvent ese;
     private HiveMindEvent hme;
+    private Logger log;
     
-    public VecnaChecker(int p_total_demos, ArrayList<Unsafe_Zone> puzs, StormEvent pse, ElevenSavesEvent pese, HiveMindEvent p_hme)
+    public VecnaChecker(int p_total_demos, ArrayList<Unsafe_Zone> puzs, StormEvent pse, ElevenSavesEvent pese, HiveMindEvent p_hme, Logger p_log)
     {
         total_demos = p_total_demos;
         uzs = puzs;
         se = pse;
         ese = pese;
         hme = p_hme;
+        log = p_log;
     }
     /*
     
@@ -34,14 +36,14 @@ public class VecnaChecker {
         if(can_spawn==0)
         {
             System.out.println("A new demogorgon has been Spawned!");
-            new Demogorgon("D"+String.format("%04d",total_demos), uzs, this, se, ese, hme).start();
+            new Demogorgon("D"+String.format("%04d",total_demos), uzs, this, se, ese, hme, log).start();
             total_demos++;
             demo.emptyChildren();
 
         }
         else
         {
-            System.out.println("VECNA: Demogorgon: "+demo.getID()+", not enough children, only provided "+capped_children);
+            //System.out.println("VECNA: Demogorgon: "+demo.getID()+", not enough children, only provided "+capped_children);
         }
     }
 }

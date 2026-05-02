@@ -1,7 +1,9 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
 import Interfaces.Interface1;
+import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -11,11 +13,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Safe_Zone
 {
     private final String zone_name;
-    private ArrayList<String> avail_children;
+    private ArrayList<Child> avail_children;
     private AtomicInteger bloodCount;
     private Interface1 ifc;
+    private Logger log;
     
-    public Safe_Zone(String name, Interface1 p_ifc)
+    public Safe_Zone(String name, Interface1 p_ifc, Logger p_log)
     {
         zone_name = name;
         avail_children = new ArrayList<>();                                         // Children actively wandering the zone.
@@ -24,63 +27,93 @@ public class Safe_Zone
         {
             bloodCount = new AtomicInteger(0);
         }
+        log = p_log;
     }
     
-    // Test method.
+    /* Test method.
+    
+    */
     public String getName()
     {
         return zone_name;
     }
     
-    // Unfinished method to add a child to a specific zone.
-    public void enterSafeZone(String cid)
-    {
-        if(!avail_children.contains(cid))
-        {
-            synchronized(this)
-            {
-                avail_children.add(cid);
-                ifc.refreshStats();
-                System.out.println("Child: "+cid+" has entered safezone: "+zone_name);
-            }
-        }
-    }
+    /* Unfinished method to add a child to a specific zone.
     
-    // Unfinished method to remove a child from a specific zone.
-    public void exitSafeZone(String cid)
+    */
+    public void enterSafeZone(Child c)
     {
-        if(avail_children.contains(cid))
+        if(log.getPlaying())
         {
-            synchronized(this)
+            if(!avail_children.contains(c))
             {
-                avail_children.remove(cid);
-                ifc.refreshStats();
-                System.out.println("Child: "+cid+" has exited safezone: "+zone_name);
+                synchronized(this)
+                {
+                    avail_children.add(c);
+                    ifc.refreshStats();
+                    //System.out.println("Child: "+c.getID()+" has entered safezone: "+zone_name);
+                }
             }
-        }
-    }
-    
-    // Unfinished method for incrementing the blood counter
-    public void incrementBloodCount()
-    {
-        if(this.getName().equals("WSQK Radio"))
-        {
-            bloodCount.incrementAndGet();                                           // The counter gets incremented for each child that escaped.
-            ifc.refreshStats();
         }
         else
         {
-            System.out.println("Debug: This method won't do anything in this"
-                    + " zone");
+            log.waitLog();
+            enterSafeZone(c);
         }
     }
     
-    public ArrayList<String> getAvailChildren()
+    /* Unfinished method to remove a child from a specific zone.
+    
+    */
+    public void exitSafeZone(Child c)
+    {
+        if(log.getPlaying())
+        {
+            if(avail_children.contains(c))
+            {
+                synchronized(this)
+                {
+                    avail_children.remove(c);
+                    ifc.refreshStats();
+                    //System.out.println("Child: "+c.getID()+" has exited safezone: "+zone_name);
+                }
+            }
+        }
+        else
+        {
+            log.waitLog();
+            exitSafeZone(c);
+        }
+    }
+    
+    /* Unfinished method for incrementing the blood counter
+    
+    */
+    public void incrementBloodCount()
+    {
+        if(this.getName().equals("WSQK Radio") && log.getPlaying())
+        {
+            bloodCount.incrementAndGet();                                           // The counter gets incremented for each child that escaped.
+            ifc.refreshCounters();
+        }
+        else
+        {
+            log.waitLog();
+            incrementBloodCount();
+        }
+    }
+    
+    /*
+    
+    */
+    public ArrayList<Child> getAvailChildren()
     {
         return avail_children;
     }
     
+    /*
     
+    */
     public int getBlood()
     {
         return bloodCount.get();

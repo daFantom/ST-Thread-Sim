@@ -4,8 +4,7 @@ import Interfaces.Interface1;
 import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -15,21 +14,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Unsafe_Zone
 {
     private final String zone_name;
-    private ArrayList<Child> avail_children;
-    private ArrayList<Demogorgon> avail_demos;
+    private CopyOnWriteArrayList<Child> avail_children;
+    private CopyOnWriteArrayList<Demogorgon> avail_demos;
     private AtomicInteger captured;
     private Interface1 ifc;
+    private Logger log;
     
-    public Unsafe_Zone(String name, Interface1 p_ifc)
+    public Unsafe_Zone(String name, Interface1 p_ifc, Logger p_log)
     {
         ifc = p_ifc;
         zone_name = name;
-        avail_children = new ArrayList<>();
-        avail_demos = new ArrayList<>();
+        avail_children = new CopyOnWriteArrayList<>();
+        avail_demos = new CopyOnWriteArrayList<>();
         if(zone_name.equals("HIVE"))
         {
             captured = new AtomicInteger(0);
         }
+        log = p_log;
     }
 
 // ================================ ENTERING METHODS ================================
@@ -38,14 +39,22 @@ public class Unsafe_Zone
     */
     public void enterUZChild(Child c)
     {
-        synchronized(this)
+        if(log.getPlaying())
         {
-            if(!avail_children.contains(c))
+            synchronized(this)
             {
-                avail_children.add(c);
-                ifc.refreshStats();
-                System.out.println("Child: "+c.getID()+" has entered unsafe zone: "+zone_name); 
-            }     
+                if(!avail_children.contains(c))
+                {
+                    avail_children.add(c);
+                    ifc.refreshStats();
+                    //System.out.println("Child: "+c.getID()+" has entered unsafe zone: "+zone_name);  
+                } 
+            }
+        }
+        else
+        {
+            log.waitLog();
+            enterUZChild(c);
         }
     }
     
@@ -54,14 +63,22 @@ public class Unsafe_Zone
     */
     public void enterUZDemo(Demogorgon d)
     {
-        synchronized(this)
+        if(log.getPlaying())
         {
-            if(!avail_demos.contains(d))
+            synchronized(this)
             {
-                avail_demos.add(d);
-                ifc.refreshStats();
-                System.out.println("Demogorgon: "+d.getID()+" has entered unsafe zone: "+zone_name); 
+                if(!avail_demos.contains(d))
+                {
+                    avail_demos.add(d);
+                    ifc.refreshStats();
+                    //System.out.println("Demogorgon: "+d.getID()+" has entered unsafe zone: "+zone_name);  
+                }
             }
+        }
+        else
+        {
+            log.waitLog();
+            enterUZDemo(d);
         }
     }
     
@@ -72,15 +89,23 @@ public class Unsafe_Zone
     */
     public void exitUZChild(Child c)
     {
-        synchronized(this)
+        if(log.getPlaying())
         {
-            if(avail_children.contains(c))
+            synchronized(this)
             {
-                avail_children.remove(c);
-                ifc.refreshStats();
-                System.out.println("Child: "+c.getID()+" has exited unsafe zone: "+zone_name); 
-            }   
-        }  
+                if(avail_children.contains(c))
+                {
+                    avail_children.remove(c);
+                    ifc.refreshStats();
+                    //System.out.println("Child: "+c.getID()+" has exited unsafe zone: "+zone_name);
+                }  
+            }
+        }
+        else
+        {
+            log.waitLog();
+            exitUZChild(c);
+        } 
     }
     
     /* Unfinished method to remove a child from a specific zone.
@@ -88,14 +113,22 @@ public class Unsafe_Zone
     */
     public void exitUZDemo(Demogorgon d)
     {
-        synchronized(this)
+        if(log.getPlaying())
         {
-            if(avail_demos.contains(d))
+            synchronized(this)
             {
-                avail_demos.remove(d);
-                ifc.refreshStats();
-                System.out.println("Demogorgon: "+d.getID()+" has exited unsafe zone: "+zone_name); 
-            }  
+                if(avail_demos.contains(d))
+                {
+                    avail_demos.remove(d);
+                    ifc.refreshStats();
+                    //System.out.println("Demogorgon: "+d.getID()+" has exited unsafe zone: "+zone_name);   
+                }    
+            } 
+        }
+        else
+        {
+            log.waitLog();
+            exitUZDemo(d);
         }
     }
     
@@ -109,43 +142,52 @@ public class Unsafe_Zone
     
     
     /*  Method used by Demogorgons, used for attacking a random available child.
-        ||WIP||
+
     
     */
-    public synchronized boolean attackChild(double p)
+    public synchronized boolean attackChild(double p, Demogorgon d)
     {
         boolean hasAttacked = false;
-        if(!avail_children.isEmpty())
+        if(log.getPlaying())
         {
-            int selected_child = (int) (Math.random() * avail_children.size());
-            Child target = avail_children.get(selected_child);
-            if(p<=0.3333333 && !target.isAttacked())
+            if(!avail_children.isEmpty())
             {
-                hasAttacked = true;
-                target.gotAttacked();
-                //System.out.println("SUCCESSFULLY ATTACKED CHILD: "+target.getID());   // DEBUG
-                return hasAttacked;
-            }
-            else if(target.isAttacked())
-            {
-                //System.out.println("CHILD: "+target.getID()+" ALREADY ATTACKED");     // DEBUG
-                hasAttacked = false;
-                return hasAttacked;
+                int selected_child = (int) (Math.random() * avail_children.size());
+                Child target = avail_children.get(selected_child);
+                if(p<=0.3333333 && !target.isAttacked())
+                {
+                    hasAttacked = true;
+                    target.gotAttacked();
+                    System.out.println("SUCCESSFULLY ATTACKED CHILD: "+target.getID());   // DEBUG
+                    return hasAttacked;
+                }
+                else if(target.isAttacked())
+                {
+                    //System.out.println("CHILD: "+target.getID()+" ALREADY ATTACKED");     // DEBUG
+                    hasAttacked = false;
+                    return hasAttacked;
+                }
+                else
+                {
+                    //System.out.println("MISSED ATTACK ON CHILD: "+target.getID());        // DEBUG
+                    hasAttacked = false;
+                    return hasAttacked;
+                }   
             }
             else
             {
-                //System.out.println("MISSED ATTACK ON CHILD: "+target.getID());        // DEBUG
-                hasAttacked = false;
                 return hasAttacked;
-            }   
+            }
         }
         else
         {
+            log.waitLog();
             return hasAttacked;
-        }
+        }  
+
     }
     
-    /* Method used by children
+    /* Method used by children and EventManager
     
     */
     public void capture(String id)
@@ -155,12 +197,12 @@ public class Unsafe_Zone
             try
             {
                 captured.incrementAndGet();
-                ifc.refreshStats();
                 synchronized(this)
                 {
-                    //System.out.println("A CHILD HAS BEEN CAPTURED!!!!!");                 // DEBUG
+                    ifc.refreshCounters();
+                    System.out.println("Child: "+id+" has been captured");                 // DEBUG
                     wait();
-                    //System.out.println("A CHILD HAS BEEN RELEASED!!!!!");                 // DEBUG
+                    System.out.println("Child: "+id+" has been released");                 // DEBUG
                 }
             }
             catch(InterruptedException ie)
@@ -172,25 +214,34 @@ public class Unsafe_Zone
         {
             synchronized(this)
             {
-                notify();
-                captured.decrementAndGet();
-                ifc.refreshStats();
+                if(captured.get()>0)
+                {
+                    captured.decrementAndGet();
+                    notify();
+                    ifc.refreshCounters();
+                }
             }
         }
     }
     
-    // DEBUG METHOD
+    /*
+    
+    */
     public String getName()
     {
         return zone_name;
     }
+    /*
     
-    public int getAmountChildren()
+    */
+    public synchronized int getAmountChildren()
     {
         return avail_children.size();
     }
+    /*
     
-    public void showDemos()
+    */
+    public synchronized void showDemos()
     {
         System.out.println("============== "+zone_name+" ==============");
         for(int i=0;i<avail_demos.size();i++)
@@ -199,18 +250,29 @@ public class Unsafe_Zone
         }
     }
     
-    public ArrayList<Child> getAvailChildren()
+    /*
+    
+    */
+    public synchronized CopyOnWriteArrayList<Child> getAvailChildren()
     {
+        
         return avail_children;
     }
     
-    public ArrayList<Demogorgon> getAvailDemos()
+    /*
+    
+    */
+    public synchronized CopyOnWriteArrayList<Demogorgon> getAvailDemos()
     {
         return avail_demos;
     }
     
+    /*
+    
+    */
     public int getCapturedChildren()
     {
         return captured.get();
     }
+    
 }

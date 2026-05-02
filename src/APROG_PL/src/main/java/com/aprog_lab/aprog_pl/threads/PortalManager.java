@@ -1,5 +1,6 @@
 package com.aprog_lab.aprog_pl.threads;
 
+import com.aprog_lab.aprog_pl.shared_resources.Logger;
 import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import java.util.ArrayList;
 
@@ -9,23 +10,32 @@ import java.util.ArrayList;
  */
 public class PortalManager extends Thread{
     ArrayList<Portal> portals;
+    private Logger log;
     
-    public PortalManager(ArrayList<Portal> pportals)
+    public PortalManager(ArrayList<Portal> pportals, Logger p_log)
     {
         portals = pportals;
+        log = p_log;
     }
     
+    @Override
     public void run()
     {
         while(true)
         {
             try
             {
-                Thread.sleep(1000);
-                
-                for(int i=0;i<portals.size();i++)
+                if(log.getPlaying())
                 {
-                    portals.get(i).openPortal();
+                    Thread.sleep(1000);
+                    for(int i=0;i<portals.size();i++)
+                    {
+                        portals.get(i).openPortal();
+                    }   
+                }
+                else
+                {
+                    log.waitLog();
                 }
             }
             catch(InterruptedException ie)

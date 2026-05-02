@@ -2,14 +2,17 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
 import Interfaces.Interface1;
+import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  *
@@ -23,14 +26,15 @@ public class Portal
     private Unsafe_Zone uz_connect;
     private CyclicBarrier cb;
 
-    private Queue<String> exitQueue;
-    private Queue<String> enterQueue;
+    private Queue<Child> exitQueue;
+    private Queue<Child> enterQueue;
     private Semaphore exitSem, enterSem;
-    private boolean blocked;
-    private ArrayList<String> entering, leaving;
+    private AtomicBoolean blocked;
+    private CopyOnWriteArrayList<Child> entering, leaving;
     private Interface1 ifc;
+    private Logger log;
     
-    public Portal(String pname, Safe_Zone psz, Unsafe_Zone puz, CyclicBarrier pcb, Interface1 p_ifc)
+    public Portal(String pname, Safe_Zone psz, Unsafe_Zone puz, CyclicBarrier pcb, Interface1 p_ifc, Logger p_log)
     {
         portal_name = pname;
         sz_connect = psz;
@@ -40,53 +44,65 @@ public class Portal
         enterQueue = new LinkedBlockingQueue();
         exitSem = new Semaphore(0);
         enterSem = new Semaphore(0);
-        blocked = false;
-        entering = new ArrayList<>();
-        leaving = new ArrayList<>();
+        blocked = new AtomicBoolean(false);
+        entering = new CopyOnWriteArrayList<>();
+        leaving = new CopyOnWriteArrayList<>();
         ifc = p_ifc;
+        log = p_log;
     }
     
     
-    public void enterPortalQueue(String id, String status)
+    public void enterPortalQueue(Child c, String status)
     {
         try
         {
-            if(status.equals("Exiting"))
+            if(log.getPlaying())
             {
-                System.out.println("Child: "+id+" has entered ExitQueue -> Portal: "+portal_name);
-                exitQueue.offer(id);
-                exitSem.acquire();
-                synchronized(this)
+                if(status.equals("Exiting"))
                 {
-                    while(blocked)
+                    //System.out.println("Child: "+c.getID()+" is exiting using -> Portal: "+portal_name);
+                    exitQueue.offer(c);
+                    exitSem.acquire();
+                    synchronized(this)
                     {
-                        wait();
+                        while(blocked.get())
+                        {
+                            wait();
+                        }
                     }
+                    //System.out.println("Child: "+id+" is entering portal...");            //DEBUG
+                    leaving.add(c);
+                    ifc.refreshPortalStats();
+                    cb.await();
+                    leaving.remove(c);
+                    ifc.refreshPortalStats();
                 }
-                //System.out.println("Child: "+id+" is entering portal...");            //DEBUG
-                leaving.add(id);
-                ifc.refreshStats();
-                cb.await();
-                leaving.remove(id);
+                else
+                {
+                    //System.out.println("Child: "+c.getID()+" is entering -> Portal: "+portal_name);
+                    enterQueue.offer(c);
+                    enterSem.acquire();
+                    synchronized(this)
+                    {
+                        while(blocked.get())
+                        {
+                            wait();
+                        }
+                    }
+                    //System.out.println("Child: "+id+" is entering portal...");            //DEBUG
+                    entering.add(c);
+                    ifc.refreshPortalStats();
+                    cb.await();
+                    entering.remove(c);
+                    ifc.refreshPortalStats();
+                }                
             }
             else
             {
-                System.out.println("Child: "+id+" has entered EnterQueue -> Portal: "+portal_name);
-                enterQueue.offer(id);
-                enterSem.acquire();
-                synchronized(this)
-                {
-                    while(blocked)
-                    {
-                        wait();
-                    }
-                }
-                //System.out.println("Child: "+id+" is entering portal...");            //DEBUG
-                entering.add(id);
-                ifc.refreshStats();
-                cb.await();
-                entering.remove(id);
+                log.waitLog();
+                enterPortalQueue(c, status);
             }
+
         }
         catch(InterruptedException ie)
         {
@@ -109,45 +125,55 @@ public class Portal
     */
     public synchronized void openPortal()
     {
-        if(!exitQueue.isEmpty() && cb.getParties()>0 && !blocked)
+        if(!exitQueue.isEmpty() && cb.getParties()>0 && !blocked.get())
         {
             exitQueue.poll();
             exitSem.release();
             // Mostrar interfaz
-            ifc.refreshStats();
             notifyAll();
             
         }
-        else if(!enterQueue.isEmpty() && cb.getParties()>0 && !blocked)
+        else if(!enterQueue.isEmpty() && cb.getParties()>0 && !blocked.get())
         {
             enterQueue.poll();
             enterSem.release();
             // Mostrar en interfaz
-            ifc.refreshStats();
             notifyAll();
         }
     }
     
+    /*
     
+    */
     public synchronized void enablePortal()
     {
-        blocked = false;
+        blocked.compareAndSet(true, false);
         notifyAll();
     }
     
+    /*
+    
+    */
     public void disablePortal()
     {
-        blocked = true;
+        blocked.compareAndSet(false, true);
     }
     
-    public ArrayList<String> getEntering()
+    /*
+    
+    */
+    public CopyOnWriteArrayList<Child> getEntering()
     {
         return entering;
     }
     
-    public ArrayList<String> getLeaving()
+    /*
+    
+    */
+    public CopyOnWriteArrayList<Child> getLeaving()
     {
         return leaving;
     }
+    
 }
 
