@@ -1,6 +1,8 @@
 package com.aprog_lab.aprog_pl.threads;
 
+import com.aprog_lab.aprog_pl.GUI.GUI2_Client;
 import com.aprog_lab.aprog_pl.Network_Connection.MyRemoteInterface;
+import java.io.IOException;
 import java.rmi.RemoteException;
 
 /**
@@ -9,26 +11,28 @@ import java.rmi.RemoteException;
  */
 public class ClientRefresher extends Thread {
     
-    MyRemoteInterface roi;
-    public ClientRefresher(MyRemoteInterface p_roi)
+    private MyRemoteInterface roi;
+    private GUI2_Client gui2;
+    
+    public ClientRefresher(MyRemoteInterface p_roi, GUI2_Client p_gui2)
     {
         roi = p_roi;
+        gui2 = p_gui2;
     }
     
     @Override
     public void run()
     {
-        while(true)
+        try
         {
-            try
+            while(true)
             {
-                Thread.sleep(1000);
-                roi.operationToOffer2("Test");
+                gui2.refreshEvent(roi.getActiveEvent());
             }
-            catch(RemoteException | InterruptedException re)
-            {
-                System.out.println("Exception at ClientRefresher->run()");
-            } 
+        }
+        catch(RemoteException re)
+        {
+            System.out.println("Error: "+re.getMessage());
         }
     }
     

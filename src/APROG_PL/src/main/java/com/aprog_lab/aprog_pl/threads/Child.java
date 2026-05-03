@@ -66,7 +66,7 @@ public class Child extends Thread {
                     else
                     {
                         //System.out.println("Child: "+id+" has passed portal "+selected_portal);       // DEBUG
-                        //System.out.println("Child: "+id+". Doing stuff...");                           // DEBUG
+                        //System.out.println("Child: "+id+". Doing stuff...");                          // DEBUG
                         Thread.sleep((int)((Math.random()*2000)+3000));                 // Collecting vecna blood...
                         if(attacked.get())                                              // Check if they were attacked while collecting blood. If so, same thing as before.
                         {
@@ -103,31 +103,44 @@ public class Child extends Thread {
         }
     }
     
+    /*
+    
+    */
     public String getStatus()
     {
         return status;
     }
+    /*
     
+    */
     public boolean isAttacked()
     {
         return attacked.get();
     }
+    /*
     
+    */
     public String getID()
     {
         return id;
     }
+    /*
     
+    */
     public void gotAttacked()
     {
         attacked.compareAndSet(false, true);
     }
+    /*
     
+    */
     public void removeAttacked()
     {
         attacked.compareAndSet(true, false);
     }
+    /*
     
+    */
     public void goToHive(Child c, int portal)
     {
         Unsafe_Zone hive = uz.get(4);

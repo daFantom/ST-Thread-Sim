@@ -1,11 +1,15 @@
 package com.aprog_lab.aprog_pl.GUI;
 
 import com.aprog_lab.aprog_pl.Network_Connection.MyRemoteInterface;
+import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
+import com.aprog_lab.aprog_pl.threads.Child;
 import com.aprog_lab.aprog_pl.threads.ClientRefresher;
+import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import java.io.IOException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  *
@@ -56,6 +60,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         try
         {
             remoteObject = (MyRemoteInterface) Naming.lookup("//localhost/RemoteObjectCreatedForDemonstration");
+            new ClientRefresher(remoteObject, this).start();
         }
         catch(NotBoundException nbe)
         {
@@ -65,6 +70,22 @@ public class GUI2_Client extends javax.swing.JFrame {
         {
             System.out.println("IOException at GUI2_Client->initRMI()");
         }
+    }
+    
+    public void refreshLocations(ArrayList<Unsafe_Zone> uzs)
+    {
+        for(int i=0;i<uzs.size();i++)
+        {
+            d_locs.get(i).setText("");
+            c_locs.get(i).setText("");
+            d_locs.get(i).setText(String.valueOf(uzs.get(i).getAvailDemos().size()));
+            c_locs.get(i).setText(String.valueOf(uzs.get(i).getAvailChildren().size()));
+        }
+    }
+    
+    public void refreshEvent(String content)
+    {
+        jTextField_CURRENT_EVENT.setText(content);
     }
 
     /**

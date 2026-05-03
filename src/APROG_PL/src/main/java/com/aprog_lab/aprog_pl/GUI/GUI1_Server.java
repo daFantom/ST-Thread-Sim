@@ -59,7 +59,6 @@ public class GUI1_Server extends javax.swing.JFrame {
         jTextField_HIVE_CAPTURED.setText("0");
         jTextField_CURRENT_EVENT.setText("None");
         log = new logManager();
-        initRMI();
         
         // ===================== SETTING DEFAULTLISTMODEL MODEL FOR JLISTS =====================
         DefaultListModel<String> m1 = new DefaultListModel<>();
@@ -160,6 +159,7 @@ public class GUI1_Server extends javax.swing.JFrame {
 
 // ===================== VECNA CHECKER INITIALIZATION =====================
         VecnaChecker vc = new VecnaChecker(1, uz, se, ese, hme, log);
+        initRMI();
         
 // ===================== CHILDREN & DEMOGORGON INITIALIZATION =====================
 
@@ -279,7 +279,7 @@ public class GUI1_Server extends javax.swing.JFrame {
     {
         try
         {
-            RemoteObjectImplementation obj = new RemoteObjectImplementation(log);
+            RemoteObjectImplementation obj = new RemoteObjectImplementation(log, uz, em);
             Registry registry = LocateRegistry.createRegistry(1099);
             Naming.rebind("//localhost/RemoteObjectCreatedForDemonstration", obj);
             System.out.println("Remote object registered");
