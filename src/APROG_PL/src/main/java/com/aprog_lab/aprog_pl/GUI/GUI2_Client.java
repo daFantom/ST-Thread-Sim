@@ -1,22 +1,70 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package com.aprog_lab.aprog_pl.Interfaces;
+package com.aprog_lab.aprog_pl.GUI;
+
+import com.aprog_lab.aprog_pl.Network_Connection.MyRemoteInterface;
+import com.aprog_lab.aprog_pl.threads.ClientRefresher;
+import java.io.IOException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.util.ArrayList;
 
 /**
  *
  * @author Emanuel Baciu
  */
-public class Interface2_Client extends javax.swing.JFrame {
+public class GUI2_Client extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interface2_Client.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUI2_Client.class.getName());
+    private ArrayList<javax.swing.JTextField> c_locs, d_locs,portals, demo_ranks;
+    private MyRemoteInterface remoteObject;
 
     /**
      * Creates new form Interface2
      */
-    public Interface2_Client() {
+    public GUI2_Client() {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(this);
+        initRMI();
+        c_locs = new ArrayList<>();
+        d_locs = new ArrayList<>();
+        portals = new ArrayList<>();
+        demo_ranks = new ArrayList<>();
+        
+        c_locs.add(jTextField_LOCATIONS_FOREST_C);
+        c_locs.add(jTextField_LOCATIONS_LAB_C);
+        c_locs.add(jTextField_LOCATIONS_MALL_C);
+        c_locs.add(jTextField_LOCATIONS_SEWERS_C);
+        
+        d_locs.add(jTextField_LOCATIONS_FOREST_D);
+        d_locs.add(jTextField_LOCATIONS_LAB_D);
+        d_locs.add(jTextField_LOCATIONS_MALL_D);
+        d_locs.add(jTextField_LOCATIONS_SEWERS_D);
+        
+        portals.add(jTextField_PORTAL1_STATUS);
+        portals.add(jTextField_PORTAL2_STATUS);
+        portals.add(jTextField_PORTAL3_STATUS);
+        portals.add(jTextField_PORTAL4_STATUS);
+        
+        demo_ranks.add(jTextField_DEMO_RANK1);
+        demo_ranks.add(jTextField_DEMO_RANK2);
+        demo_ranks.add(jTextField_DEMO_RANK3);
+        
+    }
+    
+    public void initRMI()
+    {
+        try
+        {
+            remoteObject = (MyRemoteInterface) Naming.lookup("//localhost/RemoteObjectCreatedForDemonstration");
+        }
+        catch(NotBoundException nbe)
+        {
+            System.out.println("NotBoundException at GUI2_Client->initRMI()");
+        }
+        catch(IOException ioe)
+        {
+            System.out.println("IOException at GUI2_Client->initRMI()");
+        }
     }
 
     /**
@@ -467,7 +515,29 @@ public class Interface2_Client extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_PORTAL3_STATUSActionPerformed
 
     private void jButton_STOP_RESUMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_STOP_RESUMEActionPerformed
-        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(() -> 
+            {
+                try
+                {
+                    if(remoteObject.stop())
+                    {
+                        System.out.println("The program has been stopped");
+                    }
+                    else if(remoteObject.resume())
+                    {
+                        System.out.println("The program has been resumed");
+                    }
+                    else
+                    {
+                        System.out.println("Unexpected output.");
+                    }
+                }
+                catch(IOException ioe)
+                {
+                    System.out.println("IOException at CLIENT_GUI -> main()");
+                }
+            }
+        );
     }//GEN-LAST:event_jButton_STOP_RESUMEActionPerformed
 
     /**
@@ -492,7 +562,7 @@ public class Interface2_Client extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Interface2_Client().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new GUI2_Client().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

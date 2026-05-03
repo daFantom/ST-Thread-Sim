@@ -16,9 +16,9 @@ public class VecnaChecker {
     private StormEvent se;
     private ElevenSavesEvent ese;
     private HiveMindEvent hme;
-    private Logger log;
+    private logManager log;
     
-    public VecnaChecker(int p_total_demos, ArrayList<Unsafe_Zone> puzs, StormEvent pse, ElevenSavesEvent pese, HiveMindEvent p_hme, Logger p_log)
+    public VecnaChecker(int p_total_demos, ArrayList<Unsafe_Zone> puzs, StormEvent pse, ElevenSavesEvent pese, HiveMindEvent p_hme, logManager p_log)
     {
         total_demos = p_total_demos;
         uzs = puzs;
@@ -40,10 +40,6 @@ public class VecnaChecker {
             total_demos++;
             demo.emptyChildren();
 
-        }
-        else
-        {
-            //System.out.println("VECNA: Demogorgon: "+demo.getID()+", not enough children, only provided "+capped_children);
         }
     }
 }

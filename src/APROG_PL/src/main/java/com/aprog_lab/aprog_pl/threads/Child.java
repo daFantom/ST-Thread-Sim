@@ -4,7 +4,7 @@ import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import com.aprog_lab.aprog_pl.events.StormEvent;
-import com.aprog_lab.aprog_pl.shared_resources.Logger;
+import com.aprog_lab.aprog_pl.shared_resources.logManager;
 import java.util.ArrayList;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -21,9 +21,9 @@ public class Child extends Thread {
     private String status;
     private AtomicBoolean attacked;
     private StormEvent storm;
-    private Logger log;
+    private logManager log;
     
-    public Child(String pid, ArrayList<Safe_Zone> psz, ArrayList<Unsafe_Zone> puz,ArrayList<Portal> pportals, StormEvent pstorm, Logger p_log)
+    public Child(String pid, ArrayList<Safe_Zone> psz, ArrayList<Unsafe_Zone> puz,ArrayList<Portal> pportals, StormEvent pstorm, logManager p_log)
     {
         id = pid;
         sz = psz;

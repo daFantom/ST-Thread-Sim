@@ -3,7 +3,7 @@ package com.aprog_lab.aprog_pl.threads;
 import com.aprog_lab.aprog_pl.events.ElevenSavesEvent;
 import com.aprog_lab.aprog_pl.events.StormEvent;
 import com.aprog_lab.aprog_pl.events.HiveMindEvent;
-import com.aprog_lab.aprog_pl.shared_resources.Logger;
+import com.aprog_lab.aprog_pl.shared_resources.logManager;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.VecnaChecker;
 import java.util.ArrayList;
@@ -25,9 +25,9 @@ public class Demogorgon extends Thread
     private HiveMindEvent hme;
     private Unsafe_Zone actual_uz;
     private int zone;
-    private Logger log;
+    private logManager log;
     
-    public Demogorgon(String pid, ArrayList<Unsafe_Zone> puz, VecnaChecker pvc, StormEvent pstorm, ElevenSavesEvent pese, HiveMindEvent phme, Logger p_log)
+    public Demogorgon(String pid, ArrayList<Unsafe_Zone> puz, VecnaChecker pvc, StormEvent pstorm, ElevenSavesEvent pese, HiveMindEvent phme, logManager p_log)
     {
         id = pid;
         child_counter = 0;

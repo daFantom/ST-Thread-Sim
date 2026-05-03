@@ -9,28 +9,38 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.logging.*;
 
 /**
  *
  * @author Emanuel Baciu
  */
-public class Logger
+public class logManager
 {
     private AtomicBoolean playing;
     private PrintWriter writer;
+    private Logger logWriter;
+    private FileHandler fileHandler;
     private Path path;
     // Custom format
     private DateTimeFormatter formatter;
     private LocalDateTime dateTime;
     
-    public Logger()
+    public logManager()
     {
         playing = new AtomicBoolean(true);
-        formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        path = Paths.get("..\\..\\docs\\hawkings.txt");
+        logWriter = Logger.getLogger(logManager.class.getName());
+        logWriter.setUseParentHandlers(false);
+        
+        //formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        //path = Paths.get("..\\..\\docs\\hawkings.txt");
+        
         try
         {
-            writer = new PrintWriter(new FileWriter(path.toString()));
+            //writer = new PrintWriter(new FileWriter(path.toString()));
+            fileHandler = new FileHandler("..\\..\\docs\\hawkings.txt", true);
+            fileHandler.setFormatter(new SimpleFormatter());
+            logWriter.addHandler(fileHandler);
         }
         catch(FileNotFoundException fnfe)
         {
@@ -38,7 +48,7 @@ public class Logger
         }
         catch(IOException ioe)
         {
-            System.out.println("File not found.");
+            System.out.println("IO Exception.");
         }
     }
     
@@ -50,6 +60,7 @@ public class Logger
         if(playing.get())
         {
             playing.compareAndSet(true, false);
+            logWrite("Stopped program.");
         }
     }
     
@@ -62,6 +73,7 @@ public class Logger
         {
             playing.compareAndSet(false, true);
             notifyAll();
+            logWrite("Resumed program.");
         }
     }
     
@@ -93,9 +105,11 @@ public class Logger
     */
     public synchronized void logWrite(String textContent)
     {
-        dateTime = LocalDateTime.now();
-        String logContent = (dateTime.format(formatter)+" "+textContent);
-        writer.println(logContent);
-        writer.close();
+        //dateTime = LocalDateTime.now();
+        //String logContent = (dateTime.format(formatter)+" "+textContent);
+        //writer.println(logContent);
+        //writer.close();
+        logWriter.info(textContent);
+        
     }
 }

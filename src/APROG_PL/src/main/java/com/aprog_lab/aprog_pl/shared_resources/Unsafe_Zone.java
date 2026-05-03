@@ -1,6 +1,6 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
-import com.aprog_lab.aprog_pl.Interfaces.Interface1_Server;
+import com.aprog_lab.aprog_pl.GUI.GUI1_Server;
 import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -17,11 +17,11 @@ public class Unsafe_Zone
     private CopyOnWriteArrayList<Child> avail_children;
     private CopyOnWriteArrayList<Demogorgon> avail_demos;
     private AtomicInteger captured;
-    private Interface1_Server ifc;
-    private Logger log;
+    private GUI1_Server ifc;
+    private logManager log;
     private AtomicBoolean labBlackout;
     
-    public Unsafe_Zone(String name, Interface1_Server p_ifc, Logger p_log)
+    public Unsafe_Zone(String name, GUI1_Server p_ifc, logManager p_log)
     {
         ifc = p_ifc;
         zone_name = name;

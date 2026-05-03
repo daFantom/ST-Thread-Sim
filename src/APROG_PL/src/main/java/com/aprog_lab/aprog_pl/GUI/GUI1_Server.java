@@ -1,10 +1,11 @@
-package com.aprog_lab.aprog_pl.Interfaces;
+package com.aprog_lab.aprog_pl.GUI;
 
+import com.aprog_lab.aprog_pl.Network_Connection.RemoteObjectImplementation;
 import com.aprog_lab.aprog_pl.events.BlackoutEvent;
 import com.aprog_lab.aprog_pl.events.ElevenSavesEvent;
 import com.aprog_lab.aprog_pl.events.HiveMindEvent;
 import com.aprog_lab.aprog_pl.events.StormEvent;
-import com.aprog_lab.aprog_pl.shared_resources.Logger;
+import com.aprog_lab.aprog_pl.shared_resources.logManager;
 import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
@@ -13,6 +14,11 @@ import com.aprog_lab.aprog_pl.threads.Child;
 import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.EventManager;
 import com.aprog_lab.aprog_pl.threads.PortalManager;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.registry.Registry;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CyclicBarrier;
@@ -22,9 +28,9 @@ import javax.swing.DefaultListModel;
  *
  * @author Emanuel Baciu
  */
-public class Interface1_Server extends javax.swing.JFrame {
+public class GUI1_Server extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interface1_Server.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUI1_Server.class.getName());
     private Unsafe_Zone Forest, Lab, Mall, Sewer, Hive;
     private Safe_Zone ms, bb, radio;
     private Portal p1, p2, p3, p4;
@@ -32,7 +38,7 @@ public class Interface1_Server extends javax.swing.JFrame {
     private ArrayList<Safe_Zone> sz;
     private ArrayList<Portal> portals;
     private EventManager em;
-    private Logger log;
+    private logManager log;
     
     private ArrayList<DefaultListModel<String>> uz_models_D;
     private ArrayList<DefaultListModel<String>> uz_models_C;
@@ -44,15 +50,16 @@ public class Interface1_Server extends javax.swing.JFrame {
     /**
      * Creates new form Interface1
      */
-    public Interface1_Server()
+    public GUI1_Server()
     {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(this);
-        jTextField_BLOODCOUNT.setText("");
-        jTextField_HIVE_CAPTURED.setText("");
-        jTextField_CURRENT_EVENT.setText("");
-        log = new Logger();
+        jTextField_BLOODCOUNT.setText("0");
+        jTextField_HIVE_CAPTURED.setText("0");
+        jTextField_CURRENT_EVENT.setText("None");
+        log = new logManager();
+        initRMI();
         
         // ===================== SETTING DEFAULTLISTMODEL MODEL FOR JLISTS =====================
         DefaultListModel<String> m1 = new DefaultListModel<>();
@@ -131,10 +138,10 @@ public class Interface1_Server extends javax.swing.JFrame {
         
         
 // ===================== PORTAL INITIALIZATION =====================
-        p1 = new Portal("ForestPortal", bb, Forest, new CyclicBarrier(2), this, log);
-        p2 = new Portal("LabPortal", bb, Lab, new CyclicBarrier(3), this, log);
-        p3 = new Portal("MallPortal", bb, Mall, new CyclicBarrier(4), this, log);
-        p4 = new Portal("SewerPortal", bb, Sewer, new CyclicBarrier(2), this, log);
+        p1 = new Portal("ForestPortal", new CyclicBarrier(2), this, log);
+        p2 = new Portal("LabPortal", new CyclicBarrier(3), this, log);
+        p3 = new Portal("MallPortal", new CyclicBarrier(4), this, log);
+        p4 = new Portal("SewerPortal", new CyclicBarrier(2), this, log);
         
         // ===================== PORTAL ADDITION =====================
         portals.add(p1); portals.add(p2); portals.add(p3); portals.add(p4);
@@ -171,7 +178,115 @@ public class Interface1_Server extends javax.swing.JFrame {
         }
         catch(InterruptedException ie)
         {
-            System.out.println("Interrupted Exception -> main()");
+            System.out.println("Interrupted Exception -> GUI1 constructor");
+        }
+    }
+    
+// =============================== PORTAL CONTENT REFRESHER ===============================
+    /*
+    
+    */
+    public void refreshPortalStats()
+    {
+        java.awt.EventQueue.invokeLater(() -> 
+            {
+                for(int i=0;i<portals.size();i++)
+                {
+                    enter_portal_models.get(i).clear();
+                    exit_portal_models.get(i).clear();
+                    CopyOnWriteArrayList<Child> enteringChildren = portals.get(i).getEntering();
+                    CopyOnWriteArrayList<Child> leavingChildren = portals.get(i).getLeaving();
+                    
+                    if(!enteringChildren.isEmpty())
+                    {
+                        for(int j=0;j<enteringChildren.size();j++)
+                        {
+                            enter_portal_models.get(i).add(j, enteringChildren.get(j).getID());
+                        }
+                    }
+                    
+                    if(!leavingChildren.isEmpty())
+                    {
+                        for(int k=0;k<leavingChildren.size();k++)
+                        {
+                            exit_portal_models.get(i).add(k, leavingChildren.get(k).getID());
+                        }
+                    }
+                }
+            }
+        );
+    }
+// =============================== COUNTER REFRESHER ===============================
+    public void refreshCounters()
+    {
+        java.awt.EventQueue.invokeLater( () ->
+            {
+                jTextField_BLOODCOUNT.setText(String.valueOf(sz.get(2).getBlood()));
+                jTextField_HIVE_CAPTURED.setText(String.valueOf(uz.get(4).getCapturedChildren()));
+            }
+        );
+    }
+    
+// =============================== PORTAL CONTENT REFRESHER ===============================
+    /*
+    
+    */
+    public void refreshZoneStats()
+    {
+        java.awt.EventQueue.invokeLater(() ->
+            {
+                for(int i=0;i<uz_models_C.size();i++)
+                {
+                    uz_models_C.get(i).clear();
+                    CopyOnWriteArrayList<Child> avail_children = uz.get(i).getAvailChildren();
+                    if(!avail_children.isEmpty())
+                    {
+                        for(int j=0;j<avail_children.size();j++)
+                        {
+                            uz_models_C.get(i).add(j, avail_children.get(j).getID());
+                        }   
+                    }
+                }
+                
+                for(int i=0;i<uz_models_D.size();i++)
+                {
+                    uz_models_D.get(i).clear();
+                    CopyOnWriteArrayList<Demogorgon> avail_demos = uz.get(i).getAvailDemos();
+                    if(!avail_demos.isEmpty())
+                    {
+                        for(int j=0; j<avail_demos.size();j++)
+                        {
+                            uz_models_D.get(i).add(j, avail_demos.get(j).getID());
+                        }   
+                    }
+                }
+                
+                for(int i=0;i<sz_models_C.size();i++)
+                {
+                    sz_models_C.get(i).clear();
+                    CopyOnWriteArrayList<Child> avail_children = sz.get(i).getAvailChildren();
+                    for(int j=0; j<avail_children.size();j++)
+                    {
+                        sz_models_C.get(i).add(j, avail_children.get(j).getID());
+                    }
+                }
+                jTextField_CURRENT_EVENT.setText(em.getStatus());
+            }
+        );
+    }
+    
+    public void initRMI()
+    {
+        try
+        {
+            RemoteObjectImplementation obj = new RemoteObjectImplementation(log);
+            Registry registry = LocateRegistry.createRegistry(1099);
+            Naming.rebind("//localhost/RemoteObjectCreatedForDemonstration", obj);
+            System.out.println("Remote object registered");
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error: "+e.getMessage());
         }
     }
 
@@ -629,13 +744,13 @@ public class Interface1_Server extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_PLAYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_PLAYActionPerformed
-        java.awt.EventQueue.invokeLater(() -> 
-                log.resume()
-        );
+//        java.awt.EventQueue.invokeLater(() -> 
+//                log.resume()
+//        );
     }//GEN-LAST:event_jButton_PLAYActionPerformed
 
     private void jButton_STOPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_STOPActionPerformed
-        java.awt.EventQueue.invokeLater(() -> log.stop());
+//        java.awt.EventQueue.invokeLater(() -> log.stop());
     }//GEN-LAST:event_jButton_STOPActionPerformed
 
     private void jTextField_CURRENT_EVENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_CURRENT_EVENTActionPerformed
@@ -654,6 +769,8 @@ public class Interface1_Server extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_PLAYMouseExited
 
+    
+// ============= MAIN METHOD =============
     /**
      * @param args the command line arguments
      */
@@ -677,96 +794,7 @@ public class Interface1_Server extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Interface1_Server().setVisible(true));
-    }
-    
-    /*
-    
-    */
-    public void refreshPortalStats()
-    {
-        java.awt.EventQueue.invokeLater(() -> 
-            {
-// =============================== PORTAL CONTENT REFRESHER ===============================
-                for(int i=0;i<portals.size();i++)
-                {
-                    enter_portal_models.get(i).clear();
-                    exit_portal_models.get(i).clear();
-                    CopyOnWriteArrayList<Child> enteringChildren = portals.get(i).getEntering();
-                    CopyOnWriteArrayList<Child> leavingChildren = portals.get(i).getLeaving();
-                    
-                    if(!enteringChildren.isEmpty())
-                    {
-                        for(int j=0;j<enteringChildren.size();j++)
-                        {
-                            enter_portal_models.get(i).add(j, enteringChildren.get(j).getID());
-                        }
-                    }
-                    
-                    if(!leavingChildren.isEmpty())
-                    {
-                        for(int k=0;k<leavingChildren.size();k++)
-                        {
-                            exit_portal_models.get(i).add(k, leavingChildren.get(k).getID());
-                        }
-                    }
-                }
-            }
-        );
-    }
-    
-    public void refreshCounters()
-    {
-        java.awt.EventQueue.invokeLater( () ->
-            {
-                jTextField_BLOODCOUNT.setText(String.valueOf(sz.get(2).getBlood()));
-                jTextField_HIVE_CAPTURED.setText(String.valueOf(uz.get(4).getCapturedChildren()));
-            }
-        );
-    }
-   
-    public void refreshZoneStats()
-    {
-        java.awt.EventQueue.invokeLater(() ->
-            {
-                for(int i=0;i<uz_models_C.size();i++)
-                {
-                    uz_models_C.get(i).clear();
-                    CopyOnWriteArrayList<Child> avail_children = uz.get(i).getAvailChildren();
-                    if(!avail_children.isEmpty())
-                    {
-                        for(int j=0;j<avail_children.size();j++)
-                        {
-                            uz_models_C.get(i).add(j, avail_children.get(j).getID());
-                        }   
-                    }
-                }
-                
-                for(int i=0;i<uz_models_D.size();i++)
-                {
-                    uz_models_D.get(i).clear();
-                    CopyOnWriteArrayList<Demogorgon> avail_demos = uz.get(i).getAvailDemos();
-                    if(!avail_demos.isEmpty())
-                    {
-                        for(int j=0; j<avail_demos.size();j++)
-                        {
-                            uz_models_D.get(i).add(j, avail_demos.get(j).getID());
-                        }   
-                    }
-                }
-                
-                for(int i=0;i<sz_models_C.size();i++)
-                {
-                    sz_models_C.get(i).clear();
-                    CopyOnWriteArrayList<Child> avail_children = sz.get(i).getAvailChildren();
-                    for(int j=0; j<avail_children.size();j++)
-                    {
-                        sz_models_C.get(i).add(j, avail_children.get(j).getID());
-                    }
-                }
-                jTextField_CURRENT_EVENT.setText(em.getStatus());
-            }
-        );
+        java.awt.EventQueue.invokeLater(() -> new GUI1_Server().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

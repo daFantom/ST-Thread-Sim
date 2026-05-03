@@ -1,11 +1,8 @@
 
 package com.aprog_lab.aprog_pl.shared_resources;
 
-import com.aprog_lab.aprog_pl.Interfaces.Interface1_Server;
+import com.aprog_lab.aprog_pl.GUI.GUI1_Server;
 import com.aprog_lab.aprog_pl.threads.Child;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -22,8 +19,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Portal
 {
     private String portal_name;
-    private Safe_Zone sz_connect;
-    private Unsafe_Zone uz_connect;
     private CyclicBarrier cb;
 
     private Queue<Child> exitQueue;
@@ -31,14 +26,12 @@ public class Portal
     private Semaphore exitSem, enterSem;
     private AtomicBoolean blocked;
     private CopyOnWriteArrayList<Child> entering, leaving;
-    private Interface1_Server ifc;
-    private Logger log;
+    private GUI1_Server ifc;
+    private logManager log;
     
-    public Portal(String pname, Safe_Zone psz, Unsafe_Zone puz, CyclicBarrier pcb, Interface1_Server p_ifc, Logger p_log)
+    public Portal(String pname, CyclicBarrier pcb, GUI1_Server p_ifc, logManager p_log)
     {
         portal_name = pname;
-        sz_connect = psz;
-        uz_connect = puz;
         cb = pcb;
         exitQueue = new LinkedBlockingQueue();
         enterQueue = new LinkedBlockingQueue();
@@ -60,7 +53,7 @@ public class Portal
             {
                 if(status.equals("Exiting"))
                 {
-                    //System.out.println("Child: "+c.getID()+" is exiting using -> Portal: "+portal_name);
+                    //System.out.println("Child: "+c.getID()+" is exiting using -> Portal: "+portal_name);      // DEBUG
                     exitQueue.offer(c);
                     exitSem.acquire();
                     synchronized(this)
@@ -70,7 +63,7 @@ public class Portal
                             wait();
                         }
                     }
-                    //System.out.println("Child: "+id+" is entering portal...");            //DEBUG
+                    //System.out.println("Child: "+id+" is entering portal...");                                // DEBUG
                     leaving.add(c);
                     ifc.refreshPortalStats();
                     cb.await();
@@ -79,7 +72,7 @@ public class Portal
                 }
                 else
                 {
-                    //System.out.println("Child: "+c.getID()+" is entering -> Portal: "+portal_name);
+                    //System.out.println("Child: "+c.getID()+" is entering -> Portal: "+portal_name);           // DEBUG
                     enterQueue.offer(c);
                     enterSem.acquire();
                     synchronized(this)
@@ -89,7 +82,7 @@ public class Portal
                             wait();
                         }
                     }
-                    //System.out.println("Child: "+id+" is entering portal...");            //DEBUG
+                    //System.out.println("Child: "+id+" is entering portal...");                                // DEBUG
                     entering.add(c);
                     ifc.refreshPortalStats();
                     cb.await();

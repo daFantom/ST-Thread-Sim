@@ -1,6 +1,6 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
-import com.aprog_lab.aprog_pl.Interfaces.Interface1_Server;
+import com.aprog_lab.aprog_pl.GUI.GUI1_Server;
 import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -14,10 +14,10 @@ public class Safe_Zone
     private final String zone_name;
     private CopyOnWriteArrayList<Child> avail_children;
     private AtomicInteger bloodCount;
-    private Interface1_Server ifc;
-    private Logger log;
+    private GUI1_Server ifc;
+    private logManager log;
     
-    public Safe_Zone(String name, Interface1_Server p_ifc, Logger p_log)
+    public Safe_Zone(String name, GUI1_Server p_ifc, logManager p_log)
     {
         zone_name = name;
         avail_children = new CopyOnWriteArrayList<>();                                         // Children actively wandering the zone.
