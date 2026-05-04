@@ -167,5 +167,15 @@ public class Portal
         return leaving;
     }
     
+    public int getChildrenEnterQueueAmount()
+    {
+        return enterQueue.size();
+    }
+    
+    public int getChildrenLeavingQueueAmount()
+    {
+        return exitQueue.size();
+    }
+    
 }
 

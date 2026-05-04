@@ -1,5 +1,6 @@
 package com.aprog_lab.aprog_pl.Network_Connection;
 
+import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.logManager;
@@ -18,13 +19,15 @@ import java.util.ArrayList;
         private ArrayList<Unsafe_Zone> uzs;
         private EventManager em;
         private Safe_Zone hawkings;
+        private ArrayList<Portal> portals;
         
-        public RemoteObjectImplementation(logManager p_log, ArrayList<Unsafe_Zone> p_uzs, EventManager p_em, Safe_Zone p_hawkings) throws RemoteException
+        public RemoteObjectImplementation(logManager p_log, ArrayList<Unsafe_Zone> p_uzs, EventManager p_em, Safe_Zone p_hawkings, ArrayList<Portal> p_portals) throws RemoteException
         {
-            log=p_log;
-            uzs=p_uzs;
+            log = p_log;
+            uzs = p_uzs;
             em = p_em;
-            hawkings=p_hawkings;
+            hawkings = p_hawkings;
+            portals = p_portals;
         }
         
         @Override
@@ -87,6 +90,28 @@ import java.util.ArrayList;
                 amountDemosUZ.add(uz.getAvailDemos().size());
             }
             return amountDemosUZ;
+        }
+        
+        @Override
+        public ArrayList<Integer> getPortalsChildrenAmountEntering()
+        {
+            ArrayList<Integer> portalChildrenQuantitiesEntering = new ArrayList<>();
+            for (Portal p : portals)
+            {
+                portalChildrenQuantitiesEntering.add(p.getChildrenEnterQueueAmount());
+            }
+            return portalChildrenQuantitiesEntering;
+        }
+        
+        @Override
+        public ArrayList<Integer> getPortalsChildrenAmountLeaving()
+        {
+            ArrayList<Integer> portalChildrenQuantitiesLeaving = new ArrayList<>();
+            for (Portal p : portals)
+            {
+                portalChildrenQuantitiesLeaving.add(p.getChildrenLeavingQueueAmount());
+            }
+            return portalChildrenQuantitiesLeaving;
         }
         
         @Override

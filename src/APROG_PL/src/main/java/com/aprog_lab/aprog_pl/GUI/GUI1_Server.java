@@ -265,7 +265,7 @@ public class GUI1_Server extends javax.swing.JFrame {
     {
         try
         {
-            RemoteObjectImplementation obj = new RemoteObjectImplementation(log, uz, em, sz.get(0));
+            RemoteObjectImplementation obj = new RemoteObjectImplementation(log, uz, em, sz.get(0), portals);
             Registry registry = LocateRegistry.createRegistry(1099);
             Naming.rebind("//localhost/RemoteObjectCreatedForDemonstration", obj);
             System.out.println("Remote object registered");

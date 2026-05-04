@@ -13,6 +13,8 @@ import java.util.ArrayList;
         public boolean resume() throws RemoteException;
         public ArrayList<Integer> getUnsafeZonesAmountChildren() throws RemoteException;
         public ArrayList<Integer> getUnsafeZonesAmountDemos() throws RemoteException;
+        public ArrayList<Integer> getPortalsChildrenAmountEntering() throws RemoteException;
+        public ArrayList<Integer> getPortalsChildrenAmountLeaving() throws RemoteException;
         public int getAvailChildrenHawkings() throws RemoteException;
         public String getActiveEvent() throws RemoteException;
     }

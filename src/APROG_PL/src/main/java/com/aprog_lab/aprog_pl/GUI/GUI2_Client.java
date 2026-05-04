@@ -18,7 +18,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class GUI2_Client extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUI2_Client.class.getName());
-    private ArrayList<javax.swing.JTextField> c_locs, d_locs,portals, demo_ranks;
+    private ArrayList<javax.swing.JTextField> c_locs, d_locs,portalsEntering, portalsLeaving, demo_ranks;
     private MyRemoteInterface remoteObject;
 
     /**
@@ -31,7 +31,8 @@ public class GUI2_Client extends javax.swing.JFrame {
         initRMI();
         c_locs = new ArrayList<>();
         d_locs = new ArrayList<>();
-        portals = new ArrayList<>();
+        portalsEntering = new ArrayList<>();
+        portalsLeaving = new ArrayList<>();
         demo_ranks = new ArrayList<>();
         
         c_locs.add(jTextField_LOCATIONS_FOREST_C);
@@ -44,10 +45,17 @@ public class GUI2_Client extends javax.swing.JFrame {
         d_locs.add(jTextField_LOCATIONS_MALL_D);
         d_locs.add(jTextField_LOCATIONS_SEWERS_D);
         
-        portals.add(jTextField_PORTAL1_STATUS);
-        portals.add(jTextField_PORTAL2_STATUS);
-        portals.add(jTextField_PORTAL3_STATUS);
-        portals.add(jTextField_PORTAL4_STATUS);
+        portalsEntering.add(jTextField_PORTAL1_STATUS_ENTERING);
+        portalsLeaving.add(jTextField_PORTAL1_STATUS_LEAVING);
+        
+        portalsEntering.add(jTextField_PORTAL2_STATUS_ENTERING);
+        portalsLeaving.add(jTextField_PORTAL2_STATUS_LEAVING);
+        
+        portalsEntering.add(jTextField_PORTAL3_STATUS_ENTERING);
+        portalsLeaving.add(jTextField_PORTAL3_STATUS_LEAVING);
+        
+        portalsEntering.add(jTextField_PORTAL4_STATUS_ENTERING);
+        portalsLeaving.add(jTextField_PORTAL4_STATUS_LEAVING);
         
         demo_ranks.add(jTextField_DEMO_RANK1);
         demo_ranks.add(jTextField_DEMO_RANK2);
@@ -94,6 +102,17 @@ public class GUI2_Client extends javax.swing.JFrame {
     {
         jTextField_TOTAL_CHILDREN_AMOUNT.setText(String.valueOf(amount));
     }
+    
+    public void refreshPortals(ArrayList<Integer> amountChildrenEnter, ArrayList<Integer> amountChildrenExit)
+    {
+        for(int i=0;i<portalsEntering.size();i++)
+        {
+            portalsEntering.get(i).setText("");
+            portalsLeaving.get(i).setText("");
+            portalsEntering.get(i).setText(String.valueOf(amountChildrenEnter.get(i)));
+            portalsLeaving.get(i).setText(String.valueOf(amountChildrenExit.get(i)));
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -118,10 +137,14 @@ public class GUI2_Client extends javax.swing.JFrame {
         jLabel_PORTAL2_STATUS = new javax.swing.JLabel();
         jLabel_PORTAL3_STATUS = new javax.swing.JLabel();
         jLabel_PORTAL4_STATUS = new javax.swing.JLabel();
-        jTextField_PORTAL1_STATUS = new javax.swing.JTextField();
-        jTextField_PORTAL2_STATUS = new javax.swing.JTextField();
-        jTextField_PORTAL3_STATUS = new javax.swing.JTextField();
-        jTextField_PORTAL4_STATUS = new javax.swing.JTextField();
+        jTextField_PORTAL4_STATUS_LEAVING = new javax.swing.JTextField();
+        jTextField_PORTAL2_STATUS_ENTERING = new javax.swing.JTextField();
+        jTextField_PORTAL3_STATUS_ENTERING = new javax.swing.JTextField();
+        jTextField_PORTAL4_STATUS_ENTERING = new javax.swing.JTextField();
+        jTextField_PORTAL1_STATUS_ENTERING = new javax.swing.JTextField();
+        jTextField_PORTAL1_STATUS_LEAVING = new javax.swing.JTextField();
+        jTextField_PORTAL2_STATUS_LEAVING = new javax.swing.JTextField();
+        jTextField_PORTAL3_STATUS_LEAVING = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jLabel_UPSIDE_DOWN_STATUS = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -196,7 +219,7 @@ public class GUI2_Client extends javax.swing.JFrame {
 
         jTextField_TOTAL_CHILDREN_AMOUNT.setEditable(false);
         jTextField_TOTAL_CHILDREN_AMOUNT.setBackground(new java.awt.Color(0, 102, 51));
-        jTextField_TOTAL_CHILDREN_AMOUNT.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jTextField_TOTAL_CHILDREN_AMOUNT.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jTextField_TOTAL_CHILDREN_AMOUNT.setForeground(new java.awt.Color(204, 0, 0));
         jTextField_TOTAL_CHILDREN_AMOUNT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField_TOTAL_CHILDREN_AMOUNT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 2));
@@ -214,9 +237,9 @@ public class GUI2_Client extends javax.swing.JFrame {
         jLabel3_PORTAL_STATUS_AREA.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3_PORTAL_STATUS_AREA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3_PORTAL_STATUS_AREA.setText("PORTAL STATUS (CHILDREN)");
-        jPanel6.add(jLabel3_PORTAL_STATUS_AREA, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 4, 190, -1));
+        jPanel6.add(jLabel3_PORTAL_STATUS_AREA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, -1));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 200, 20));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 210, 20));
 
         jPanel5.setBackground(new java.awt.Color(31, 31, 31));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 51)));
@@ -226,7 +249,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jLabel_PORTAL1_STATUS.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_PORTAL1_STATUS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_PORTAL1_STATUS.setText("FOREST PORTAL");
-        jPanel5.add(jLabel_PORTAL1_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 110, 20));
+        jPanel5.add(jLabel_PORTAL1_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 110, 20));
 
         jLabel_PORTAL2_STATUS.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel_PORTAL2_STATUS.setForeground(new java.awt.Color(255, 255, 255));
@@ -246,32 +269,66 @@ public class GUI2_Client extends javax.swing.JFrame {
         jLabel_PORTAL4_STATUS.setText("SEWER PORTAL");
         jPanel5.add(jLabel_PORTAL4_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 110, 20));
 
-        jTextField_PORTAL1_STATUS.setEditable(false);
-        jTextField_PORTAL1_STATUS.setBackground(new java.awt.Color(31, 31, 31));
-        jTextField_PORTAL1_STATUS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_PORTAL1_STATUS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
-        jPanel5.add(jTextField_PORTAL1_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 40, 80, 30));
+        jTextField_PORTAL4_STATUS_LEAVING.setEditable(false);
+        jTextField_PORTAL4_STATUS_LEAVING.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_PORTAL4_STATUS_LEAVING.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_PORTAL4_STATUS_LEAVING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL4_STATUS_LEAVING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
+        jPanel5.add(jTextField_PORTAL4_STATUS_LEAVING, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 40, 30));
 
-        jTextField_PORTAL2_STATUS.setEditable(false);
-        jTextField_PORTAL2_STATUS.setBackground(new java.awt.Color(31, 31, 31));
-        jTextField_PORTAL2_STATUS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_PORTAL2_STATUS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
-        jPanel5.add(jTextField_PORTAL2_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 90, 80, 30));
+        jTextField_PORTAL2_STATUS_ENTERING.setEditable(false);
+        jTextField_PORTAL2_STATUS_ENTERING.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_PORTAL2_STATUS_ENTERING.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_PORTAL2_STATUS_ENTERING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL2_STATUS_ENTERING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
+        jTextField_PORTAL2_STATUS_ENTERING.addActionListener(this::jTextField_PORTAL2_STATUS_ENTERINGActionPerformed);
+        jPanel5.add(jTextField_PORTAL2_STATUS_ENTERING, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 40, 30));
 
-        jTextField_PORTAL3_STATUS.setEditable(false);
-        jTextField_PORTAL3_STATUS.setBackground(new java.awt.Color(31, 31, 31));
-        jTextField_PORTAL3_STATUS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_PORTAL3_STATUS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
-        jTextField_PORTAL3_STATUS.addActionListener(this::jTextField_PORTAL3_STATUSActionPerformed);
-        jPanel5.add(jTextField_PORTAL3_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 140, 80, 30));
+        jTextField_PORTAL3_STATUS_ENTERING.setEditable(false);
+        jTextField_PORTAL3_STATUS_ENTERING.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_PORTAL3_STATUS_ENTERING.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_PORTAL3_STATUS_ENTERING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL3_STATUS_ENTERING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
+        jTextField_PORTAL3_STATUS_ENTERING.addActionListener(this::jTextField_PORTAL3_STATUS_ENTERINGActionPerformed);
+        jPanel5.add(jTextField_PORTAL3_STATUS_ENTERING, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 40, 30));
 
-        jTextField_PORTAL4_STATUS.setEditable(false);
-        jTextField_PORTAL4_STATUS.setBackground(new java.awt.Color(31, 31, 31));
-        jTextField_PORTAL4_STATUS.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_PORTAL4_STATUS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
-        jPanel5.add(jTextField_PORTAL4_STATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 190, 80, 30));
+        jTextField_PORTAL4_STATUS_ENTERING.setEditable(false);
+        jTextField_PORTAL4_STATUS_ENTERING.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_PORTAL4_STATUS_ENTERING.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_PORTAL4_STATUS_ENTERING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL4_STATUS_ENTERING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
+        jTextField_PORTAL4_STATUS_ENTERING.addActionListener(this::jTextField_PORTAL4_STATUS_ENTERINGActionPerformed);
+        jPanel5.add(jTextField_PORTAL4_STATUS_ENTERING, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 40, 30));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 240, 240));
+        jTextField_PORTAL1_STATUS_ENTERING.setEditable(false);
+        jTextField_PORTAL1_STATUS_ENTERING.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_PORTAL1_STATUS_ENTERING.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_PORTAL1_STATUS_ENTERING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL1_STATUS_ENTERING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
+        jPanel5.add(jTextField_PORTAL1_STATUS_ENTERING, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 40, 30));
+
+        jTextField_PORTAL1_STATUS_LEAVING.setEditable(false);
+        jTextField_PORTAL1_STATUS_LEAVING.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_PORTAL1_STATUS_LEAVING.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_PORTAL1_STATUS_LEAVING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL1_STATUS_LEAVING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
+        jPanel5.add(jTextField_PORTAL1_STATUS_LEAVING, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 40, 30));
+
+        jTextField_PORTAL2_STATUS_LEAVING.setEditable(false);
+        jTextField_PORTAL2_STATUS_LEAVING.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_PORTAL2_STATUS_LEAVING.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_PORTAL2_STATUS_LEAVING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL2_STATUS_LEAVING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
+        jPanel5.add(jTextField_PORTAL2_STATUS_LEAVING, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 40, 30));
+
+        jTextField_PORTAL3_STATUS_LEAVING.setEditable(false);
+        jTextField_PORTAL3_STATUS_LEAVING.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_PORTAL3_STATUS_LEAVING.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_PORTAL3_STATUS_LEAVING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL3_STATUS_LEAVING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
+        jPanel5.add(jTextField_PORTAL3_STATUS_LEAVING, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 40, 30));
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 290, 240));
 
         jPanel8.setBackground(new java.awt.Color(31, 31, 31));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -553,15 +610,15 @@ public class GUI2_Client extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField_PORTAL3_STATUSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PORTAL3_STATUSActionPerformed
+    private void jTextField_PORTAL3_STATUS_ENTERINGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PORTAL3_STATUS_ENTERINGActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_PORTAL3_STATUSActionPerformed
+    }//GEN-LAST:event_jTextField_PORTAL3_STATUS_ENTERINGActionPerformed
 
     private void jButton_STOP_RESUMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_STOP_RESUMEActionPerformed
         java.awt.EventQueue.invokeLater(() -> 
@@ -588,6 +645,14 @@ public class GUI2_Client extends javax.swing.JFrame {
             }
         );
     }//GEN-LAST:event_jButton_STOP_RESUMEActionPerformed
+
+    private void jTextField_PORTAL4_STATUS_ENTERINGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PORTAL4_STATUS_ENTERINGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_PORTAL4_STATUS_ENTERINGActionPerformed
+
+    private void jTextField_PORTAL2_STATUS_ENTERINGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PORTAL2_STATUS_ENTERINGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_PORTAL2_STATUS_ENTERINGActionPerformed
 
     /**
      * @param args the command line arguments
@@ -668,10 +733,14 @@ public class GUI2_Client extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_LOCATIONS_MALL_D;
     private javax.swing.JTextField jTextField_LOCATIONS_SEWERS_C;
     private javax.swing.JTextField jTextField_LOCATIONS_SEWERS_D;
-    private javax.swing.JTextField jTextField_PORTAL1_STATUS;
-    private javax.swing.JTextField jTextField_PORTAL2_STATUS;
-    private javax.swing.JTextField jTextField_PORTAL3_STATUS;
-    private javax.swing.JTextField jTextField_PORTAL4_STATUS;
+    private javax.swing.JTextField jTextField_PORTAL1_STATUS_ENTERING;
+    private javax.swing.JTextField jTextField_PORTAL1_STATUS_LEAVING;
+    private javax.swing.JTextField jTextField_PORTAL2_STATUS_ENTERING;
+    private javax.swing.JTextField jTextField_PORTAL2_STATUS_LEAVING;
+    private javax.swing.JTextField jTextField_PORTAL3_STATUS_ENTERING;
+    private javax.swing.JTextField jTextField_PORTAL3_STATUS_LEAVING;
+    private javax.swing.JTextField jTextField_PORTAL4_STATUS_ENTERING;
+    private javax.swing.JTextField jTextField_PORTAL4_STATUS_LEAVING;
     private javax.swing.JTextField jTextField_TOTAL_CHILDREN_AMOUNT;
     // End of variables declaration//GEN-END:variables
 }

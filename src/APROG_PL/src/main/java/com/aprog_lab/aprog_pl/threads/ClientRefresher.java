@@ -28,6 +28,7 @@ public class ClientRefresher extends Thread {
             {
                 gui2.refreshEvent(roi.getActiveEvent());
                 gui2.refreshLocations(roi.getUnsafeZonesAmountChildren(), roi.getUnsafeZonesAmountDemos());
+                gui2.refreshPortals(roi.getPortalsChildrenAmountEntering(), roi.getPortalsChildrenAmountLeaving());
                 gui2.refreshHawkings(roi.getAvailChildrenHawkings());
             }
         }
