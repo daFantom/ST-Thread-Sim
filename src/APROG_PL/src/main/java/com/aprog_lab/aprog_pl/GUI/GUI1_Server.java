@@ -15,10 +15,8 @@ import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.EventManager;
 import com.aprog_lab.aprog_pl.threads.PortalManager;
 import java.rmi.Naming;
-import java.rmi.RemoteException;
 import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CyclicBarrier;
@@ -194,24 +192,18 @@ public class GUI1_Server extends javax.swing.JFrame {
                 {
                     enter_portal_models.get(i).clear();
                     exit_portal_models.get(i).clear();
-                    CopyOnWriteArrayList<Child> enteringChildren = portals.get(i).getEntering();
-                    CopyOnWriteArrayList<Child> leavingChildren = portals.get(i).getLeaving();
+                    Child[] enteringChildrenSnapshot = portals.get(i).getEntering().toArray(new Child[0]); // Changed from CopyOnWriteArrayList to an Array due to chances of updating whilst printing each element
+                    Child[] leavingChildrenSnapshot = portals.get(i).getLeaving().toArray(new Child[0]);  // Changed from CopyOnWriteArrayList to an Array due to chances of updating whilst printing each element
                     
-                    if(!enteringChildren.isEmpty())
-                    {
-                        for(int j=0;j<enteringChildren.size();j++)
+                        for(int j=0;j<enteringChildrenSnapshot.length;j++)
                         {
-                            enter_portal_models.get(i).add(j, enteringChildren.get(j).getID());
+                            enter_portal_models.get(i).add(j, enteringChildrenSnapshot[j].getID());
                         }
-                    }
                     
-                    if(!leavingChildren.isEmpty())
-                    {
-                        for(int k=0;k<leavingChildren.size();k++)
+                        for(int k=0;k<leavingChildrenSnapshot.length;k++)
                         {
-                            exit_portal_models.get(i).add(k, leavingChildren.get(k).getID());
+                            exit_portal_models.get(i).add(k, leavingChildrenSnapshot[k].getID());
                         }
-                    }
                 }
             }
         );
@@ -238,36 +230,30 @@ public class GUI1_Server extends javax.swing.JFrame {
                 for(int i=0;i<uz_models_C.size();i++)
                 {
                     uz_models_C.get(i).clear();
-                    CopyOnWriteArrayList<Child> avail_children = uz.get(i).getAvailChildren();
-                    if(!avail_children.isEmpty())
+                    Child[] avail_childrenSnapshot = uz.get(i).getAvailChildren().toArray(new Child[0]);     // Changed from CopyOnWriteArrayList to an Array due to chances of updating whilst printing each element
+                    for(int j=0;j<avail_childrenSnapshot.length;j++)
                     {
-                        for(int j=0;j<avail_children.size();j++)
-                        {
-                            uz_models_C.get(i).add(j, avail_children.get(j).getID());
-                        }   
-                    }
+                        uz_models_C.get(i).add(j, avail_childrenSnapshot[j].getID());
+                    }   
                 }
                 
                 for(int i=0;i<uz_models_D.size();i++)
                 {
                     uz_models_D.get(i).clear();
-                    CopyOnWriteArrayList<Demogorgon> avail_demos = uz.get(i).getAvailDemos();
-                    if(!avail_demos.isEmpty())
-                    {
-                        for(int j=0; j<avail_demos.size();j++)
+                    Demogorgon[] avail_demosSnapshot = uz.get(i).getAvailDemos().toArray(new Demogorgon[0]); // Changed from CopyOnWriteArrayList to an Array due to chances of updating whilst printing each element
+                        for(int j=0; j<avail_demosSnapshot.length;j++)
                         {
-                            uz_models_D.get(i).add(j, avail_demos.get(j).getID());
+                            uz_models_D.get(i).add(j, avail_demosSnapshot[j].getID());
                         }   
-                    }
                 }
                 
                 for(int i=0;i<sz_models_C.size();i++)
                 {
                     sz_models_C.get(i).clear();
-                    CopyOnWriteArrayList<Child> avail_children = sz.get(i).getAvailChildren();
-                    for(int j=0; j<avail_children.size();j++)
+                    Child[] avail_childrenSnapshot = sz.get(i).getAvailChildren().toArray(new Child[0]);     // Changed from CopyOnWriteArrayList to an Array due to chances of updating whilst printing each element
+                    for(int j=0; j<avail_childrenSnapshot.length;j++)
                     {
-                        sz_models_C.get(i).add(j, avail_children.get(j).getID());
+                        sz_models_C.get(i).add(j, avail_childrenSnapshot[j].getID());
                     }
                 }
                 jTextField_CURRENT_EVENT.setText(em.getStatus());
@@ -279,7 +265,7 @@ public class GUI1_Server extends javax.swing.JFrame {
     {
         try
         {
-            RemoteObjectImplementation obj = new RemoteObjectImplementation(log, uz, em);
+            RemoteObjectImplementation obj = new RemoteObjectImplementation(log, uz, em, sz.get(0));
             Registry registry = LocateRegistry.createRegistry(1099);
             Naming.rebind("//localhost/RemoteObjectCreatedForDemonstration", obj);
             System.out.println("Remote object registered");
@@ -299,243 +285,94 @@ public class GUI1_Server extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField_BLOODCOUNT = new javax.swing.JTextField();
-        jLabel_MAIN_STREET = new javax.swing.JLabel();
-        jLabel_BAYERS = new javax.swing.JLabel();
-        jLabel_WSQK = new javax.swing.JLabel();
-        jLabel_BLOOD = new javax.swing.JLabel();
-        jTextField_HIVE_CAPTURED = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel_FOREST = new javax.swing.JLabel();
-        jLabel_LABORATORY = new javax.swing.JLabel();
-        jLabel_MALL = new javax.swing.JLabel();
-        jLabel_SEWERS = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList_MAIN_STREET = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList_BYERS = new javax.swing.JList<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList_WSQK = new javax.swing.JList<>();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jList_EXIT_PORTAL_FOREST = new javax.swing.JList<>();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jList_EXIT_PORTAL_LAB = new javax.swing.JList<>();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jList_ENTER_PORTAL_LAB = new javax.swing.JList<>();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jList_ENTER_PORTAL_MALL = new javax.swing.JList<>();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        jList_EXIT_PORTAL_MALL = new javax.swing.JList<>();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        jList_ENTER_PORTAL_SEWER = new javax.swing.JList<>();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        jList_ENTER_PORTAL_FOREST = new javax.swing.JList<>();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        jList_EXIT_PORTAL_SEWER = new javax.swing.JList<>();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        jList_DEMOS_FOREST = new javax.swing.JList<>();
-        jScrollPane13 = new javax.swing.JScrollPane();
-        jList_DEMOS_LAB = new javax.swing.JList<>();
-        jScrollPane15 = new javax.swing.JScrollPane();
-        jList_CHILDREN_MALL = new javax.swing.JList<>();
-        jScrollPane16 = new javax.swing.JScrollPane();
-        jList_DEMOS_MALL = new javax.swing.JList<>();
-        jScrollPane17 = new javax.swing.JScrollPane();
-        jList_CHILDREN_SEWERS = new javax.swing.JList<>();
-        jScrollPane18 = new javax.swing.JScrollPane();
-        jList_DEMOS_SEWERS = new javax.swing.JList<>();
-        jScrollPane19 = new javax.swing.JScrollPane();
-        jList_CHILDREN_FOREST = new javax.swing.JList<>();
-        jScrollPane20 = new javax.swing.JScrollPane();
-        jList_CHILDREN_LAB = new javax.swing.JList<>();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField_CURRENT_EVENT = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jButton_PLAY = new javax.swing.JButton();
-        jButton_STOP = new javax.swing.JButton();
         jLabel_PORTALS = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jList_ENTER_PORTAL_SEWER = new javax.swing.JList<>();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jList_EXIT_PORTAL_SEWER = new javax.swing.JList<>();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jList_EXIT_PORTAL_MALL = new javax.swing.JList<>();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jList_ENTER_PORTAL_MALL = new javax.swing.JList<>();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jList_ENTER_PORTAL_LAB = new javax.swing.JList<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jList_EXIT_PORTAL_LAB = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jList_EXIT_PORTAL_FOREST = new javax.swing.JList<>();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jList_ENTER_PORTAL_FOREST = new javax.swing.JList<>();
+        jScrollPane18 = new javax.swing.JScrollPane();
+        jList_DEMOS_SEWERS = new javax.swing.JList<>();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        jList_CHILDREN_SEWERS = new javax.swing.JList<>();
+        jScrollPane20 = new javax.swing.JScrollPane();
+        jList_CHILDREN_LAB = new javax.swing.JList<>();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        jList_DEMOS_MALL = new javax.swing.JList<>();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jList_DEMOS_LAB = new javax.swing.JList<>();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        jList_CHILDREN_MALL = new javax.swing.JList<>();
+        jScrollPane19 = new javax.swing.JScrollPane();
+        jList_CHILDREN_FOREST = new javax.swing.JList<>();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jList_DEMOS_FOREST = new javax.swing.JList<>();
+        jLabel_FOREST = new javax.swing.JLabel();
+        jLabel_MALL = new javax.swing.JLabel();
+        jLabel_LABORATORY = new javax.swing.JLabel();
+        jLabel_SEWERS = new javax.swing.JLabel();
+        jTextField_CURRENT_EVENT = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField_HIVE_CAPTURED = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel_MAIN_STREET = new javax.swing.JLabel();
+        jLabel_BAYERS = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList_BYERS = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList_MAIN_STREET = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList_WSQK = new javax.swing.JList<>();
+        jTextField_BLOODCOUNT = new javax.swing.JTextField();
+        jLabel_BLOOD = new javax.swing.JLabel();
+        jLabel_WSQK = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Epsteins vs Children SERVER");
+        setTitle("Stranger Things Sim SERVER");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField_BLOODCOUNT.setEditable(false);
-        jTextField_BLOODCOUNT.setBackground(new java.awt.Color(31, 31, 31));
-        jTextField_BLOODCOUNT.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 48)); // NOI18N
-        jTextField_BLOODCOUNT.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField_BLOODCOUNT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField_BLOODCOUNT, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 391, 117, 113));
+        jPanel1.setBackground(new java.awt.Color(31, 31, 31));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_MAIN_STREET.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_MAIN_STREET.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
-        jLabel_MAIN_STREET.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_MAIN_STREET.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_MAIN_STREET.setText("MAIN STREET");
-        getContentPane().add(jLabel_MAIN_STREET, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 50, 135, -1));
+        jLabel_PORTALS.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_PORTALS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_PORTALS.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_PORTALS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_PORTALS.setText("PORTALS");
+        jPanel1.add(jLabel_PORTALS, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 71, -1));
 
-        jLabel_BAYERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
-        jLabel_BAYERS.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_BAYERS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_BAYERS.setText("BYERS BASEMENT");
-        getContentPane().add(jLabel_BAYERS, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 50, 131, -1));
+        jLabel3.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("UNSAFE ZONES");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 150, -1));
 
-        jLabel_WSQK.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_WSQK.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
-        jLabel_WSQK.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_WSQK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_WSQK.setText("RADIO WSQK");
-        getContentPane().add(jLabel_WSQK, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 347, 86, -1));
+        jLabel4.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("CHILDREN");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 70, 20));
 
-        jLabel_BLOOD.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_BLOOD.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
-        jLabel_BLOOD.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_BLOOD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_BLOOD.setText("BLOOD COUNT");
-        getContentPane().add(jLabel_BLOOD, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 369, 117, -1));
-
-        jTextField_HIVE_CAPTURED.setEditable(false);
-        jTextField_HIVE_CAPTURED.setBackground(new java.awt.Color(31, 31, 31));
-        jTextField_HIVE_CAPTURED.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jTextField_HIVE_CAPTURED.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField_HIVE_CAPTURED.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_HIVE_CAPTURED.addActionListener(this::jTextField_HIVE_CAPTUREDActionPerformed);
-        getContentPane().add(jTextField_HIVE_CAPTURED, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 110, 120, 81));
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("HIVE CHILDREN");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(851, 90, 120, 20));
-
-        jLabel_FOREST.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
-        jLabel_FOREST.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_FOREST.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_FOREST.setText("FOREST");
-        getContentPane().add(jLabel_FOREST, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, -1, -1));
-
-        jLabel_LABORATORY.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_LABORATORY.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
-        jLabel_LABORATORY.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_LABORATORY.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_LABORATORY.setText("LAB");
-        getContentPane().add(jLabel_LABORATORY, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 320, -1, -1));
-
-        jLabel_MALL.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
-        jLabel_MALL.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_MALL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_MALL.setText("MALL");
-        getContentPane().add(jLabel_MALL, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 200, 39, -1));
-
-        jLabel_SEWERS.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_SEWERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
-        jLabel_SEWERS.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_SEWERS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_SEWERS.setText("SEWERS");
-        getContentPane().add(jLabel_SEWERS, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 430, 53, -1));
-
-        jList_MAIN_STREET.setBackground(new java.awt.Color(31, 31, 31));
-        jList_MAIN_STREET.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_MAIN_STREET.setForeground(new java.awt.Color(255, 255, 255));
-        jList_MAIN_STREET.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList_MAIN_STREET);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 72, 80, 251));
-
-        jList_BYERS.setBackground(new java.awt.Color(31, 31, 31));
-        jList_BYERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_BYERS.setForeground(new java.awt.Color(255, 255, 255));
-        jList_BYERS.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList_BYERS);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 72, 80, 251));
-
-        jList_WSQK.setBackground(new java.awt.Color(31, 31, 31));
-        jList_WSQK.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_WSQK.setForeground(new java.awt.Color(255, 255, 255));
-        jList_WSQK.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(jList_WSQK);
-
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 369, 81, 155));
-
-        jList_EXIT_PORTAL_FOREST.setBackground(new java.awt.Color(31, 31, 31));
-        jList_EXIT_PORTAL_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_EXIT_PORTAL_FOREST.setForeground(new java.awt.Color(255, 255, 255));
-        jList_EXIT_PORTAL_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane4.setViewportView(jList_EXIT_PORTAL_FOREST);
-
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 80, 100));
-
-        jList_EXIT_PORTAL_LAB.setBackground(new java.awt.Color(31, 31, 31));
-        jList_EXIT_PORTAL_LAB.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_EXIT_PORTAL_LAB.setForeground(new java.awt.Color(255, 255, 255));
-        jList_EXIT_PORTAL_LAB.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane5.setViewportView(jList_EXIT_PORTAL_LAB);
-
-        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 76, 100));
-
-        jList_ENTER_PORTAL_LAB.setBackground(new java.awt.Color(31, 31, 31));
-        jList_ENTER_PORTAL_LAB.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_ENTER_PORTAL_LAB.setForeground(new java.awt.Color(255, 255, 255));
-        jList_ENTER_PORTAL_LAB.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList_ENTER_PORTAL_LAB.setAutoscrolls(false);
-        jScrollPane6.setViewportView(jList_ENTER_PORTAL_LAB);
-
-        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 76, 100));
-
-        jList_ENTER_PORTAL_MALL.setBackground(new java.awt.Color(31, 31, 31));
-        jList_ENTER_PORTAL_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_ENTER_PORTAL_MALL.setForeground(new java.awt.Color(255, 255, 255));
-        jList_ENTER_PORTAL_MALL.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList_ENTER_PORTAL_MALL.setAutoscrolls(false);
-        jScrollPane7.setViewportView(jList_ENTER_PORTAL_MALL);
-
-        getContentPane().add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 76, 100));
-
-        jList_EXIT_PORTAL_MALL.setBackground(new java.awt.Color(31, 31, 31));
-        jList_EXIT_PORTAL_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_EXIT_PORTAL_MALL.setForeground(new java.awt.Color(255, 255, 255));
-        jList_EXIT_PORTAL_MALL.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane8.setViewportView(jList_EXIT_PORTAL_MALL);
-
-        getContentPane().add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 76, 100));
+        jLabel5.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("DEMOGORGONS");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 80, 20));
 
         jList_ENTER_PORTAL_SEWER.setBackground(new java.awt.Color(31, 31, 31));
         jList_ENTER_PORTAL_SEWER.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
@@ -548,7 +385,81 @@ public class GUI1_Server extends javax.swing.JFrame {
         jList_ENTER_PORTAL_SEWER.setAutoscrolls(false);
         jScrollPane9.setViewportView(jList_ENTER_PORTAL_SEWER);
 
-        getContentPane().add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 76, 100));
+        jPanel1.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 430, 76, 100));
+
+        jList_EXIT_PORTAL_SEWER.setBackground(new java.awt.Color(31, 31, 31));
+        jList_EXIT_PORTAL_SEWER.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_EXIT_PORTAL_SEWER.setForeground(new java.awt.Color(255, 255, 255));
+        jList_EXIT_PORTAL_SEWER.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane11.setViewportView(jList_EXIT_PORTAL_SEWER);
+
+        jPanel1.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 76, 100));
+
+        jList_EXIT_PORTAL_MALL.setBackground(new java.awt.Color(31, 31, 31));
+        jList_EXIT_PORTAL_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_EXIT_PORTAL_MALL.setForeground(new java.awt.Color(255, 255, 255));
+        jList_EXIT_PORTAL_MALL.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane8.setViewportView(jList_EXIT_PORTAL_MALL);
+
+        jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 76, 100));
+
+        jList_ENTER_PORTAL_MALL.setBackground(new java.awt.Color(31, 31, 31));
+        jList_ENTER_PORTAL_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_ENTER_PORTAL_MALL.setForeground(new java.awt.Color(255, 255, 255));
+        jList_ENTER_PORTAL_MALL.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_ENTER_PORTAL_MALL.setAutoscrolls(false);
+        jScrollPane7.setViewportView(jList_ENTER_PORTAL_MALL);
+
+        jPanel1.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 76, 100));
+
+        jList_ENTER_PORTAL_LAB.setBackground(new java.awt.Color(31, 31, 31));
+        jList_ENTER_PORTAL_LAB.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_ENTER_PORTAL_LAB.setForeground(new java.awt.Color(255, 255, 255));
+        jList_ENTER_PORTAL_LAB.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_ENTER_PORTAL_LAB.setAutoscrolls(false);
+        jScrollPane6.setViewportView(jList_ENTER_PORTAL_LAB);
+
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 76, 100));
+
+        jList_EXIT_PORTAL_LAB.setBackground(new java.awt.Color(31, 31, 31));
+        jList_EXIT_PORTAL_LAB.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_EXIT_PORTAL_LAB.setForeground(new java.awt.Color(255, 255, 255));
+        jList_EXIT_PORTAL_LAB.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane5.setViewportView(jList_EXIT_PORTAL_LAB);
+
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 76, 100));
+
+        jList_EXIT_PORTAL_FOREST.setBackground(new java.awt.Color(31, 31, 31));
+        jList_EXIT_PORTAL_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_EXIT_PORTAL_FOREST.setForeground(new java.awt.Color(255, 255, 255));
+        jList_EXIT_PORTAL_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(jList_EXIT_PORTAL_FOREST);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 80, 100));
 
         jList_ENTER_PORTAL_FOREST.setBackground(new java.awt.Color(31, 31, 31));
         jList_ENTER_PORTAL_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
@@ -561,84 +472,7 @@ public class GUI1_Server extends javax.swing.JFrame {
         jList_ENTER_PORTAL_FOREST.setAutoscrolls(false);
         jScrollPane10.setViewportView(jList_ENTER_PORTAL_FOREST);
 
-        getContentPane().add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 80, 100));
-
-        jList_EXIT_PORTAL_SEWER.setBackground(new java.awt.Color(31, 31, 31));
-        jList_EXIT_PORTAL_SEWER.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_EXIT_PORTAL_SEWER.setForeground(new java.awt.Color(255, 255, 255));
-        jList_EXIT_PORTAL_SEWER.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane11.setViewportView(jList_EXIT_PORTAL_SEWER);
-
-        getContentPane().add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 76, 100));
-
-        jList_DEMOS_FOREST.setBackground(new java.awt.Color(31, 31, 31));
-        jList_DEMOS_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_DEMOS_FOREST.setForeground(new java.awt.Color(255, 255, 255));
-        jList_DEMOS_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList_DEMOS_FOREST.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane12.setViewportView(jList_DEMOS_FOREST);
-
-        getContentPane().add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, 78, 98));
-
-        jList_DEMOS_LAB.setBackground(new java.awt.Color(31, 31, 31));
-        jList_DEMOS_LAB.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_DEMOS_LAB.setForeground(new java.awt.Color(255, 255, 255));
-        jList_DEMOS_LAB.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList_DEMOS_LAB.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane13.setViewportView(jList_DEMOS_LAB);
-
-        getContentPane().add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 78, 101));
-
-        jList_CHILDREN_MALL.setBackground(new java.awt.Color(31, 31, 31));
-        jList_CHILDREN_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_CHILDREN_MALL.setForeground(new java.awt.Color(255, 255, 255));
-        jList_CHILDREN_MALL.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList_CHILDREN_MALL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane15.setViewportView(jList_CHILDREN_MALL);
-
-        getContentPane().add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 76, 99));
-
-        jList_DEMOS_MALL.setBackground(new java.awt.Color(31, 31, 31));
-        jList_DEMOS_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_DEMOS_MALL.setForeground(new java.awt.Color(255, 255, 255));
-        jList_DEMOS_MALL.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList_DEMOS_MALL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane16.setViewportView(jList_DEMOS_MALL);
-
-        getContentPane().add(jScrollPane16, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 78, 100));
-
-        jList_CHILDREN_SEWERS.setBackground(new java.awt.Color(31, 31, 31));
-        jList_CHILDREN_SEWERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_CHILDREN_SEWERS.setForeground(new java.awt.Color(255, 255, 255));
-        jList_CHILDREN_SEWERS.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList_CHILDREN_SEWERS.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane17.setViewportView(jList_CHILDREN_SEWERS);
-
-        getContentPane().add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 77, 100));
+        jPanel1.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 80, 100));
 
         jList_DEMOS_SEWERS.setBackground(new java.awt.Color(31, 31, 31));
         jList_DEMOS_SEWERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
@@ -651,20 +485,20 @@ public class GUI1_Server extends javax.swing.JFrame {
         jList_DEMOS_SEWERS.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane18.setViewportView(jList_DEMOS_SEWERS);
 
-        getContentPane().add(jScrollPane18, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, 77, 100));
+        jPanel1.add(jScrollPane18, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 430, 77, 100));
 
-        jList_CHILDREN_FOREST.setBackground(new java.awt.Color(31, 31, 31));
-        jList_CHILDREN_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
-        jList_CHILDREN_FOREST.setForeground(new java.awt.Color(255, 255, 255));
-        jList_CHILDREN_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
+        jList_CHILDREN_SEWERS.setBackground(new java.awt.Color(31, 31, 31));
+        jList_CHILDREN_SEWERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_CHILDREN_SEWERS.setForeground(new java.awt.Color(255, 255, 255));
+        jList_CHILDREN_SEWERS.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jList_CHILDREN_FOREST.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane19.setViewportView(jList_CHILDREN_FOREST);
+        jList_CHILDREN_SEWERS.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane17.setViewportView(jList_CHILDREN_SEWERS);
 
-        getContentPane().add(jScrollPane19, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 76, 98));
+        jPanel1.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 77, 100));
 
         jList_CHILDREN_LAB.setBackground(new java.awt.Color(31, 31, 31));
         jList_CHILDREN_LAB.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
@@ -677,14 +511,100 @@ public class GUI1_Server extends javax.swing.JFrame {
         jList_CHILDREN_LAB.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane20.setViewportView(jList_CHILDREN_LAB);
 
-        getContentPane().add(jScrollPane20, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 76, 101));
+        jPanel1.add(jScrollPane20, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, 76, 101));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("CURRENT EVENT");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(851, 270, 120, -1));
+        jList_DEMOS_MALL.setBackground(new java.awt.Color(31, 31, 31));
+        jList_DEMOS_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_DEMOS_MALL.setForeground(new java.awt.Color(255, 255, 255));
+        jList_DEMOS_MALL.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_DEMOS_MALL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane16.setViewportView(jList_DEMOS_MALL);
+
+        jPanel1.add(jScrollPane16, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, 78, 100));
+
+        jList_DEMOS_LAB.setBackground(new java.awt.Color(31, 31, 31));
+        jList_DEMOS_LAB.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_DEMOS_LAB.setForeground(new java.awt.Color(255, 255, 255));
+        jList_DEMOS_LAB.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_DEMOS_LAB.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane13.setViewportView(jList_DEMOS_LAB);
+
+        jPanel1.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, 78, 101));
+
+        jList_CHILDREN_MALL.setBackground(new java.awt.Color(31, 31, 31));
+        jList_CHILDREN_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_CHILDREN_MALL.setForeground(new java.awt.Color(255, 255, 255));
+        jList_CHILDREN_MALL.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_CHILDREN_MALL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane15.setViewportView(jList_CHILDREN_MALL);
+
+        jPanel1.add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 76, 99));
+
+        jList_CHILDREN_FOREST.setBackground(new java.awt.Color(31, 31, 31));
+        jList_CHILDREN_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_CHILDREN_FOREST.setForeground(new java.awt.Color(255, 255, 255));
+        jList_CHILDREN_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_CHILDREN_FOREST.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane19.setViewportView(jList_CHILDREN_FOREST);
+
+        jPanel1.add(jScrollPane19, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 76, 98));
+
+        jList_DEMOS_FOREST.setBackground(new java.awt.Color(31, 31, 31));
+        jList_DEMOS_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_DEMOS_FOREST.setForeground(new java.awt.Color(255, 255, 255));
+        jList_DEMOS_FOREST.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList_DEMOS_FOREST.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane12.setViewportView(jList_DEMOS_FOREST);
+
+        jPanel1.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, 78, 98));
+
+        jLabel_FOREST.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_FOREST.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_FOREST.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_FOREST.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_FOREST.setText("FOREST");
+        jPanel1.add(jLabel_FOREST, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 140, -1, -1));
+
+        jLabel_MALL.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_MALL.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_MALL.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_MALL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_MALL.setText("MALL");
+        jPanel1.add(jLabel_MALL, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 39, -1));
+
+        jLabel_LABORATORY.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_LABORATORY.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_LABORATORY.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_LABORATORY.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_LABORATORY.setText("LAB");
+        jPanel1.add(jLabel_LABORATORY, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 360, -1, -1));
+
+        jLabel_SEWERS.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_SEWERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_SEWERS.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_SEWERS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_SEWERS.setText("SEWERS");
+        jPanel1.add(jLabel_SEWERS, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, 53, -1));
 
         jTextField_CURRENT_EVENT.setEditable(false);
         jTextField_CURRENT_EVENT.setBackground(new java.awt.Color(31, 31, 31));
@@ -692,66 +612,104 @@ public class GUI1_Server extends javax.swing.JFrame {
         jTextField_CURRENT_EVENT.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_CURRENT_EVENT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField_CURRENT_EVENT.addActionListener(this::jTextField_CURRENT_EVENTActionPerformed);
-        getContentPane().add(jTextField_CURRENT_EVENT, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 290, 120, 80));
+        jPanel1.add(jTextField_CURRENT_EVENT, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 330, 120, 80));
 
-        jPanel1.setBackground(new java.awt.Color(31, 31, 31));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("CURRENT EVENT");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 310, 120, -1));
 
-        jButton_PLAY.setText("PLAY");
-        jButton_PLAY.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton_PLAYMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton_PLAYMouseExited(evt);
-            }
+        jTextField_HIVE_CAPTURED.setEditable(false);
+        jTextField_HIVE_CAPTURED.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_HIVE_CAPTURED.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jTextField_HIVE_CAPTURED.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_HIVE_CAPTURED.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_HIVE_CAPTURED.addActionListener(this::jTextField_HIVE_CAPTUREDActionPerformed);
+        jPanel1.add(jTextField_HIVE_CAPTURED, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 170, 120, 81));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("HIVE CHILDREN");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 150, 120, 20));
+
+        jLabel_MAIN_STREET.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_MAIN_STREET.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_MAIN_STREET.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_MAIN_STREET.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_MAIN_STREET.setText("MAIN STREET");
+        jPanel1.add(jLabel_MAIN_STREET, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 135, -1));
+
+        jLabel_BAYERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_BAYERS.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_BAYERS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_BAYERS.setText("BYERS BASEMENT");
+        jPanel1.add(jLabel_BAYERS, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 131, -1));
+
+        jList_BYERS.setBackground(new java.awt.Color(31, 31, 31));
+        jList_BYERS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_BYERS.setForeground(new java.awt.Color(255, 255, 255));
+        jList_BYERS.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
         });
-        jButton_PLAY.addActionListener(this::jButton_PLAYActionPerformed);
-        jPanel1.add(jButton_PLAY, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, -1, -1));
+        jScrollPane2.setViewportView(jList_BYERS);
 
-        jButton_STOP.setText("STOP");
-        jButton_STOP.addActionListener(this::jButton_STOPActionPerformed);
-        jPanel1.add(jButton_STOP, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 520, -1, -1));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 80, 251));
 
-        jLabel_PORTALS.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_PORTALS.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
-        jLabel_PORTALS.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_PORTALS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_PORTALS.setText("PORTALS");
-        jPanel1.add(jLabel_PORTALS, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 71, -1));
+        jList_MAIN_STREET.setBackground(new java.awt.Color(31, 31, 31));
+        jList_MAIN_STREET.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_MAIN_STREET.setForeground(new java.awt.Color(255, 255, 255));
+        jList_MAIN_STREET.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList_MAIN_STREET);
 
-        jLabel3.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("UNSAFE ZONES");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 150, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 80, 251));
 
-        jLabel4.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("CHILDREN");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 40, 70, 20));
+        jList_WSQK.setBackground(new java.awt.Color(31, 31, 31));
+        jList_WSQK.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 0, 18)); // NOI18N
+        jList_WSQK.setForeground(new java.awt.Color(255, 255, 255));
+        jList_WSQK.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(jList_WSQK);
 
-        jLabel5.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("DEMOGORGONS");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(641, 40, 80, 20));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 81, 155));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 580));
+        jTextField_BLOODCOUNT.setEditable(false);
+        jTextField_BLOODCOUNT.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_BLOODCOUNT.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 48)); // NOI18N
+        jTextField_BLOODCOUNT.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_BLOODCOUNT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(jTextField_BLOODCOUNT, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 117, 113));
+
+        jLabel_BLOOD.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_BLOOD.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_BLOOD.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_BLOOD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_BLOOD.setText("BLOOD COUNT");
+        jPanel1.add(jLabel_BLOOD, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 117, -1));
+
+        jLabel_WSQK.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_WSQK.setFont(new java.awt.Font("ProggyClean CE Nerd Font", 1, 18)); // NOI18N
+        jLabel_WSQK.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_WSQK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_WSQK.setText("RADIO WSQK");
+        jPanel1.add(jLabel_WSQK, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 86, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton_PLAYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_PLAYActionPerformed
-//        java.awt.EventQueue.invokeLater(() -> 
-//                log.resume()
-//        );
-    }//GEN-LAST:event_jButton_PLAYActionPerformed
-
-    private void jButton_STOPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_STOPActionPerformed
-//        java.awt.EventQueue.invokeLater(() -> log.stop());
-    }//GEN-LAST:event_jButton_STOPActionPerformed
 
     private void jTextField_CURRENT_EVENTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_CURRENT_EVENTActionPerformed
         // TODO add your handling code here:
@@ -760,14 +718,6 @@ public class GUI1_Server extends javax.swing.JFrame {
     private void jTextField_HIVE_CAPTUREDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_HIVE_CAPTUREDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_HIVE_CAPTUREDActionPerformed
-
-    private void jButton_PLAYMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_PLAYMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_PLAYMouseEntered
-
-    private void jButton_PLAYMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_PLAYMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_PLAYMouseExited
 
     
 // ============= MAIN METHOD =============
@@ -798,8 +748,6 @@ public class GUI1_Server extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_PLAY;
-    private javax.swing.JButton jButton_STOP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

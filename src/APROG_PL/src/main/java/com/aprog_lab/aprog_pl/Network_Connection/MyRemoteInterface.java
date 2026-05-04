@@ -1,6 +1,5 @@
 package com.aprog_lab.aprog_pl.Network_Connection;
 
-import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -12,6 +11,8 @@ import java.util.ArrayList;
     {
         public boolean stop() throws RemoteException;
         public boolean resume() throws RemoteException;
-        public ArrayList<Unsafe_Zone> getUnsafeZones() throws RemoteException;
+        public ArrayList<Integer> getUnsafeZonesAmountChildren() throws RemoteException;
+        public ArrayList<Integer> getUnsafeZonesAmountDemos() throws RemoteException;
+        public int getAvailChildrenHawkings() throws RemoteException;
         public String getActiveEvent() throws RemoteException;
     }

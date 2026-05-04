@@ -2,7 +2,6 @@ package com.aprog_lab.aprog_pl.threads;
 
 import com.aprog_lab.aprog_pl.GUI.GUI2_Client;
 import com.aprog_lab.aprog_pl.Network_Connection.MyRemoteInterface;
-import java.io.IOException;
 import java.rmi.RemoteException;
 
 /**
@@ -28,6 +27,8 @@ public class ClientRefresher extends Thread {
             while(true)
             {
                 gui2.refreshEvent(roi.getActiveEvent());
+                gui2.refreshLocations(roi.getUnsafeZonesAmountChildren(), roi.getUnsafeZonesAmountDemos());
+                gui2.refreshHawkings(roi.getAvailChildrenHawkings());
             }
         }
         catch(RemoteException re)

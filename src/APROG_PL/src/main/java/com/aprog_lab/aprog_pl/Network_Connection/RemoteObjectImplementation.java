@@ -1,5 +1,6 @@
 package com.aprog_lab.aprog_pl.Network_Connection;
 
+import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.logManager;
 import com.aprog_lab.aprog_pl.threads.EventManager;
@@ -16,12 +17,14 @@ import java.util.ArrayList;
         private logManager log;
         private ArrayList<Unsafe_Zone> uzs;
         private EventManager em;
+        private Safe_Zone hawkings;
         
-        public RemoteObjectImplementation(logManager p_log, ArrayList<Unsafe_Zone> p_uzs, EventManager p_em) throws RemoteException
+        public RemoteObjectImplementation(logManager p_log, ArrayList<Unsafe_Zone> p_uzs, EventManager p_em, Safe_Zone p_hawkings) throws RemoteException
         {
             log=p_log;
             uzs=p_uzs;
             em = p_em;
+            hawkings=p_hawkings;
         }
         
         @Override
@@ -59,14 +62,36 @@ import java.util.ArrayList;
         }
         
         @Override
-        public String getActiveEvent() throws RemoteException
+        public synchronized String getActiveEvent() throws RemoteException
         {
             return em.getStatus();
         }
         
         @Override
-        public ArrayList<Unsafe_Zone> getUnsafeZones()
+        public ArrayList<Integer> getUnsafeZonesAmountChildren()
         {
-            return uzs;
+            ArrayList<Integer> amountChildrenUZ = new ArrayList<>();
+            for (Unsafe_Zone uz : uzs)
+            {
+                amountChildrenUZ.add(uz.getAvailChildren().size());
+            }
+            return amountChildrenUZ;
+        }
+        
+        @Override
+        public ArrayList<Integer> getUnsafeZonesAmountDemos()
+        {
+            ArrayList<Integer> amountDemosUZ = new ArrayList<>();
+            for (Unsafe_Zone uz : uzs)
+            {
+                amountDemosUZ.add(uz.getAvailDemos().size());
+            }
+            return amountDemosUZ;
+        }
+        
+        @Override
+        public synchronized int getAvailChildrenHawkings()
+        {
+            return hawkings.getAvailChildren().size();
         }
     }
