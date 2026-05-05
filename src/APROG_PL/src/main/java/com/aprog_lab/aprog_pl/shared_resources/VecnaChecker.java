@@ -5,6 +5,7 @@ import com.aprog_lab.aprog_pl.events.StormEvent;
 import com.aprog_lab.aprog_pl.events.HiveMindEvent;
 import com.aprog_lab.aprog_pl.events.ElevenSavesEvent;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
@@ -30,9 +31,9 @@ public class VecnaChecker {
     /*
     
     */
-    public synchronized void spawnDemo(Demogorgon demo, int capped_children)
+    public synchronized void spawnDemo(Demogorgon demo, AtomicInteger capped_children)
     {
-        int can_spawn = capped_children%8;
+        int can_spawn = capped_children.get()%8;
         if(can_spawn==0)
         {
             log.logWrite("A new demogorgon has been Spawned!");

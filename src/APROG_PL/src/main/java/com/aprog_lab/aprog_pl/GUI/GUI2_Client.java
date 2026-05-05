@@ -113,6 +113,17 @@ public class GUI2_Client extends javax.swing.JFrame {
             portalsLeaving.get(i).setText(String.valueOf(amountChildrenExit.get(i)));
         }
     }
+    
+    public void refreshDemoRankings(ArrayList<String> demoRanking)
+    {
+        if(!demoRanking.isEmpty())
+        {
+            for(int i=0;i<demoRanking.size();i++)
+            {
+                demo_ranks.get(i).setText(demoRanking.get(i));
+            }   
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

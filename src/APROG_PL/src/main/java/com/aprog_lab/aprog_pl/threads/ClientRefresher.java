@@ -26,15 +26,21 @@ public class ClientRefresher extends Thread {
         {
             while(true)
             {
+                Thread.sleep(500);
                 gui2.refreshEvent(roi.getActiveEvent());
                 gui2.refreshLocations(roi.getUnsafeZonesAmountChildren(), roi.getUnsafeZonesAmountDemos());
                 gui2.refreshPortals(roi.getPortalsChildrenAmountEntering(), roi.getPortalsChildrenAmountLeaving());
                 gui2.refreshHawkings(roi.getAvailChildrenHawkings());
+                gui2.refreshDemoRankings(roi.getDemoRankings());
             }
         }
         catch(RemoteException re)
         {
             System.out.println("Error: "+re.getMessage());
+        }
+        catch(InterruptedException ie)
+        {
+            System.out.println("Error: "+ie.getMessage());
         }
     }
     

@@ -4,6 +4,7 @@ import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.logManager;
+import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.EventManager;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -71,7 +72,7 @@ import java.util.ArrayList;
         }
         
         @Override
-        public ArrayList<Integer> getUnsafeZonesAmountChildren()
+        public ArrayList<Integer> getUnsafeZonesAmountChildren() throws RemoteException
         {
             ArrayList<Integer> amountChildrenUZ = new ArrayList<>();
             for (Unsafe_Zone uz : uzs)
@@ -82,7 +83,7 @@ import java.util.ArrayList;
         }
         
         @Override
-        public ArrayList<Integer> getUnsafeZonesAmountDemos()
+        public ArrayList<Integer> getUnsafeZonesAmountDemos() throws RemoteException
         {
             ArrayList<Integer> amountDemosUZ = new ArrayList<>();
             for (Unsafe_Zone uz : uzs)
@@ -93,7 +94,7 @@ import java.util.ArrayList;
         }
         
         @Override
-        public ArrayList<Integer> getPortalsChildrenAmountEntering()
+        public ArrayList<Integer> getPortalsChildrenAmountEntering() throws RemoteException
         {
             ArrayList<Integer> portalChildrenQuantitiesEntering = new ArrayList<>();
             for (Portal p : portals)
@@ -104,7 +105,7 @@ import java.util.ArrayList;
         }
         
         @Override
-        public ArrayList<Integer> getPortalsChildrenAmountLeaving()
+        public ArrayList<Integer> getPortalsChildrenAmountLeaving() throws RemoteException
         {
             ArrayList<Integer> portalChildrenQuantitiesLeaving = new ArrayList<>();
             for (Portal p : portals)
@@ -115,8 +116,19 @@ import java.util.ArrayList;
         }
         
         @Override
-        public synchronized int getAvailChildrenHawkings()
+        public synchronized int getAvailChildrenHawkings() throws RemoteException
         {
             return hawkings.getAvailChildren().size();
+        }
+        
+        @Override
+        public synchronized ArrayList<String> getDemoRankings() throws RemoteException
+        {
+            ArrayList<String> demoRank = new ArrayList<>();
+            for(Demogorgon d : log.getDemoRanking())
+            {
+                demoRank.add(d.getID());
+            }
+            return demoRank;
         }
     }

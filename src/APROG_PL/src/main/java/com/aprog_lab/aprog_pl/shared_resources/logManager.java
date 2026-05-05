@@ -1,13 +1,9 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
+import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.*;
 
@@ -18,19 +14,22 @@ import java.util.logging.*;
 public class logManager
 {
     private AtomicBoolean playing;
-    private PrintWriter writer;
+    private ArrayList<Demogorgon> ranking;
+    //private PrintWriter writer;
     private Logger logWriter;
     private FileHandler fileHandler;
-    private Path path;
+    //private Path path;
     // Custom format
-    private DateTimeFormatter formatter;
-    private LocalDateTime dateTime;
+    //private DateTimeFormatter formatter;
+    //private LocalDateTime dateTime;
     
     public logManager()
     {
         playing = new AtomicBoolean(true);
+        ranking = new ArrayList<>();
         logWriter = Logger.getLogger(logManager.class.getName());
         logWriter.setUseParentHandlers(false);
+        ranking = new ArrayList<>();
         
         //formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         //path = Paths.get("..\\..\\docs\\hawkings.txt");
@@ -111,5 +110,29 @@ public class logManager
         //writer.close();
         logWriter.info(textContent);
         
+    }
+    
+    public synchronized void updateRanking(Demogorgon d)
+    {
+        boolean changed = false;
+        if(ranking.size() < 3 && !ranking.contains(d))
+        {
+            ranking.add(d);
+        }
+
+        for(int i=0;i<ranking.size();i++)
+        {
+            if((d.getTotalCaptured()>=ranking.get(i).getTotalCaptured()) && !changed)
+            {
+                ranking.set(i, d);
+                changed = true;
+            }
+
+        }
+    }
+    
+    public synchronized ArrayList<Demogorgon> getDemoRanking()
+    {
+        return ranking;
     }
 }

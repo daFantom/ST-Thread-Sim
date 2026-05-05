@@ -7,6 +7,7 @@ import com.aprog_lab.aprog_pl.shared_resources.logManager;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.VecnaChecker;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class Demogorgon extends Thread
 {
     private String id;                                                                  // If "D0000", Alpha Demogorgon (First thread), otherwise, just a Demogorgon.
-    private int child_counter, total_counter;                                         // Used for keeping track of each captured child from a single Demogorgon.
+    private AtomicInteger child_counter, total_counter;                                         // Used for keeping track of each captured child from a single Demogorgon.
     private int attack_time;                                                            // Attack interval, changed if UPSIDE DOWN STORM event is active.
     private ArrayList<Unsafe_Zone> uz;                                                // uz[0]=Forest, uz[1]=Lab, uz[2]=Mall, uz[3]=Sewer, uz[4]=HIVE
     private VecnaChecker vc;
@@ -30,7 +31,8 @@ public class Demogorgon extends Thread
     public Demogorgon(String pid, ArrayList<Unsafe_Zone> puz, VecnaChecker pvc, StormEvent pstorm, ElevenSavesEvent pese, HiveMindEvent phme, logManager p_log)
     {
         id = pid;
-        child_counter = 0;
+        child_counter = new AtomicInteger(0);
+        total_counter = new AtomicInteger(0);
         uz = puz;
         vc = pvc;
         storm = pstorm;
@@ -71,9 +73,10 @@ public class Demogorgon extends Thread
                                     if(performAttackChild(actual_uz))
                                     {
                                         Thread.sleep((int)((Math.random()*500)+500));
-                                        child_counter++;
-                                        total_counter++;
+                                        child_counter.getAndIncrement();
+                                        total_counter.getAndIncrement();
                                         vc.spawnDemo(this, child_counter);
+                                        log.updateRanking(this);                                                // Update the ranking of the demogorgons
                                     }
                                 }
                             }
@@ -86,9 +89,10 @@ public class Demogorgon extends Thread
                                 if(performAttackChild(actual_uz))
                                 {
                                     Thread.sleep((int)((Math.random()*500)+500));
-                                    child_counter++;
-                                    total_counter++;
+                                    child_counter.getAndIncrement();
+                                    total_counter.getAndIncrement();
                                     vc.spawnDemo(this, child_counter);
+                                    log.updateRanking(this);                                                // Update the ranking of the demogorgons
                                 }
                                 actual_uz.exitUZDemo(this);
                             }
@@ -130,7 +134,7 @@ public class Demogorgon extends Thread
     */
     public void emptyChildren()
     {
-        child_counter = 0;
+        child_counter.set(0);
     }
     
     /*
@@ -138,7 +142,15 @@ public class Demogorgon extends Thread
     */
     public int getLocalCaptured()
     {
-        return child_counter;
+        return child_counter.get();
+    }
+    
+    /*
+    
+    */
+    public int getTotalCaptured()
+    {
+        return total_counter.get();
     }
     
     public boolean performAttackChild(Unsafe_Zone actual_uz)

@@ -15,6 +15,7 @@ import java.util.ArrayList;
         public ArrayList<Integer> getUnsafeZonesAmountDemos() throws RemoteException;
         public ArrayList<Integer> getPortalsChildrenAmountEntering() throws RemoteException;
         public ArrayList<Integer> getPortalsChildrenAmountLeaving() throws RemoteException;
+        public ArrayList<String> getDemoRankings() throws RemoteException;
         public int getAvailChildrenHawkings() throws RemoteException;
         public String getActiveEvent() throws RemoteException;
     }
