@@ -77,7 +77,14 @@ import java.util.ArrayList;
             ArrayList<Integer> amountChildrenUZ = new ArrayList<>();
             for (Unsafe_Zone uz : uzs)
             {
-                amountChildrenUZ.add(uz.getAvailChildren().size());
+                if(uz.getName().equals("HIVE"))
+                {
+                    amountChildrenUZ.add(uz.getCapturedChildren());
+                }
+                else
+                {
+                    amountChildrenUZ.add(uz.getAvailChildren().size());
+                }
             }
             return amountChildrenUZ;
         }

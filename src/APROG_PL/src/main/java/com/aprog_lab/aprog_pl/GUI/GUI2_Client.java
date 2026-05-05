@@ -1,15 +1,11 @@
 package com.aprog_lab.aprog_pl.GUI;
 
 import com.aprog_lab.aprog_pl.Network_Connection.MyRemoteInterface;
-import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
-import com.aprog_lab.aprog_pl.threads.Child;
 import com.aprog_lab.aprog_pl.threads.ClientRefresher;
-import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import java.io.IOException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  *
@@ -39,6 +35,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         c_locs.add(jTextField_LOCATIONS_LAB_C);
         c_locs.add(jTextField_LOCATIONS_MALL_C);
         c_locs.add(jTextField_LOCATIONS_SEWERS_C);
+        c_locs.add(jTextField_LOCATIONS_HIVE_C);
         
         d_locs.add(jTextField_LOCATIONS_FOREST_D);
         d_locs.add(jTextField_LOCATIONS_LAB_D);
@@ -84,10 +81,13 @@ public class GUI2_Client extends javax.swing.JFrame {
     {
         for(int i=0;i<c_locs.size();i++)
         {
-            d_locs.get(i).setText("");
             c_locs.get(i).setText("");
-            d_locs.get(i).setText(String.valueOf(amountDemos.get(i)));
             c_locs.get(i).setText(String.valueOf(amountChildren.get(i)));
+        }
+        for(int i=0; i<d_locs.size();i++)
+        {
+            d_locs.get(i).setText("");
+            d_locs.get(i).setText(String.valueOf(amountDemos.get(i)));
         }
     }
     
@@ -170,8 +170,10 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_LOCATIONS_MALL_C = new javax.swing.JTextField();
         jTextField_LOCATIONS_FOREST_C = new javax.swing.JTextField();
         jLabel_FOREST_LOCATIONS_C = new javax.swing.JLabel();
+        jTextField_LOCATIONS_HIVE_C = new javax.swing.JTextField();
+        jLabel_HIVE_LOCATIONS_C = new javax.swing.JLabel();
         jTextField_LOCATIONS_SEWERS_C = new javax.swing.JTextField();
-        jLabel_SEWERS_LOCATIONS_C = new javax.swing.JLabel();
+        jLabel_SEWERS_LOCATIONS_C1 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jLabel_DEMOS_LOCATIONS = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
@@ -231,10 +233,10 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_TOTAL_CHILDREN_AMOUNT.setEditable(false);
         jTextField_TOTAL_CHILDREN_AMOUNT.setBackground(new java.awt.Color(0, 102, 51));
         jTextField_TOTAL_CHILDREN_AMOUNT.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jTextField_TOTAL_CHILDREN_AMOUNT.setForeground(new java.awt.Color(204, 0, 0));
+        jTextField_TOTAL_CHILDREN_AMOUNT.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_TOTAL_CHILDREN_AMOUNT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField_TOTAL_CHILDREN_AMOUNT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 2));
-        jTextField_TOTAL_CHILDREN_AMOUNT.setCaretColor(new java.awt.Color(204, 0, 0));
+        jTextField_TOTAL_CHILDREN_AMOUNT.setCaretColor(new java.awt.Color(255, 0, 0));
         jPanel4.add(jTextField_TOTAL_CHILDREN_AMOUNT, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 90, 60));
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 100));
@@ -432,6 +434,22 @@ public class GUI2_Client extends javax.swing.JFrame {
         jLabel_FOREST_LOCATIONS_C.setText("FOREST");
         jPanel14.add(jLabel_FOREST_LOCATIONS_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 50, -1));
 
+        jTextField_LOCATIONS_HIVE_C.setEditable(false);
+        jTextField_LOCATIONS_HIVE_C.setBackground(new java.awt.Color(31, 31, 31));
+        jTextField_LOCATIONS_HIVE_C.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jTextField_LOCATIONS_HIVE_C.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_LOCATIONS_HIVE_C.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_LOCATIONS_HIVE_C.setText("jTextField1");
+        jTextField_LOCATIONS_HIVE_C.setBorder(null);
+        jPanel14.add(jTextField_LOCATIONS_HIVE_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 50, 40));
+
+        jLabel_HIVE_LOCATIONS_C.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_HIVE_LOCATIONS_C.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_HIVE_LOCATIONS_C.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_HIVE_LOCATIONS_C.setText("HIVE");
+        jLabel_HIVE_LOCATIONS_C.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
+        jPanel14.add(jLabel_HIVE_LOCATIONS_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 246, 40, 30));
+
         jTextField_LOCATIONS_SEWERS_C.setEditable(false);
         jTextField_LOCATIONS_SEWERS_C.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_LOCATIONS_SEWERS_C.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -441,14 +459,14 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_LOCATIONS_SEWERS_C.setBorder(null);
         jPanel14.add(jTextField_LOCATIONS_SEWERS_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 50, 40));
 
-        jLabel_SEWERS_LOCATIONS_C.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel_SEWERS_LOCATIONS_C.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_SEWERS_LOCATIONS_C.setText("SEWERS");
-        jPanel14.add(jLabel_SEWERS_LOCATIONS_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
+        jLabel_SEWERS_LOCATIONS_C1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_SEWERS_LOCATIONS_C1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_SEWERS_LOCATIONS_C1.setText("SEWERS");
+        jPanel14.add(jLabel_SEWERS_LOCATIONS_C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
-        jPanel9.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 280));
+        jPanel9.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 290));
 
-        jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 49, 150, 300));
+        jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 49, 150, 310));
 
         jPanel13.setBackground(new java.awt.Color(31, 31, 31));
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -526,9 +544,9 @@ public class GUI2_Client extends javax.swing.JFrame {
         jLabel_SEWERS_LOCATIONS_D.setText("SEWERS");
         jPanel15.add(jLabel_SEWERS_LOCATIONS_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 50, -1));
 
-        jPanel10.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 280));
+        jPanel10.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 290));
 
-        jPanel7.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 150, 300));
+        jPanel7.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 150, 310));
 
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 400, 370));
 
@@ -611,7 +629,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jButton_STOP_RESUME.setText("STOP / RESUME");
         jButton_STOP_RESUME.setBorder(null);
         jButton_STOP_RESUME.addActionListener(this::jButton_STOP_RESUMEActionPerformed);
-        jPanel1.add(jButton_STOP_RESUME, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 457, 390, 40));
+        jPanel1.add(jButton_STOP_RESUME, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 390, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -704,6 +722,7 @@ public class GUI2_Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_FOREST_LOCATIONS_D;
     private javax.swing.JLabel jLabel_HAWKINGS_SUMMARY;
     private javax.swing.JLabel jLabel_HAWKINGS_TOTAL_CHILDREN;
+    private javax.swing.JLabel jLabel_HIVE_LOCATIONS_C;
     private javax.swing.JLabel jLabel_LAB_LOCATIONS_C;
     private javax.swing.JLabel jLabel_LAB_LOCATIONS_D;
     private javax.swing.JLabel jLabel_MALL_LOCATIONS_C;
@@ -712,7 +731,7 @@ public class GUI2_Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_PORTAL2_STATUS;
     private javax.swing.JLabel jLabel_PORTAL3_STATUS;
     private javax.swing.JLabel jLabel_PORTAL4_STATUS;
-    private javax.swing.JLabel jLabel_SEWERS_LOCATIONS_C;
+    private javax.swing.JLabel jLabel_SEWERS_LOCATIONS_C1;
     private javax.swing.JLabel jLabel_SEWERS_LOCATIONS_D;
     private javax.swing.JLabel jLabel_UPSIDE_DOWN_STATUS;
     private javax.swing.JPanel jPanel1;
@@ -738,6 +757,7 @@ public class GUI2_Client extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_DEMO_RANK3;
     private javax.swing.JTextField jTextField_LOCATIONS_FOREST_C;
     private javax.swing.JTextField jTextField_LOCATIONS_FOREST_D;
+    private javax.swing.JTextField jTextField_LOCATIONS_HIVE_C;
     private javax.swing.JTextField jTextField_LOCATIONS_LAB_C;
     private javax.swing.JTextField jTextField_LOCATIONS_LAB_D;
     private javax.swing.JTextField jTextField_LOCATIONS_MALL_C;
