@@ -1,6 +1,5 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
-import com.aprog_lab.aprog_pl.GUI.GUI1_Server;
 import com.aprog_lab.aprog_pl.GUI_Initializers.GUI1_Manager;
 import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -94,6 +93,23 @@ public class Safe_Zone
         if(this.getName().equals("WSQK Radio") && log.getPlaying())
         {
             bloodCount.incrementAndGet();                                           // The counter gets incremented for each child that escaped.
+            ifc_mng.refreshCounters();
+        }
+        else
+        {
+            log.waitLog();
+            incrementBloodCount();
+        }
+    }
+    
+    /* Unfinished method for incrementing the blood counter
+    
+    */
+    public void decrementBloodCount()
+    {
+        if(this.getName().equals("WSQK Radio") && log.getPlaying())
+        {
+            bloodCount.decrementAndGet();                                           // The counter gets incremented for each child that escaped.
             ifc_mng.refreshCounters();
         }
         else

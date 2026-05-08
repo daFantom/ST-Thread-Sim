@@ -14,7 +14,11 @@ import java.util.ArrayList;
 public class GUI2_Client extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUI2_Client.class.getName());
-    private ArrayList<javax.swing.JTextField> c_locs, d_locs,portalsEntering, portalsLeaving, demo_ranks;
+    private final ArrayList<javax.swing.JTextField> c_locs;
+    private final ArrayList<javax.swing.JTextField> d_locs;
+    private final ArrayList<javax.swing.JTextField> portalsEntering;
+    private final ArrayList<javax.swing.JTextField> portalsLeaving;
+    private final ArrayList<javax.swing.JTextField> demo_ranks;
     private MyRemoteInterface remoteObject;
 
     /**
@@ -60,6 +64,9 @@ public class GUI2_Client extends javax.swing.JFrame {
         
     }
     
+    /*
+    
+    */
     public void initRMI()
     {
         try
@@ -77,6 +84,9 @@ public class GUI2_Client extends javax.swing.JFrame {
         }
     }
     
+    /*
+    
+    */
     public void refreshLocations(ArrayList<Integer> amountChildren, ArrayList<Integer> amountDemos)
     {
         for(int i=0;i<c_locs.size();i++)
@@ -92,7 +102,9 @@ public class GUI2_Client extends javax.swing.JFrame {
     }
     
     
+    /*
     
+    */
     public void refreshEvent(String content)
     {
         jTextField_CURRENT_EVENT.setText(content);
@@ -235,6 +247,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_TOTAL_CHILDREN_AMOUNT.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jTextField_TOTAL_CHILDREN_AMOUNT.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_TOTAL_CHILDREN_AMOUNT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_TOTAL_CHILDREN_AMOUNT.setText("0");
         jTextField_TOTAL_CHILDREN_AMOUNT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 2));
         jTextField_TOTAL_CHILDREN_AMOUNT.setCaretColor(new java.awt.Color(255, 0, 0));
         jPanel4.add(jTextField_TOTAL_CHILDREN_AMOUNT, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 90, 60));
@@ -286,6 +299,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_PORTAL4_STATUS_LEAVING.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_PORTAL4_STATUS_LEAVING.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_PORTAL4_STATUS_LEAVING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL4_STATUS_LEAVING.setText("0");
         jTextField_PORTAL4_STATUS_LEAVING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
         jPanel5.add(jTextField_PORTAL4_STATUS_LEAVING, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 40, 30));
 
@@ -293,6 +307,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_PORTAL2_STATUS_ENTERING.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_PORTAL2_STATUS_ENTERING.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_PORTAL2_STATUS_ENTERING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL2_STATUS_ENTERING.setText("0");
         jTextField_PORTAL2_STATUS_ENTERING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
         jTextField_PORTAL2_STATUS_ENTERING.addActionListener(this::jTextField_PORTAL2_STATUS_ENTERINGActionPerformed);
         jPanel5.add(jTextField_PORTAL2_STATUS_ENTERING, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 40, 30));
@@ -301,6 +316,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_PORTAL3_STATUS_ENTERING.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_PORTAL3_STATUS_ENTERING.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_PORTAL3_STATUS_ENTERING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL3_STATUS_ENTERING.setText("0");
         jTextField_PORTAL3_STATUS_ENTERING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
         jTextField_PORTAL3_STATUS_ENTERING.addActionListener(this::jTextField_PORTAL3_STATUS_ENTERINGActionPerformed);
         jPanel5.add(jTextField_PORTAL3_STATUS_ENTERING, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 40, 30));
@@ -309,6 +325,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_PORTAL4_STATUS_ENTERING.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_PORTAL4_STATUS_ENTERING.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_PORTAL4_STATUS_ENTERING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL4_STATUS_ENTERING.setText("0");
         jTextField_PORTAL4_STATUS_ENTERING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
         jTextField_PORTAL4_STATUS_ENTERING.addActionListener(this::jTextField_PORTAL4_STATUS_ENTERINGActionPerformed);
         jPanel5.add(jTextField_PORTAL4_STATUS_ENTERING, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 40, 30));
@@ -317,6 +334,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_PORTAL1_STATUS_ENTERING.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_PORTAL1_STATUS_ENTERING.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_PORTAL1_STATUS_ENTERING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL1_STATUS_ENTERING.setText("0");
         jTextField_PORTAL1_STATUS_ENTERING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
         jPanel5.add(jTextField_PORTAL1_STATUS_ENTERING, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 40, 30));
 
@@ -324,6 +342,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_PORTAL1_STATUS_LEAVING.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_PORTAL1_STATUS_LEAVING.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_PORTAL1_STATUS_LEAVING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL1_STATUS_LEAVING.setText("0");
         jTextField_PORTAL1_STATUS_LEAVING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
         jPanel5.add(jTextField_PORTAL1_STATUS_LEAVING, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 40, 30));
 
@@ -331,6 +350,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_PORTAL2_STATUS_LEAVING.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_PORTAL2_STATUS_LEAVING.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_PORTAL2_STATUS_LEAVING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL2_STATUS_LEAVING.setText("0");
         jTextField_PORTAL2_STATUS_LEAVING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
         jPanel5.add(jTextField_PORTAL2_STATUS_LEAVING, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 40, 30));
 
@@ -338,6 +358,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_PORTAL3_STATUS_LEAVING.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_PORTAL3_STATUS_LEAVING.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_PORTAL3_STATUS_LEAVING.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_PORTAL3_STATUS_LEAVING.setText("0");
         jTextField_PORTAL3_STATUS_LEAVING.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(50, 50, 50)));
         jPanel5.add(jTextField_PORTAL3_STATUS_LEAVING, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 40, 30));
 
@@ -406,7 +427,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_LOCATIONS_LAB_C.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField_LOCATIONS_LAB_C.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_LOCATIONS_LAB_C.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_LOCATIONS_LAB_C.setText("jTextField1");
+        jTextField_LOCATIONS_LAB_C.setText("0");
         jTextField_LOCATIONS_LAB_C.setBorder(null);
         jPanel14.add(jTextField_LOCATIONS_LAB_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 50, 40));
 
@@ -415,7 +436,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_LOCATIONS_MALL_C.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField_LOCATIONS_MALL_C.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_LOCATIONS_MALL_C.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_LOCATIONS_MALL_C.setText("jTextField1");
+        jTextField_LOCATIONS_MALL_C.setText("0");
         jTextField_LOCATIONS_MALL_C.setBorder(null);
         jPanel14.add(jTextField_LOCATIONS_MALL_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 50, 40));
 
@@ -424,7 +445,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_LOCATIONS_FOREST_C.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField_LOCATIONS_FOREST_C.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_LOCATIONS_FOREST_C.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_LOCATIONS_FOREST_C.setText("jTextField1");
+        jTextField_LOCATIONS_FOREST_C.setText("0");
         jTextField_LOCATIONS_FOREST_C.setBorder(null);
         jPanel14.add(jTextField_LOCATIONS_FOREST_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 50, 40));
 
@@ -439,7 +460,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_LOCATIONS_HIVE_C.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField_LOCATIONS_HIVE_C.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_LOCATIONS_HIVE_C.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_LOCATIONS_HIVE_C.setText("jTextField1");
+        jTextField_LOCATIONS_HIVE_C.setText("0");
         jTextField_LOCATIONS_HIVE_C.setBorder(null);
         jPanel14.add(jTextField_LOCATIONS_HIVE_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 50, 40));
 
@@ -455,7 +476,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_LOCATIONS_SEWERS_C.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField_LOCATIONS_SEWERS_C.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_LOCATIONS_SEWERS_C.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_LOCATIONS_SEWERS_C.setText("jTextField1");
+        jTextField_LOCATIONS_SEWERS_C.setText("0");
         jTextField_LOCATIONS_SEWERS_C.setBorder(null);
         jPanel14.add(jTextField_LOCATIONS_SEWERS_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 50, 40));
 
@@ -494,7 +515,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_LOCATIONS_FOREST_D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField_LOCATIONS_FOREST_D.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_LOCATIONS_FOREST_D.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_LOCATIONS_FOREST_D.setText("jTextField1");
+        jTextField_LOCATIONS_FOREST_D.setText("0");
         jTextField_LOCATIONS_FOREST_D.setBorder(null);
         jPanel10.add(jTextField_LOCATIONS_FOREST_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 46, 50, 40));
 
@@ -506,7 +527,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_LOCATIONS_LAB_D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField_LOCATIONS_LAB_D.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_LOCATIONS_LAB_D.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_LOCATIONS_LAB_D.setText("jTextField1");
+        jTextField_LOCATIONS_LAB_D.setText("0");
         jTextField_LOCATIONS_LAB_D.setBorder(null);
         jPanel15.add(jTextField_LOCATIONS_LAB_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 50, 40));
 
@@ -515,7 +536,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_LOCATIONS_MALL_D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField_LOCATIONS_MALL_D.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_LOCATIONS_MALL_D.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_LOCATIONS_MALL_D.setText("jTextField1");
+        jTextField_LOCATIONS_MALL_D.setText("0");
         jTextField_LOCATIONS_MALL_D.setBorder(null);
         jPanel15.add(jTextField_LOCATIONS_MALL_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 50, 40));
 
@@ -534,7 +555,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_LOCATIONS_SEWERS_D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField_LOCATIONS_SEWERS_D.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_LOCATIONS_SEWERS_D.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_LOCATIONS_SEWERS_D.setText("jTextField1");
+        jTextField_LOCATIONS_SEWERS_D.setText("0");
         jTextField_LOCATIONS_SEWERS_D.setBorder(null);
         jPanel15.add(jTextField_LOCATIONS_SEWERS_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 50, 40));
 
@@ -582,15 +603,16 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_DEMO_RANK1.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_DEMO_RANK1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_DEMO_RANK1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_DEMO_RANK1.setText("jTextField1");
+        jTextField_DEMO_RANK1.setText("None");
         jTextField_DEMO_RANK1.setBorder(null);
+        jTextField_DEMO_RANK1.addActionListener(this::jTextField_DEMO_RANK1ActionPerformed);
         jPanel16.add(jTextField_DEMO_RANK1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 70, 30));
 
         jTextField_DEMO_RANK2.setEditable(false);
         jTextField_DEMO_RANK2.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_DEMO_RANK2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_DEMO_RANK2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_DEMO_RANK2.setText("jTextField1");
+        jTextField_DEMO_RANK2.setText("None");
         jTextField_DEMO_RANK2.setBorder(null);
         jPanel16.add(jTextField_DEMO_RANK2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 70, 30));
 
@@ -598,7 +620,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_DEMO_RANK3.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_DEMO_RANK3.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_DEMO_RANK3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_DEMO_RANK3.setText("jTextField1");
+        jTextField_DEMO_RANK3.setText("None");
         jTextField_DEMO_RANK3.setBorder(null);
         jPanel16.add(jTextField_DEMO_RANK3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 70, 30));
 
@@ -618,7 +640,7 @@ public class GUI2_Client extends javax.swing.JFrame {
         jTextField_CURRENT_EVENT.setBackground(new java.awt.Color(31, 31, 31));
         jTextField_CURRENT_EVENT.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_CURRENT_EVENT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_CURRENT_EVENT.setText("jTextField1");
+        jTextField_CURRENT_EVENT.setText("None");
         jTextField_CURRENT_EVENT.setBorder(null);
         jPanel17.add(jTextField_CURRENT_EVENT, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 110, 40));
 
@@ -682,6 +704,10 @@ public class GUI2_Client extends javax.swing.JFrame {
     private void jTextField_PORTAL2_STATUS_ENTERINGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PORTAL2_STATUS_ENTERINGActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_PORTAL2_STATUS_ENTERINGActionPerformed
+
+    private void jTextField_DEMO_RANK1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_DEMO_RANK1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_DEMO_RANK1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -111,7 +111,7 @@ public class GUI1_Manager {
 // ===================== EVENT-RELATED OBJECT INITIALIZATION =====================
         be = new BlackoutEvent(portals, uz);
         se = new StormEvent();
-        ese = new ElevenSavesEvent(uz.get(4));
+        ese = new ElevenSavesEvent(uz.get(4), sz.get(2));
         hme = new HiveMindEvent(uz);
         
         em = new EventManager(be, se, ese, hme, log);

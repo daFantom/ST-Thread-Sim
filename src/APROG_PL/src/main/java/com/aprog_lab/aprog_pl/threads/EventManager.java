@@ -2,9 +2,6 @@ package com.aprog_lab.aprog_pl.threads;
 
 import com.aprog_lab.aprog_pl.events.*;
 import com.aprog_lab.aprog_pl.shared_resources.logManager;
-import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -13,12 +10,12 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class EventManager extends Thread
 {
-    private BlackoutEvent be;
-    private StormEvent se;
-    private ElevenSavesEvent ese;
-    private HiveMindEvent hme;
-    private AtomicReference<String> status;
-    private logManager log;
+    private final BlackoutEvent be;
+    private final StormEvent se;
+    private final ElevenSavesEvent ese;
+    private final HiveMindEvent hme;
+    private final AtomicReference<String> status;
+    private final logManager log;
     
     public EventManager(BlackoutEvent pbe, StormEvent pse, ElevenSavesEvent pese, HiveMindEvent phme, logManager p_log)
     {

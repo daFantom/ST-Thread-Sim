@@ -1,6 +1,5 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
-import com.aprog_lab.aprog_pl.GUI.GUI1_Server;
 import com.aprog_lab.aprog_pl.GUI_Initializers.GUI1_Manager;
 import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.Child;
@@ -15,12 +14,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Unsafe_Zone
 {
     private final String zone_name;
-    private CopyOnWriteArrayList<Child> avail_children;
-    private CopyOnWriteArrayList<Demogorgon> avail_demos;
+    private final CopyOnWriteArrayList<Child> avail_children;
+    private final CopyOnWriteArrayList<Demogorgon> avail_demos;
     private AtomicInteger captured;
-    private GUI1_Manager ifc_mng;
-    private logManager log;
-    private AtomicBoolean labBlackout;
+    private final GUI1_Manager ifc_mng;
+    private final logManager log;
+    private final AtomicBoolean labBlackout;
     
     public Unsafe_Zone(String name, GUI1_Manager p_ifc_mng, logManager p_log)
     {
@@ -174,10 +173,6 @@ public class Unsafe_Zone
                     hasAttacked = false;
                 }   
             }
-            else
-            {
-                hasAttacked= false;
-            }
         }
         else
         {
@@ -210,6 +205,9 @@ public class Unsafe_Zone
         }
     }
     
+    /*
+    
+    */
     public void save()
     {
         synchronized(this)
@@ -230,6 +228,7 @@ public class Unsafe_Zone
     {
         return zone_name;
     }
+    
     /*
     
     */
@@ -237,6 +236,7 @@ public class Unsafe_Zone
     {
         return avail_children.size();
     }
+    
     /*
     
     */
@@ -274,16 +274,25 @@ public class Unsafe_Zone
         return captured.get();
     }
     
+    /*
+    
+    */
     public void disableUnsafeZonesDemos()
     {
         labBlackout.compareAndSet(false, true);
     }
     
+    /*
+    
+    */
     public void enableUnsafeZonesDemos()
     {
         labBlackout.compareAndSet(true, false);
     }
     
+    /*
+    
+    */
     public boolean getBlocked()
     {
         return labBlackout.get();
