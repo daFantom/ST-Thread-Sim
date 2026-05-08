@@ -1,26 +1,14 @@
 package com.aprog_lab.aprog_pl.GUI;
 
-import com.aprog_lab.aprog_pl.Network_Connection.RemoteObjectImplementation;
-import com.aprog_lab.aprog_pl.events.BlackoutEvent;
-import com.aprog_lab.aprog_pl.events.ElevenSavesEvent;
-import com.aprog_lab.aprog_pl.events.HiveMindEvent;
-import com.aprog_lab.aprog_pl.events.StormEvent;
-import com.aprog_lab.aprog_pl.shared_resources.logManager;
 import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
-import com.aprog_lab.aprog_pl.shared_resources.VecnaChecker;
 import com.aprog_lab.aprog_pl.threads.Child;
 import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.EventManager;
-import com.aprog_lab.aprog_pl.threads.PortalManager;
-import java.rmi.Naming;
-import java.rmi.registry.Registry;
-import java.rmi.registry.LocateRegistry;
 import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.CyclicBarrier;
 import javax.swing.DefaultListModel;
+import com.aprog_lab.aprog_pl.GUI_Initializers.GUI1_Manager;
 
 /**
  *
@@ -29,15 +17,6 @@ import javax.swing.DefaultListModel;
 public class GUI1_Server extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUI1_Server.class.getName());
-    private Unsafe_Zone Forest, Lab, Mall, Sewer, Hive;
-    private Safe_Zone ms, bb, radio;
-    private Portal p1, p2, p3, p4;
-    private ArrayList<Unsafe_Zone> uz;
-    private ArrayList<Safe_Zone> sz;
-    private ArrayList<Portal> portals;
-    private EventManager em;
-    private logManager log;
-    
     private ArrayList<DefaultListModel<String>> uz_models_D;
     private ArrayList<DefaultListModel<String>> uz_models_C;
     private ArrayList<DefaultListModel<String>> sz_models_C;
@@ -56,7 +35,8 @@ public class GUI1_Server extends javax.swing.JFrame {
         jTextField_BLOODCOUNT.setText("0");
         jTextField_HIVE_CAPTURED.setText("0");
         jTextField_CURRENT_EVENT.setText("None");
-        log = new logManager();
+        System.out.println("jTextField_BLOODCOUNT_constructor: " + jTextField_BLOODCOUNT.hashCode());
+        System.out.println("jTextField_HIVE_CAPTURED_constructor: " + jTextField_HIVE_CAPTURED.hashCode());
         
         // ===================== SETTING DEFAULTLISTMODEL MODEL FOR JLISTS =====================
         DefaultListModel<String> m1 = new DefaultListModel<>();
@@ -113,78 +93,13 @@ public class GUI1_Server extends javax.swing.JFrame {
         uz_models_C.add(m12); uz_models_C.add(m13); uz_models_C.add(m14); uz_models_C.add(m15);
         
         uz_models_D.add(m16); uz_models_D.add(m17); uz_models_D.add(m18); uz_models_D.add(m19);
-
-// ===================== SAFE AND UNSAFE ZONE INITIALIZATION =====================
-        Forest = new Unsafe_Zone("Forest", this, log);
-        Lab = new Unsafe_Zone("Laboratory", this, log);
-        Mall = new Unsafe_Zone("Shopping Mall", this, log);
-        Sewer = new Unsafe_Zone("Sewer", this, log);
-        Hive = new Unsafe_Zone("HIVE", this, log);
-
-        ms = new Safe_Zone("Hawkin's Main Street", this, log);                       
-        bb = new Safe_Zone("Bayer's Basement", this, log);
-        radio = new Safe_Zone("WSQK Radio", this, log);
-        
-        uz = new ArrayList<>();                              // Children and Demogorgons share this ArrayList.
-        sz = new ArrayList<>();                                // ONLY children are allowed to use this ArrayList.
-        portals = new ArrayList<>();                              // Children and PortalManager use this ArrayList.
-        
-        // ===================== SAFE AND UNSAFE ZONE ADDITION =====================
-        uz.add(Forest); uz.add(Lab); uz.add(Mall); uz.add(Sewer); uz.add(Hive);
-        sz.add(ms); sz.add(bb); sz.add(radio);
-        
-        
-// ===================== PORTAL INITIALIZATION =====================
-        p1 = new Portal("ForestPortal", new CyclicBarrier(2), this, log);
-        p2 = new Portal("LabPortal", new CyclicBarrier(3), this, log);
-        p3 = new Portal("MallPortal", new CyclicBarrier(4), this, log);
-        p4 = new Portal("SewerPortal", new CyclicBarrier(2), this, log);
-        
-        // ===================== PORTAL ADDITION =====================
-        portals.add(p1); portals.add(p2); portals.add(p3); portals.add(p4);
-        
-// ===================== EVENT-RELATED OBJECT INITIALIZATION =====================
-        BlackoutEvent be = new BlackoutEvent(portals, uz);
-        StormEvent se = new StormEvent();
-        ElevenSavesEvent ese = new ElevenSavesEvent(uz.get(4));
-        HiveMindEvent hme = new HiveMindEvent(uz);
-        
-        em = new EventManager(be, se, ese, hme, log);
-        em.start();
-        
-        // ===================== PORTAL MANAGER =====================
-        new PortalManager(portals, log).start();
-
-// ===================== VECNA CHECKER INITIALIZATION =====================
-        VecnaChecker vc = new VecnaChecker(1, uz, se, ese, hme, log);
-        initRMI();
-        
-// ===================== CHILDREN & DEMOGORGON INITIALIZATION =====================
-
-        // Initial threads (Alpha Demog and Children) creation.
-        try
-        {
-            int idn = 0;                                                                               // Used for Children ID and Alpha Demogorgon.
-            new Demogorgon("D"+String.format("%04d",idn), uz, vc, se, ese, hme, log).start();          // Formatted ID for the Alpha Demogorgon (D0000)
-            for(int i=0; i<1500; i++)
-            {
-                Thread.sleep((int)(Math.random()*1.5+0.5));                                         // SHOULD wait between 0.5 and 2 seconds.
-                String child_id = "C"+String.format("%04d", idn);                                   // Formatted ID for children
-                new Child(child_id, sz, uz, portals,se, log).start();
-                idn++;
-            }
-        }
-        catch(InterruptedException ie)
-        {
-            System.out.println("Interrupted Exception -> GUI1 constructor");
-        }
     }
     
 // =============================== PORTAL CONTENT REFRESHER ===============================
     /*
     
     */
-    public void refreshPortalStats()
+    public void refreshPortalStats(ArrayList<Portal> portals)
     {
         java.awt.EventQueue.invokeLater(() -> 
             {
@@ -208,8 +123,9 @@ public class GUI1_Server extends javax.swing.JFrame {
             }
         );
     }
+    
 // =============================== COUNTER REFRESHER ===============================
-    public void refreshCounters()
+    public void refreshCounters(ArrayList<Safe_Zone> sz, ArrayList<Unsafe_Zone> uz)
     {
         java.awt.EventQueue.invokeLater( () ->
             {
@@ -223,7 +139,7 @@ public class GUI1_Server extends javax.swing.JFrame {
     /*
     
     */
-    public void refreshZoneStats()
+    public void refreshZoneStats(ArrayList<Unsafe_Zone> uz, ArrayList<Safe_Zone> sz, EventManager em)
     {
         java.awt.EventQueue.invokeLater(() ->
             {
@@ -261,20 +177,6 @@ public class GUI1_Server extends javax.swing.JFrame {
         );
     }
     
-    public void initRMI()
-    {
-        try
-        {
-            RemoteObjectImplementation obj = new RemoteObjectImplementation(log, uz, em, sz.get(0), portals);
-            Registry registry = LocateRegistry.createRegistry(1099);
-            Naming.rebind("//localhost/RemoteObjectCreatedForDemonstration", obj);
-            System.out.println("Remote object registered");
-        }
-        catch(Exception e)
-        {
-            System.out.println("Error: "+e.getMessage());
-        }
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -744,7 +646,17 @@ public class GUI1_Server extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new GUI1_Server().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->
+            {
+                GUI1_Server gui1 = new GUI1_Server();
+                GUI1_Manager gui1_manager = new GUI1_Manager(gui1);
+                if(gui1_manager.init())
+                {
+                    gui1.setVisible(true);
+                }
+            }
+        );
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

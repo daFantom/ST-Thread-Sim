@@ -38994,3 +38994,1981 @@ may 05, 2026 8:07:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager l
 INFO: Demogorgon D0054 attacked child C0348. (captures: 1)
 may 05, 2026 8:07:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
 INFO: Demogorgon D0007 attacked child C0331. (captures: 2)
+may 07, 2026 8:33:47 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0020. (captures: 0)
+may 07, 2026 8:33:49 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0020 has been captured
+may 07, 2026 8:33:49 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0128. (captures: 1)
+may 07, 2026 8:33:50 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0128 has been captured
+may 07, 2026 8:33:54 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0220. (captures: 2)
+may 07, 2026 8:33:56 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0360. (captures: 3)
+may 07, 2026 8:33:56 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0220 has been captured
+may 07, 2026 8:33:58 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0360 has been captured
+may 07, 2026 8:57:40 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0133. (captures: 0)
+may 07, 2026 8:57:42 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0018. (captures: 1)
+may 07, 2026 8:57:43 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0018 has been captured
+may 07, 2026 8:57:43 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0133 has been captured
+may 07, 2026 8:57:45 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0204. (captures: 2)
+may 07, 2026 8:57:48 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0204 has been captured
+may 07, 2026 8:57:57 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0348. (captures: 3)
+may 07, 2026 8:57:59 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0050. (captures: 4)
+may 07, 2026 8:58:00 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0348 has been captured
+may 07, 2026 8:58:00 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0172. (captures: 5)
+may 07, 2026 8:58:01 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0050 has been captured
+may 07, 2026 8:58:03 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Stopped program.
+may 07, 2026 8:58:17 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: LABORATORY BLACKOUT EVENT HAS STARTED
+may 07, 2026 8:58:44 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Resumed program.
+may 07, 2026 8:58:45 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0172 has been captured
+may 07, 2026 8:58:53 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: LABORATORY BLACKOUT EVENT HAS FINISHED
+may 07, 2026 8:59:04 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Stopped program.
+may 07, 2026 8:59:49 A. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: LABORATORY BLACKOUT EVENT HAS STARTED
+may 07, 2026 9:14:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0129. (captures: 0)
+may 07, 2026 9:14:11 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0129 has been captured
+may 07, 2026 9:14:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0243. (captures: 1)
+may 07, 2026 9:15:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0325. (captures: 0)
+may 07, 2026 9:15:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0325 has been captured
+may 07, 2026 9:15:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0035. (captures: 1)
+may 07, 2026 9:44:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0091. (captures: 0)
+may 07, 2026 9:44:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0091 has been captured
+may 07, 2026 9:50:59 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0097. (captures: 0)
+may 07, 2026 9:51:02 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0097 has been captured
+may 07, 2026 9:54:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0025. (captures: 0)
+may 07, 2026 9:54:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0025 has been captured
+may 07, 2026 9:54:38 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0304. (captures: 1)
+may 07, 2026 9:54:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0304 has been captured
+may 07, 2026 9:54:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0261. (captures: 2)
+may 07, 2026 9:54:44 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0261 has been captured
+may 07, 2026 9:54:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0367. (captures: 3)
+may 07, 2026 9:54:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0128. (captures: 4)
+may 07, 2026 9:54:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0367 has been captured
+may 07, 2026 9:54:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0002. (captures: 5)
+may 07, 2026 9:54:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0128 has been captured
+may 07, 2026 9:54:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0123. (captures: 6)
+may 07, 2026 9:54:57 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0002 has been captured
+may 07, 2026 9:55:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0123 has been captured
+may 07, 2026 9:55:02 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: HIVE MIND EVENT HAS STARTED
+may 07, 2026 9:55:04 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0238. (captures: 7)
+may 07, 2026 9:55:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 9:55:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0238 has been captured
+may 07, 2026 9:55:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0381. (captures: 0)
+may 07, 2026 9:55:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0311. (captures: 0)
+may 07, 2026 9:55:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0381 has been captured
+may 07, 2026 9:55:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: HIVE MIND EVENT HAS FINISHED
+may 07, 2026 9:55:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0608. (captures: 1)
+may 07, 2026 9:55:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0311 has been captured
+may 07, 2026 9:55:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0498. (captures: 2)
+may 07, 2026 9:55:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0608 has been captured
+may 07, 2026 9:55:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0162. (captures: 1)
+may 07, 2026 9:55:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0393. (captures: 3)
+may 07, 2026 9:55:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0162 has been captured
+may 07, 2026 9:55:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0498 has been captured
+may 07, 2026 9:55:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0393 has been captured
+may 07, 2026 9:55:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0205. (captures: 2)
+may 07, 2026 9:55:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0000. (captures: 3)
+may 07, 2026 9:55:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0693. (captures: 4)
+may 07, 2026 9:55:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0205 has been captured
+may 07, 2026 9:55:22 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0000 has been captured
+may 07, 2026 9:55:22 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0240. (captures: 4)
+may 07, 2026 9:55:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0693 has been captured
+may 07, 2026 9:55:26 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0240 has been captured
+may 07, 2026 9:55:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0739. (captures: 5)
+may 07, 2026 9:55:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0739 has been captured
+may 07, 2026 9:55:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0350. (captures: 5)
+may 07, 2026 9:55:36 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0112. (captures: 6)
+may 07, 2026 9:55:36 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0350 has been captured
+may 07, 2026 9:55:38 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0118. (captures: 7)
+may 07, 2026 9:55:38 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 9:55:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0255. (captures: 0)
+may 07, 2026 9:55:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0118 has been captured
+may 07, 2026 9:55:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0326. (captures: 6)
+may 07, 2026 9:55:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0112 has been captured
+may 07, 2026 9:55:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0332. (captures: 1)
+may 07, 2026 9:55:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0255 has been captured
+may 07, 2026 9:55:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0326 has been captured
+may 07, 2026 9:55:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0066. (captures: 7)
+may 07, 2026 9:55:44 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 9:55:44 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: STORM EVENT HAS STARTED
+may 07, 2026 9:55:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0794. (captures: 0)
+may 07, 2026 9:55:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0332 has been captured
+may 07, 2026 9:55:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0328. (captures: 2)
+may 07, 2026 9:55:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0794 has been captured
+may 07, 2026 9:55:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0066 has been captured
+may 07, 2026 9:55:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0273. (captures: 1)
+may 07, 2026 9:55:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0328 has been captured
+may 07, 2026 9:55:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0442. (captures: 0)
+may 07, 2026 9:55:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: STORM EVENT HAS FINISHED
+may 07, 2026 9:55:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0198. (captures: 3)
+may 07, 2026 9:55:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0273 has been captured
+may 07, 2026 9:55:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0442 has been captured
+may 07, 2026 9:55:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0614. (captures: 1)
+may 07, 2026 9:55:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0967. (captures: 2)
+may 07, 2026 9:55:57 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0251. (captures: 0)
+may 07, 2026 9:55:57 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0614 has been captured
+may 07, 2026 9:55:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0198 has been captured
+may 07, 2026 9:56:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0967 has been captured
+may 07, 2026 9:56:01 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0154. (captures: 1)
+may 07, 2026 9:56:01 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0815. (captures: 3)
+may 07, 2026 9:56:02 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0142. (captures: 2)
+may 07, 2026 9:56:02 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0251 has been captured
+may 07, 2026 9:56:03 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0815 has been captured
+may 07, 2026 9:56:03 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0088. (captures: 2)
+may 07, 2026 9:56:04 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0154 has been captured
+may 07, 2026 9:56:04 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0674. (captures: 4)
+may 07, 2026 9:56:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0088 has been captured
+may 07, 2026 9:56:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0716. (captures: 3)
+may 07, 2026 9:56:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0674 has been captured
+may 07, 2026 9:56:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0142 has been captured
+may 07, 2026 9:56:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0355. (captures: 5)
+may 07, 2026 9:56:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0106. (captures: 4)
+may 07, 2026 9:56:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0059. (captures: 3)
+may 07, 2026 9:56:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0716 has been captured
+may 07, 2026 9:56:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0355 has been captured
+may 07, 2026 9:56:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0106 has been captured
+may 07, 2026 9:56:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0122. (captures: 4)
+may 07, 2026 9:56:11 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0059 has been captured
+may 07, 2026 9:56:11 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0907. (captures: 4)
+may 07, 2026 9:56:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0700. (captures: 5)
+may 07, 2026 9:56:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C1132. (captures: 5)
+may 07, 2026 9:56:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0305. (captures: 5)
+may 07, 2026 9:56:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0122 has been captured
+may 07, 2026 9:56:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0907 has been captured
+may 07, 2026 9:56:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0262. (captures: 6)
+may 07, 2026 9:56:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1132 has been captured
+may 07, 2026 9:56:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0700 has been captured
+may 07, 2026 9:56:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0305 has been captured
+may 07, 2026 9:56:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0182. (captures: 6)
+may 07, 2026 9:56:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0262 has been captured
+may 07, 2026 9:56:18 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0520. (captures: 7)
+may 07, 2026 9:56:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 9:56:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0182 has been captured
+may 07, 2026 9:56:20 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0435. (captures: 0)
+may 07, 2026 9:56:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0061. (captures: 7)
+may 07, 2026 9:56:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C1091. (captures: 0)
+may 07, 2026 9:56:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0520 has been captured
+may 07, 2026 9:56:22 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 9:56:23 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0260. (captures: 0)
+may 07, 2026 9:56:23 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0708. (captures: 1)
+may 07, 2026 9:56:23 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0061 has been captured
+may 07, 2026 9:56:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0451. (captures: 0)
+may 07, 2026 9:56:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0130. (captures: 1)
+may 07, 2026 9:56:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1091 has been captured
+may 07, 2026 9:56:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0435 has been captured
+may 07, 2026 9:56:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0451 has been captured
+may 07, 2026 9:56:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C1020. (captures: 2)
+may 07, 2026 9:56:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0949. (captures: 1)
+may 07, 2026 9:56:26 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: LABORATORY BLACKOUT EVENT HAS STARTED
+may 07, 2026 9:56:26 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0260 has been captured
+may 07, 2026 9:56:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0130 has been captured
+may 07, 2026 9:56:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0535. (captures: 2)
+may 07, 2026 9:56:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0949 has been captured
+may 07, 2026 9:56:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0354. (captures: 6)
+may 07, 2026 9:56:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0708 has been captured
+may 07, 2026 9:56:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0007. (captures: 6)
+may 07, 2026 9:56:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0911. (captures: 1)
+may 07, 2026 9:56:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1020 has been captured
+may 07, 2026 9:56:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0354 has been captured
+may 07, 2026 9:56:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0007 has been captured
+may 07, 2026 9:56:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0911 has been captured
+may 07, 2026 9:56:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0535 has been captured
+may 07, 2026 10:00:03 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0062. (captures: 0)
+may 07, 2026 10:00:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0062 has been captured
+may 07, 2026 10:00:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0108. (captures: 1)
+may 07, 2026 10:00:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0108 has been captured
+may 07, 2026 10:00:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0100. (captures: 2)
+may 07, 2026 10:00:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0100 has been captured
+may 07, 2026 10:00:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0333. (captures: 3)
+may 07, 2026 10:00:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0138. (captures: 4)
+may 07, 2026 10:00:18 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0333 has been captured
+may 07, 2026 10:00:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0138 has been captured
+may 07, 2026 10:22:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0215. (captures: 0)
+may 07, 2026 10:22:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0513. (captures: 1)
+may 07, 2026 10:22:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0215 has been captured
+may 07, 2026 10:22:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0513 has been captured
+may 07, 2026 10:22:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0458. (captures: 2)
+may 07, 2026 10:22:22 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0458 has been captured
+may 07, 2026 10:22:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0371. (captures: 3)
+may 07, 2026 10:22:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0406. (captures: 4)
+may 07, 2026 10:22:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0371 has been captured
+may 07, 2026 10:22:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0406 has been captured
+may 07, 2026 10:22:35 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0149. (captures: 5)
+may 07, 2026 10:22:36 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0149 has been captured
+may 07, 2026 10:22:38 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0061. (captures: 6)
+may 07, 2026 10:22:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0545. (captures: 7)
+may 07, 2026 10:22:41 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0061 has been captured
+may 07, 2026 10:22:41 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:22:44 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0072. (captures: 0)
+may 07, 2026 10:22:44 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0545 has been captured
+may 07, 2026 10:22:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0072 has been captured
+may 07, 2026 10:22:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0028. (captures: 1)
+may 07, 2026 10:22:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0106. (captures: 0)
+may 07, 2026 10:22:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0028 has been captured
+may 07, 2026 10:22:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0316. (captures: 1)
+may 07, 2026 10:22:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0106 has been captured
+may 07, 2026 10:22:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0316 has been captured
+may 07, 2026 10:22:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: LABORATORY BLACKOUT EVENT HAS STARTED
+may 07, 2026 10:22:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0569. (captures: 2)
+may 07, 2026 10:22:57 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0569 has been captured
+may 07, 2026 10:23:01 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: LABORATORY BLACKOUT EVENT HAS FINISHED
+may 07, 2026 10:23:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0185. (captures: 2)
+may 07, 2026 10:23:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0185 has been captured
+may 07, 2026 10:23:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0157. (captures: 3)
+may 07, 2026 10:23:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0058. (captures: 4)
+may 07, 2026 10:23:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0157 has been captured
+may 07, 2026 10:23:11 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0058 has been captured
+may 07, 2026 10:23:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0498. (captures: 5)
+may 07, 2026 10:23:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0591. (captures: 6)
+may 07, 2026 10:23:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0498 has been captured
+may 07, 2026 10:23:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0266. (captures: 3)
+may 07, 2026 10:23:20 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0591 has been captured
+may 07, 2026 10:23:20 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0266 has been captured
+may 07, 2026 10:23:23 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0424. (captures: 4)
+may 07, 2026 10:43:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0117. (captures: 0)
+may 07, 2026 10:43:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0117 has been captured
+may 07, 2026 10:44:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0030. (captures: 0)
+may 07, 2026 10:44:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0030 has been captured
+may 07, 2026 10:44:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0183. (captures: 1)
+may 07, 2026 10:44:20 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0183 has been captured
+may 07, 2026 10:44:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0534. (captures: 2)
+may 07, 2026 10:44:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0534 has been captured
+may 07, 2026 10:44:35 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0305. (captures: 3)
+may 07, 2026 10:44:36 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0305 has been captured
+may 07, 2026 10:44:36 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: ELEVEN'S INTERVENTION EVENT HAS STARTED
+may 07, 2026 10:44:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0030 has been released
+may 07, 2026 10:44:38 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0183 has been released
+may 07, 2026 10:44:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0534 has been released
+may 07, 2026 10:44:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0305 has been released
+may 07, 2026 10:44:44 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: ELEVEN'S INTERVENTION EVENT HAS FINISHED
+may 07, 2026 10:44:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0338. (captures: 4)
+may 07, 2026 10:44:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0338 has been captured
+may 07, 2026 10:44:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0611. (captures: 5)
+may 07, 2026 10:44:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0611 has been captured
+may 07, 2026 10:44:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0262. (captures: 6)
+may 07, 2026 10:44:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0262 has been captured
+may 07, 2026 10:44:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0214. (captures: 7)
+may 07, 2026 10:44:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:44:59 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0244. (captures: 0)
+may 07, 2026 10:45:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0244 has been captured
+may 07, 2026 10:45:03 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0214 has been captured
+may 07, 2026 10:45:03 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0312. (captures: 0)
+may 07, 2026 10:45:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0374. (captures: 1)
+may 07, 2026 10:45:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0312 has been captured
+may 07, 2026 10:45:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0112. (captures: 1)
+may 07, 2026 10:45:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0374 has been captured
+may 07, 2026 10:45:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0112 has been captured
+may 07, 2026 10:45:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0664. (captures: 2)
+may 07, 2026 10:45:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0073. (captures: 3)
+may 07, 2026 10:45:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0664 has been captured
+may 07, 2026 10:45:20 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0073 has been captured
+may 07, 2026 10:45:22 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0466. (captures: 2)
+may 07, 2026 10:45:23 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0303. (captures: 4)
+may 07, 2026 10:45:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0466 has been captured
+may 07, 2026 10:45:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0699. (captures: 5)
+may 07, 2026 10:45:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0303 has been captured
+may 07, 2026 10:45:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0699 has been captured
+may 07, 2026 10:45:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0281. (captures: 3)
+may 07, 2026 10:45:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0674. (captures: 4)
+may 07, 2026 10:45:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0281 has been captured
+may 07, 2026 10:45:35 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0215. (captures: 5)
+may 07, 2026 10:45:36 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0674 has been captured
+may 07, 2026 10:45:36 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0029. (captures: 6)
+may 07, 2026 10:45:36 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0215 has been captured
+may 07, 2026 10:45:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0008. (captures: 6)
+may 07, 2026 10:45:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0029 has been captured
+may 07, 2026 10:45:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: ELEVEN'S INTERVENTION EVENT HAS STARTED
+may 07, 2026 10:45:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0117. (captures: 7)
+may 07, 2026 10:45:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0526. (captures: 7)
+may 07, 2026 10:45:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0008 has been captured
+may 07, 2026 10:45:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0338 has been released
+may 07, 2026 10:45:41 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0611 has been released
+may 07, 2026 10:45:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0262 has been released
+may 07, 2026 10:45:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0526 has been captured
+may 07, 2026 10:45:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0244 has been released
+may 07, 2026 10:45:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0214 has been released
+may 07, 2026 10:45:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0117 has been captured
+may 07, 2026 10:45:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0312 has been released
+may 07, 2026 10:45:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: ELEVEN'S INTERVENTION EVENT HAS FINISHED
+may 07, 2026 10:45:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0374 has been released
+may 07, 2026 10:45:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0471. (captures: 7)
+may 07, 2026 10:45:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:45:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0271. (captures: 0)
+may 07, 2026 10:45:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0471 has been captured
+may 07, 2026 10:45:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0387. (captures: 0)
+may 07, 2026 10:45:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0271 has been captured
+may 07, 2026 10:45:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0387 has been captured
+may 07, 2026 10:45:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0120. (captures: 7)
+may 07, 2026 10:45:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:45:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0902. (captures: 1)
+may 07, 2026 10:45:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0120 has been captured
+may 07, 2026 10:45:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0777. (captures: 0)
+may 07, 2026 10:45:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C1078. (captures: 1)
+may 07, 2026 10:45:59 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0777 has been captured
+may 07, 2026 10:45:59 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0652. (captures: 2)
+may 07, 2026 10:46:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0902 has been captured
+may 07, 2026 10:46:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1078 has been captured
+may 07, 2026 10:46:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0042. (captures: 0)
+may 07, 2026 10:46:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C1013. (captures: 2)
+may 07, 2026 10:46:03 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C1210. (captures: 1)
+may 07, 2026 10:46:03 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0352. (captures: 3)
+may 07, 2026 10:46:03 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1013 has been captured
+may 07, 2026 10:46:03 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0042 has been captured
+may 07, 2026 10:46:04 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0652 has been captured
+may 07, 2026 10:46:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0455. (captures: 2)
+may 07, 2026 10:46:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1210 has been captured
+may 07, 2026 10:46:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0284. (captures: 4)
+may 07, 2026 10:46:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0555. (captures: 3)
+may 07, 2026 10:46:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0284 has been captured
+may 07, 2026 10:46:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0352 has been captured
+may 07, 2026 10:46:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0576. (captures: 5)
+may 07, 2026 10:46:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0555 has been captured
+may 07, 2026 10:46:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0331. (captures: 3)
+may 07, 2026 10:46:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0455 has been captured
+may 07, 2026 10:46:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0297. (captures: 4)
+may 07, 2026 10:46:11 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0410. (captures: 1)
+may 07, 2026 10:46:11 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0331 has been captured
+may 07, 2026 10:46:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0410 has been captured
+may 07, 2026 10:46:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0576 has been captured
+may 07, 2026 10:46:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0055. (captures: 4)
+may 07, 2026 10:46:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0508. (captures: 6)
+may 07, 2026 10:46:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0297 has been captured
+may 07, 2026 10:46:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0726. (captures: 2)
+may 07, 2026 10:46:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0726 has been captured
+may 07, 2026 10:46:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0055 has been captured
+may 07, 2026 10:46:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0409. (captures: 7)
+may 07, 2026 10:46:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0508 has been captured
+may 07, 2026 10:46:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0240. (captures: 5)
+may 07, 2026 10:46:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:46:18 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0624. (captures: 0)
+may 07, 2026 10:46:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0418. (captures: 6)
+may 07, 2026 10:46:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0363. (captures: 1)
+may 07, 2026 10:46:20 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: ELEVEN'S INTERVENTION EVENT HAS STARTED
+may 07, 2026 10:46:20 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0624 has been captured
+may 07, 2026 10:46:20 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0240 has been captured
+may 07, 2026 10:46:20 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0409 has been captured
+may 07, 2026 10:46:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0112 has been released
+may 07, 2026 10:46:22 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0664 has been released
+may 07, 2026 10:46:23 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0073 has been released
+may 07, 2026 10:46:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0363 has been captured
+may 07, 2026 10:46:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0466 has been released
+may 07, 2026 10:46:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0418 has been captured
+may 07, 2026 10:46:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0303 has been released
+may 07, 2026 10:46:26 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0699 has been released
+may 07, 2026 10:46:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0281 has been released
+may 07, 2026 10:46:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0674 has been released
+may 07, 2026 10:46:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: ELEVEN'S INTERVENTION EVENT HAS FINISHED
+may 07, 2026 10:46:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0215 has been released
+may 07, 2026 10:46:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0419. (captures: 3)
+may 07, 2026 10:46:35 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0413. (captures: 4)
+may 07, 2026 10:46:35 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0419 has been captured
+may 07, 2026 10:46:35 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C1200. (captures: 2)
+may 07, 2026 10:46:35 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0291. (captures: 0)
+may 07, 2026 10:46:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0291 has been captured
+may 07, 2026 10:46:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0091. (captures: 5)
+may 07, 2026 10:46:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0332. (captures: 5)
+may 07, 2026 10:46:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0885. (captures: 7)
+may 07, 2026 10:46:38 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:46:38 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0413 has been captured
+may 07, 2026 10:46:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0091 has been captured
+may 07, 2026 10:46:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0885 has been captured
+may 07, 2026 10:46:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0332 has been captured
+may 07, 2026 10:46:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1200 has been captured
+may 07, 2026 10:46:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0457. (captures: 0)
+may 07, 2026 10:46:41 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0848. (captures: 6)
+may 07, 2026 10:46:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C1159. (captures: 0)
+may 07, 2026 10:46:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0722. (captures: 7)
+may 07, 2026 10:46:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0043. (captures: 6)
+may 07, 2026 10:46:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0618. (captures: 1)
+may 07, 2026 10:46:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:46:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1159 has been captured
+may 07, 2026 10:46:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0848 has been captured
+may 07, 2026 10:46:44 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0457 has been captured
+may 07, 2026 10:46:44 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0237. (captures: 1)
+may 07, 2026 10:46:44 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0043 has been captured
+may 07, 2026 10:46:44 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0528. (captures: 1)
+may 07, 2026 10:46:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0618 has been captured
+may 07, 2026 10:46:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0722 has been captured
+may 07, 2026 10:46:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0190. (captures: 7)
+may 07, 2026 10:46:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0528 has been captured
+may 07, 2026 10:46:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0237 has been captured
+may 07, 2026 10:46:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0879. (captures: 0)
+may 07, 2026 10:46:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:46:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0190 has been captured
+may 07, 2026 10:46:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0679. (captures: 2)
+may 07, 2026 10:46:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0006 attacked child C1322. (captures: 0)
+may 07, 2026 10:46:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0006 attacked child C0742. (captures: 1)
+may 07, 2026 10:46:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0879 has been captured
+may 07, 2026 10:46:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1322 has been captured
+may 07, 2026 10:46:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0679 has been captured
+may 07, 2026 10:46:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0002. (captures: 3)
+may 07, 2026 10:46:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0001. (captures: 3)
+may 07, 2026 10:46:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0742 has been captured
+may 07, 2026 10:46:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C1005. (captures: 1)
+may 07, 2026 10:46:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0444. (captures: 4)
+may 07, 2026 10:46:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0002 has been captured
+may 07, 2026 10:46:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0001 has been captured
+may 07, 2026 10:46:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C1054. (captures: 0)
+may 07, 2026 10:46:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0192. (captures: 2)
+may 07, 2026 10:46:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C1028. (captures: 0)
+may 07, 2026 10:46:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0134. (captures: 4)
+may 07, 2026 10:46:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1005 has been captured
+may 07, 2026 10:46:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0192 has been captured
+may 07, 2026 10:46:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0050. (captures: 1)
+may 07, 2026 10:46:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1054 has been captured
+may 07, 2026 10:46:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0862. (captures: 2)
+may 07, 2026 10:46:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0444 has been captured
+may 07, 2026 10:46:59 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0050 has been captured
+may 07, 2026 10:47:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0862 has been captured
+may 07, 2026 10:47:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0288. (captures: 1)
+may 07, 2026 10:47:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1028 has been captured
+may 07, 2026 10:47:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0967. (captures: 5)
+may 07, 2026 10:47:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0134 has been captured
+may 07, 2026 10:47:01 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0359. (captures: 2)
+may 07, 2026 10:47:01 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0632. (captures: 5)
+may 07, 2026 10:47:03 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0967 has been captured
+may 07, 2026 10:47:04 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0359 has been captured
+may 07, 2026 10:47:04 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0632 has been captured
+may 07, 2026 10:47:04 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0217. (captures: 6)
+may 07, 2026 10:47:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0288 has been captured
+may 07, 2026 10:47:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C1104. (captures: 2)
+may 07, 2026 10:47:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C1076. (captures: 3)
+may 07, 2026 10:47:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C1134. (captures: 7)
+may 07, 2026 10:47:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0081. (captures: 3)
+may 07, 2026 10:47:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0078. (captures: 4)
+may 07, 2026 10:47:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:47:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0912. (captures: 2)
+may 07, 2026 10:47:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1134 has been captured
+may 07, 2026 10:47:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0486. (captures: 3)
+may 07, 2026 10:47:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0217 has been captured
+may 07, 2026 10:47:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0006 attacked child C0987. (captures: 2)
+may 07, 2026 10:47:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0081 has been captured
+may 07, 2026 10:47:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1104 has been captured
+may 07, 2026 10:47:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0912 has been captured
+may 07, 2026 10:47:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0170. (captures: 5)
+may 07, 2026 10:47:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1076 has been captured
+may 07, 2026 10:47:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0556. (captures: 0)
+may 07, 2026 10:47:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0253. (captures: 6)
+may 07, 2026 10:47:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0061. (captures: 6)
+may 07, 2026 10:47:11 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0078 has been captured
+may 07, 2026 10:47:11 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0987 has been captured
+may 07, 2026 10:47:11 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0556 has been captured
+may 07, 2026 10:47:11 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0170 has been captured
+may 07, 2026 10:47:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0314. (captures: 0)
+may 07, 2026 10:47:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0486 has been captured
+may 07, 2026 10:47:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0253 has been captured
+may 07, 2026 10:47:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0442. (captures: 3)
+may 07, 2026 10:47:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C1033. (captures: 1)
+may 07, 2026 10:47:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: ELEVEN'S INTERVENTION EVENT HAS STARTED
+may 07, 2026 10:47:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0061 has been captured
+may 07, 2026 10:47:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0314 has been captured
+may 07, 2026 10:47:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0006 attacked child C0051. (captures: 3)
+may 07, 2026 10:47:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0029 has been released
+may 07, 2026 10:47:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0149. (captures: 2)
+may 07, 2026 10:47:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0442 has been captured
+may 07, 2026 10:47:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0008 has been released
+may 07, 2026 10:47:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0526 has been released
+may 07, 2026 10:47:18 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0149 has been captured
+may 07, 2026 10:47:18 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0117 has been released
+may 07, 2026 10:47:18 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1033 has been captured
+may 07, 2026 10:47:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0051 has been captured
+may 07, 2026 10:47:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0471 has been released
+may 07, 2026 10:47:20 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0271 has been released
+may 07, 2026 10:47:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: ELEVEN'S INTERVENTION EVENT HAS FINISHED
+may 07, 2026 10:47:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0387 has been released
+may 07, 2026 10:47:22 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0864. (captures: 4)
+may 07, 2026 10:47:22 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0122. (captures: 3)
+may 07, 2026 10:47:22 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C1090. (captures: 4)
+may 07, 2026 10:47:23 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1090 has been captured
+may 07, 2026 10:47:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0104. (captures: 1)
+may 07, 2026 10:47:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0864 has been captured
+may 07, 2026 10:47:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0077. (captures: 7)
+may 07, 2026 10:47:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0609. (captures: 7)
+may 07, 2026 10:47:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0561. (captures: 2)
+may 07, 2026 10:47:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:47:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0122 has been captured
+may 07, 2026 10:47:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:47:26 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0505. (captures: 2)
+may 07, 2026 10:47:26 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0392. (captures: 0)
+may 07, 2026 10:47:26 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0104 has been captured
+may 07, 2026 10:47:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C1083. (captures: 3)
+may 07, 2026 10:47:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0009 attacked child C0109. (captures: 0)
+may 07, 2026 10:47:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0609 has been captured
+may 07, 2026 10:47:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0054. (captures: 5)
+may 07, 2026 10:47:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1083 has been captured
+may 07, 2026 10:47:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0794. (captures: 4)
+may 07, 2026 10:47:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0561 has been captured
+may 07, 2026 10:47:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0077 has been captured
+may 07, 2026 10:47:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0009 attacked child C0023. (captures: 1)
+may 07, 2026 10:47:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C1198. (captures: 4)
+may 07, 2026 10:47:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C1188. (captures: 0)
+may 07, 2026 10:47:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0839. (captures: 4)
+may 07, 2026 10:47:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0505 has been captured
+may 07, 2026 10:47:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0715. (captures: 3)
+may 07, 2026 10:47:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0054 has been captured
+may 07, 2026 10:47:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0392 has been captured
+may 07, 2026 10:47:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1198 has been captured
+may 07, 2026 10:47:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0406. (captures: 5)
+may 07, 2026 10:47:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0006 attacked child C0762. (captures: 3)
+may 07, 2026 10:47:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0109 has been captured
+may 07, 2026 10:47:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0715 has been captured
+may 07, 2026 10:47:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0794 has been captured
+may 07, 2026 10:47:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0678. (captures: 6)
+may 07, 2026 10:47:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0162. (captures: 6)
+may 07, 2026 10:47:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0023 has been captured
+may 07, 2026 10:47:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1188 has been captured
+may 07, 2026 10:47:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0762 has been captured
+may 07, 2026 10:47:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0839 has been captured
+may 07, 2026 10:47:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0406 has been captured
+may 07, 2026 10:47:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0009 attacked child C0009. (captures: 2)
+may 07, 2026 10:47:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0306. (captures: 4)
+may 07, 2026 10:47:34 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0801. (captures: 5)
+may 07, 2026 10:47:34 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0740. (captures: 5)
+may 07, 2026 10:47:35 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0009 attacked child C1407. (captures: 3)
+may 07, 2026 10:47:35 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0306 has been captured
+may 07, 2026 10:47:35 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0162 has been captured
+may 07, 2026 10:47:36 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0009 has been captured
+may 07, 2026 10:47:36 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0529. (captures: 5)
+may 07, 2026 10:47:36 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0678 has been captured
+may 07, 2026 10:47:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0941. (captures: 1)
+may 07, 2026 10:47:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C1242. (captures: 1)
+may 07, 2026 10:47:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0801 has been captured
+may 07, 2026 10:47:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0006 attacked child C0590. (captures: 4)
+may 07, 2026 10:47:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1407 has been captured
+may 07, 2026 10:47:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0740 has been captured
+may 07, 2026 10:47:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0529 has been captured
+may 07, 2026 10:47:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0357. (captures: 5)
+may 07, 2026 10:47:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0511. (captures: 6)
+may 07, 2026 10:47:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1242 has been captured
+may 07, 2026 10:47:41 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C0300. (captures: 0)
+may 07, 2026 10:47:41 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0941 has been captured
+may 07, 2026 10:47:41 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0590 has been captured
+may 07, 2026 10:47:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0760. (captures: 7)
+may 07, 2026 10:47:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0619. (captures: 6)
+may 07, 2026 10:47:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0437. (captures: 2)
+may 07, 2026 10:47:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:47:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C0558. (captures: 1)
+may 07, 2026 10:47:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0300 has been captured
+may 07, 2026 10:47:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0511 has been captured
+may 07, 2026 10:47:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0357 has been captured
+may 07, 2026 10:47:44 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0477. (captures: 2)
+may 07, 2026 10:47:44 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0459. (captures: 7)
+may 07, 2026 10:47:44 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0437 has been captured
+may 07, 2026 10:47:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0932. (captures: 7)
+may 07, 2026 10:47:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C0785. (captures: 2)
+may 07, 2026 10:47:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:47:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0704. (captures: 0)
+may 07, 2026 10:47:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0760 has been captured
+may 07, 2026 10:47:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0477 has been captured
+may 07, 2026 10:47:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:47:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0619 has been captured
+may 07, 2026 10:47:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0558 has been captured
+may 07, 2026 10:47:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0763. (captures: 3)
+may 07, 2026 10:47:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C0615. (captures: 3)
+may 07, 2026 10:47:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0011 attacked child C0057. (captures: 0)
+may 07, 2026 10:47:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0704 has been captured
+may 07, 2026 10:47:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0013 attacked child C0866. (captures: 0)
+may 07, 2026 10:47:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0932 has been captured
+may 07, 2026 10:47:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0299. (captures: 3)
+may 07, 2026 10:47:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0009 attacked child C0881. (captures: 4)
+may 07, 2026 10:47:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0763 has been captured
+may 07, 2026 10:47:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0459 has been captured
+may 07, 2026 10:47:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C1258. (captures: 4)
+may 07, 2026 10:47:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0599. (captures: 1)
+may 07, 2026 10:47:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0785 has been captured
+may 07, 2026 10:47:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0011 attacked child C0034. (captures: 1)
+may 07, 2026 10:47:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0006 attacked child C1003. (captures: 5)
+may 07, 2026 10:47:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0057 has been captured
+may 07, 2026 10:47:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0599 has been captured
+may 07, 2026 10:47:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0168. (captures: 0)
+may 07, 2026 10:47:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0012 attacked child C0154. (captures: 0)
+may 07, 2026 10:47:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0615 has been captured
+may 07, 2026 10:47:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0299 has been captured
+may 07, 2026 10:47:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0866 has been captured
+may 07, 2026 10:47:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0684. (captures: 4)
+may 07, 2026 10:47:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0550. (captures: 7)
+may 07, 2026 10:47:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0960. (captures: 6)
+may 07, 2026 10:47:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1003 has been captured
+may 07, 2026 10:47:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0034 has been captured
+may 07, 2026 10:47:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0009 attacked child C0778. (captures: 5)
+may 07, 2026 10:47:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1258 has been captured
+may 07, 2026 10:47:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:47:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0881 has been captured
+may 07, 2026 10:47:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0550 has been captured
+may 07, 2026 10:47:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0168 has been captured
+may 07, 2026 10:47:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0007. (captures: 0)
+may 07, 2026 10:47:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0009 attacked child C1428. (captures: 6)
+may 07, 2026 10:47:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0960 has been captured
+may 07, 2026 10:47:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0684 has been captured
+may 07, 2026 10:47:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0980. (captures: 1)
+may 07, 2026 10:47:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0154 has been captured
+may 07, 2026 10:47:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C1362. (captures: 6)
+may 07, 2026 10:47:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0012 attacked child C0428. (captures: 1)
+may 07, 2026 10:47:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C1397. (captures: 7)
+may 07, 2026 10:47:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0778 has been captured
+may 07, 2026 10:47:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1428 has been captured
+may 07, 2026 10:47:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0013 attacked child C0901. (captures: 1)
+may 07, 2026 10:47:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0797. (captures: 4)
+may 07, 2026 10:47:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0723. (captures: 1)
+may 07, 2026 10:47:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:47:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1397 has been captured
+may 07, 2026 10:47:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C0278. (captures: 5)
+may 07, 2026 10:47:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0428 has been captured
+may 07, 2026 10:47:57 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0007 has been captured
+may 07, 2026 10:47:57 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0011 attacked child C0638. (captures: 2)
+may 07, 2026 10:47:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0009 attacked child C0764. (captures: 7)
+may 07, 2026 10:47:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0901 has been captured
+may 07, 2026 10:47:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1362 has been captured
+may 07, 2026 10:47:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C0114. (captures: 6)
+may 07, 2026 10:47:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0980 has been captured
+may 07, 2026 10:47:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0797 has been captured
+may 07, 2026 10:47:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C1115. (captures: 7)
+may 07, 2026 10:47:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:47:59 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0781. (captures: 5)
+may 07, 2026 10:47:59 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0278 has been captured
+may 07, 2026 10:48:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C1348. (captures: 7)
+may 07, 2026 10:48:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0638 has been captured
+may 07, 2026 10:48:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0013 attacked child C0384. (captures: 2)
+may 07, 2026 10:48:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0160. (captures: 2)
+may 07, 2026 10:48:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0242. (captures: 2)
+may 07, 2026 10:48:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0764 has been captured
+may 07, 2026 10:48:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1115 has been captured
+may 07, 2026 10:48:01 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0014 attacked child C1173. (captures: 0)
+may 07, 2026 10:48:01 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0723 has been captured
+may 07, 2026 10:48:01 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0781 has been captured
+may 07, 2026 10:48:02 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0015 attacked child C0695. (captures: 0)
+may 07, 2026 10:48:02 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C1120. (captures: 0)
+may 07, 2026 10:48:02 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0897. (captures: 3)
+may 07, 2026 10:48:02 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0016 attacked child C0910. (captures: 0)
+may 07, 2026 10:48:03 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0242 has been captured
+may 07, 2026 10:48:03 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0009 attacked child C1315. (captures: 0)
+may 07, 2026 10:48:03 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0114 has been captured
+may 07, 2026 10:48:04 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1173 has been captured
+may 07, 2026 10:48:04 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0013 attacked child C0984. (captures: 3)
+may 07, 2026 10:48:04 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: STORM EVENT HAS STARTED
+may 07, 2026 10:48:04 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0160 has been captured
+may 07, 2026 10:48:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0012 attacked child C1027. (captures: 2)
+may 07, 2026 10:48:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0045. (captures: 0)
+may 07, 2026 10:48:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1348 has been captured
+may 07, 2026 10:48:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0006 attacked child C1079. (captures: 6)
+may 07, 2026 10:48:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0984 has been captured
+may 07, 2026 10:48:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0897 has been captured
+may 07, 2026 10:48:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0009 attacked child C0773. (captures: 1)
+may 07, 2026 10:48:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0014 attacked child C0535. (captures: 1)
+may 07, 2026 10:48:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C1187. (captures: 3)
+may 07, 2026 10:48:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0384 has been captured
+may 07, 2026 10:48:05 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0978. (captures: 6)
+may 07, 2026 10:48:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0910 has been captured
+may 07, 2026 10:48:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C1391. (captures: 0)
+may 07, 2026 10:48:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1315 has been captured
+may 07, 2026 10:48:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0018 attacked child C0445. (captures: 0)
+may 07, 2026 10:48:06 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0841. (captures: 2)
+may 07, 2026 10:48:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0016 attacked child C1300. (captures: 1)
+may 07, 2026 10:48:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0045 has been captured
+may 07, 2026 10:48:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1120 has been captured
+may 07, 2026 10:48:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0695 has been captured
+may 07, 2026 10:48:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1079 has been captured
+may 07, 2026 10:48:07 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1027 has been captured
+may 07, 2026 10:48:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0151. (captures: 4)
+may 07, 2026 10:48:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0445 has been captured
+may 07, 2026 10:48:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0858. (captures: 1)
+may 07, 2026 10:48:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1187 has been captured
+may 07, 2026 10:48:08 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0283. (captures: 3)
+may 07, 2026 10:48:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0683. (captures: 5)
+may 07, 2026 10:48:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0978 has been captured
+may 07, 2026 10:48:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0535 has been captured
+may 07, 2026 10:48:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0654. (captures: 1)
+may 07, 2026 10:48:09 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0221. (captures: 1)
+may 07, 2026 10:48:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1300 has been captured
+may 07, 2026 10:48:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0013 attacked child C0053. (captures: 4)
+may 07, 2026 10:48:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0773 has been captured
+may 07, 2026 10:48:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0841 has been captured
+may 07, 2026 10:48:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1391 has been captured
+may 07, 2026 10:48:10 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0725. (captures: 5)
+may 07, 2026 10:48:11 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0395. (captures: 2)
+may 07, 2026 10:48:11 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0174. (captures: 2)
+may 07, 2026 10:48:11 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0015 attacked child C0667. (captures: 1)
+may 07, 2026 10:48:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0012 attacked child C0995. (captures: 3)
+may 07, 2026 10:48:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0221 has been captured
+may 07, 2026 10:48:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0683 has been captured
+may 07, 2026 10:48:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0006 attacked child C0639. (captures: 7)
+may 07, 2026 10:48:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0654 has been captured
+may 07, 2026 10:48:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0009 attacked child C0855. (captures: 2)
+may 07, 2026 10:48:12 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C1465. (captures: 6)
+may 07, 2026 10:48:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0151 has been captured
+may 07, 2026 10:48:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0858 has been captured
+may 07, 2026 10:48:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0725 has been captured
+may 07, 2026 10:48:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0012 attacked child C0098. (captures: 4)
+may 07, 2026 10:48:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0016. (captures: 2)
+may 07, 2026 10:48:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0283 has been captured
+may 07, 2026 10:48:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0174 has been captured
+may 07, 2026 10:48:13 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0488. (captures: 4)
+may 07, 2026 10:48:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0995 has been captured
+may 07, 2026 10:48:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0019 attacked child C0273. (captures: 0)
+may 07, 2026 10:48:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0041. (captures: 3)
+may 07, 2026 10:48:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0617. (captures: 7)
+may 07, 2026 10:48:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0956. (captures: 4)
+may 07, 2026 10:48:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: STORM EVENT HAS FINISHED
+may 07, 2026 10:48:14 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0053 has been captured
+may 07, 2026 10:48:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0395 has been captured
+may 07, 2026 10:48:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0026. (captures: 6)
+may 07, 2026 10:48:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0855 has been captured
+may 07, 2026 10:48:15 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0251. (captures: 5)
+may 07, 2026 10:48:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0845. (captures: 5)
+may 07, 2026 10:48:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0667 has been captured
+may 07, 2026 10:48:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0639 has been captured
+may 07, 2026 10:48:16 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0015 attacked child C0224. (captures: 2)
+may 07, 2026 10:48:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0098 has been captured
+may 07, 2026 10:48:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0488 has been captured
+may 07, 2026 10:48:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0139. (captures: 3)
+may 07, 2026 10:48:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0016 has been captured
+may 07, 2026 10:48:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1465 has been captured
+may 07, 2026 10:48:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0017 attacked child C1479. (captures: 0)
+may 07, 2026 10:48:17 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0713. (captures: 7)
+may 07, 2026 10:48:18 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0026 has been captured
+may 07, 2026 10:48:18 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0617 has been captured
+may 07, 2026 10:48:18 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:18 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0016 attacked child C0219. (captures: 2)
+may 07, 2026 10:48:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0041 has been captured
+may 07, 2026 10:48:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0251 has been captured
+may 07, 2026 10:48:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0021 attacked child C0963. (captures: 0)
+may 07, 2026 10:48:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0956 has been captured
+may 07, 2026 10:48:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C0928. (captures: 0)
+may 07, 2026 10:48:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0273 has been captured
+may 07, 2026 10:48:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0815. (captures: 4)
+may 07, 2026 10:48:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0020 attacked child C0484. (captures: 0)
+may 07, 2026 10:48:19 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C1389. (captures: 0)
+may 07, 2026 10:48:20 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0713 has been captured
+may 07, 2026 10:48:20 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0018 attacked child C1279. (captures: 1)
+may 07, 2026 10:48:20 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0815 has been captured
+may 07, 2026 10:48:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0224 has been captured
+may 07, 2026 10:48:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0514. (captures: 4)
+may 07, 2026 10:48:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0219 has been captured
+may 07, 2026 10:48:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0484 has been captured
+may 07, 2026 10:48:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0015 attacked child C0647. (captures: 3)
+may 07, 2026 10:48:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0139 has been captured
+may 07, 2026 10:48:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0014 attacked child C0694. (captures: 2)
+may 07, 2026 10:48:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0845 has been captured
+may 07, 2026 10:48:21 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0524. (captures: 0)
+may 07, 2026 10:48:22 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1479 has been captured
+may 07, 2026 10:48:22 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1389 has been captured
+may 07, 2026 10:48:22 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0963 has been captured
+may 07, 2026 10:48:22 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0006 attacked child C0230. (captures: 0)
+may 07, 2026 10:48:23 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0524 has been captured
+may 07, 2026 10:48:23 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0928 has been captured
+may 07, 2026 10:48:23 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0018 attacked child C0102. (captures: 2)
+may 07, 2026 10:48:23 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0019 attacked child C1186. (captures: 1)
+may 07, 2026 10:48:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0006 attacked child C0226. (captures: 1)
+may 07, 2026 10:48:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C1364. (captures: 1)
+may 07, 2026 10:48:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0694 has been captured
+may 07, 2026 10:48:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0647 has been captured
+may 07, 2026 10:48:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0476. (captures: 1)
+may 07, 2026 10:48:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1279 has been captured
+may 07, 2026 10:48:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0230 has been captured
+may 07, 2026 10:48:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1186 has been captured
+may 07, 2026 10:48:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0013 attacked child C0408. (captures: 5)
+may 07, 2026 10:48:24 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0226 has been captured
+may 07, 2026 10:48:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0020 attacked child C0451. (captures: 1)
+may 07, 2026 10:48:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0014. (captures: 5)
+may 07, 2026 10:48:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0012 attacked child C0645. (captures: 5)
+may 07, 2026 10:48:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C1150. (captures: 5)
+may 07, 2026 10:48:25 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0514 has been captured
+may 07, 2026 10:48:26 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0095. (captures: 6)
+may 07, 2026 10:48:26 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1364 has been captured
+may 07, 2026 10:48:26 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0102 has been captured
+may 07, 2026 10:48:26 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0014 has been captured
+may 07, 2026 10:48:26 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0015 attacked child C1269. (captures: 4)
+may 07, 2026 10:48:26 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0009 attacked child C0892. (captures: 3)
+may 07, 2026 10:48:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0408 has been captured
+may 07, 2026 10:48:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0095 has been captured
+may 07, 2026 10:48:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0476 has been captured
+may 07, 2026 10:48:27 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0020 attacked child C1153. (captures: 2)
+may 07, 2026 10:48:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C0118. (captures: 7)
+may 07, 2026 10:48:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0451 has been captured
+may 07, 2026 10:48:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1269 has been captured
+may 07, 2026 10:48:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0193. (captures: 6)
+may 07, 2026 10:48:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0015 attacked child C0066. (captures: 5)
+may 07, 2026 10:48:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0645 has been captured
+may 07, 2026 10:48:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1150 has been captured
+may 07, 2026 10:48:28 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C1289. (captures: 3)
+may 07, 2026 10:48:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0019 attacked child C0867. (captures: 2)
+may 07, 2026 10:48:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0193 has been captured
+may 07, 2026 10:48:29 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C1293. (captures: 7)
+may 07, 2026 10:48:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0006 attacked child C0092. (captures: 2)
+may 07, 2026 10:48:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0892 has been captured
+may 07, 2026 10:48:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0014 attacked child C1460. (captures: 3)
+may 07, 2026 10:48:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C1030. (captures: 1)
+may 07, 2026 10:48:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0013 attacked child C0522. (captures: 6)
+may 07, 2026 10:48:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C1421. (captures: 2)
+may 07, 2026 10:48:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1153 has been captured
+may 07, 2026 10:48:30 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0867 has been captured
+may 07, 2026 10:48:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0066 has been captured
+may 07, 2026 10:48:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1289 has been captured
+may 07, 2026 10:48:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C0315. (captures: 2)
+may 07, 2026 10:48:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0018 attacked child C1265. (captures: 3)
+may 07, 2026 10:48:31 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1421 has been captured
+may 07, 2026 10:48:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0092 has been captured
+may 07, 2026 10:48:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0016 attacked child C0325. (captures: 3)
+may 07, 2026 10:48:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0302. (captures: 6)
+may 07, 2026 10:48:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0926. (captures: 2)
+may 07, 2026 10:48:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1460 has been captured
+may 07, 2026 10:48:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0322. (captures: 7)
+may 07, 2026 10:48:32 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0023 attacked child C0516. (captures: 0)
+may 07, 2026 10:48:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0018 attacked child C0595. (captures: 4)
+may 07, 2026 10:48:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0118 has been captured
+may 07, 2026 10:48:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0022 attacked child C0159. (captures: 0)
+may 07, 2026 10:48:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0926 has been captured
+may 07, 2026 10:48:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0522 has been captured
+may 07, 2026 10:48:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0625. (captures: 6)
+may 07, 2026 10:48:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0315 has been captured
+may 07, 2026 10:48:33 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0019 attacked child C0361. (captures: 3)
+may 07, 2026 10:48:34 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0017 attacked child C1228. (captures: 1)
+may 07, 2026 10:48:34 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1265 has been captured
+may 07, 2026 10:48:34 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1293 has been captured
+may 07, 2026 10:48:34 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Stopped program.
+may 07, 2026 10:48:35 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1030 has been captured
+may 07, 2026 10:48:36 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Resumed program.
+may 07, 2026 10:48:36 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0019 attacked child C1484. (captures: 4)
+may 07, 2026 10:48:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0325 has been captured
+may 07, 2026 10:48:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0014 attacked child C0463. (captures: 4)
+may 07, 2026 10:48:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0625 has been captured
+may 07, 2026 10:48:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0322 has been captured
+may 07, 2026 10:48:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0361 has been captured
+may 07, 2026 10:48:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0516 has been captured
+may 07, 2026 10:48:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0006 attacked child C0542. (captures: 3)
+may 07, 2026 10:48:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1228 has been captured
+may 07, 2026 10:48:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0159 has been captured
+may 07, 2026 10:48:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0302 has been captured
+may 07, 2026 10:48:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0595 has been captured
+may 07, 2026 10:48:37 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0751. (captures: 4)
+may 07, 2026 10:48:38 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0021 attacked child C0056. (captures: 1)
+may 07, 2026 10:48:38 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0012 attacked child C0216. (captures: 6)
+may 07, 2026 10:48:38 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0225. (captures: 7)
+may 07, 2026 10:48:38 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0014 attacked child C0758. (captures: 5)
+may 07, 2026 10:48:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0024 attacked child C1136. (captures: 0)
+may 07, 2026 10:48:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0013 attacked child C0795. (captures: 7)
+may 07, 2026 10:48:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:39 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1484 has been captured
+may 07, 2026 10:48:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0011 attacked child C0498. (captures: 3)
+may 07, 2026 10:48:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C1412. (captures: 3)
+may 07, 2026 10:48:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0225 has been captured
+may 07, 2026 10:48:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0216 has been captured
+may 07, 2026 10:48:40 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0751 has been captured
+may 07, 2026 10:48:41 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1136 has been captured
+may 07, 2026 10:48:41 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0498 has been captured
+may 07, 2026 10:48:41 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0463 has been captured
+may 07, 2026 10:48:41 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0056 has been captured
+may 07, 2026 10:48:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C1410. (captures: 4)
+may 07, 2026 10:48:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0011 attacked child C0032. (captures: 4)
+may 07, 2026 10:48:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0745. (captures: 0)
+may 07, 2026 10:48:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0542 has been captured
+may 07, 2026 10:48:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0758 has been captured
+may 07, 2026 10:48:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0795 has been captured
+may 07, 2026 10:48:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0012 attacked child C0686. (captures: 7)
+may 07, 2026 10:48:42 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0016 attacked child C0220. (captures: 4)
+may 07, 2026 10:48:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0020 attacked child C0973. (captures: 3)
+may 07, 2026 10:48:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0026 attacked child C0313. (captures: 0)
+may 07, 2026 10:48:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0021 attacked child C1445. (captures: 2)
+may 07, 2026 10:48:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C0820. (captures: 0)
+may 07, 2026 10:48:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0013 attacked child C0628. (captures: 0)
+may 07, 2026 10:48:43 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1412 has been captured
+may 07, 2026 10:48:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0493. (captures: 1)
+may 07, 2026 10:48:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0013 attacked child C1209. (captures: 1)
+may 07, 2026 10:48:45 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0745 has been captured
+may 07, 2026 10:48:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0016 attacked child C1476. (captures: 5)
+may 07, 2026 10:48:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1410 has been captured
+may 07, 2026 10:48:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0628 has been captured
+may 07, 2026 10:48:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0011 attacked child C0290. (captures: 5)
+may 07, 2026 10:48:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0021 attacked child C1035. (captures: 3)
+may 07, 2026 10:48:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C0270. (captures: 3)
+may 07, 2026 10:48:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0493 has been captured
+may 07, 2026 10:48:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0032 has been captured
+may 07, 2026 10:48:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0009 attacked child C0657. (captures: 4)
+may 07, 2026 10:48:46 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0220 has been captured
+may 07, 2026 10:48:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0973 has been captured
+may 07, 2026 10:48:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0313 has been captured
+may 07, 2026 10:48:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0017 attacked child C0759. (captures: 2)
+may 07, 2026 10:48:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0686 has been captured
+may 07, 2026 10:48:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1445 has been captured
+may 07, 2026 10:48:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0023 attacked child C0608. (captures: 1)
+may 07, 2026 10:48:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0004 attacked child C1059. (captures: 0)
+may 07, 2026 10:48:47 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0657 has been captured
+may 07, 2026 10:48:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0020 attacked child C1110. (captures: 4)
+may 07, 2026 10:48:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0820 has been captured
+may 07, 2026 10:48:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0264. (captures: 2)
+may 07, 2026 10:48:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1209 has been captured
+may 07, 2026 10:48:48 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0026 attacked child C0512. (captures: 1)
+may 07, 2026 10:48:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0017 attacked child C1468. (captures: 3)
+may 07, 2026 10:48:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0015 attacked child C0062. (captures: 6)
+may 07, 2026 10:48:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0011 attacked child C1106. (captures: 6)
+may 07, 2026 10:48:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1476 has been captured
+may 07, 2026 10:48:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1035 has been captured
+may 07, 2026 10:48:49 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0512 has been captured
+may 07, 2026 10:48:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1059 has been captured
+may 07, 2026 10:48:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1110 has been captured
+may 07, 2026 10:48:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0014 attacked child C0015. (captures: 6)
+may 07, 2026 10:48:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0016 attacked child C0697. (captures: 6)
+may 07, 2026 10:48:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0062 has been captured
+may 07, 2026 10:48:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0264 has been captured
+may 07, 2026 10:48:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0001 attacked child C0480. (captures: 7)
+may 07, 2026 10:48:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0270 has been captured
+may 07, 2026 10:48:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C1096. (captures: 4)
+may 07, 2026 10:48:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0026 attacked child C0447. (captures: 2)
+may 07, 2026 10:48:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0002 attacked child C0040. (captures: 5)
+may 07, 2026 10:48:50 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0290 has been captured
+may 07, 2026 10:48:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0759 has been captured
+may 07, 2026 10:48:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0608 has been captured
+may 07, 2026 10:48:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1106 has been captured
+may 07, 2026 10:48:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0013 attacked child C0884. (captures: 2)
+may 07, 2026 10:48:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0000 attacked child C1400. (captures: 1)
+may 07, 2026 10:48:51 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0071. (captures: 0)
+may 07, 2026 10:48:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0019 attacked child C1286. (captures: 5)
+may 07, 2026 10:48:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1096 has been captured
+may 07, 2026 10:48:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0024 attacked child C0432. (captures: 1)
+may 07, 2026 10:48:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0007 attacked child C0209. (captures: 3)
+may 07, 2026 10:48:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0028 attacked child C0295. (captures: 0)
+may 07, 2026 10:48:52 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0011 attacked child C0468. (captures: 7)
+may 07, 2026 10:48:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0014 attacked child C0953. (captures: 7)
+may 07, 2026 10:48:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0071 has been captured
+may 07, 2026 10:48:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1400 has been captured
+may 07, 2026 10:48:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0018 attacked child C1100. (captures: 5)
+may 07, 2026 10:48:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:53 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1468 has been captured
+may 07, 2026 10:48:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0697 has been captured
+may 07, 2026 10:48:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0025 attacked child C1140. (captures: 0)
+may 07, 2026 10:48:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0008 attacked child C0487. (captures: 1)
+may 07, 2026 10:48:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0023 attacked child C1183. (captures: 2)
+may 07, 2026 10:48:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1286 has been captured
+may 07, 2026 10:48:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0017 attacked child C1042. (captures: 4)
+may 07, 2026 10:48:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0480 has been captured
+may 07, 2026 10:48:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0015 has been captured
+may 07, 2026 10:48:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0003 attacked child C0521. (captures: 3)
+may 07, 2026 10:48:54 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0029 attacked child C0754. (captures: 0)
+may 07, 2026 10:48:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0040 has been captured
+may 07, 2026 10:48:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0010 attacked child C0094. (captures: 5)
+may 07, 2026 10:48:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0884 has been captured
+may 07, 2026 10:48:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0295 has been captured
+may 07, 2026 10:48:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0022 attacked child C1123. (captures: 1)
+may 07, 2026 10:48:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0447 has been captured
+may 07, 2026 10:48:55 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1100 has been captured
+may 07, 2026 10:48:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0005 attacked child C0767. (captures: 5)
+may 07, 2026 10:48:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0016 attacked child C0156. (captures: 7)
+may 07, 2026 10:48:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0209 has been captured
+may 07, 2026 10:48:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0953 has been captured
+may 07, 2026 10:48:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0432 has been captured
+may 07, 2026 10:48:56 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0754 has been captured
+may 07, 2026 10:48:57 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: A new demogorgon has been Spawned!
+may 07, 2026 10:48:57 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0014 attacked child C1276. (captures: 0)
+may 07, 2026 10:48:57 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0030 attacked child C0125. (captures: 0)
+may 07, 2026 10:48:57 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0468 has been captured
+may 07, 2026 10:48:57 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0487 has been captured
+may 07, 2026 10:48:57 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: GLOBAL EVENT: ELEVEN'S INTERVENTION EVENT HAS STARTED
+may 07, 2026 10:48:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0017 attacked child C0728. (captures: 5)
+may 07, 2026 10:48:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1140 has been captured
+may 07, 2026 10:48:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0012 attacked child C1240. (captures: 0)
+may 07, 2026 10:48:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1042 has been captured
+may 07, 2026 10:48:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1276 has been captured
+may 07, 2026 10:48:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0125 has been captured
+may 07, 2026 10:48:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1183 has been captured
+may 07, 2026 10:48:58 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0120 has been released
+may 07, 2026 10:48:59 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Demogorgon D0015 attacked child C0748. (captures: 7)
+may 07, 2026 10:48:59 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0094 has been captured
+may 07, 2026 10:48:59 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C1123 has been captured
+may 07, 2026 10:48:59 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0521 has been captured
+may 07, 2026 10:48:59 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0777 has been released
+may 07, 2026 10:49:00 P. M. com.aprog_lab.aprog_pl.shared_resources.logManager logWrite
+INFO: Child: C0156 has been captured

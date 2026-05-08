@@ -2,6 +2,7 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
 import com.aprog_lab.aprog_pl.GUI.GUI1_Server;
+import com.aprog_lab.aprog_pl.GUI_Initializers.GUI1_Manager;
 import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.Queue;
 import java.util.concurrent.BrokenBarrierException;
@@ -26,10 +27,10 @@ public class Portal
     private Semaphore exitSem, enterSem;
     private AtomicBoolean blocked;
     private CopyOnWriteArrayList<Child> entering, leaving;
-    private GUI1_Server ifc;
+    private GUI1_Manager ifc_mng;
     private logManager log;
     
-    public Portal(String pname, CyclicBarrier pcb, GUI1_Server p_ifc, logManager p_log)
+    public Portal(String pname, CyclicBarrier pcb, GUI1_Manager p_ifc_mng, logManager p_log)
     {
         portal_name = pname;
         cb = pcb;
@@ -40,7 +41,7 @@ public class Portal
         blocked = new AtomicBoolean(false);
         entering = new CopyOnWriteArrayList<>();
         leaving = new CopyOnWriteArrayList<>();
-        ifc = p_ifc;
+        ifc_mng = p_ifc_mng;
         log = p_log;
     }
     
@@ -65,7 +66,7 @@ public class Portal
                     }
                     //System.out.println("Child: "+id+" is entering portal...");                                // DEBUG
                     leaving.add(c);
-                    ifc.refreshPortalStats();
+                    ifc_mng.refreshPortalStats();
                     cb.await();
                     leaving.remove(c);
 
@@ -84,7 +85,7 @@ public class Portal
                     }
                     //System.out.println("Child: "+id+" is entering portal...");                                // DEBUG
                     entering.add(c);
-                    ifc.refreshPortalStats();
+                    ifc_mng.refreshPortalStats();
                     cb.await();
                     entering.remove(c);
                 }                

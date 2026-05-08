@@ -1,6 +1,7 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
 import com.aprog_lab.aprog_pl.GUI.GUI1_Server;
+import com.aprog_lab.aprog_pl.GUI_Initializers.GUI1_Manager;
 import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -17,13 +18,13 @@ public class Unsafe_Zone
     private CopyOnWriteArrayList<Child> avail_children;
     private CopyOnWriteArrayList<Demogorgon> avail_demos;
     private AtomicInteger captured;
-    private GUI1_Server ifc;
+    private GUI1_Manager ifc_mng;
     private logManager log;
     private AtomicBoolean labBlackout;
     
-    public Unsafe_Zone(String name, GUI1_Server p_ifc, logManager p_log)
+    public Unsafe_Zone(String name, GUI1_Manager p_ifc_mng, logManager p_log)
     {
-        ifc = p_ifc;
+        ifc_mng = p_ifc_mng;
         zone_name = name;
         labBlackout = new AtomicBoolean(false);
         avail_children = new CopyOnWriteArrayList<>();
@@ -48,7 +49,7 @@ public class Unsafe_Zone
                 if(!avail_children.contains(c))
                 {
                     avail_children.add(c);
-                    ifc.refreshZoneStats();
+                    ifc_mng.refreshZoneStats();
                     //System.out.println("Child: "+c.getID()+" has entered unsafe zone: "+zone_name);  
                 } 
             }
@@ -72,7 +73,7 @@ public class Unsafe_Zone
                 if(!avail_demos.contains(d))
                 {
                     avail_demos.add(d);
-                    ifc.refreshZoneStats();
+                    ifc_mng.refreshZoneStats();
                     //System.out.println("Demogorgon: "+d.getID()+" has entered unsafe zone: "+zone_name);  
                 }
             }
@@ -98,7 +99,7 @@ public class Unsafe_Zone
                 if(avail_children.contains(c))
                 {
                     avail_children.remove(c);
-                    ifc.refreshZoneStats();
+                    ifc_mng.refreshZoneStats();
                     //System.out.println("Child: "+c.getID()+" has exited unsafe zone: "+zone_name);
                 }  
             }
@@ -122,7 +123,7 @@ public class Unsafe_Zone
                 if(avail_demos.contains(d))
                 {
                     avail_demos.remove(d);
-                    ifc.refreshZoneStats();
+                    ifc_mng.refreshZoneStats();
                     //System.out.println("Demogorgon: "+d.getID()+" has exited unsafe zone: "+zone_name);    
                 }    
             } 
@@ -196,7 +197,7 @@ public class Unsafe_Zone
             synchronized(this)
             {
                 captured.incrementAndGet();
-                ifc.refreshCounters();
+                ifc_mng.refreshCounters();
                 System.out.println("Child: "+id+" has been captured");
                 log.logWrite("Child: "+id+" has been captured");
                 wait();
@@ -217,7 +218,7 @@ public class Unsafe_Zone
             {
                 captured.decrementAndGet();
                 notify();
-                ifc.refreshCounters();
+                ifc_mng.refreshCounters();
             }
         }
     }

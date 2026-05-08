@@ -1,6 +1,7 @@
 package com.aprog_lab.aprog_pl.shared_resources;
 
 import com.aprog_lab.aprog_pl.GUI.GUI1_Server;
+import com.aprog_lab.aprog_pl.GUI_Initializers.GUI1_Manager;
 import com.aprog_lab.aprog_pl.threads.Child;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -14,14 +15,14 @@ public class Safe_Zone
     private final String zone_name;
     private CopyOnWriteArrayList<Child> avail_children;
     private AtomicInteger bloodCount;
-    private GUI1_Server ifc;
+    private GUI1_Manager ifc_mng;
     private logManager log;
     
-    public Safe_Zone(String name, GUI1_Server p_ifc, logManager p_log)
+    public Safe_Zone(String name, GUI1_Manager p_ifc_mng, logManager p_log)
     {
         zone_name = name;
         avail_children = new CopyOnWriteArrayList<>();                                         // Children actively wandering the zone.
-        ifc = p_ifc;
+        ifc_mng = p_ifc_mng;
         if(zone_name.equals("WSQK Radio"))                                          // Blood count is initialized only for the WSQK Radio safezone. Otherwise, unused.
         {
             bloodCount = new AtomicInteger(0);
@@ -49,7 +50,7 @@ public class Safe_Zone
                 synchronized(this)
                 {
                     avail_children.add(c);
-                    ifc.refreshZoneStats();
+                    ifc_mng.refreshZoneStats();
                     //System.out.println("Child: "+c.getID()+" has entered safezone: "+zone_name);
                 }
             }
@@ -73,7 +74,7 @@ public class Safe_Zone
                 synchronized(this)
                 {
                     avail_children.remove(c);
-                    ifc.refreshZoneStats();
+                    ifc_mng.refreshZoneStats();
                     //System.out.println("Child: "+c.getID()+" has exited safezone: "+zone_name);
                 }
             }
@@ -93,7 +94,7 @@ public class Safe_Zone
         if(this.getName().equals("WSQK Radio") && log.getPlaying())
         {
             bloodCount.incrementAndGet();                                           // The counter gets incremented for each child that escaped.
-            ifc.refreshCounters();
+            ifc_mng.refreshCounters();
         }
         else
         {
