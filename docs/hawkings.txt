@@ -43000,3 +43000,11 @@ may 09, 2026 12:43:15 P. M. com.aprog_lab.aprog_pl.shared_resources.LogManager 
 INFO: Demogorgon D0000 attacked child C0124. (captures: 0)
 may 09, 2026 12:43:16 P. M. com.aprog_lab.aprog_pl.shared_resources.LogManager logWrite
 INFO: Demogorgon D0004 attacked child C1127. (captures: 2)
+may 10, 2026 1:17:41 A. M. com.aprog_lab.aprog_pl.shared_resources.LogManager logWrite
+INFO: Demogorgon D0000 attacked child C0071. (captures: 0)
+may 10, 2026 1:17:42 A. M. com.aprog_lab.aprog_pl.shared_resources.LogManager logWrite
+INFO: Child: C0071 has been captured
+may 10, 2026 1:17:57 A. M. com.aprog_lab.aprog_pl.shared_resources.LogManager logWrite
+INFO: Stopped program.
+may 10, 2026 1:17:59 A. M. com.aprog_lab.aprog_pl.shared_resources.LogManager logWrite
+INFO: Resumed program.

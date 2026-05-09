@@ -35,8 +35,6 @@ public class GUI1_Server extends javax.swing.JFrame {
         jTextField_BLOODCOUNT.setText("0");
         jTextField_HIVE_CAPTURED.setText("0");
         jTextField_CURRENT_EVENT.setText("None");
-        System.out.println("jTextField_BLOODCOUNT_constructor: " + jTextField_BLOODCOUNT.hashCode());
-        System.out.println("jTextField_HIVE_CAPTURED_constructor: " + jTextField_HIVE_CAPTURED.hashCode());
         
         /* ===================== SETTING DEFAULTLISTMODEL MODEL FOR JLISTS =====================
                 -   This allows us to have a specific model for the JLists so we can insert Strings vertically.
