@@ -19,8 +19,10 @@ public class HiveMindEvent
         status = new AtomicBoolean(false);
     }
     
-    /*
-    
+    /* ==================== MOST CHILDREN ZONE GETTER ====================
+        -   Simple algorithm to get the zone with most children.
+        -   Checks the size of each zone but the HIVE and compared whether it's amount is higher than the current maximum amount.
+        -   Stores the ArrayList index to return the unsafe zone once finished.
     */
     public Unsafe_Zone getMostChildrenZone()
     {
@@ -38,8 +40,8 @@ public class HiveMindEvent
         return uzs.get(idx);
     }
     
-    /*
-    
+    /* ==================== STATUS SETTER ====================
+        -   Used by the EventManager thread to enable or disable the event.
     */
     public void setStatus()
     {
@@ -53,15 +55,17 @@ public class HiveMindEvent
         }
     }
     
-    /*
-    
+    /* ==================== STATUS GETTER ====================
+        -   Used by demogorgons to act in a way or another (move to a specific zone or not).
     */
     public boolean getStatus()
     {
         return status.get();
     }
     
-    
+    /* ==================== DEMOGORGON PRINTER ====================
+        -   DEBUG purposes.
+    */
     public void showDemos()
     {
         for(int i=0;i<uzs.size()-1;i++)

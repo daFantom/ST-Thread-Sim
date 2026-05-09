@@ -22,13 +22,19 @@ public class GUI2_Client extends javax.swing.JFrame {
     private MyRemoteInterface remoteObject;
 
     /**
-     * Creates new form Interface2
+     * Creates new form GUI2_Client
      */
     public GUI2_Client() {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(this);
-        initRMI();
+        init();                                                                     // Startup protocol. (Creates RMI network access and refresh thread)
+        
+        /* ======================== JTEXTFIELD ORGANIZATION ========================
+            -   Same thing as for GUI1_Server, but with JTextFields instead.
+            -   Used for a better JTextField management while refreshing data.
+        */
+
         c_locs = new ArrayList<>();
         d_locs = new ArrayList<>();
         portalsEntering = new ArrayList<>();
@@ -64,10 +70,12 @@ public class GUI2_Client extends javax.swing.JFrame {
         
     }
     
-    /*
-    
+    /* ================= INITIALIZATION PROTOCOL =================
+        -   Called from the constructor of the GUI itself.
+        -   Gets the remote object from the servers registry using Naming.lookup()
+        -   Also starts the ClientRefresher thread to refresh the content from the GUI.
     */
-    public void initRMI()
+    public void init()
     {
         try
         {
@@ -84,8 +92,9 @@ public class GUI2_Client extends javax.swing.JFrame {
         }
     }
     
-    /*
-    
+    /* ================= LOCATION REFRESH METHOD =================
+        -   Receives an Integer ArrayList that contains the amount of children and demogorgons of each zone.
+        -   Sets the text on their respectives JTexts. Each position of both ArrayLists references to a certain Unsafe Zone.
     */
     public void refreshLocations(ArrayList<Integer> amountChildren, ArrayList<Integer> amountDemos)
     {
@@ -102,19 +111,28 @@ public class GUI2_Client extends javax.swing.JFrame {
     }
     
     
-    /*
-    
+    /* ================= EVENT STATUS REFRESHER =================
+        -   Refreshes the JText responsible for showing the status event.
+        -   content parameter is what the JText gets set to.
     */
     public void refreshEvent(String content)
     {
         jTextField_CURRENT_EVENT.setText(content);
     }
     
+    /* ================= HAWKINGS CHILD AMOUNT REFRESHER =================
+        -   Refreshes the JText responsible for showing the amount in children available in Hawkings Safe Zone
+        -   amount parameter is what the JText gets set to.
+    */
     public void refreshHawkings(int amount)
     {
         jTextField_TOTAL_CHILDREN_AMOUNT.setText(String.valueOf(amount));
     }
     
+    /* ================= PORTAL AMOUNT REFRESHER =================
+        -   Refreshes the amount of children in each portal (exiting or entering).
+        -   Gets two Integer ArrayList for each portal. Each position corresponds to a certain portal.
+    */
     public void refreshPortals(ArrayList<Integer> amountChildrenEnter, ArrayList<Integer> amountChildrenExit)
     {
         for(int i=0;i<portalsEntering.size();i++)
@@ -126,6 +144,10 @@ public class GUI2_Client extends javax.swing.JFrame {
         }
     }
     
+    /* ================= DEMOGORGON RANKING REFRESHER =================
+        -   Refreshes the amount of children in each portal (exiting or entering).
+        -   Gets two Integer ArrayList for each portal. Each position corresponds to a certain portal.
+    */
     public void refreshDemoRankings(ArrayList<String> demoRanking)
     {
         if(!demoRanking.isEmpty())
@@ -670,7 +692,9 @@ public class GUI2_Client extends javax.swing.JFrame {
     private void jTextField_PORTAL3_STATUS_ENTERINGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PORTAL3_STATUS_ENTERINGActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_PORTAL3_STATUS_ENTERINGActionPerformed
-
+    /* ================= STOP / RESUME BUTTON =================
+        -   Uses remote object to call upon a method inside of the server to set a "stopped" variable to true or false.
+    */
     private void jButton_STOP_RESUMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_STOP_RESUMEActionPerformed
         java.awt.EventQueue.invokeLater(() -> 
             {

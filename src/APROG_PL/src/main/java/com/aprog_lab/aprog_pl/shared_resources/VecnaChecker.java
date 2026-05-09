@@ -17,9 +17,9 @@ public class VecnaChecker {
     private StormEvent se;
     private ElevenSavesEvent ese;
     private HiveMindEvent hme;
-    private logManager log;
+    private LogManager log;
     
-    public VecnaChecker(int p_total_demos, ArrayList<Unsafe_Zone> puzs, StormEvent pse, ElevenSavesEvent pese, HiveMindEvent p_hme, logManager p_log)
+    public VecnaChecker(int p_total_demos, ArrayList<Unsafe_Zone> puzs, StormEvent pse, ElevenSavesEvent pese, HiveMindEvent p_hme, LogManager p_log)
     {
         total_demos = p_total_demos;
         uzs = puzs;

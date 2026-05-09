@@ -38,7 +38,11 @@ public class GUI1_Server extends javax.swing.JFrame {
         System.out.println("jTextField_BLOODCOUNT_constructor: " + jTextField_BLOODCOUNT.hashCode());
         System.out.println("jTextField_HIVE_CAPTURED_constructor: " + jTextField_HIVE_CAPTURED.hashCode());
         
-        // ===================== SETTING DEFAULTLISTMODEL MODEL FOR JLISTS =====================
+        /* ===================== SETTING DEFAULTLISTMODEL MODEL FOR JLISTS =====================
+                -   This allows us to have a specific model for the JLists so we can insert Strings vertically.
+                -   Afterwards, we divide each JList into different ArrayLists for an easier management
+                    when refreshing data on the GUI.
+        */
         DefaultListModel<String> m1 = new DefaultListModel<>();
         jList_MAIN_STREET.setModel(m1);
         DefaultListModel<String> m2 = new DefaultListModel<>();
@@ -95,9 +99,16 @@ public class GUI1_Server extends javax.swing.JFrame {
         uz_models_D.add(m16); uz_models_D.add(m17); uz_models_D.add(m18); uz_models_D.add(m19);
     }
     
-// =============================== PORTAL CONTENT REFRESHER ===============================
-    /*
-    
+    /* =============================== PORTAL CONTENT REFRESHER ===============================
+        - This method is called by Child threads whenever they pass through the CyclicBarrier inside of a portal.
+        - It gets a snapshot of the current CopyOnWriteArrayList of children available for travelling  through a portal.
+        - Does not include children in waiting line.
+        - Object.clone() wouldn't work since it doesn't make a clone of the object including the content inside of it.
+        - Therefore, we just make CopyOnWriteArrayList.toArray(new Child[0]) to transform the obtained COWAL into a normal Array.
+          This was due to the fact that we could get an update when printing and the size wouldn't be the same. -> Avoid IndexOutOfBounds exception
+        - Afterwards, we print its content. The only issue is that we have a small difference of the children that are
+            realistically inside of the COWAL. In other words, outdated data. However, it's a difference in milliseconds, so it
+            is nothing to worry about.
     */
     public void refreshPortalStats(ArrayList<Portal> portals)
     {
@@ -107,8 +118,8 @@ public class GUI1_Server extends javax.swing.JFrame {
                 {
                     enter_portal_models.get(i).clear();
                     exit_portal_models.get(i).clear();
-                    Child[] enteringChildrenSnapshot = portals.get(i).getEntering().toArray(new Child[0]); // Changed from CopyOnWriteArrayList to an Array due to chances of updating whilst printing each element
-                    Child[] leavingChildrenSnapshot = portals.get(i).getLeaving().toArray(new Child[0]);  // Changed from CopyOnWriteArrayList to an Array due to chances of updating whilst printing each element
+                    Child[] enteringChildrenSnapshot = portals.get(i).getEntering().toArray(new Child[0]); 
+                    Child[] leavingChildrenSnapshot = portals.get(i).getLeaving().toArray(new Child[0]);
                     
                         for(int j=0;j<enteringChildrenSnapshot.length;j++)
                         {
@@ -124,7 +135,11 @@ public class GUI1_Server extends javax.swing.JFrame {
         );
     }
     
-// =============================== COUNTER REFRESHER ===============================
+    /* =============================== COUNTER REFRESHER ===============================
+        -   Called by Child threads insidie of the WSQK Radio safezone and whenever they get captured.
+        -   Also called by the ElevenSavesEvent whenever it saves a child.
+        -   Gets the blood_counter and captured AtomicIntegers and shows them on the GUI.
+    */
     public void refreshCounters(ArrayList<Safe_Zone> sz, ArrayList<Unsafe_Zone> uz)
     {
         java.awt.EventQueue.invokeLater( () ->
@@ -135,8 +150,11 @@ public class GUI1_Server extends javax.swing.JFrame {
         );
     }
     
-// =============================== PORTAL CONTENT REFRESHER ===============================
-    /*
+    /* =============================== ZONE CONTENT AND EVENT STATUS REFRESHER ===============================
+        -   Called upon every movement inside a Safe Zone or Unsafe Zone
+        -   Also called from the EventManager thread to show the current event.
+        -   Makes a screenshot of the CopyOnWriteArrayLists of each Safe and Unsafe zone using toArray() method
+            and prints every element ID (Child or Demogorgon) inside of it.
     
     */
     public void refreshZoneStats(ArrayList<Unsafe_Zone> uz, ArrayList<Safe_Zone> sz, EventManager em)
@@ -648,12 +666,9 @@ public class GUI1_Server extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() ->
             {
-                GUI1_Server gui1 = new GUI1_Server();
-                GUI1_Manager gui1_manager = new GUI1_Manager(gui1);
-                if(gui1_manager.init())
-                {
-                    gui1.setVisible(true);
-                }
+                GUI1_Server gui1 = new GUI1_Server();                               // New instance to avoid "non-static call from static context" error.
+                GUI1_Manager gui1_manager = new GUI1_Manager(gui1);                 // GUI1_Manager to create all threads and shared objects. Former location was inside of the constructor.
+                gui1_manager.init();                                                // Server startup protocol.
             }
         );
 

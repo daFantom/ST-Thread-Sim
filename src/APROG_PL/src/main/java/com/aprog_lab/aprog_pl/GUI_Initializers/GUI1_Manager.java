@@ -10,7 +10,7 @@ import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.VecnaChecker;
-import com.aprog_lab.aprog_pl.shared_resources.logManager;
+import com.aprog_lab.aprog_pl.shared_resources.LogManager;
 import com.aprog_lab.aprog_pl.threads.Child;
 import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.EventManager;
@@ -35,7 +35,7 @@ public class GUI1_Manager {
     private ArrayList<Safe_Zone> sz;
     private ArrayList<Portal> portals;
     private EventManager em;
-    private logManager log;
+    private LogManager log;
     private RemoteObjectImplementation r_obj;
     private BlackoutEvent be;
     private StormEvent se;
@@ -75,10 +75,10 @@ public class GUI1_Manager {
     /*
     
     */
-    public boolean init()
+    public void init()
     {
-        boolean done = true;
-        log = new logManager();
+        boolean done = true;                                                        // To check whether the program has been initiated correctly. Used for showing the GUI.
+        log = new LogManager();                                                     // Log manager, writes specific actions and events on a TXT file.
 // ===================== SAFE AND UNSAFE ZONE INITIALIZATION =====================
         Forest = new Unsafe_Zone("Forest", this, log);
         Lab = new Unsafe_Zone("Laboratory", this, log);
@@ -91,8 +91,8 @@ public class GUI1_Manager {
         radio = new Safe_Zone("WSQK Radio", this, log);
         
         uz = new ArrayList<>();                              // Children and Demogorgons share this ArrayList.
-        sz = new ArrayList<>();                                // ONLY children are allowed to use this ArrayList.
-        portals = new ArrayList<>();                              // Children and PortalManager use this ArrayList.
+        sz = new ArrayList<>();                              // ONLY children are allowed to use this ArrayList.
+        portals = new ArrayList<>();                         // Children and PortalManager use this ArrayList.
         
         // ===================== SAFE AND UNSAFE ZONE ADDITION =====================
         uz.add(Forest); uz.add(Lab); uz.add(Mall); uz.add(Sewer); uz.add(Hive);
@@ -100,6 +100,7 @@ public class GUI1_Manager {
         
         
 // ===================== PORTAL INITIALIZATION =====================
+
         p1 = new Portal("ForestPortal", new CyclicBarrier(2), this, log);
         p2 = new Portal("LabPortal", new CyclicBarrier(3), this, log);
         p3 = new Portal("MallPortal", new CyclicBarrier(4), this, log);
@@ -129,12 +130,12 @@ public class GUI1_Manager {
             // Initial threads (Alpha Demog and Children) creation.
             try
             {
-                int idn = 0;                                                                               // Used for Children ID and Alpha Demogorgon.
-                new Demogorgon("D"+String.format("%04d",idn), uz, vc, se, ese, hme, log).start();          // Formatted ID for the Alpha Demogorgon (D0000)
+                int idn = 0;                                                                               // Used for Children and Demogorgon ID.
+                new Demogorgon("D"+String.format("%04d",idn), uz, vc, se, ese, hme, log).start();          // Formats the ID for the Alpha Demogorgon (D0000).
                 for(int i=0; i<1500; i++)
                 {
-                    Thread.sleep((int)(Math.random()*1.5+0.5));                                         // SHOULD wait between 0.5 and 2 seconds.
-                    String child_id = "C"+String.format("%04d", idn);                                   // Formatted ID for children
+                    Thread.sleep((int)(Math.random()*1.5+0.5));                                            // SHOULD wait between 0.5 and 2 seconds.
+                    String child_id = "C"+String.format("%04d", idn);                                      // Formats the ID for children.
                     new Child(child_id, sz, uz, portals,se, log).start();
                     idn++;
                 }
@@ -150,21 +151,35 @@ public class GUI1_Manager {
             System.out.println("Object Implementation interruped, the server couldn't start.");
             done = false;
         }
-        
-        return done;
+        // If the program has initiated correctly, shows the GUI. Otherwise it finishes.
+        if(done)
+        {
+            gui1.setVisible(true);
+        }
     }
-
-    
+ 
+    /* ========== PORTAL REFRESHER METHOD ==========
+       -    Works as connector between the interface and the thread calls.
+       -    Does as the name implies.
+    */
     public void refreshPortalStats()
     {
         gui1.refreshPortalStats(portals);
     }
     
+    /* ========== ZONE AND EVENT STATUS REFRESHER METHOD ==========
+       -    Works as connector between the interface and the thread calls.
+       -    Does as the name implies
+    */
     public void refreshZoneStats()
     {
         gui1.refreshZoneStats(uz, sz, em);
     }
     
+    /* ========== COUNTER REFRESHER METHOD ==========
+       -    Works as connector between the interface and the thread calls.
+       -    Does as the name implies
+    */
     public void refreshCounters()
     {
         gui1.refreshCounters(sz, uz);

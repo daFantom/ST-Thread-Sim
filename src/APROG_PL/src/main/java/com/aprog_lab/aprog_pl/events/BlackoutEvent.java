@@ -19,8 +19,9 @@ public class BlackoutEvent
         uzs = p_uzs;
     }
     
-    /*
-    
+    /* ============= PORTAL DISABLING / ENABLING METHODS ============= 
+        -   Sets the blocked AtomicBoolean from each portal to true (disable) or false (enable) if the event is ongoing or has finished, respectively.
+        -   Checked by children.
     */
     public void disablePortalsEvent()
     {
@@ -30,9 +31,7 @@ public class BlackoutEvent
         }
     }
     
-    /*
-    
-    */
+
     public void enablePortalsEvent()
     {
         for(int i=0;i<portals.size();i++)
@@ -41,8 +40,8 @@ public class BlackoutEvent
         }
     }
     
-    /*
-    
+    /* ============= DEMOGORGON DISABLING / ENABLING METHODS ============= 
+        -   Also whenever the event is ongoing or has finished, changes a special variable inside of each unsafe zone for demogorgons to not move (disable) or let them move (enable). 
     */
     public void disableUnsafe_ZonesDemos()
     {
@@ -51,10 +50,7 @@ public class BlackoutEvent
             uzs.get(i).disableUnsafeZonesDemos();
         }
     }
-    
-    /*
-    
-    */
+
     public void enableUnsafe_ZonesDemos()
     {
         for(int i=0;i<uzs.size();i++)

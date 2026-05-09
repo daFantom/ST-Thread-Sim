@@ -1,6 +1,6 @@
 package com.aprog_lab.aprog_pl.threads;
 
-import com.aprog_lab.aprog_pl.shared_resources.logManager;
+import com.aprog_lab.aprog_pl.shared_resources.LogManager;
 import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import java.util.ArrayList;
 
@@ -10,9 +10,9 @@ import java.util.ArrayList;
  */
 public class PortalManager extends Thread{
     ArrayList<Portal> portals;
-    private logManager log;
+    private LogManager log;
     
-    public PortalManager(ArrayList<Portal> pportals, logManager p_log)
+    public PortalManager(ArrayList<Portal> pportals, LogManager p_log)
     {
         portals = pportals;
         log = p_log;
@@ -25,12 +25,12 @@ public class PortalManager extends Thread{
         {
             try
             {
-                if(log.getPlaying())
+                if(log.getPlaying())                                                 // Checks whether the program is stopped or not. If so, waits in a monitor queue.
                 {
-                    Thread.sleep(1000);
+                    Thread.sleep(1000);                                              
                     for(int i=0;i<portals.size();i++)
                     {
-                        portals.get(i).openPortal();
+                        portals.get(i).openPortal();                                 // Each second it lets a child pass into the cyclic barrier simulated as portal. Exiting ones get prio.
                     }   
                 }
                 else

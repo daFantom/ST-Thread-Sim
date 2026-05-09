@@ -3,7 +3,7 @@ package com.aprog_lab.aprog_pl.Network_Connection;
 import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
-import com.aprog_lab.aprog_pl.shared_resources.logManager;
+import com.aprog_lab.aprog_pl.shared_resources.LogManager;
 import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.EventManager;
 import java.rmi.RemoteException;
@@ -16,13 +16,13 @@ import java.util.ArrayList;
  */
     public class RemoteObjectImplementation extends UnicastRemoteObject implements MyRemoteInterface
     {
-        private logManager log;
+        private LogManager log;
         private ArrayList<Unsafe_Zone> uzs;
         private EventManager em;
         private Safe_Zone hawkings;
         private ArrayList<Portal> portals;
         
-        public RemoteObjectImplementation(logManager p_log, ArrayList<Unsafe_Zone> p_uzs, EventManager p_em, Safe_Zone p_hawkings, ArrayList<Portal> p_portals) throws RemoteException
+        public RemoteObjectImplementation(LogManager p_log, ArrayList<Unsafe_Zone> p_uzs, EventManager p_em, Safe_Zone p_hawkings, ArrayList<Portal> p_portals) throws RemoteException
         {
             log = p_log;
             uzs = p_uzs;
@@ -31,6 +31,9 @@ import java.util.ArrayList;
             portals = p_portals;
         }
         
+        /* ================ PROGRAM STOPPING / RESUME MECHANISM ================
+            -   Calls upon the LogManager object to change a variable used for checking whether the program is stopped or not.
+        */
         @Override
         public boolean stop() throws RemoteException
         {
@@ -65,12 +68,22 @@ import java.util.ArrayList;
             return done;
         }
         
+        /* ================ ACTIVE EVENT GETTER ================
+            -   Gets the current active event by accesing the "status" variable inside of the EventManager thread.
+        */
         @Override
         public synchronized String getActiveEvent() throws RemoteException
         {
             return em.getStatus();
         }
         
+        /* ================ ZONE AND PORTAL GETTERS ================
+            -   Returns the amount of children or demogorgons inside an unsafe zone. 
+                The amount of children in a safe zone
+                Or the entering / exiting children in a portal.
+            -   Stores them in an Integer Array List (portals and unsafe zones) where each position references each unsafe zone or portal.
+            -   For the amount of children in a safe zone, returns an int with the amount.
+        */
         @Override
         public ArrayList<Integer> getUnsafeZonesAmountChildren() throws RemoteException
         {
@@ -128,6 +141,9 @@ import java.util.ArrayList;
             return hawkings.getAvailChildren().size();
         }
         
+        /* ================ DEMOGORGON RANKING GETTERS ================
+            -   Gets the ranking of demogorgons from the LogManager class and returns an String ArrayList with the available ID's of each demogorgon.
+        */
         @Override
         public synchronized ArrayList<String> getDemoRankings() throws RemoteException
         {

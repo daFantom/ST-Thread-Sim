@@ -11,32 +11,24 @@ import java.util.logging.*;
  *
  * @author Emanuel Baciu
  */
-public class logManager
+public class LogManager
 {
     private AtomicBoolean playing;
     private ArrayList<Demogorgon> ranking;
-    //private PrintWriter writer;
     private Logger logWriter;
     private FileHandler fileHandler;
-    //private Path path;
-    // Custom format
-    //private DateTimeFormatter formatter;
-    //private LocalDateTime dateTime;
+;
     
-    public logManager()
+    public LogManager()
     {
         playing = new AtomicBoolean(true);
         ranking = new ArrayList<>();
-        logWriter = Logger.getLogger(logManager.class.getName());
+        logWriter = Logger.getLogger(LogManager.class.getName());
         logWriter.setUseParentHandlers(false);
         ranking = new ArrayList<>();
         
-        //formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        //path = Paths.get("..\\..\\docs\\hawkings.txt");
-        
         try
         {
-            //writer = new PrintWriter(new FileWriter(path.toString()));
             fileHandler = new FileHandler("..\\..\\docs\\hawkings.txt", true);
             fileHandler.setFormatter(new SimpleFormatter());
             logWriter.addHandler(fileHandler);
@@ -51,8 +43,9 @@ public class logManager
         }
     }
     
-    /*
-    
+    /* ================ PROGRAM STOPPED AND RESUME ================
+        -   Sets the playing variable to true or false in order to stop or resume the program.
+        -   If resumed from stopped, notifies all waiting threads to continue the program.
     */
     public void stop()
     {
@@ -63,9 +56,6 @@ public class logManager
         }
     }
     
-    /*
-    
-    */
     public synchronized void resume()
     {
         if(!playing.get())
@@ -76,16 +66,16 @@ public class logManager
         }
     }
     
-    /*
-    
+    /* ================ PLAYING GETTER ================
+        -   Returns the value of the AtomicBoolean playing variable. Used for stopping or resuming the program.
     */
     public boolean getPlaying()
     {
         return playing.get();
     }
     
-    /*
-    
+    /* ================ MONITOR WAITING METHOD ================
+        -   Makes all threads who call this method wait inside of this class' monitor as a way of stopping the program.
     */
     public synchronized void waitLog()
     {
@@ -99,19 +89,17 @@ public class logManager
         }
     }
     
-    /*
-    
+    /* ================ LOG WRITING METHOD ================
+        -   Writes a log inside of the hawkings.txt file with the textContent String.
     */
     public synchronized void logWrite(String textContent)
     {
-        //dateTime = LocalDateTime.now();
-        //String logContent = (dateTime.format(formatter)+" "+textContent);
-        //writer.println(logContent);
-        //writer.close();
         logWriter.info(textContent);
-        
     }
     
+    /* ================ RANKING UPDATE METHOD ================
+        -   Used by demogorgons to update their ranking basing off their total children capturing.
+    */
     public synchronized void updateRanking(Demogorgon d)
     {
         boolean changed = false;
@@ -131,6 +119,9 @@ public class logManager
         }
     }
     
+    /* ================ RANKING GETTER METHOD ================
+        -   Returns the demogorgon ranking. Used for displaying purposes.
+    */
     public synchronized ArrayList<Demogorgon> getDemoRanking()
     {
         return ranking;

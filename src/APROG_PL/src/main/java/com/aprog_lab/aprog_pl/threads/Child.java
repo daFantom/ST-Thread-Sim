@@ -4,7 +4,7 @@ import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import com.aprog_lab.aprog_pl.events.StormEvent;
-import com.aprog_lab.aprog_pl.shared_resources.logManager;
+import com.aprog_lab.aprog_pl.shared_resources.LogManager;
 import java.util.ArrayList;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -17,13 +17,13 @@ public class Child extends Thread {
     private String id;                                                                  // Used for identifying each child.  
     private ArrayList<Unsafe_Zone> uz;                                                 // uz[0]=Forest, uz[1]=Lab, uz[2]=Mall, uz[3]=Sewer, uz[4]=HIVE;
     private ArrayList<Safe_Zone> sz;                                                   // sz[0]=Main Street, sz[1]=Basement, sz[2]=WSQK Radio.
-    private ArrayList<Portal> portals;
-    private String status;
+    private ArrayList<Portal> portals;      
+    private String status;                                                             // To check whether a child is entering or exiting a portal.
     private AtomicBoolean attacked;
     private StormEvent storm;
-    private logManager log;
+    private LogManager log;
     
-    public Child(String pid, ArrayList<Safe_Zone> psz, ArrayList<Unsafe_Zone> puz,ArrayList<Portal> pportals, StormEvent pstorm, logManager p_log)
+    public Child(String pid, ArrayList<Safe_Zone> psz, ArrayList<Unsafe_Zone> puz,ArrayList<Portal> pportals, StormEvent pstorm, LogManager p_log)
     {
         id = pid;
         sz = psz;
@@ -93,7 +93,7 @@ public class Child extends Thread {
                 }
                 else
                 {
-                    log.waitLog();
+                    log.waitLog();                                                              // If the porgram was stopped, waits inside of the class'
                 }
             }
             catch(InterruptedException ie)
@@ -103,43 +103,48 @@ public class Child extends Thread {
         }
     }
     
-    /*
-    
+    /* ==================== CHILD STATUS GETTER ====================
+        -   DEBUGGING PURPOSES
     */
     public String getStatus()
     {
         return status;
     }
-    /*
     
+    /* ==================== CHILD ATTACKED GETTER ====================
+        -   Returns whether a child was attacked or not, usually done whenever a demogorgon wants to attack a child.
     */
     public boolean isAttacked()
     {
         return attacked.get();
     }
-    /*
     
+    /* ==================== CHILD ID GETTER ====================
+        -   Returns the ID of a child. Usually done for GUI stat refreshing.
     */
     public String getID()
     {
         return id;
     }
-    /*
     
+    /* ==================== CHILD ATTACKED SETTERS ====================
+        -   Sets the attacked AtomicBoolean to true if false.
+        -   Otherwise, sets it to false if true [removedAttacked()]
     */
     public void gotAttacked()
     {
         attacked.compareAndSet(false, true);
     }
-    /*
     
-    */
     public void removeAttacked()
     {
         attacked.compareAndSet(true, false);
     }
-    /*
     
+    /* ==================== CHILD MIND CONTROL METHOD ====================
+        -   Only called inside of the child itself. Checks on run() method if attacked and calls this method to go to the HIVE unsafe zone.
+        -   Essentially makes the child leave the current zone and makes it enter the unsafe zone directly.
+        -   Then, increments the captured amount with hive.capture(id). The id is used for printing reasons, AKA Debug.
     */
     public void goToHive(Child c, int portal)
     {
@@ -148,7 +153,7 @@ public class Child extends Thread {
         {
             uz.get(portal).exitUZChild(c);                        
             hive.enterUZChild(c);
-            Thread.sleep((int)((Math.random()*500)+500));                     // Getting carried to the HIVE (simulation)
+            Thread.sleep((int)((Math.random()*500)+500));                           // Getting carried to the HIVE (simulation)
             status = "Entering";
             hive.capture(id);
         }

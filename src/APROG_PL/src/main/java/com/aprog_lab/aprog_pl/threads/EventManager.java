@@ -1,7 +1,7 @@
 package com.aprog_lab.aprog_pl.threads;
 
 import com.aprog_lab.aprog_pl.events.*;
-import com.aprog_lab.aprog_pl.shared_resources.logManager;
+import com.aprog_lab.aprog_pl.shared_resources.LogManager;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -15,9 +15,9 @@ public class EventManager extends Thread
     private final ElevenSavesEvent ese;
     private final HiveMindEvent hme;
     private final AtomicReference<String> status;
-    private final logManager log;
+    private final LogManager log;
     
-    public EventManager(BlackoutEvent pbe, StormEvent pse, ElevenSavesEvent pese, HiveMindEvent phme, logManager p_log)
+    public EventManager(BlackoutEvent pbe, StormEvent pse, ElevenSavesEvent pese, HiveMindEvent phme, LogManager p_log)
     {
         be = pbe;
         se = pse;
@@ -34,14 +34,23 @@ public class EventManager extends Thread
         {
             try
             {
-                if(log.getPlaying())
+                if(log.getPlaying())                                                // If the program is stopped, it will wait on the respecitve class' monitor.
                 {
-                    Thread.sleep((int)((Math.random()*30000))+30000);
-                    int pickedEvent = (int)(Math.random()*4);
+                    Thread.sleep((int)((Math.random()*30000))+30000);               // Otherwise, waits from 30-60 seconds
+                    int pickedEvent = (int)(Math.random()*4);                       // and chooses an event out of the 4 available.
                     switch(pickedEvent)
                     {
                         case 0 ->
                         {
+                            /* ==================== LABORATORY BLACKOUT EVENT ====================
+                                -   Sets the current class' status to BLACKOUT (for checking and GUI purposes)
+                                -   Checks again whether the simulation is stopped (for safety).
+                                -   Uses special method calling to disable the passing through portals and between unsafe zones.
+                                -   Waits from 5 - 10 seconds and restores everything. In other words, opens the portals and the unsafe zones
+                                    and changes the status to 'None'.
+                                - Checks whether the simulation is stopped again before re-enabling just in case it was done while waiting.
+                                -   Stores the event start and end in the log file.
+                            */
                             log.logWrite("GLOBAL EVENT: LABORATORY BLACKOUT EVENT HAS STARTED");
                             status.compareAndSet("None", "BLACKOUT");
                             
@@ -61,6 +70,16 @@ public class EventManager extends Thread
 
                         case 1 ->
                         {
+                            /* ==================== STORM EVENT ====================
+                                -   Sets the current class' status to STORM (for checking and GUI purposes)
+                                -   Checks again whether the simulation is stopped (for safety).
+                                -   Sets to true a special variable on the respective Event class for demogorgons and children to check.
+                                -   The changes from this event are explained on their respective classes. (Demogorgon and Child).
+                                -   Waits from 5 - 10 seconds and restores everything. In other words, set the special variable to false
+                                    and changes the status to 'None'.
+                                -   Checks whether the simulation is stopped again before setting the variable just in case it was done while waiting.
+                                -   Stores the event start and end in the log file.
+                            */
                             log.logWrite("GLOBAL EVENT: STORM EVENT HAS STARTED");
                             status.compareAndSet("None", "STORM");
                             
@@ -78,6 +97,17 @@ public class EventManager extends Thread
 
                         case 2 ->
                         {
+                            /* ==================== ELEVEN'S INTERVENTION EVENT ====================
+                                -   Sets the current class' status to ELEVEN (for checking and GUI purposes)
+                                -   Checks again whether the simulation is stopped (for safety).
+                                -   Sets to true a special variable on the respective Event class for demogorgons to check.
+                                -   The changes from this event are explained on their respective classes. (Demogorgon).
+                                -   Calculates the duration of this event an saves as much children as the duration implies using
+                                    the saveChild() method inside of the class.
+                                -   Checks whether the simulation is stopped again before setting the variable and enabling
+                                    the demogorgons just in case it was done while waiting.
+                                -   Stores the event start and end in the log file.
+                            */
                             log.logWrite("GLOBAL EVENT: ELEVEN'S INTERVENTION EVENT HAS STARTED");
                             status.compareAndSet("None", "ELEVEN");
                             
@@ -105,14 +135,23 @@ public class EventManager extends Thread
 
                         case 3 ->
                         {
+                            /* ==================== HIVEMIND EVENT ====================
+                                -   Sets the current class' status to HIVEMIND (for checking and GUI purposes)
+                                -   Checks again whether the simulation is stopped (for safety).
+                                -   Sets to true a special variable on the respective Event class for demogorgons to check.
+                                -   The changes from this event are explained on their respective classes. (Demogorgon).
+                                -   Checks whether the simulation is stopped again before setting the variable and enabling
+                                    the demogorgons just in case it was done while waiting.
+                                -   Stores the event start and end in the log file.
+                            */
                             log.logWrite("GLOBAL EVENT: HIVE MIND EVENT HAS STARTED");
                             if(!log.getPlaying()) log.waitLog();
                             hme.setStatus();
                             status.compareAndSet("None", "HIVEMIND");
                             Thread.sleep((int)((Math.random()*5000)+5000));
-                            //hme.showDemos();
+                            //hme.showDemos();                                          // DEBUG                
                             
-                            if(!log.getPlaying()) log.waitLog();// DEBUG
+                            if(!log.getPlaying()) log.waitLog();
                             
                             hme.setStatus();
                             status.compareAndSet("HIVEMIND", "None");
@@ -122,7 +161,7 @@ public class EventManager extends Thread
                 }
                 else
                 {
-                    log.waitLog();
+                    log.waitLog();                                         // If the simulation was stopped before starting, waits inside of the respective monitor.
                 }
             }
             catch(InterruptedException ie)
@@ -132,6 +171,11 @@ public class EventManager extends Thread
         }
     }
     
+    /* ================== STATUS GETTER ==================
+        -   Returns the current value of the ongoing event.
+        -   If no event is ongoing, returns 'None'.
+        -   Used by most threads and classes.
+    */
     public String getStatus()
     {
         return status.get();
