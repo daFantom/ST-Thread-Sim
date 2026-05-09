@@ -4,7 +4,7 @@ import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import com.aprog_lab.aprog_pl.events.StormEvent;
-import com.aprog_lab.aprog_pl.shared_resources.LoggManager;
+import com.aprog_lab.aprog_pl.shared_resources.LogManager;
 import java.util.ArrayList;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -21,9 +21,9 @@ public class Child extends Thread {
     private String status;                                                             // To check whether a child is entering or exiting a portal.
     private AtomicBoolean attacked;
     private StormEvent storm;
-    private LoggManager log;
+    private LogManager log;
     
-    public Child(String pid, ArrayList<Safe_Zone> psz, ArrayList<Unsafe_Zone> puz,ArrayList<Portal> pportals, StormEvent pstorm, LoggManager p_log)
+    public Child(String pid, ArrayList<Safe_Zone> psz, ArrayList<Unsafe_Zone> puz,ArrayList<Portal> pportals, StormEvent pstorm, LogManager p_log)
     {
         id = pid;
         sz = psz;

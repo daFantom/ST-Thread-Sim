@@ -18,10 +18,10 @@ public class Unsafe_Zone
     private final CopyOnWriteArrayList<Demogorgon> avail_demos;
     private AtomicInteger captured;
     private final GUI1_Manager ifc_mng;
-    private final LoggManager log;
+    private final LogManager log;
     private final AtomicBoolean labBlackout;
     
-    public Unsafe_Zone(String name, GUI1_Manager p_ifc_mng, LoggManager p_log)
+    public Unsafe_Zone(String name, GUI1_Manager p_ifc_mng, LogManager p_log)
     {
         ifc_mng = p_ifc_mng;
         zone_name = name;
@@ -39,7 +39,7 @@ public class Unsafe_Zone
         -   Whenever a child enters, it will check whether the program is stopped or not.
         -   If the program status is set to "running" (boolean), it will try to add itself on an COWAL (CopyOnWriteArrayList).
         -   Check if the children already is inside to avoid duplicates and refreshes it's corresponging GUI stats.
-        -   If the program is stopped, it will enter on a monitor waiting queue inside of the LoggManager class until resumed.
+        -   If the program is stopped, it will enter on a monitor waiting queue inside of the LogManager class until resumed.
         -   Once awaken, it will try to enter again.
     */
     public void enterUZChild(Child c)
@@ -67,7 +67,7 @@ public class Unsafe_Zone
         -   Whenever a demogorgon enters, it will check whether the program is stopped or not.
         -   If the program status is set to "running" (boolean), it will try to add itself on an COWAL (CopyOnWriteArrayList).
         -   Check if the demogorgon already is inside to avoid duplicates and refreshes the stats on the GUI.
-        -   If the program is stopped, it will enter on a monitor waiting queue inside of the LoggManager class until resumed.
+        -   If the program is stopped, it will enter on a monitor waiting queue inside of the LogManager class until resumed.
         -   Once awaken, it will try to enter again.  
     */
     public void enterUZDemo(Demogorgon d)

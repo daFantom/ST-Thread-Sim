@@ -27,9 +27,9 @@ public class Portal
     private AtomicBoolean blocked;
     private CopyOnWriteArrayList<Child> entering, leaving;
     private GUI1_Manager ifc_mng;
-    private LoggManager log;
+    private LogManager log;
     
-    public Portal(String pname, CyclicBarrier pcb, GUI1_Manager p_ifc_mng, LoggManager p_log)
+    public Portal(String pname, CyclicBarrier pcb, GUI1_Manager p_ifc_mng, LogManager p_log)
     {
         portal_name = pname;
         cb = pcb;

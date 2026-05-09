@@ -11,7 +11,7 @@ import java.util.logging.*;
  *
  * @author Emanuel Baciu
  */
-public class LoggManager
+public class LogManager
 {
     private AtomicBoolean playing;
     private ArrayList<Demogorgon> ranking;
@@ -19,11 +19,11 @@ public class LoggManager
     private FileHandler fileHandler;
 ;
     
-    public LoggManager()
+    public LogManager()
     {
         playing = new AtomicBoolean(true);
         ranking = new ArrayList<>();
-        logWriter = Logger.getLogger(LoggManager.class.getName());
+        logWriter = Logger.getLogger(LogManager.class.getName());
         logWriter.setUseParentHandlers(false);
         ranking = new ArrayList<>();
         
