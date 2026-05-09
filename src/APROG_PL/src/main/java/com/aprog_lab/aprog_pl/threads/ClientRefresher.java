@@ -1,8 +1,8 @@
 package com.aprog_lab.aprog_pl.threads;
 
 import com.aprog_lab.aprog_pl.GUI.GUI2_Client;
-import com.aprog_lab.aprog_pl.Network_Connection.MyRemoteInterface;
 import java.rmi.RemoteException;
+import com.aprog_lab.aprog_pl.Network_Connection.RemoteInterface;
 
 /**
  *
@@ -10,10 +10,10 @@ import java.rmi.RemoteException;
  */
 public class ClientRefresher extends Thread {
     
-    private MyRemoteInterface roi;
+    private RemoteInterface roi;
     private GUI2_Client gui2;
     
-    public ClientRefresher(MyRemoteInterface p_roi, GUI2_Client p_gui2)
+    public ClientRefresher(RemoteInterface p_roi, GUI2_Client p_gui2)
     {
         roi = p_roi;
         gui2 = p_gui2;

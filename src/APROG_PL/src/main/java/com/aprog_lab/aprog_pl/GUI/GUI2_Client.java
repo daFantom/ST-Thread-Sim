@@ -1,11 +1,11 @@
 package com.aprog_lab.aprog_pl.GUI;
 
-import com.aprog_lab.aprog_pl.Network_Connection.MyRemoteInterface;
 import com.aprog_lab.aprog_pl.threads.ClientRefresher;
 import java.io.IOException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.util.ArrayList;
+import com.aprog_lab.aprog_pl.Network_Connection.RemoteInterface;
 
 /**
  *
@@ -19,7 +19,7 @@ public class GUI2_Client extends javax.swing.JFrame {
     private final ArrayList<javax.swing.JTextField> portalsEntering;
     private final ArrayList<javax.swing.JTextField> portalsLeaving;
     private final ArrayList<javax.swing.JTextField> demo_ranks;
-    private MyRemoteInterface remoteObject;
+    private RemoteInterface remoteObject;
 
     /**
      * Creates new form GUI2_Client
@@ -79,7 +79,7 @@ public class GUI2_Client extends javax.swing.JFrame {
     {
         try
         {
-            remoteObject = (MyRemoteInterface) Naming.lookup("//localhost/RemoteObjectCreatedForDemonstration");
+            remoteObject = (RemoteInterface) Naming.lookup("//localhost/RemoteObjectCreatedForDemonstration");
             new ClientRefresher(remoteObject, this).start();
         }
         catch(NotBoundException nbe)

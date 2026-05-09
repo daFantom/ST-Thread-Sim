@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *
  * @author Emanuel Baciu
  */
-    public interface MyRemoteInterface extends java.rmi.Remote
+    public interface RemoteInterface extends java.rmi.Remote
     {
         public boolean stop() throws RemoteException;
         public boolean resume() throws RemoteException;

@@ -1,7 +1,7 @@
 package com.aprog_lab.aprog_pl.threads;
 
 import com.aprog_lab.aprog_pl.events.*;
-import com.aprog_lab.aprog_pl.shared_resources.LogManager;
+import com.aprog_lab.aprog_pl.shared_resources.LoggManager;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -15,9 +15,9 @@ public class EventManager extends Thread
     private final ElevenSavesEvent ese;
     private final HiveMindEvent hme;
     private final AtomicReference<String> status;
-    private final LogManager log;
+    private final LoggManager log;
     
-    public EventManager(BlackoutEvent pbe, StormEvent pse, ElevenSavesEvent pese, HiveMindEvent phme, LogManager p_log)
+    public EventManager(BlackoutEvent pbe, StormEvent pse, ElevenSavesEvent pese, HiveMindEvent phme, LoggManager p_log)
     {
         be = pbe;
         se = pse;

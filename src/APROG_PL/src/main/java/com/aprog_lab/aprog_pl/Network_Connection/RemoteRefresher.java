@@ -3,7 +3,7 @@ package com.aprog_lab.aprog_pl.Network_Connection;
 import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
-import com.aprog_lab.aprog_pl.shared_resources.LogManager;
+import com.aprog_lab.aprog_pl.shared_resources.LoggManager;
 import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.EventManager;
 import java.rmi.RemoteException;
@@ -14,15 +14,15 @@ import java.util.ArrayList;
  *
  * @author Emanuel Baciu
  */
-    public class RemoteObjectImplementation extends UnicastRemoteObject implements MyRemoteInterface
+    public class RemoteRefresher extends UnicastRemoteObject implements RemoteInterface
     {
-        private LogManager log;
+        private LoggManager log;
         private ArrayList<Unsafe_Zone> uzs;
         private EventManager em;
         private Safe_Zone hawkings;
         private ArrayList<Portal> portals;
         
-        public RemoteObjectImplementation(LogManager p_log, ArrayList<Unsafe_Zone> p_uzs, EventManager p_em, Safe_Zone p_hawkings, ArrayList<Portal> p_portals) throws RemoteException
+        public RemoteRefresher(LoggManager p_log, ArrayList<Unsafe_Zone> p_uzs, EventManager p_em, Safe_Zone p_hawkings, ArrayList<Portal> p_portals) throws RemoteException
         {
             log = p_log;
             uzs = p_uzs;
@@ -32,7 +32,7 @@ import java.util.ArrayList;
         }
         
         /* ================ PROGRAM STOPPING / RESUME MECHANISM ================
-            -   Calls upon the LogManager object to change a variable used for checking whether the program is stopped or not.
+            -   Calls upon the LoggManager object to change a variable used for checking whether the program is stopped or not.
         */
         @Override
         public boolean stop() throws RemoteException
@@ -142,7 +142,7 @@ import java.util.ArrayList;
         }
         
         /* ================ DEMOGORGON RANKING GETTERS ================
-            -   Gets the ranking of demogorgons from the LogManager class and returns an String ArrayList with the available ID's of each demogorgon.
+            -   Gets the ranking of demogorgons from the LoggManager class and returns an String ArrayList with the available ID's of each demogorgon.
         */
         @Override
         public synchronized ArrayList<String> getDemoRankings() throws RemoteException

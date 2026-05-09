@@ -1,7 +1,7 @@
 package com.aprog_lab.aprog_pl.GUI_Initializers;
 
 import com.aprog_lab.aprog_pl.GUI.GUI1_Server;
-import com.aprog_lab.aprog_pl.Network_Connection.RemoteObjectImplementation;
+import com.aprog_lab.aprog_pl.Network_Connection.RemoteRefresher;
 import com.aprog_lab.aprog_pl.events.BlackoutEvent;
 import com.aprog_lab.aprog_pl.events.ElevenSavesEvent;
 import com.aprog_lab.aprog_pl.events.HiveMindEvent;
@@ -10,7 +10,7 @@ import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import com.aprog_lab.aprog_pl.shared_resources.Safe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.Unsafe_Zone;
 import com.aprog_lab.aprog_pl.shared_resources.VecnaChecker;
-import com.aprog_lab.aprog_pl.shared_resources.LogManager;
+import com.aprog_lab.aprog_pl.shared_resources.LoggManager;
 import com.aprog_lab.aprog_pl.threads.Child;
 import com.aprog_lab.aprog_pl.threads.Demogorgon;
 import com.aprog_lab.aprog_pl.threads.EventManager;
@@ -35,8 +35,8 @@ public class GUI1_Manager {
     private ArrayList<Safe_Zone> sz;
     private ArrayList<Portal> portals;
     private EventManager em;
-    private LogManager log;
-    private RemoteObjectImplementation r_obj;
+    private LoggManager log;
+    private RemoteRefresher r_obj;
     private BlackoutEvent be;
     private StormEvent se;
     private ElevenSavesEvent ese;
@@ -57,7 +57,7 @@ public class GUI1_Manager {
         boolean connectionAcquired = false;
         try
         {
-            r_obj = new RemoteObjectImplementation(log, uz, em, sz.get(0), portals);
+            r_obj = new RemoteRefresher(log, uz, em, sz.get(0), portals);
             LocateRegistry.createRegistry(1099);
             Naming.rebind("//localhost/RemoteObjectCreatedForDemonstration", r_obj);
             connectionAcquired = true;
@@ -78,7 +78,7 @@ public class GUI1_Manager {
     public void init()
     {
         boolean done = true;                                                        // To check whether the program has been initiated correctly. Used for showing the GUI.
-        log = new LogManager();                                                     // Log manager, writes specific actions and events on a TXT file.
+        log = new LoggManager();                                                     // Log manager, writes specific actions and events on a TXT file.
 // ===================== SAFE AND UNSAFE ZONE INITIALIZATION =====================
         Forest = new Unsafe_Zone("Forest", this, log);
         Lab = new Unsafe_Zone("Laboratory", this, log);

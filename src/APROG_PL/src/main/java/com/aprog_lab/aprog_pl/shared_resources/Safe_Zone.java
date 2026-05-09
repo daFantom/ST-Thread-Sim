@@ -15,9 +15,9 @@ public class Safe_Zone
     private CopyOnWriteArrayList<Child> avail_children;
     private AtomicInteger bloodCount;
     private GUI1_Manager ifc_mng;
-    private LogManager log;
+    private LoggManager log;
     
-    public Safe_Zone(String name, GUI1_Manager p_ifc_mng, LogManager p_log)
+    public Safe_Zone(String name, GUI1_Manager p_ifc_mng, LoggManager p_log)
     {
         zone_name = name;
         avail_children = new CopyOnWriteArrayList<>();                               // Children actively wandering the zone.

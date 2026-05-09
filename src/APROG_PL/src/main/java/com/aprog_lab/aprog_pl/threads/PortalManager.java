@@ -1,6 +1,6 @@
 package com.aprog_lab.aprog_pl.threads;
 
-import com.aprog_lab.aprog_pl.shared_resources.LogManager;
+import com.aprog_lab.aprog_pl.shared_resources.LoggManager;
 import com.aprog_lab.aprog_pl.shared_resources.Portal;
 import java.util.ArrayList;
 
@@ -10,9 +10,9 @@ import java.util.ArrayList;
  */
 public class PortalManager extends Thread{
     ArrayList<Portal> portals;
-    private LogManager log;
+    private LoggManager log;
     
-    public PortalManager(ArrayList<Portal> pportals, LogManager p_log)
+    public PortalManager(ArrayList<Portal> pportals, LoggManager p_log)
     {
         portals = pportals;
         log = p_log;
