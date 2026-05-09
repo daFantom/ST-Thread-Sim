@@ -27,11 +27,11 @@ public class ClientRefresher extends Thread {
             while(true)
             {
                 Thread.sleep(500);
-                gui2.refreshEvent(roi.getActiveEvent());
-                gui2.refreshLocations(roi.getUnsafeZonesAmountChildren(), roi.getUnsafeZonesAmountDemos());
-                gui2.refreshPortals(roi.getPortalsChildrenAmountEntering(), roi.getPortalsChildrenAmountLeaving());
-                gui2.refreshHawkings(roi.getAvailChildrenHawkings());
-                gui2.refreshDemoRankings(roi.getDemoRankings());
+                gui2.refreshEvent(roi.getActiveEvent());                                                    // Refreshes the current event using the remote object.
+                gui2.refreshLocations(roi.getUnsafeZonesAmountChildren(), roi.getUnsafeZonesAmountDemos()); // Refreshes the amount of children and demogorgons inside of each unsafe zone using the remote object.
+                gui2.refreshPortals(roi.getPortalsChildrenAmountEntering(), roi.getPortalsChildrenAmountLeaving()); // Refreshes the amount of children waiting for each portal (enter / exit) using the remote object.
+                gui2.refreshHawkings(roi.getAvailChildrenHawkings());   // Refreshes the amount of children available in Hawking's Main Street safezone using the remote object.
+                gui2.refreshDemoRankings(roi.getDemoRankings());        // Refreshes the demogorgon ranking using the remoe object.
             }
         }
         catch(RemoteException re)
@@ -42,42 +42,5 @@ public class ClientRefresher extends Thread {
         {
             System.out.println("Error: "+ie.getMessage());
         }
-    }
-    
-    /*
-    
-    */
-    public void refreshDemoRankings()
-    {
-    }
-    
-    /*
-    
-    */
-    public void refreshHawkingsChildren()
-    {
-    }
-    
-    /*
-    
-    */
-    public void refreshChildrenInPortals()
-    {
-    }
-    
-    /*
-    
-    */
-    public void refreshEventStatus()
-    {
-        
-    }
-    
-    /*
-    
-    */
-    public void refreshLocations()
-    {
-        
     }
 }

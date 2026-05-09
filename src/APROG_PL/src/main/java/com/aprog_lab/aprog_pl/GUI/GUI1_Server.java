@@ -25,7 +25,7 @@ public class GUI1_Server extends javax.swing.JFrame {
     
 
     /**
-     * Creates new form Interface1
+     * Creates new form GUI1_Server
      */
     public GUI1_Server()
     {

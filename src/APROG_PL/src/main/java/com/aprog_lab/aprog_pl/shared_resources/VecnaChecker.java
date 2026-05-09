@@ -28,8 +28,13 @@ public class VecnaChecker {
         hme = p_hme;
         log = p_log;
     }
-    /*
-    
+    /* ================ DEMOGORGON SPAWNER ================
+        -   Receives a demogorgon and it's current local captured children.
+        -   If the local captured children is 8, it will spawn a new Demogorgon thread with it's respective parameters.
+        -   That is why many things need to be passed inside of the constructor.
+        -   Once a demgorgon is spawned from another one, sets the calling demogorgon's local child counter to 0.
+        -   total_demos variable is used for the demogorgon's ID's. Initially 1.
+        -   Writes the spawning of a new demogorgon on the log, AKA hawkings.txt file.
     */
     public synchronized void spawnDemo(Demogorgon demo, AtomicInteger capped_children)
     {
@@ -39,7 +44,7 @@ public class VecnaChecker {
             log.logWrite("A new demogorgon has been Spawned!");
             new Demogorgon("D"+String.format("%04d",total_demos), uzs, this, se, ese, hme, log).start();
             total_demos++;
-            demo.emptyChildren();
+            demo.emptyChildren();                   
 
         }
     }
